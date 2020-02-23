@@ -1,0 +1,97 @@
+<section class="container-pages ta-vertical-center">
+  <div class="brand-logo float-left"><a class="wow fadeIn"
+       routerLink="{{homePageLink}}">{{logoName}}</a></div>
+  <div class="pages-tag-line text-white">
+    <div class="h4 wow fadeIn">{{headingText}}</div>
+    <small>{{subText}}</small>
+  </div>
+  <div class="card pages-card col-lg-4 col-md-6 col-sm-6">
+    <div class="card-body">
+      <ngb-alert *ngIf="errorMessage"
+                 [type]="errorType"
+                 (close)="close()">{{ errorMessage }}</ngb-alert>
+      <div class="h4 text-center text-theme wow fadeInUp">
+        <strong>{{titleText}}</strong>
+      </div>
+      <!-- <div class="small text-center text-dark"> Login to Account </div> -->
+      <form #userForm="ngForm"
+            (ngSubmit)="onSubmit();userForm.reset();"
+            class="form-signin">
+        <div class="form-group">
+          <div class="input-group"> <span class="input-group-addon text-theme"><i
+                 class="fa fa-user"></i>
+            </span>
+
+            <input [(ngModel)]="emailAddress"
+                   tabindex="1"
+                   autofocus
+                   #email="ngModel"
+                   type="email"
+                   id="emailAddress"
+                   name="email"
+                   autocomplete="off"
+                   class="form-control"
+                   placeholder="Email Address"> </div>
+          <div [hidden]="email.valid || email.pristine"
+               class="alert alert-danger"> Email Address is required </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group"> <span class="input-group-addon text-theme"><i
+                 class="fa fa-asterisk"></i></span>
+
+            <input [(ngModel)]="password"
+                   tabindex="2"
+                   #thePassword="ngModel"
+                   type="password"
+                   id="password"
+                   autocomplete="off"
+                   name="password"
+                   class="form-control"
+                   placeholder="Password"> </div>
+          <div [hidden]="thePassword.valid || thePassword.pristine"
+               class="alert alert-danger"> Password required </div>
+        </div>
+        <div class="form-group form-actions"> <button class="btn  btn-theme login-btn "
+                  type="submit"
+                  tabindex="3"
+                  [disabled]="!userForm.form.valid">{{submitButtonText}}</button>
+        </div>
+      </form>
+      <div class="text-center wow fadeIn"
+           *ngIf="signUpLink">
+        <small>{{signUpText}} <a routerLink="{{signUpLink}}"
+             class="text-theme">{{signUpButtonText}}</a>
+        </small>
+      </div>
+      <div class="text-center wow fadeIn"
+           *ngIf="forgotPasswordLink">
+        <small>{{forgotPasswordText}} <a routerLink="{{forgotPasswordLink}}"
+             class="text-theme">{{forgotButtonText}}</a>
+        </small>
+      </div>
+      <hr>
+      <h4 class="text-center text-theme">{{socialMediaTitle}}</h4>
+      <div class="site-footer wow fadeInUp">
+        <div class="col-md-12 site-bottom-footer">
+          <div class="col-md-12 social-links">
+            <ul class="footer-social-icons">
+              <li *ngIf="isFacebookLoginButtonEnabled"><a (click)="onPageEvent('facebook')"
+                   title="Facebook"><i class="fa fa-fw fa-facebook"
+                     aria-hidden="true"></i></a></li>
+              <li *ngIf="isTwitterLoginButtonEnabled"><a (click)="onPageEvent('twitter')"
+                   title="Twitter"><i class="fa fa-fw fa-twitter"
+                     aria-hidden="true"></i></a></li>
+              <li *ngIf="isGoogleLoginButtonEnabled"><a (click)="onPageEvent('google')"
+                   title="Google"><i class="fa fa-fw fa-google"
+                     aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end card-body -->
+  </div>
+  <!-- end card -->
+</section>
+<div class="half-circle"></div>
+<div class="small-circle"></div>

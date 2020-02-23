@@ -1,0 +1,14 @@
+<section class="container-server-errors"
+         *ngIf="!isLoading">
+  <div class="server-errors pages-card">
+    <div class="status-text-1">No Content</div>
+    <div class="status-error text-theme hertbit">2 0 4</div>
+    <div class="text-center status-text-2 text-dark">No information was found
+      for your request.</div>
+    <div class="text-center"> <a (click)="onNewItem()"
+         class="btn btn-theme btn-lg login-btn text-white"><span *ngIf="newButton">New
+          Item</span><span *ngIf="!newButton">Continue</span> </a></div>
+  </div>
+  <!-- end server-error pages -->
+</section>
+<lib-lick-app-widget-loader1 *ngIf="isLoading"></lib-lick-app-widget-loader1>

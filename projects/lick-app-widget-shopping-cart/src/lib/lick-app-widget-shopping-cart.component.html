@@ -1,0 +1,36 @@
+<form #dataForm="ngForm" class="form-group">
+<div class="list-group" *ngIf="(data && data.orderLine && data.orderLine.length); else noItems">
+  <div class="list-group-item list-group-item-action">
+    <div class="row ta-header-row">
+      <div class="col text-center"></div>
+      <div class="col">Item</div>
+      <div class="col d-none d-md-block">Description</div>
+      <div class="col d-none d-md-block">Quantity</div>
+      <div class="col text-right d-none d-md-block">Price</div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="list-group-item" *ngFor="let item of data.orderLine; let i = index">
+      <div class="row">
+        <div class="col text-center"> <button type="button" class="btn btn-success btn-sm" (click)="onDetail(item)"><i class="fa fa-search" title="View"></i> View</button>
+          <button type="button" class="btn btn-danger btn-sm" (click)="onDelete(i)"><i class="fa fa-trash-o" title="Delete"></i> Delete</button>
+        </div>
+        <div class="col"><strong>{{ item?.product.name }}</strong> <br><img *ngIf="item?.product.url" class="ta-list-image img-thumbnail" src="{{item?.product.url}}" alt="{{item?.product.name}}"> </div>
+        <div class="col d-none d-md-block">
+          <div innerHTML={{item?.product.description}}></div>
+        </div>
+        <div class="col d-none d-md-block">
+            <input type="number" name="productQuantity{{i}}" id="productQuantity{{i}}" [(ngModel)]="item.quantity" class="form-control form-control-lg ta-input-element" style="max-width: 50px" (change)="updateQuantity(item)">
+        </div>
+        <div class="col text-right d-none d-md-block"> <span *ngIf="!item?.product.onSale" class="badge badge-pill badge-theme ta-large">{{ (item?.product.price * item?.quantity) | currency:'USD':'symbol' }} <span *ngIf="item?.product.hourlyRate"> <br><small>per hour</small> </span></span> <span *ngIf="item?.product.onSale" class="badge badge-pill badge-success ta-large">{{ item?.product.salePrice | currency:'USD':'symbol' }} <span *ngIf="item?.product.hourlyRate"> <br><small>per hour</small> </span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #noItems>
+  <div class="container">
+    <p align="center" class="alert alert-warning" role="alert"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Your shopping cart is empty.</p>
+  </div>
+</ng-template>
+</form>

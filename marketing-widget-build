@@ -1,0 +1,100 @@
+#!/bin/bash
+
+echo Running Library Build of lick-marketing-about-product1
+ng build lick-marketing-about-product1
+echo Running Library Build of lick-marketing-about-product2
+ng build lick-marketing-about-product2
+echo Running Library Build of lick-marketing-about-product3
+ng build lick-marketing-about-product3
+echo Running Library Build of lick-marketing-about-product4
+ng build lick-marketing-about-product4
+echo Running Library Build of lick-marketing-about-product5
+ng build lick-marketing-about-product5
+echo Running Library Build of lick-marketing-about-product6
+ng build lick-marketing-about-product6
+echo Running Library Build of lick-marketing-about-product7
+ng build lick-marketing-about-product7
+echo Running Library Build of lick-marketing-carousel
+ng build lick-marketing-carousel
+echo Running Library Build of lick-marketing-contact-us1
+ng build lick-marketing-contact-us1
+echo Running Library Build of lick-marketing-faq1
+ng build lick-marketing-faq1
+echo Running Library Build of lick-marketing-faq2
+ng build lick-marketing-faq2
+echo Running Library Build of lick-marketing-faq3
+ng build lick-marketing-faq3
+echo Running Library Build of lick-marketing-features1
+ng build lick-marketing-features1
+echo Running Library Build of lick-marketing-features2
+ng build lick-marketing-features2
+echo Running Library Build of lick-marketing-features3
+ng build lick-marketing-features3
+echo Running Library Build of lick-marketing-features4
+ng build lick-marketing-features4
+echo Running Library Build of lick-marketing-features5
+ng build lick-marketing-features5
+echo Running Library Build of lick-marketing-footer1
+ng build lick-marketing-footer1
+echo Running Library Build of lick-marketing-footer2
+ng build lick-marketing-footer2
+echo Running Library Build of lick-marketing-header1
+ng build lick-marketing-header1
+echo Running Library Build of lick-marketing-header2
+ng build lick-marketing-header2
+echo Running Library Build of lick-marketing-header3
+ng build lick-marketing-header3
+echo Running Library Build of lick-marketing-header4
+ng build lick-marketing-header4
+echo Running Library Build of lick-marketing-header5
+ng build lick-marketing-header5
+echo Running Library Build of lick-marketing-how-to1
+ng build lick-marketing-how-to1
+echo Running Library Build of lick-marketing-integration1
+ng build lick-marketing-integration1
+echo Running Library Build of lick-marketing-integration2
+ng build lick-marketing-integration2
+echo Running Library Build of lick-marketing-latest-post1
+ng build lick-marketing-latest-post1
+echo Running Library Build of lick-marketing-latest-post2
+ng build lick-marketing-latest-post2
+echo Running Library Build of lick-marketing-lightbox1
+ng build lick-marketing-lightbox1
+echo Running Library Build of lick-marketing-menu
+ng build lick-marketing-menu
+echo Running Library Build of lick-marketing-newsletter1
+ng build lick-marketing-newsletter1
+echo Running Library Build of lick-marketing-parallax1
+ng build lick-marketing-parallax1
+echo Running Library Build of lick-marketing-prices1
+ng build lick-marketing-prices1
+echo Running Library Build of lick-marketing-prices2
+ng build lick-marketing-prices2
+echo Running Library Build of lick-marketing-reviews1
+ng build lick-marketing-reviews1
+echo Running Library Build of lick-marketing-reviews2
+ng build lick-marketing-reviews2
+echo Running Library Build of lick-marketing-reviews3
+ng build lick-marketing-reviews3
+echo Running Library Build of lick-marketing-security
+ng build lick-marketing-security
+echo Running Library Build of lick-marketing-simple-header
+ng build lick-marketing-simple-header
+echo Running Library Build of lick-marketing-simple-page
+ng build lick-marketing-simple-page
+echo Running Library Build of lick-marketing-team1
+ng build lick-marketing-team1
+echo Running Library Build of lick-marketing-team2
+ng build lick-marketing-team2
+echo Running Library Build of lick-marketing-team3
+ng build lick-marketing-team3
+echo Running Library Build of lick-marketing-try-it1
+ng build lick-marketing-try-it1
+echo Running Library Build of lick-marketing-try-it2
+ng build lick-marketing-try-it2
+echo Running Library Build of lick-marketing-try-it3
+ng build lick-marketing-try-it3
+echo Running Library Build of lick-marketing-video1
+ng build lick-marketing-video1
+echo Running Library Build of lick-marketing-video2
+ng build lick-marketing-video2

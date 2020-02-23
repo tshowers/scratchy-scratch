@@ -1,0 +1,35 @@
+
+<licky-lick-app-widget-maintenance *ngIf="isWidget1"></licky-lick-app-widget-maintenance>
+<licky-lick-app-widget-forgot-password *ngIf="isWidget2"></licky-lick-app-widget-forgot-password>
+<licky-lick-app-widget-login *ngIf="isWidget3" (pageEvent)="onPageEvent($event)"></licky-lick-app-widget-login>
+<licky-lick-app-widget-lock-screen *ngIf="isWidget4"></licky-lick-app-widget-lock-screen>
+<licky-lick-app-widget-signup *ngIf="isWidget5"></licky-lick-app-widget-signup>
+<licky-lick-app-widget-logout *ngIf="isWidget6"></licky-lick-app-widget-logout>
+<licky-lick-app-widget-not-found  *ngIf="isWidget7"></licky-lick-app-widget-not-found>
+<licky-lick-app-widget-under-construction *ngIf="isWidget8"></licky-lick-app-widget-under-construction>
+<ul class="nav nav-tabs bg-light fixed-bottom">
+  <li class="nav-item" [ngClass]="{'active' : isWidget1}">
+    <a class="nav-link" (click)="onMaintenance()">Maintenance</a>
+  </li>
+  <li class="nav-item" [ngClass]="{'active' : isWidget2}">
+    <a class="nav-link" (click)="onForgot()">Forgot Password</a>
+  </li>
+  <li class="nav-item" [ngClass]="{'active' : isWidget3}">
+    <a class="nav-link" (click)="onLogin()">Login</a>
+  </li>
+  <li class="nav-item" [ngClass]="{'active' : isWidget4}">
+    <a class="nav-link" (click)="onLock()">Lock</a>
+  </li>
+  <li class="nav-item" [ngClass]="{'active' : isWidget5}">
+    <a class="nav-link" (click)="onSignUp()">Sign up</a>
+  </li>
+  <li class="nav-item" [ngClass]="{'active' : isWidget6}">
+    <a class="nav-link" (click)="onLogout()">Log Out</a>
+  </li>
+  <li class="nav-item" [ngClass]="{'active' : isWidget7}">
+    <a class="nav-link" (click)="onNotFound()">Not Found</a>
+  </li>
+  <li class="nav-item" [ngClass]="{'active' : isWidget8}">
+    <a class="nav-link" (click)="onUnderConstruction()">Under Construction</a>
+  </li>
+</ul>

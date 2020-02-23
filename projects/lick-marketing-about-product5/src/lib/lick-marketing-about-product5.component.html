@@ -1,0 +1,40 @@
+<section id="about---4" class="container-fluid section-block about-4 color-block">
+  <div class="container">
+    <div class="row">
+
+      <!-- Image block -->
+      <div class="col-md-6 col-sm-7 col-xs-12">
+        <div class="about-image-block">
+          <div class="about-image">
+
+            <img src="{{imageURL}}" alt="{{headingText}}">
+
+            <!-- Feature block -->
+            <div class="feature-box feature-box-second feature-image wow fadeInUp">
+              <span *ngIf="badgeFeatureText" class="badge badge-second">{{badgeFeatureText}}</span>
+              <i [ngClass]="iconFeature"></i>
+              <p>{{featureText}}</p>
+            </div>
+
+          </div> <!-- .about-image -->
+        </div> <!-- .about-features -->
+      </div>
+
+      <!-- Text block -->
+      <div class="col-md-6 col-sm-5 col-xs-12 about-text">
+        <h2 class="wow fadeInUp">{{headingText}} <span *ngIf="badgeText" class="badge badge-primary">{{badgeText}}</span></h2>
+        <p class="wow fadeInUp">{{descriptionText}}</p>
+        <a *ngIf="buttonLink" routerLink="{{buttonLink}}" class="button button-full wow fadeIn" title="button">{{buttonText}}</a>
+
+        <button *ngIf="customButtonText1" class="btn btn-primary btn-round btn-lg" (click)="onCustom1()">{{customButtonText1}}
+          <i class="fa" [ngClass]="customButtonIcon1"  aria-hidden="true"></i>
+        </button>
+        <button *ngIf="customButtonText2" class="btn btn-success btn-round btn-lg" (click)="onCustom2()">{{customButtonText2}}
+          <i class="fa" [ngClass]="customButtonIcon2"  aria-hidden="true"></i>
+        </button>
+
+      </div>
+
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+</section>

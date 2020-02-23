@@ -1,0 +1,11 @@
+<div class="sidebar"
+     id="sidebar">
+
+  <!-- <licky-lick-app-widget-weather *ngIf="!searchArgument"></licky-lick-app-widget-weather> -->
+  <licky-lick-app-widget-post5
+                               [headingText]="searchHeading"
+                               [viewAllLink]="null"
+                               (pageEvent)="onPageEvent($event)"
+                               [isExternal]="true"
+                               [data]="searchResults"></licky-lick-app-widget-post5>
+</div>
