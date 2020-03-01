@@ -4467,6 +4467,756 @@
           }
         }
       }
+    },
+    "scratch-km": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/scratch-km",
+      "sourceRoot": "projects/scratch-km/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/scratch-km",
+            "index": "projects/scratch-km/src/index.html",
+            "main": "projects/scratch-km/src/main.ts",
+            "polyfills": "projects/scratch-km/src/polyfills.ts",
+            "tsConfig": "projects/scratch-km/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/scratch-km/src/favicon.ico",
+              "projects/scratch-km/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/ngx-lightbox/lightbox.css",
+              "projects/styles/intro-style.css",
+              "projects/styles/colors/color-1.css",
+              "projects/styles/simple-line-icons.css",
+              "projects/styles/styles.css",
+              "projects/styles/ta-styles.css",
+              "projects/styles/circle.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/wowjs/dist/wow.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/scratch-km/src/environments/environment.ts",
+                  "with": "projects/scratch-km/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "scratch-km:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "scratch-km:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "scratch-km:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/scratch-km/src/test.ts",
+            "polyfills": "projects/scratch-km/src/polyfills.ts",
+            "tsConfig": "projects/scratch-km/tsconfig.spec.json",
+            "karmaConfig": "projects/scratch-km/karma.conf.js",
+            "assets": [
+              "projects/scratch-km/src/favicon.ico",
+              "projects/scratch-km/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/ngx-lightbox/lightbox.css",
+              "projects/styles/intro-style.css",
+              "projects/styles/colors/color-1.css",
+              "projects/styles/simple-line-icons.css",
+              "projects/styles/styles.css",
+              "projects/styles/ta-styles.css",
+              "projects/styles/circle.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/wowjs/dist/wow.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/scratch-km/tsconfig.app.json",
+              "projects/scratch-km/tsconfig.spec.json",
+              "projects/scratch-km/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/scratch-km/e2e/protractor.conf.js",
+            "devServerTarget": "scratch-km:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "scratch-km:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "scratch-crm": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/scratch-crm",
+      "sourceRoot": "projects/scratch-crm/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/scratch-crm",
+            "index": "projects/scratch-crm/src/index.html",
+            "main": "projects/scratch-crm/src/main.ts",
+            "polyfills": "projects/scratch-crm/src/polyfills.ts",
+            "tsConfig": "projects/scratch-crm/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/scratch-crm/src/favicon.ico",
+              "projects/scratch-crm/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/ngx-lightbox/lightbox.css",
+              "projects/styles/intro-style.css",
+              "projects/styles/colors/color-1.css",
+              "projects/styles/simple-line-icons.css",
+              "projects/styles/styles.css",
+              "projects/styles/ta-styles.css",
+              "projects/styles/circle.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/wowjs/dist/wow.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/scratch-crm/src/environments/environment.ts",
+                  "with": "projects/scratch-crm/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "scratch-crm:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "scratch-crm:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "scratch-crm:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/scratch-crm/src/test.ts",
+            "polyfills": "projects/scratch-crm/src/polyfills.ts",
+            "tsConfig": "projects/scratch-crm/tsconfig.spec.json",
+            "karmaConfig": "projects/scratch-crm/karma.conf.js",
+            "assets": [
+              "projects/scratch-crm/src/favicon.ico",
+              "projects/scratch-crm/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/ngx-lightbox/lightbox.css",
+              "projects/styles/intro-style.css",
+              "projects/styles/colors/color-1.css",
+              "projects/styles/simple-line-icons.css",
+              "projects/styles/styles.css",
+              "projects/styles/ta-styles.css",
+              "projects/styles/circle.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/wowjs/dist/wow.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/scratch-crm/tsconfig.app.json",
+              "projects/scratch-crm/tsconfig.spec.json",
+              "projects/scratch-crm/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/scratch-crm/e2e/protractor.conf.js",
+            "devServerTarget": "scratch-crm:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "scratch-crm:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "scratch-news": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/scratch-news",
+      "sourceRoot": "projects/scratch-news/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/scratch-news",
+            "index": "projects/scratch-news/src/index.html",
+            "main": "projects/scratch-news/src/main.ts",
+            "polyfills": "projects/scratch-news/src/polyfills.ts",
+            "tsConfig": "projects/scratch-news/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/scratch-news/src/favicon.ico",
+              "projects/scratch-news/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/ngx-lightbox/lightbox.css",
+              "projects/styles/intro-style.css",
+              "projects/styles/colors/color-1.css",
+              "projects/styles/simple-line-icons.css",
+              "projects/styles/styles.css",
+              "projects/styles/ta-styles.css",
+              "projects/styles/circle.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/wowjs/dist/wow.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/scratch-news/src/environments/environment.ts",
+                  "with": "projects/scratch-news/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "scratch-news:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "scratch-news:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "scratch-news:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/scratch-news/src/test.ts",
+            "polyfills": "projects/scratch-news/src/polyfills.ts",
+            "tsConfig": "projects/scratch-news/tsconfig.spec.json",
+            "karmaConfig": "projects/scratch-news/karma.conf.js",
+            "assets": [
+              "projects/scratch-news/src/favicon.ico",
+              "projects/scratch-news/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/ngx-lightbox/lightbox.css",
+              "projects/styles/intro-style.css",
+              "projects/styles/colors/color-1.css",
+              "projects/styles/simple-line-icons.css",
+              "projects/styles/styles.css",
+              "projects/styles/ta-styles.css",
+              "projects/styles/circle.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/wowjs/dist/wow.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/scratch-news/tsconfig.app.json",
+              "projects/scratch-news/tsconfig.spec.json",
+              "projects/scratch-news/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/scratch-news/e2e/protractor.conf.js",
+            "devServerTarget": "scratch-news:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "scratch-news:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "scratch-home": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/scratch-home",
+      "sourceRoot": "projects/scratch-home/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/scratch-home",
+            "index": "projects/scratch-home/src/index.html",
+            "main": "projects/scratch-home/src/main.ts",
+            "polyfills": "projects/scratch-home/src/polyfills.ts",
+            "tsConfig": "projects/scratch-home/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/scratch-home/src/favicon.ico",
+              "projects/scratch-home/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/ngx-lightbox/lightbox.css",
+              "projects/styles/intro-style.css",
+              "projects/styles/colors/color-1.css",
+              "projects/styles/simple-line-icons.css",
+              "projects/styles/styles.css",
+              "projects/styles/ta-styles.css",
+              "projects/styles/circle.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/wowjs/dist/wow.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/scratch-home/src/environments/environment.ts",
+                  "with": "projects/scratch-home/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "scratch-home:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "scratch-home:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "scratch-home:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/scratch-home/src/test.ts",
+            "polyfills": "projects/scratch-home/src/polyfills.ts",
+            "tsConfig": "projects/scratch-home/tsconfig.spec.json",
+            "karmaConfig": "projects/scratch-home/karma.conf.js",
+            "assets": [
+              "projects/scratch-home/src/favicon.ico",
+              "projects/scratch-home/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/ngx-lightbox/lightbox.css",
+              "projects/styles/intro-style.css",
+              "projects/styles/colors/color-1.css",
+              "projects/styles/simple-line-icons.css",
+              "projects/styles/styles.css",
+              "projects/styles/ta-styles.css",
+              "projects/styles/circle.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/wowjs/dist/wow.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/scratch-home/tsconfig.app.json",
+              "projects/scratch-home/tsconfig.spec.json",
+              "projects/scratch-home/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/scratch-home/e2e/protractor.conf.js",
+            "devServerTarget": "scratch-home:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "scratch-home:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "scratch-commerce": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/scratch-commerce",
+      "sourceRoot": "projects/scratch-commerce/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/scratch-commerce",
+            "index": "projects/scratch-commerce/src/index.html",
+            "main": "projects/scratch-commerce/src/main.ts",
+            "polyfills": "projects/scratch-commerce/src/polyfills.ts",
+            "tsConfig": "projects/scratch-commerce/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/scratch-commerce/src/favicon.ico",
+              "projects/scratch-commerce/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/ngx-lightbox/lightbox.css",
+              "projects/styles/intro-style.css",
+              "projects/styles/colors/color-1.css",
+              "projects/styles/simple-line-icons.css",
+              "projects/styles/styles.css",
+              "projects/styles/ta-styles.css",
+              "projects/styles/circle.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/wowjs/dist/wow.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/scratch-commerce/src/environments/environment.ts",
+                  "with": "projects/scratch-commerce/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "scratch-commerce:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "scratch-commerce:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "scratch-commerce:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/scratch-commerce/src/test.ts",
+            "polyfills": "projects/scratch-commerce/src/polyfills.ts",
+            "tsConfig": "projects/scratch-commerce/tsconfig.spec.json",
+            "karmaConfig": "projects/scratch-commerce/karma.conf.js",
+            "assets": [
+              "projects/scratch-commerce/src/favicon.ico",
+              "projects/scratch-commerce/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/ngx-lightbox/lightbox.css",
+              "projects/styles/intro-style.css",
+              "projects/styles/colors/color-1.css",
+              "projects/styles/simple-line-icons.css",
+              "projects/styles/styles.css",
+              "projects/styles/ta-styles.css",
+              "projects/styles/circle.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/wowjs/dist/wow.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/scratch-commerce/tsconfig.app.json",
+              "projects/scratch-commerce/tsconfig.spec.json",
+              "projects/scratch-commerce/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/scratch-commerce/e2e/protractor.conf.js",
+            "devServerTarget": "scratch-commerce:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "scratch-commerce:serve:production"
+            }
+          }
+        }
+      }
     }
 
 },

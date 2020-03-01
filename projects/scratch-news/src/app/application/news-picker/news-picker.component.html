@@ -1,0 +1,49 @@
+<header id="masthead"
+        class="site-header">
+  <app-nav></app-nav>
+</header>
+<div class="container mt-5 pt-5">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <div class="h3 text-primary">
+              <strong>News Sources</strong>
+            </div>
+            <small class="text-primary">{{numberChecked}} of <span [CountTo]="newsSources.length"></span>
+              TOTAL <i>(maximun 10)</i> </small>
+          </div>
+          <div class="float-right">
+            <a (click)="onReset()"
+               class="button button-full text-white"
+               title="Uncheck all boxes"
+               style="margin-right: 5px">Reset</a> <a (click)="onSubmit()"
+               class="button button-full text-white"
+               title="Save Changes">Save Selections</a>
+          </div>
+        </div>
+        <div class="row ta-row">
+          <div class="col">
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                  *ngFor="let ns of newsSources">
+                <a (click)="onNewsSelect(ns)"
+                   style="pointer:cursor">{{ns.name}}</a>
+
+                <input [checked]="ns.checked"
+                       class="ta-input-element"
+                       type="checkbox"
+                       name="{{ns.value}}"
+                       id="{{ns.value}}"
+                       [disabled]="isDisabled"
+                       (click)="onNewsSelect($event, ns)">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

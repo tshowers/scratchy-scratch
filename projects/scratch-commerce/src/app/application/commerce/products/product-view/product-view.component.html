@@ -1,0 +1,75 @@
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [messageLink]="'/application/notification/messages'"
+                            [alertLink]="'/application/notification/alerts'"
+                            [taskLink]="'/application/notification/tasks'"
+                            [cartLink]="'/application/shopping-carts'"
+                            [isCart]="true"
+                            [isAlertNotification]="false"
+                            [isMessageNotification]="false"
+                            [isTaskNotification]="false"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            [placeholder]="'Find a Product . . .'"
+                            (searchEvent)="onSearch($event)"
+                            (profileEvent)="onViewProfile()"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+          <app-context-nav [store]="store" [catalog]="catalog" [context]="'product'"></app-context-nav>
+
+
+          <div>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col">
+                  <licky-lick-app-widget-item-view1
+                    [data]="product"
+                    [details]="true"
+                    (editEvent)="onEdit()"
+                    (deleteEvent)="onDelete()"
+                  ></licky-lick-app-widget-item-view1>
+                </div>
+                <div class="col">
+                  <div class="card" style="width: 20rem;">
+                    <div class="card-body">
+                      <h1>
+                        <span *ngIf="!product.onSale" class="badge badge-pill badge-theme ta-large">{{product?.price | currency:'USD':'symbol'}} <span *ngIf="product.hourlyRate"> <br><small>per hour</small> </span></span>
+                        <span *ngIf="product.onSale" class="badge badge-pill badge-success ta-large">{{product?.salePrice | currency:'USD':'symbol'}} <span *ngIf="product.hourlyRate"> <br><small>per hour</small></span></span>
+                      </h1>
+                      <h4 class="card-title">{{product?.name}}</h4>
+                      <input [(ngModel)]="quantity" id="quantity" name="quantity" type="number" class="form-control form-control-lg input-element" style="max-width: 100px;"><br>
+                      <div innerHTML={{product?.longDescription}}></div>
+                      <button [disabled]="product?.discontinued" class="btn btn-lg btn-block btn-outline-primary" (click)="onAddToCart()"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span *ngIf="!product?.discontinued">Add to Cart</span><span *ngIf="product?.discontinued">Item Discontinued</span></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Product List'"
+                                         [descriptionText]="'This page displays a list of topics entered into the system.'"
+                                         [header1]="'Find'"
+                                         [description1]="'To find a specific topic, use the search box at the top of the screen.'"
+                                         [header2]="'Actions'"
+                                         [description2]="'You have the choice to edit, view or mark a topic for deletion - if your edit privileges allow.'"
+                                         [header3]="'Deleted'"
+                                         [description3]="'Deleted topics display as faint text.'"></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>
