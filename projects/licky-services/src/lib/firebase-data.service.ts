@@ -103,6 +103,7 @@ export class FirebaseDataService {
   constructor() { }
 
   init(): void {
+    console.info("Setting Firebase database to " + firebase.database())
     this._db = firebase.database();
   }
 
@@ -165,13 +166,15 @@ export class FirebaseDataService {
 
   writeData(path: string, data: any): Observable<any> {
     path = this.getAugmentedPath(path);
-    console.log("Writing to " + path)
     this.setNewDataValues(data);
     return Observable.create((observer) => {
+      console.log("Writing to " + path)
       this._db.ref(path).push(data, (error) => {
 
-        if (error)
+        if (error) {
+          console.error(error);
           this.databaseError.next(error.message);
+        }
       }).then((snap) => {
         console.log("Key", snap);
         if (snap)
@@ -182,6 +185,20 @@ export class FirebaseDataService {
       })
     })
   }
+
+  addData(path: string, data: any): void {
+    path = this.getAugmentedPath(path);
+    this.setNewDataValues(data);
+    this._db.ref(path).push(data, (error) => {
+      if (error) {
+        console.error(error);
+        this.databaseError.next(error.message);
+      }
+    }).then((snap) => {
+      console.log("Key", snap);
+    })
+  }
+
 
   public getAugmentedPath(path: string): string {
     for (let i = 0; i < this._augmentPath.length; i++) {

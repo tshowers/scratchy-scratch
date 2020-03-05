@@ -11,7 +11,7 @@ export class LickMarketingHeader4Component implements OnInit {
   @Input() heading2 = "software";
   @Input() headerText = "Present your awesome product";
   @Input() descriptionText = "Delectus, ut perspiciatis, unde omnis voluptas nulla vero. Facilis est laborum et harum quidem rerum necessitatibus saepe. Magni dolores et molestiae consequatur, vel illum, qui.";
-
+  @Input() thankYou = false;
   @Output() pageEvent = new EventEmitter();
 
   emailAddress;

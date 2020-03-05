@@ -40,6 +40,7 @@ export class LickyLoginService {
   }
 
   private initFirebase() {
+    console.info("Initializing Firebase with " + JSON.stringify(this.config))
     if (!firebase.apps.length) {
       firebase.initializeApp(this.config);
     }
