@@ -12,6 +12,8 @@ import { DataMediationService } from '../../../shared/services/data-mediation.se
 })
 export class ContactDashboardComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  public searchArgument = '';
+
   private _contacts: Contact[] = [];
   topics: Topic[]
 

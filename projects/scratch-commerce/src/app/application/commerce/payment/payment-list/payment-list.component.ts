@@ -14,6 +14,8 @@ import { PAYMENTS } from 'licky-services';
 })
 export class PaymentListComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  readonly PAYMENTS = PAYMENTS;
+
   store_id;
 
   store: Store;

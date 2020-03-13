@@ -28,9 +28,9 @@
             <ul class="list-group">
               <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
                   *ngFor="let ns of newsSources">
-                <a (click)="onNewsSelect(ns)"
-                   style="pointer:cursor">{{ns.name}}</a>
-
+                <!-- <a (click)="onNewsSelect(ns)"
+                   style="pointer:cursor">{{ns.name}}</a> -->
+                {{ns.name}}
                 <input [checked]="ns.checked"
                        class="ta-input-element"
                        type="checkbox"

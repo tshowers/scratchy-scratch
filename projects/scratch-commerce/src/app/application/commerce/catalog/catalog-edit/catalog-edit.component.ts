@@ -29,15 +29,17 @@ export class CatalogEditComponent extends LickAppPageComponent implements OnInit
 
   store: Store;
 
-  @ViewChild('dataForm', {static: false}) private frm: NgForm;
+  @ViewChild('dataForm') private frm: NgForm;
 
-  @ViewChild('t', {static: false}) ngbTabSet;
+  @ViewChild('t') ngbTabSet;
 
   selectedFiles: FileList;
 
   currentUpload: Upload;
 
   searchArgument;
+
+  canDelete: boolean = true;
 
   section: Section = new Section();
 
@@ -128,7 +130,7 @@ export class CatalogEditComponent extends LickAppPageComponent implements OnInit
     }
   }
 
-  private detectFiles(event) {
+  public detectFiles(event) {
     this.selectedFiles = event.target.files;
   }
 

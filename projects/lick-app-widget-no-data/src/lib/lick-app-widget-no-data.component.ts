@@ -14,6 +14,7 @@ export class LickAppWidgetNoDataComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.onLoadingData();
   }
 
   onNewItem() {
@@ -23,7 +24,7 @@ export class LickAppWidgetNoDataComponent implements OnInit {
 
   onLoadingData() : void {
     setTimeout(() => {
-      this.isLoading = false, 1500
+      this.isLoading = false, 3000
     })
   }
 

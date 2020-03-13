@@ -33,15 +33,17 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
 
   catalog: Catalog;
 
-  @ViewChild('dataForm', {static: false}) private frm: NgForm;
+  @ViewChild('dataForm') private frm: NgForm;
 
-  @ViewChild('t', {static: false}) ngbTabSet;
+  @ViewChild('t') ngbTabSet;
 
   selectedFiles: FileList;
 
   currentUpload: Upload;
 
   searchArgument;
+
+  canDelete: boolean = true;
 
   section: Section = new Section();
 
@@ -143,7 +145,7 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
     }
   }
 
-  private detectFiles(event) {
+  public detectFiles(event) {
     this.selectedFiles = event.target.files;
   }
 

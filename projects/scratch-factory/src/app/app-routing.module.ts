@@ -6,8 +6,8 @@ import { LickyAppModule } from './licky-app/licky-app.module';
 
 const routes: Routes = [
   { path: '', redirectTo: 'marketing/general-widgets', pathMatch: 'full' },
-  { path: 'marketing', loadChildren: './licky-marketing/licky-marketing.module#LickyMarketingModule' },
-  { path: 'application', loadChildren: './licky-app/licky-app.module#LickyAppModule' },
+  { path: 'marketing', loadChildren: () => import('./licky-marketing/licky-marketing.module').then(m => m.LickyMarketingModule) },
+  { path: 'application', loadChildren: () => import('./licky-app/licky-app.module').then(m => m.LickyAppModule) },
 ];
 
 @NgModule({

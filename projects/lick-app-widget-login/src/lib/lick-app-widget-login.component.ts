@@ -25,6 +25,7 @@ export class LickAppWidgetLoginComponent implements OnInit {
   @Input() isGoogleLoginButtonEnabled : boolean = true;
   @Input() errorMessage;
   @Input() errorType = "danger";
+  @Input() isLoggedIn = false;
   @Output() pageEvent = new EventEmitter();
 
   public emailAddress;

@@ -14,6 +14,10 @@ import { Subscription } from 'rxjs';
 })
 export class FopEditComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  public searchArgument = '';
+
+  public canDelete : boolean = true;
+
   fop: FOP = new FOP();
 
   fopTypes: Dropdown[];

@@ -25,9 +25,9 @@ export class CoreModule {
       throw new Error('Core already loaded');
     }
   }
-  static forRoot() {
+  static forRoot(): ModuleWithProviders<CoreModule> {
     return {
-      ngModule: CoreModule
-    }
-  }
+        ngModule: CoreModule
+    };
+}
 }

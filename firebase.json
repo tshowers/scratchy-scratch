@@ -1,0 +1,31 @@
+{
+  "hosting": [{
+      "target": "home",
+      "public": "dist/scratch-home",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [{
+        "source": "**",
+        "destination": "/index.html"
+      }]
+    },
+    {
+      "target": "factory",
+      "public": "dist/scratch-factory",
+      "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],
+      "rewrites": [{ "source": "**", "destination": "/index.html"  }]
+    },
+    {
+      "target": "news",
+      "public": "dist/scratch-news",
+      "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],
+      "rewrites": [{ "source": "**", "destination": "/index.html"  }]
+    },
+    {
+      "target": "crm",
+      "public": "dist/scratch-crm",
+      "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],
+      "rewrites": [{ "source": "**", "destination": "/index.html" }]
+    }
+
+  ]
+}

@@ -15,10 +15,11 @@ export const maintenance = environment.maintenance;
 export class NavComponent implements OnInit, OnDestroy {
 
   @Input() loggedIn: boolean = false;
+  @Input() isAdmin: boolean = false;
 
   menuItems: any[] = [
     {
-      "link": "/about",
+      "link": "/shop/about",
       "name": "Home",
     },
     {
@@ -29,13 +30,33 @@ export class NavComponent implements OnInit, OnDestroy {
       "link": "/application/login",
       "name": "Login"
     },
-    {
-      "link": "/about/contact",
-      "name": "Contact Us"
-    },
   ]
 
   loggedInMenuItems: any[] = [
+    {
+      "link": "/shop",
+      "name": "Shop"
+    },
+    {
+      "link": "/shop/cart",
+      "name": "Cart"
+    },
+    {
+      "link": "/shop/wishlist",
+      "name": "Wish List"
+    },
+    {
+      "link": "/shop/checkout",
+      "name": "Check Out"
+    },
+    {
+      "link": "/application/logout",
+      "name": "Log Out"
+    },
+  ]
+
+
+  loggedInAdminMenuItems: any[] = [
     {
       "link": "/application/dashboard",
       "name": "Dashboard",
@@ -68,6 +89,10 @@ export class NavComponent implements OnInit, OnDestroy {
       this.setVerified(user);
       if (maintenance) {
         this.loggedIn = false;
+      }
+
+      if (this.loggedIn && this.isAdmin) {
+        this.loggedInMenuItems = this.loggedInAdminMenuItems;
       }
     })
 

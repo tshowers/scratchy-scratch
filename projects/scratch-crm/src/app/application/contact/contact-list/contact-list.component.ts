@@ -13,6 +13,8 @@ import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 })
 export class ContactListComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  readonly CONTACTS = CONTACTS;
+
   contacts$: Observable<any[]>;
 
   deletedContacts: number = 0;

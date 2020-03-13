@@ -25,6 +25,7 @@ export class Order {
   public status? : string;
   public orderLine? : Array<any>;
   public invoices? : Array<any>;
+  public products?;
 
   public sections?: Array<Section> = [];
   public lastUpdated;

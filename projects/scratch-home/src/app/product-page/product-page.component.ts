@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FirebaseDataService, LickyLoginService} from 'licky-services';
 
 @Component({
   selector: 'app-product-page',
@@ -15,7 +17,7 @@ export class ProductPageComponent implements OnInit {
   ];
 
 
-  constructor() { }
+  constructor(public loginService: LickyLoginService, public router: Router, private _fds: FirebaseDataService) { }
 
   ngOnInit() {
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, Renderer2 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { Payment, Store, Dropdown, Upload, Section } from 'lick-data';
+import { Payment, Store, Dropdown, Upload, Section, PaymentLine } from 'lick-data';
 import { UploadService, DropdownService, TypeFindService, PAYMENTS } from 'licky-services';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
@@ -17,7 +17,19 @@ export class PaymentEditComponent extends LickAppPageComponent implements OnInit
 
   payment: Payment = new Payment();
 
+  paymentLine: PaymentLine = new PaymentLine();
+
   paymentTypes: Dropdown[];
+
+  ccTypes: Dropdown[];
+
+  fopTypes: Dropdown[];
+
+  status: Dropdown[];
+
+  creditCard: boolean = false;
+
+  bankAccount: boolean = false;
 
   private _paramSubscription: Subscription;
 
@@ -29,9 +41,9 @@ export class PaymentEditComponent extends LickAppPageComponent implements OnInit
 
   store: Store;
 
-  @ViewChild('dataForm', {static: false}) private frm: NgForm;
+  @ViewChild('dataForm') private frm: NgForm;
 
-  @ViewChild('t', {static: false}) ngbTabSet;
+  @ViewChild('t') ngbTabSet;
 
   selectedFiles: FileList;
 
@@ -101,6 +113,10 @@ export class PaymentEditComponent extends LickAppPageComponent implements OnInit
     });
   }
 
+  onFOP() : void {
+
+  }
+
   private redirect(redirectPath): void {
     if (!this.currentUpload) {
       this.router.navigate([redirectPath]);
@@ -127,13 +143,14 @@ export class PaymentEditComponent extends LickAppPageComponent implements OnInit
     }
   }
 
-  private detectFiles(event) {
+  public detectFiles(event) {
     this.selectedFiles = event.target.files;
   }
 
   onBrandNew(): void {
     this.payment = new Payment();
   }
+
 
 
   setBreadCrumb(): void {
@@ -167,6 +184,9 @@ export class PaymentEditComponent extends LickAppPageComponent implements OnInit
 
   private initializeDropdowns(): void {
     this.paymentTypes = this._dropdownService.getEmailTypes();
+    this.ccTypes = this._dropdownService.getCreditCardTypes();
+    this.fopTypes = this._dropdownService.getFOPTypes();
+    this.status = this._dropdownService.getStatus();
   }
 
   onBreadCrumb(link): void {

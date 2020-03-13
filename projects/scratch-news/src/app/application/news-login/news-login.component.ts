@@ -21,8 +21,9 @@ export class NewsLoginComponent implements OnInit, OnDestroy {
 
   public errorMessage;
 
+  public isLoggedIn = false;
 
-  constructor(public router: Router, private _loginService: LickyLoginService, private _dateUtilService: DateUtilService) { }
+  constructor(public router: Router, public _loginService: LickyLoginService, private _dateUtilService: DateUtilService) { }
 
   ngOnInit() {
     this.subscribeToLoginErrors();
@@ -86,7 +87,7 @@ export class NewsLoginComponent implements OnInit, OnDestroy {
   }
 
   private onUserEmail(): void {
-    this._loginService.signInWithUserNameAndPassword(this.emailAddress, this.password, this.router, "/application/news");
+    this.isLoggedIn = this._loginService.signInWithUserNameAndPassword(this.emailAddress, this.password, this.router, "/application/news");
   }
 
   private onTwitter(): void {

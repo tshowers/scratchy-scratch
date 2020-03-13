@@ -14,6 +14,8 @@ import { PHONE_NUMBERS } from 'licky-services';
 })
 export class PhoneNumberListComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  readonly PHONE_NUMBERS = PHONE_NUMBERS;
+
   data$: Observable<any[]>;
 
   private _phoneNumbers: PhoneNumber[];

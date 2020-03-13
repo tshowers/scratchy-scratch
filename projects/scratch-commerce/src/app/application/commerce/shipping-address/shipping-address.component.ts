@@ -19,6 +19,8 @@ export class ShippingAddressComponent extends LickAppPageComponent implements On
 
   public longitude: number;
 
+  public canDelete: boolean;
+
   public searchControl: FormControl;
 
   private autocomplete;
@@ -39,7 +41,7 @@ export class ShippingAddressComponent extends LickAppPageComponent implements On
 
   private _contactSubscription: Subscription;
 
-  @ViewChild("search", {static: false})
+  @ViewChild("search")
 
   public searchElementRef: ElementRef;
   // Data to edit
@@ -236,6 +238,10 @@ export class ShippingAddressComponent extends LickAppPageComponent implements On
         });
       });
     });
+
+  }
+
+  onDelete() : void {
 
   }
 

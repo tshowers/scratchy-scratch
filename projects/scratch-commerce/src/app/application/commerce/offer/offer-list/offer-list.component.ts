@@ -14,6 +14,8 @@ import { OFFERS } from 'licky-services';
 })
 export class OfferListComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  readonly OFFERS = OFFERS;
+
   store_id;
 
   store: Store;

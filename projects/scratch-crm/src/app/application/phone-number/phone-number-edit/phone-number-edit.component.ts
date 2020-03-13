@@ -14,6 +14,10 @@ import { Subscription } from 'rxjs';
 })
 export class PhoneNumberEditComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  public searchArgument = '';
+
+  public canDelete : boolean = true;
+
   phoneNumber: PhoneNumber = new PhoneNumber();
 
   phoneNumberTypes: Dropdown[];

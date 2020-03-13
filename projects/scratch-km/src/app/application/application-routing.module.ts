@@ -20,7 +20,7 @@ import { TopicResolverService } from './services/topic-resolver.service';
 import { TopicViewResolverService } from './services/topic-view-resolver.service';
 
 const routes : Routes = [
-  { path: 'notification', canLoad: [AuthGuard], children: [ {path: '', loadChildren: './notification/notification.module#NotificationModule'} ]},
+  { path: 'notification', canLoad: [AuthGuard], children: [ {path: '', loadChildren: () => import('./notification/notification.module').then(m => m.NotificationModule)} ]},
   { path: 'topics', component: TopicListComponent, data: { title: 'Topics - Knowledge Management - 16 AHEAD' }},
   { path: 'topics/feed', component: TopicFeedComponent, data: { title: 'Topic Feed - Knowledge Management - 16 AHEAD' }},
   { path: 'topics/dashboard', component: TopicDashboardComponent, data: { title: 'Topic Dashboard - Knowledge Management - 16 AHEAD' }},

@@ -16,6 +16,10 @@ import { MapsAPILoader } from '@agm/core';
 })
 export class AddressEditComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  public searchArgument = '';
+
+  public canDelete : boolean = true;
+
   public latitude: number;
 
   public longitude: number;
@@ -42,7 +46,7 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
 
   contact: Contact;
 
-  @ViewChild("search", {static: false})
+  @ViewChild("search")
 
   public searchElementRef: ElementRef;
   // Data to edit

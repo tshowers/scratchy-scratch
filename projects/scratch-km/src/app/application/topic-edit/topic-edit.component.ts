@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild, Renderer2 } from '@angular/cor
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Upload, Topic, Dependent, Dropdown, Section } from 'lick-data';
-import { UploadService, DropdownService, TypeFindService, TOPICS } from 'licky-services';
+import { UploadService, DropdownService, TypeFindService, SortHelperService, TOPICS } from 'licky-services';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { DataMediationService } from '../../shared/services/data-mediation.service';
 
@@ -12,6 +12,10 @@ import { DataMediationService } from '../../shared/services/data-mediation.servi
   styleUrls: ['./topic-edit.component.css']
 })
 export class TopicEditComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
+
+  public searchArgument = '';
+
+  public canDelete : boolean = true;
 
   topic: Topic = new Topic();
 
@@ -25,20 +29,18 @@ export class TopicEditComponent extends LickAppPageComponent implements OnInit, 
 
   dependent: Dependent = new Dependent();
 
-  @ViewChild('dataForm', {static: false}) private frm: NgForm;
+  @ViewChild('dataForm') private frm: NgForm;
 
-  @ViewChild('t', {static: false}) ngbTabSet;
+  @ViewChild('t') ngbTabSet;
 
   selectedFiles: FileList;
 
   currentUpload: Upload;
 
-  searchArgument;
-
   section: Section = new Section();
 
 
-  constructor(public dm: DataMediationService, protected renderer2: Renderer2, public router: Router, public typeFindService: TypeFindService, private _uploadService: UploadService, private _dropdownService: DropdownService, private _route: ActivatedRoute) {
+  constructor(public sortHelperService: SortHelperService, public dm: DataMediationService, protected renderer2: Renderer2, public router: Router, public typeFindService: TypeFindService, private _uploadService: UploadService, private _dropdownService: DropdownService, private _route: ActivatedRoute) {
     super(router, renderer2);
   }
 
@@ -106,7 +108,7 @@ export class TopicEditComponent extends LickAppPageComponent implements OnInit, 
     }
   }
 
-  private detectFiles(event) {
+  public detectFiles(event) {
     this.selectedFiles = event.target.files;
   }
 

@@ -8,11 +8,10 @@ import { ResetPageComponent } from './reset-page/reset-page.component';
 import { LogoutPageComponent } from './logout-page/logout-page.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
-import { PageTemplateComponent } from './page-template/page-template.component';
 
 
 @NgModule({
-  declarations: [LoginPageComponent, SignUpPageComponent, ResetPageComponent, LogoutPageComponent, UserProfileComponent, UserSettingsComponent, PageTemplateComponent],
+  declarations: [LoginPageComponent, SignUpPageComponent, ResetPageComponent, LogoutPageComponent, UserProfileComponent, UserSettingsComponent],
   imports: [
     CommonModule,
     SharedModule,

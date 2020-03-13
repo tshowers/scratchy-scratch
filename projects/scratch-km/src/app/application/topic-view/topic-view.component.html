@@ -28,7 +28,7 @@
                                         (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
       <div class="container d-flex justify-content-center">
         <div class="row">
-          <div [ngClass]="{'col-12 col-xl-6 col-lg-6 col-md-7 col-sm-12 order-xl-last order-lg-last order-md-last order-first' : messageFeed, 'col-11 order-lg-last order-first' : messageFeed, 'col-11' : !messageFeed }">
+          <div class="col-12">
             <div class="card mx-auto d-block ta-max-view">
               <img *ngIf="topic.url && isImage"
                    class="card-img-top img-reponsive"

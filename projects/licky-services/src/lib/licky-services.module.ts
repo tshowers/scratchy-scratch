@@ -49,7 +49,7 @@ import { environment } from '../environment';
 
 })
 export class LickyServicesModule {
-  static forRoot(config: FirebaseConfig, caller?: string): ModuleWithProviders {
+  static forRoot(config: FirebaseConfig, caller?: string): ModuleWithProviders<LickyServicesModule> {
     return {
       ngModule: LickyServicesModule,
       providers: [
@@ -62,7 +62,7 @@ export class LickyServicesModule {
     }
   }
 
-  static forChild() : ModuleWithProviders {
+  static forChild() : ModuleWithProviders<LickyServicesModule> {
     return {
       ngModule: LickyServicesModule
     }

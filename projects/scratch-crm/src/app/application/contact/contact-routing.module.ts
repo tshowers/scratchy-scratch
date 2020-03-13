@@ -19,11 +19,11 @@ const routes : Routes = [
   { path: 'new', canActivate: [AuthGuard], component: ContactEditComponent, resolve: { contact: ContactResolverService }, data: { title: 'New Contact', state: 'new contact' } },
   { path: ':id', canActivate: [AuthGuard], component: ContactViewComponent, resolve:{contact: ContactViewResolverService}, data: { title: 'Contact Detail', state: 'contact detail' } },
   { path: ':id/edit', canActivate: [AuthGuard], component: ContactEditComponent, resolve: { contact: ContactResolverService }, data: { title: 'Edit Contact', state: 'edit contact' } },
-  { path: ':id/addresses', canLoad: [AuthGuard], children: [ {path: '', loadChildren: '../address/address.module#AddressModule'} ]},
-  { path: ':id/email-addresses', canLoad: [AuthGuard], children: [ {path: '', loadChildren: '../email-address/email-address.module#EmailAddressModule'} ]},
-  { path: ':id/form-of-payments', canLoad: [AuthGuard], children: [ {path: '', loadChildren: '../fop/fop.module#FopModule'} ]},
-  { path: ':id/notes', canLoad: [AuthGuard], children: [ {path: '', loadChildren: '../note/note.module#NoteModule'} ]},
-  { path: ':id/phone-numbers', canLoad: [AuthGuard], children: [ {path: '', loadChildren: '../phone-number/phone-number.module#PhoneNumberModule'} ]},
+  { path: ':id/addresses', canLoad: [AuthGuard], children: [ {path: '', loadChildren: () => import('../address/address.module').then(m => m.AddressModule)} ]},
+  { path: ':id/email-addresses', canLoad: [AuthGuard], children: [ {path: '', loadChildren: () => import('../email-address/email-address.module').then(m => m.EmailAddressModule)} ]},
+  { path: ':id/form-of-payments', canLoad: [AuthGuard], children: [ {path: '', loadChildren: () => import('../fop/fop.module').then(m => m.FopModule)} ]},
+  { path: ':id/notes', canLoad: [AuthGuard], children: [ {path: '', loadChildren: () => import('../note/note.module').then(m => m.NoteModule)} ]},
+  { path: ':id/phone-numbers', canLoad: [AuthGuard], children: [ {path: '', loadChildren: () => import('../phone-number/phone-number.module').then(m => m.PhoneNumberModule)} ]},
 ];
 
 

@@ -13,6 +13,8 @@ import { FOPS } from 'licky-services';
 })
 export class FopListComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  readonly FOPS = FOPS;
+
   data$: Observable<any[]>;
 
   private _fops: FOP[];

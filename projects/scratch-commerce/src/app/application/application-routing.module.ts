@@ -10,9 +10,6 @@ import { OrderViewComponent } from './commerce/orders/order-view/order-view.comp
 import { ProductEditComponent } from './commerce/products/product-edit/product-edit.component';
 import { ProductViewComponent } from './commerce/products/product-view/product-view.component';
 import { ProductListComponent } from './commerce/products/product-list/product-list.component';
-import { ShoppingCartEditComponent } from './commerce/cart/shopping-cart-edit/shopping-cart-edit.component';
-import { ShoppingCartViewComponent } from './commerce/cart/shopping-cart-view/shopping-cart-view.component';
-import { ShoppingCartListComponent } from './commerce/cart/shopping-cart-list/shopping-cart-list.component';
 import { StoreEditComponent } from './commerce/stores/store-edit/store-edit.component';
 import { StoreListComponent } from './commerce/stores/store-list/store-list.component';
 import { StoreViewComponent } from './commerce/stores/store-view/store-view.component';
@@ -62,13 +59,11 @@ import { OfferViewResolverService } from './commerce/offer/services/offer-view-r
 import { PaymentResolverService } from './commerce/payment/services/payment-resolver.service';
 import { PaymentViewResolverService } from './commerce/payment/services/payment-view-resolver.service';
 
-import { ShippingAddressComponent } from './commerce/shipping-address/shipping-address.component';
-import { CollectPaymentComponent } from './commerce/collect-payment/collect-payment.component';
 
 
 const routes : Routes = [
   { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard - eCommerce - 16 AHEAD' }},
-  { path: 'notification', canLoad: [AuthGuard], children: [ {path: '', loadChildren: './notification/notification.module#NotificationModule'} ]},
+  { path: 'notification', canLoad: [AuthGuard], children: [ {path: '', loadChildren: () => import('./notification/notification.module').then(m => m.NotificationModule)} ]},
   { path: 'stores', component: StoreListComponent, data: { title: 'Stores - eCommerce - 16 AHEAD' }},
 
   { path: 'profile', component: ProfileComponent, data: { title: 'Profile - eCommerce - 16 AHEAD' }},
@@ -78,14 +73,10 @@ const routes : Routes = [
   { path: 'reset', component: ResetPageComponent, data: { title: 'Password Reset - eCommerce - 16 AHEAD' }},
   { path: 'logout', component: LogoutPageComponent, data: { title: 'You Are Logged Out - eCommerce - 16 AHEAD' }},
 
-  { path: 'shopping-carts', resolve: { shoppingCart: ShoppingCartViewResolverService }, component: ShoppingCartViewComponent, data: { title: 'Shopping Cart - eCommerce - 16 AHEAD' }},
-  { path: 'shipping-address', component: ShippingAddressComponent, data: { title: 'Shipping Address - eCommerce - 16 AHEAD' }},
-  { path: 'collect-payment', component: CollectPaymentComponent, data: { title: 'Pay - eCommerce - 16 AHEAD' }},
 
   { path: 'stores/new', resolve: { store: StoreResolverService }, component: StoreEditComponent, data: { title: 'New Store - eCommerce - 16 AHEAD' }},
 
   { path: 'stores/:id', resolve: { store: StoreViewResolverService }, component: StoreViewComponent, data: { title: 'Store - eCommerce - 16 AHEAD' }},
-  { path: 'shopping-carts/:id', resolve: { shoppingCart: ShoppingCartResolverService }, component: ShoppingCartViewComponent, data: { title: 'Edit Shopping Cart - eCommerce - 16 AHEAD' }},
   { path: 'stores/:id/edit', resolve: { store: StoreResolverService }, component: StoreEditComponent, data: { title: 'Edit Store - eCommerce - 16 AHEAD' }},
 
 

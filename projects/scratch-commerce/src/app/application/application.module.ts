@@ -30,9 +30,9 @@ import { ResetPageComponent } from './access/reset-page/reset-page.component';
 import { SignUpPageComponent } from './access/sign-up-page/sign-up-page.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { SettingsComponent } from './user/settings/settings.component';
-import { AlertComponent } from './notification/alert/alert.component';
-import { MessageComponent } from './notification/message/message.component';
-import { TaskComponent } from './notification/task/task.component';
+// import { AlertComponent } from './notification/alert/alert.component';
+// import { MessageComponent } from './notification/message/message.component';
+// import { TaskComponent } from './notification/task/task.component';
 import { OrderEditComponent } from './commerce/orders/order-edit/order-edit.component';
 import { OrderListComponent } from './commerce/orders/order-list/order-list.component';
 import { OrderViewComponent } from './commerce/orders/order-view/order-view.component';
@@ -62,7 +62,9 @@ import { ShippingAddressComponent } from './commerce/shipping-address/shipping-a
 import { CollectPaymentComponent } from './commerce/collect-payment/collect-payment.component';
 
 @NgModule({
-  declarations: [LoginPageComponent, LogoutPageComponent, ResetPageComponent, SignUpPageComponent, ProfileComponent, SettingsComponent, AlertComponent, MessageComponent, TaskComponent, OrderEditComponent, OrderListComponent, OrderViewComponent, ProductEditComponent, ProductViewComponent, ProductListComponent, ShoppingCartEditComponent, ShoppingCartViewComponent, ShoppingCartListComponent, StoreEditComponent, StoreListComponent, StoreViewComponent, ProductBundleEditComponent, ProductBundleViewComponent, ProductBundleListComponent, DashboardComponent, CatalogEditComponent, CatalogListComponent, CatalogViewComponent, PaymentListComponent, PaymentViewComponent, PaymentEditComponent, OfferEditComponent, OfferListComponent, OfferViewComponent, ShippingAddressComponent, CollectPaymentComponent],
+  declarations: [LoginPageComponent, LogoutPageComponent, ResetPageComponent, SignUpPageComponent, ProfileComponent, SettingsComponent,
+    // AlertComponent, MessageComponent, TaskComponent,
+    OrderEditComponent, OrderListComponent, OrderViewComponent, ProductEditComponent, ProductViewComponent, ProductListComponent, ShoppingCartEditComponent, ShoppingCartViewComponent, ShoppingCartListComponent, StoreEditComponent, StoreListComponent, StoreViewComponent, ProductBundleEditComponent, ProductBundleViewComponent, ProductBundleListComponent, DashboardComponent, CatalogEditComponent, CatalogListComponent, CatalogViewComponent, PaymentListComponent, PaymentViewComponent, PaymentEditComponent, OfferEditComponent, OfferListComponent, OfferViewComponent, ShippingAddressComponent, CollectPaymentComponent],
   imports: [
     CommonModule,
     SharedModule,

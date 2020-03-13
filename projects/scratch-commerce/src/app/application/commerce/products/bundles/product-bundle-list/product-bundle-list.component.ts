@@ -4,7 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { ProductBundle, Catalog, Store } from 'lick-data';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
-import { PRODUCT_BUNDLES } from 'licky-services';
+import { PRODUCT_BUNDLES, STORES } from 'licky-services';
 
 @Component({
   selector: 'app-product-bundle-list',
@@ -12,6 +12,10 @@ import { PRODUCT_BUNDLES } from 'licky-services';
   styleUrls: ['./product-bundle-list.component.css']
 })
 export class ProductBundleListComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
+
+  readonly STORES = STORES;
+
+  readonly PRODUCT_BUNDLES = PRODUCT_BUNDLES;
 
   store_id;
 

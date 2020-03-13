@@ -13,6 +13,10 @@ import { Subscription } from 'rxjs';
 })
 export class EmailAddressEditComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  public searchArgument = '';
+
+  public canDelete : boolean = true;
+
   emailAddress: EmailAddress = new EmailAddress();
 
   emailTypes: Dropdown[];

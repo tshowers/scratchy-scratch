@@ -13,6 +13,8 @@ import { TOPICS } from 'licky-services';
 })
 export class TopicListComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  readonly TOPICS = TOPICS;
+
   data$: Observable<any[]>;
 
   private _topics: Topic[];

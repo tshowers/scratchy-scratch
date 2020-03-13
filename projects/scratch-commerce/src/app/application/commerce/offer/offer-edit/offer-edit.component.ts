@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild, Renderer2 } from '@angular/cor
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Offer, Store, Catalog, Dropdown, Upload, Section } from 'lick-data';
-import { UploadService, DropdownService, TypeFindService, OFFERS } from 'licky-services';
+import { UploadService, DropdownService, TypeFindService, OFFERS, STORES } from 'licky-services';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
 import { Subscription } from 'rxjs';
@@ -14,6 +14,12 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./offer-edit.component.css']
 })
 export class OfferEditComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
+
+  readonly OFFERS = OFFERS;
+
+  readonly STORES = STORES;
+
+  canDelete: boolean = true;
 
   offer: Offer = new Offer();
 
@@ -37,9 +43,9 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
 
   catalog: Catalog;
 
-  @ViewChild('dataForm', {static: false}) private frm: NgForm;
+  @ViewChild('dataForm') private frm: NgForm;
 
-  @ViewChild('t', {static: false}) ngbTabSet;
+  @ViewChild('t') ngbTabSet;
 
   selectedFiles: FileList;
 
@@ -144,7 +150,7 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
     }
   }
 
-  private detectFiles(event) {
+  public detectFiles(event) {
     this.selectedFiles = event.target.files;
   }
 

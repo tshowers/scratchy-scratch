@@ -14,13 +14,15 @@ import { DataMediationService } from '../../../../shared/services/data-mediation
 })
 export class StoreEditComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  readonly STORES = STORES;
+
   categories: Dropdown[];
 
   store: Store = new Store();
 
-  @ViewChild('dataForm', {static: false}) private frm: NgForm;
+  @ViewChild('dataForm') private frm: NgForm;
 
-  @ViewChild('t', {static: false}) ngbTabSet;
+  @ViewChild('t') ngbTabSet;
 
   selectedFiles: FileList;
 
@@ -30,6 +32,7 @@ export class StoreEditComponent extends LickAppPageComponent implements OnInit, 
 
   section: Section = new Section();
 
+  canDelete: boolean = true;
 
   constructor(public dm: DataMediationService, protected renderer2: Renderer2, public router: Router, public typeFindService: TypeFindService, private _uploadService: UploadService, private _dropdownService: DropdownService, private _route: ActivatedRoute) {
     super(router, renderer2);
@@ -98,7 +101,7 @@ export class StoreEditComponent extends LickAppPageComponent implements OnInit, 
     }
   }
 
-  private detectFiles(event) {
+  public detectFiles(event) {
     this.selectedFiles = event.target.files;
   }
 

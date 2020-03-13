@@ -14,6 +14,10 @@ import { Subscription } from 'rxjs';
 })
 export class NoteEditComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  public searchArgument = '';
+
+  public canDelete : boolean = true;
+
   justText: JustText = new JustText();
 
   private _paramSubscription: Subscription;

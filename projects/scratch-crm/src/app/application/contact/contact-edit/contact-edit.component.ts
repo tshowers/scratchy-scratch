@@ -13,6 +13,10 @@ import { DataMediationService } from '../../../shared/services/data-mediation.se
 })
 export class ContactEditComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  public searchArgument = '';
+
+  public canDelete : boolean = true;
+
   contact: Contact = new Contact();
 
   prefixes: Dropdown[];
@@ -25,15 +29,14 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
 
   dependent: Dependent = new Dependent();
 
-  @ViewChild('dataForm', {static: false}) private frm: NgForm;
+  @ViewChild('dataForm') private frm: NgForm;
 
-  @ViewChild('t', {static: false}) ngbTabSet;
+  @ViewChild('t') ngbTabSet;
 
   selectedFiles: FileList;
 
   currentUpload: Upload;
 
-  searchArgument;
 
   constructor(public dm: DataMediationService, protected renderer2: Renderer2, public router: Router, public typeFindService: TypeFindService, private _uploadService: UploadService, private _dropdownService: DropdownService, private _route: ActivatedRoute) {
     super(router, renderer2);
@@ -99,7 +102,7 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
     }
   }
 
-  private detectFiles(event) {
+  public detectFiles(event) {
     this.selectedFiles = event.target.files;
   }
 

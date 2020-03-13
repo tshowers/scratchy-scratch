@@ -13,6 +13,8 @@ import { STORES } from 'licky-services';
 })
 export class StoreListComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  readonly STORES = STORES;
+
   data$: Observable<any[]>;
 
   private _stores: Store[];

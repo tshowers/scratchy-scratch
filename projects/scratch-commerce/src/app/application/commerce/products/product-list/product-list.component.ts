@@ -4,7 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { Product, Catalog, Store } from 'lick-data';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
-import { PRODUCTS } from 'licky-services';
+import { PRODUCTS, STORES } from 'licky-services';
 
 @Component({
   selector: 'app-product-list',
@@ -12,6 +12,10 @@ import { PRODUCTS } from 'licky-services';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
+
+  readonly STORES = STORES;
+
+  readonly PRODUCTS = PRODUCTS;
 
   store_id;
 

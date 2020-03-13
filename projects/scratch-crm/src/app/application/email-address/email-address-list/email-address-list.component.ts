@@ -13,6 +13,8 @@ import { EMAIL_ADDRESSES } from 'licky-services';
 })
 export class EmailAddressListComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  readonly EMAIL_ADDRESSES = EMAIL_ADDRESSES;
+
   data$: Observable<any[]>;
 
   private _emailAddresses: EmailAddress[];

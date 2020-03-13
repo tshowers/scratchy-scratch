@@ -16,7 +16,7 @@ declare var paypal;
 })
 export class ShoppingCartViewComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
-  @ViewChild('paypal', {static: false}) paypalElement: ElementRef;
+  @ViewChild('paypal') paypalElement: ElementRef;
 
   isPaid : boolean = false;
 

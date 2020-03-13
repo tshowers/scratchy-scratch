@@ -19,6 +19,12 @@ export class OrderEditComponent extends LickAppPageComponent implements OnInit, 
 
   orderTypes: Dropdown[];
 
+  status: Dropdown[];
+
+  cartTotal: number = 0;
+
+  cartTaxTotal: number = 0;
+
   private _paramSubscription: Subscription;
 
   private _orderSubscription: Subscription;
@@ -29,9 +35,9 @@ export class OrderEditComponent extends LickAppPageComponent implements OnInit, 
 
   store: Store;
 
-  @ViewChild('dataForm', {static: false}) private frm: NgForm;
+  @ViewChild('dataForm') private frm: NgForm;
 
-  @ViewChild('t', {static: false}) ngbTabSet;
+  @ViewChild('t') ngbTabSet;
 
   selectedFiles: FileList;
 
@@ -169,6 +175,7 @@ export class OrderEditComponent extends LickAppPageComponent implements OnInit, 
 
   private initializeDropdowns(): void {
     this.orderTypes = this._dropdownService.getEmailTypes();
+    this.status = this._dropdownService.getStatus();
   }
 
   onBreadCrumb(link): void {

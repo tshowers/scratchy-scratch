@@ -13,6 +13,8 @@ import { LickAppWidgetStats7Data } from 'lick-app-widget-stats7';
 })
 export class TopicDashboardComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  public searchArgument = '';
+
   private _topics: Topic[] = [];
   topics: Topic[];
   mostClickedTopcis: Topic[];

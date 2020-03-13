@@ -13,6 +13,8 @@ import { ADDRESSES } from 'licky-services';
 })
 export class AddressListComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  readonly ADDRESSES = ADDRESSES;
+
   data$: Observable<any[]>;
 
   private _addresses: Address[];

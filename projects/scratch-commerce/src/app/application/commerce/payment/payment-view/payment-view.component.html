@@ -59,7 +59,7 @@
                   <div class="col"><a routerLink="/app/contacts/{{order.contact_id}}"><small>{{order?.contact_id}}</small></a></div>
                 </div>
               </div>
-              <div class="list-group-item" *ngIf="order.fop_id && authService.userService.canDelete">
+              <div class="list-group-item" *ngIf="order.fop_id && canDelete">
                 <div class="row ta-row" *ngIf="order.address_id">
                   <div class="col"><span class="ta-label">address</span> </div>
                   <div class="col"><a routerLink="/app/contacts/{{order.contact_id}}/addresses/{{order.address_id}}"><small>{{order?.address_id}}</small> </a></div>

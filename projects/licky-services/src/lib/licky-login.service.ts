@@ -57,18 +57,21 @@ export class LickyLoginService {
     return this._user;
   }
 
-  public signInWithUserNameAndPassword(emailAddress: string, password: string, router: Router, redirectURL: string) {
+  public signInWithUserNameAndPassword(emailAddress: string, password: string, router: Router, redirectURL: string) : boolean {
     firebase.auth().signInWithEmailAndPassword(emailAddress, password)
       .then((authData) => {
-
         this._loggedIn = true;
+        console.info(emailAddress, "logged in", redirectURL, router)
         router.navigate([redirectURL]);
+        return true;
       })
       .catch((error) => {
         // Route to error page
+        console.error(error);
         this.error.next(error.code);
         this.errorMessage.next(error.message);
       })
+      return false;
   }
 
   public updateUserInfo(firstName: string, lastName: string, firebaseUser: firebase.User): void {

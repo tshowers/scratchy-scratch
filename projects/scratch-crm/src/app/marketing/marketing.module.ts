@@ -50,7 +50,7 @@ export class MarketingModule { }
 
 @NgModule({})
 export class LickMarketingModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<MarketingModule> {
     return {
       ngModule: MarketingModule,
       providers: []

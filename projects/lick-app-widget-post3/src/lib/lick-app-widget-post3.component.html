@@ -11,7 +11,7 @@
            routerLink="{{viewAllLink}}"
            class="all-posts-url">{{viewAllText}}</a>
       </div>
-      <article class="entry card post-list"
+      <article class="entry card post-list wow fadeInUp"
                *ngFor="let item of data; let i = index">
         <div *ngIf="item?.urlToImage && (item?.urlToImage != null)" class="entry__img-holder post-list__img-holder card__img-holder"
              [ngStyle]="{'background-image': 'url(' + item?.urlToImage + ')'}">

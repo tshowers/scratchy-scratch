@@ -29,7 +29,7 @@
           <div *ngIf="message"
                class="text-center">{{message}}</div>
           <licky-lick-app-widget-profile *ngIf="!message"
-                                         (pageEvent)="onPageEvent($event)"
+                                         (pageEvent)="onPageEvent()"
                                          [user]="dm.user"
                                          [firebaseUser]="dm.firebaseUser"></licky-lick-app-widget-profile>
         </div>

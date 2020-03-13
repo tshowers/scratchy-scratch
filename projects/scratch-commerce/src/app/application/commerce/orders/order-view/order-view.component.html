@@ -28,7 +28,7 @@
           <app-context-nav [store]="store" [context]="'order'"></app-context-nav>
 
 
-          <div [ngClass]="{'col-12 col-xl-6 col-lg-6 col-md-7 col-sm-12 order-xl-last order-lg-last order-md-last order-first' : messageFeed, 'col-11 order-lg-last order-first' : messageFeed, 'col-11' : !messageFeed }">
+          <div class="col-12">
             <div class="list-group list-group-flush">
               <div class="list-group-item">
                 <div class="row ta-row">
@@ -60,7 +60,7 @@
                   <div class="col"><a routerLink="/app/contacts/{{order.contact_id}}"><small>{{order?.contact_id}}</small></a></div>
                 </div>
               </div>
-              <div class="list-group-item" *ngIf="order.fop_id && authService.userService.canDelete">
+              <div class="list-group-item" *ngIf="order.fop_id && canDelete">
                 <div class="row ta-row" *ngIf="order.address_id">
                   <div class="col"><span class="ta-label">address</span> </div>
                   <div class="col"><a routerLink="/app/contacts/{{order.contact_id}}/addresses/{{order.address_id}}"><small>{{order?.address_id}}</small> </a></div>

@@ -15,7 +15,12 @@
             "tsConfig": "projects/lick-data/tsconfig.lib.json",
             "project": "projects/lick-data/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-data/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -53,7 +58,7 @@
             "main": "projects/scratch-test/src/main.ts",
             "polyfills": "projects/scratch-test/src/polyfills.ts",
             "tsConfig": "projects/scratch-test/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "projects/scratch-test/src/favicon.ico",
               "projects/scratch-test/src/assets"
@@ -92,7 +97,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -200,7 +204,12 @@
             "tsConfig": "projects/licky-services/tsconfig.lib.json",
             "project": "projects/licky-services/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/licky-services/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -235,7 +244,12 @@
             "tsConfig": "projects/lick-app-page/tsconfig.lib.json",
             "project": "projects/lick-app-page/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-page/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -270,7 +284,12 @@
             "tsConfig": "projects/lick-app-panel/tsconfig.lib.json",
             "project": "projects/lick-app-panel/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-panel/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -305,7 +324,12 @@
             "tsConfig": "projects/lick-app-widget-breadcrumb/tsconfig.lib.json",
             "project": "projects/lick-app-widget-breadcrumb/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-breadcrumb/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -340,7 +364,12 @@
             "tsConfig": "projects/lick-app-widget-article/tsconfig.lib.json",
             "project": "projects/lick-app-widget-article/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-article/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -375,7 +404,12 @@
             "tsConfig": "projects/lick-app-widget-card-column/tsconfig.lib.json",
             "project": "projects/lick-app-widget-card-column/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-card-column/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -410,7 +444,12 @@
             "tsConfig": "projects/lick-app-widget-card-deck/tsconfig.lib.json",
             "project": "projects/lick-app-widget-card-deck/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-card-deck/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -445,7 +484,12 @@
             "tsConfig": "projects/lick-app-widget-card-group/tsconfig.lib.json",
             "project": "projects/lick-app-widget-card-group/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-card-group/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -480,7 +524,12 @@
             "tsConfig": "projects/lick-app-widget-chat/tsconfig.lib.json",
             "project": "projects/lick-app-widget-chat/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-chat/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -515,7 +564,12 @@
             "tsConfig": "projects/lick-app-widget-chat-popup/tsconfig.lib.json",
             "project": "projects/lick-app-widget-chat-popup/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-chat-popup/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -550,7 +604,12 @@
             "tsConfig": "projects/lick-app-widget-data-footer/tsconfig.lib.json",
             "project": "projects/lick-app-widget-data-footer/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-data-footer/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -585,7 +644,12 @@
             "tsConfig": "projects/lick-app-widget-feed/tsconfig.lib.json",
             "project": "projects/lick-app-widget-feed/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-feed/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -620,7 +684,12 @@
             "tsConfig": "projects/lick-app-widget-find/tsconfig.lib.json",
             "project": "projects/lick-app-widget-find/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-find/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -655,7 +724,12 @@
             "tsConfig": "projects/lick-app-widget-footer/tsconfig.lib.json",
             "project": "projects/lick-app-widget-footer/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-footer/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -690,7 +764,12 @@
             "tsConfig": "projects/lick-app-widget-item-view1/tsconfig.lib.json",
             "project": "projects/lick-app-widget-item-view1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-item-view1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -725,7 +804,12 @@
             "tsConfig": "projects/lick-app-widget-left-side-menu/tsconfig.lib.json",
             "project": "projects/lick-app-widget-left-side-menu/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-left-side-menu/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -760,7 +844,12 @@
             "tsConfig": "projects/lick-app-widget-list-article-summary/tsconfig.lib.json",
             "project": "projects/lick-app-widget-list-article-summary/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-list-article-summary/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -795,7 +884,12 @@
             "tsConfig": "projects/lick-app-widget-list-badges/tsconfig.lib.json",
             "project": "projects/lick-app-widget-list-badges/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-list-badges/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -830,7 +924,12 @@
             "tsConfig": "projects/lick-app-widget-list-content/tsconfig.lib.json",
             "project": "projects/lick-app-widget-list-content/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-list-content/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -865,7 +964,12 @@
             "tsConfig": "projects/lick-app-widget-list-icons/tsconfig.lib.json",
             "project": "projects/lick-app-widget-list-icons/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-list-icons/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -900,7 +1004,12 @@
             "tsConfig": "projects/lick-app-widget-list-links/tsconfig.lib.json",
             "project": "projects/lick-app-widget-list-links/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-list-links/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -935,7 +1044,12 @@
             "tsConfig": "projects/lick-app-widget-list-order/tsconfig.lib.json",
             "project": "projects/lick-app-widget-list-order/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-list-order/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -970,7 +1084,12 @@
             "tsConfig": "projects/lick-app-widget-list-task/tsconfig.lib.json",
             "project": "projects/lick-app-widget-list-task/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-list-task/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1005,7 +1124,12 @@
             "tsConfig": "projects/lick-app-widget-loader1/tsconfig.lib.json",
             "project": "projects/lick-app-widget-loader1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-loader1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1040,7 +1164,12 @@
             "tsConfig": "projects/lick-app-widget-forgot-password/tsconfig.lib.json",
             "project": "projects/lick-app-widget-forgot-password/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-forgot-password/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1075,7 +1204,12 @@
             "tsConfig": "projects/lick-app-widget-lock-screen/tsconfig.lib.json",
             "project": "projects/lick-app-widget-lock-screen/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-lock-screen/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1110,7 +1244,12 @@
             "tsConfig": "projects/lick-app-widget-login/tsconfig.lib.json",
             "project": "projects/lick-app-widget-login/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-login/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1145,7 +1284,12 @@
             "tsConfig": "projects/lick-app-widget-logout/tsconfig.lib.json",
             "project": "projects/lick-app-widget-logout/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-logout/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1180,7 +1324,12 @@
             "tsConfig": "projects/lick-app-widget-maintenance/tsconfig.lib.json",
             "project": "projects/lick-app-widget-maintenance/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-maintenance/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1215,7 +1364,12 @@
             "tsConfig": "projects/lick-app-widget-menu/tsconfig.lib.json",
             "project": "projects/lick-app-widget-menu/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-menu/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1250,7 +1404,12 @@
             "tsConfig": "projects/lick-app-widget-message/tsconfig.lib.json",
             "project": "projects/lick-app-widget-message/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-message/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1285,7 +1444,12 @@
             "tsConfig": "projects/lick-app-widget-messages/tsconfig.lib.json",
             "project": "projects/lick-app-widget-messages/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-messages/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1320,7 +1484,12 @@
             "tsConfig": "projects/lick-app-widget-no-data/tsconfig.lib.json",
             "project": "projects/lick-app-widget-no-data/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-no-data/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1355,7 +1524,12 @@
             "tsConfig": "projects/lick-app-widget-not-found/tsconfig.lib.json",
             "project": "projects/lick-app-widget-not-found/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-not-found/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1390,7 +1564,12 @@
             "tsConfig": "projects/lick-app-widget-notification-alert/tsconfig.lib.json",
             "project": "projects/lick-app-widget-notification-alert/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-notification-alert/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1425,7 +1604,12 @@
             "tsConfig": "projects/lick-app-widget-notification-cart/tsconfig.lib.json",
             "project": "projects/lick-app-widget-notification-cart/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-notification-cart/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1460,7 +1644,12 @@
             "tsConfig": "projects/lick-app-widget-notification-message/tsconfig.lib.json",
             "project": "projects/lick-app-widget-notification-message/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-notification-message/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1495,7 +1684,12 @@
             "tsConfig": "projects/lick-app-widget-notification-task/tsconfig.lib.json",
             "project": "projects/lick-app-widget-notification-task/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-notification-task/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1530,7 +1724,12 @@
             "tsConfig": "projects/lick-app-widget-post1/tsconfig.lib.json",
             "project": "projects/lick-app-widget-post1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-post1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1565,7 +1764,12 @@
             "tsConfig": "projects/lick-app-widget-post2/tsconfig.lib.json",
             "project": "projects/lick-app-widget-post2/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-post2/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1600,7 +1804,12 @@
             "tsConfig": "projects/lick-app-widget-post3/tsconfig.lib.json",
             "project": "projects/lick-app-widget-post3/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-post3/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1635,7 +1844,12 @@
             "tsConfig": "projects/lick-app-widget-post4/tsconfig.lib.json",
             "project": "projects/lick-app-widget-post4/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-post4/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1670,7 +1884,12 @@
             "tsConfig": "projects/lick-app-widget-post5/tsconfig.lib.json",
             "project": "projects/lick-app-widget-post5/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-post5/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1705,7 +1924,12 @@
             "tsConfig": "projects/lick-app-widget-profile/tsconfig.lib.json",
             "project": "projects/lick-app-widget-profile/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-profile/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1740,7 +1964,12 @@
             "tsConfig": "projects/lick-app-widget-right-side-menu/tsconfig.lib.json",
             "project": "projects/lick-app-widget-right-side-menu/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-right-side-menu/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1775,7 +2004,12 @@
             "tsConfig": "projects/lick-app-widget-shopping-cart/tsconfig.lib.json",
             "project": "projects/lick-app-widget-shopping-cart/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-shopping-cart/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1810,7 +2044,12 @@
             "tsConfig": "projects/lick-app-widget-signup/tsconfig.lib.json",
             "project": "projects/lick-app-widget-signup/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-signup/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1845,7 +2084,12 @@
             "tsConfig": "projects/lick-app-widget-spinner/tsconfig.lib.json",
             "project": "projects/lick-app-widget-spinner/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-spinner/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1880,7 +2124,12 @@
             "tsConfig": "projects/lick-app-widget-stats1/tsconfig.lib.json",
             "project": "projects/lick-app-widget-stats1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-stats1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1915,7 +2164,12 @@
             "tsConfig": "projects/lick-app-widget-stats2/tsconfig.lib.json",
             "project": "projects/lick-app-widget-stats2/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-stats2/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1950,7 +2204,12 @@
             "tsConfig": "projects/lick-app-widget-stats3/tsconfig.lib.json",
             "project": "projects/lick-app-widget-stats3/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-stats3/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -1985,7 +2244,12 @@
             "tsConfig": "projects/lick-app-widget-stats4/tsconfig.lib.json",
             "project": "projects/lick-app-widget-stats4/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-stats4/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2020,7 +2284,12 @@
             "tsConfig": "projects/lick-app-widget-stats5/tsconfig.lib.json",
             "project": "projects/lick-app-widget-stats5/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-stats5/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2055,7 +2324,12 @@
             "tsConfig": "projects/lick-app-widget-stats6/tsconfig.lib.json",
             "project": "projects/lick-app-widget-stats6/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-stats6/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2090,7 +2364,12 @@
             "tsConfig": "projects/lick-app-widget-stats7/tsconfig.lib.json",
             "project": "projects/lick-app-widget-stats7/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-stats7/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2125,7 +2404,12 @@
             "tsConfig": "projects/lick-app-widget-stats8/tsconfig.lib.json",
             "project": "projects/lick-app-widget-stats8/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-stats8/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2160,7 +2444,12 @@
             "tsConfig": "projects/lick-app-widget-stats9/tsconfig.lib.json",
             "project": "projects/lick-app-widget-stats9/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-stats9/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2195,7 +2484,12 @@
             "tsConfig": "projects/lick-app-widget-stats10/tsconfig.lib.json",
             "project": "projects/lick-app-widget-stats10/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-stats10/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2230,7 +2524,12 @@
             "tsConfig": "projects/lick-app-widget-stats11/tsconfig.lib.json",
             "project": "projects/lick-app-widget-stats11/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-stats11/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2265,7 +2564,12 @@
             "tsConfig": "projects/lick-app-widget-stats12/tsconfig.lib.json",
             "project": "projects/lick-app-widget-stats12/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-stats12/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2300,7 +2604,12 @@
             "tsConfig": "projects/lick-app-widget-stats13/tsconfig.lib.json",
             "project": "projects/lick-app-widget-stats13/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-stats13/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2335,7 +2644,12 @@
             "tsConfig": "projects/lick-app-widget-stats14/tsconfig.lib.json",
             "project": "projects/lick-app-widget-stats14/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-stats14/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2370,7 +2684,12 @@
             "tsConfig": "projects/lick-app-widget-stats15/tsconfig.lib.json",
             "project": "projects/lick-app-widget-stats15/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-stats15/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2405,7 +2724,12 @@
             "tsConfig": "projects/lick-app-widget-stats16/tsconfig.lib.json",
             "project": "projects/lick-app-widget-stats16/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-stats16/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2440,7 +2764,12 @@
             "tsConfig": "projects/lick-app-widget-stats17/tsconfig.lib.json",
             "project": "projects/lick-app-widget-stats17/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-stats17/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2475,7 +2804,12 @@
             "tsConfig": "projects/lick-app-widget-table-data/tsconfig.lib.json",
             "project": "projects/lick-app-widget-table-data/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-table-data/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2510,7 +2844,12 @@
             "tsConfig": "projects/lick-app-widget-totals/tsconfig.lib.json",
             "project": "projects/lick-app-widget-totals/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-totals/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2545,7 +2884,12 @@
             "tsConfig": "projects/lick-app-widget-under-construction/tsconfig.lib.json",
             "project": "projects/lick-app-widget-under-construction/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-under-construction/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2580,7 +2924,12 @@
             "tsConfig": "projects/lick-app-widget-weather/tsconfig.lib.json",
             "project": "projects/lick-app-widget-weather/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-weather/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2615,7 +2964,12 @@
             "tsConfig": "projects/lick-marketing-about-product1/tsconfig.lib.json",
             "project": "projects/lick-marketing-about-product1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-about-product1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2650,7 +3004,12 @@
             "tsConfig": "projects/lick-marketing-about-product2/tsconfig.lib.json",
             "project": "projects/lick-marketing-about-product2/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-about-product2/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2685,7 +3044,12 @@
             "tsConfig": "projects/lick-marketing-about-product3/tsconfig.lib.json",
             "project": "projects/lick-marketing-about-product3/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-about-product3/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2720,7 +3084,12 @@
             "tsConfig": "projects/lick-marketing-about-product4/tsconfig.lib.json",
             "project": "projects/lick-marketing-about-product4/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-about-product4/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2755,7 +3124,12 @@
             "tsConfig": "projects/lick-marketing-about-product5/tsconfig.lib.json",
             "project": "projects/lick-marketing-about-product5/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-about-product5/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2790,7 +3164,12 @@
             "tsConfig": "projects/lick-marketing-about-product6/tsconfig.lib.json",
             "project": "projects/lick-marketing-about-product6/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-about-product6/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2825,7 +3204,12 @@
             "tsConfig": "projects/lick-marketing-about-product7/tsconfig.lib.json",
             "project": "projects/lick-marketing-about-product7/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-about-product7/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2860,7 +3244,12 @@
             "tsConfig": "projects/lick-marketing-carousel/tsconfig.lib.json",
             "project": "projects/lick-marketing-carousel/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-carousel/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2895,7 +3284,12 @@
             "tsConfig": "projects/lick-marketing-contact-us1/tsconfig.lib.json",
             "project": "projects/lick-marketing-contact-us1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-contact-us1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2930,7 +3324,12 @@
             "tsConfig": "projects/lick-marketing-faq1/tsconfig.lib.json",
             "project": "projects/lick-marketing-faq1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-faq1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -2965,7 +3364,12 @@
             "tsConfig": "projects/lick-marketing-faq2/tsconfig.lib.json",
             "project": "projects/lick-marketing-faq2/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-faq2/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3000,7 +3404,12 @@
             "tsConfig": "projects/lick-marketing-faq3/tsconfig.lib.json",
             "project": "projects/lick-marketing-faq3/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-faq3/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3035,7 +3444,12 @@
             "tsConfig": "projects/lick-marketing-features1/tsconfig.lib.json",
             "project": "projects/lick-marketing-features1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-features1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3070,7 +3484,12 @@
             "tsConfig": "projects/lick-marketing-features2/tsconfig.lib.json",
             "project": "projects/lick-marketing-features2/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-features2/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3105,7 +3524,12 @@
             "tsConfig": "projects/lick-marketing-features3/tsconfig.lib.json",
             "project": "projects/lick-marketing-features3/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-features3/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3140,7 +3564,12 @@
             "tsConfig": "projects/lick-marketing-features4/tsconfig.lib.json",
             "project": "projects/lick-marketing-features4/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-features4/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3175,7 +3604,12 @@
             "tsConfig": "projects/lick-marketing-features5/tsconfig.lib.json",
             "project": "projects/lick-marketing-features5/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-features5/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3210,7 +3644,12 @@
             "tsConfig": "projects/lick-marketing-footer1/tsconfig.lib.json",
             "project": "projects/lick-marketing-footer1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-footer1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3245,7 +3684,12 @@
             "tsConfig": "projects/lick-marketing-footer2/tsconfig.lib.json",
             "project": "projects/lick-marketing-footer2/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-footer2/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3280,7 +3724,12 @@
             "tsConfig": "projects/lick-marketing-header1/tsconfig.lib.json",
             "project": "projects/lick-marketing-header1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-header1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3315,7 +3764,12 @@
             "tsConfig": "projects/lick-marketing-header2/tsconfig.lib.json",
             "project": "projects/lick-marketing-header2/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-header2/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3350,7 +3804,12 @@
             "tsConfig": "projects/lick-marketing-header3/tsconfig.lib.json",
             "project": "projects/lick-marketing-header3/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-header3/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3385,7 +3844,12 @@
             "tsConfig": "projects/lick-marketing-header4/tsconfig.lib.json",
             "project": "projects/lick-marketing-header4/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-header4/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3420,7 +3884,12 @@
             "tsConfig": "projects/lick-marketing-header5/tsconfig.lib.json",
             "project": "projects/lick-marketing-header5/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-header5/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3455,7 +3924,12 @@
             "tsConfig": "projects/lick-marketing-how-to1/tsconfig.lib.json",
             "project": "projects/lick-marketing-how-to1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-how-to1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3490,7 +3964,12 @@
             "tsConfig": "projects/lick-marketing-integration1/tsconfig.lib.json",
             "project": "projects/lick-marketing-integration1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-integration1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3525,7 +4004,12 @@
             "tsConfig": "projects/lick-marketing-integration2/tsconfig.lib.json",
             "project": "projects/lick-marketing-integration2/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-integration2/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3560,7 +4044,12 @@
             "tsConfig": "projects/lick-marketing-latest-post1/tsconfig.lib.json",
             "project": "projects/lick-marketing-latest-post1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-latest-post1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3595,7 +4084,12 @@
             "tsConfig": "projects/lick-marketing-latest-post2/tsconfig.lib.json",
             "project": "projects/lick-marketing-latest-post2/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-latest-post2/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3630,7 +4124,12 @@
             "tsConfig": "projects/lick-marketing-lightbox1/tsconfig.lib.json",
             "project": "projects/lick-marketing-lightbox1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-lightbox1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3665,7 +4164,12 @@
             "tsConfig": "projects/lick-marketing-menu/tsconfig.lib.json",
             "project": "projects/lick-marketing-menu/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-menu/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3700,7 +4204,12 @@
             "tsConfig": "projects/lick-marketing-newsletter1/tsconfig.lib.json",
             "project": "projects/lick-marketing-newsletter1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-newsletter1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3735,7 +4244,12 @@
             "tsConfig": "projects/lick-marketing-parallax1/tsconfig.lib.json",
             "project": "projects/lick-marketing-parallax1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-parallax1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3770,7 +4284,12 @@
             "tsConfig": "projects/lick-marketing-prices1/tsconfig.lib.json",
             "project": "projects/lick-marketing-prices1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-prices1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3805,7 +4324,12 @@
             "tsConfig": "projects/lick-marketing-prices2/tsconfig.lib.json",
             "project": "projects/lick-marketing-prices2/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-prices2/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3840,7 +4364,12 @@
             "tsConfig": "projects/lick-marketing-reviews1/tsconfig.lib.json",
             "project": "projects/lick-marketing-reviews1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-reviews1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3875,7 +4404,12 @@
             "tsConfig": "projects/lick-marketing-reviews2/tsconfig.lib.json",
             "project": "projects/lick-marketing-reviews2/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-reviews2/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3910,7 +4444,12 @@
             "tsConfig": "projects/lick-marketing-reviews3/tsconfig.lib.json",
             "project": "projects/lick-marketing-reviews3/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-reviews3/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3945,7 +4484,12 @@
             "tsConfig": "projects/lick-marketing-security/tsconfig.lib.json",
             "project": "projects/lick-marketing-security/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-security/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -3980,7 +4524,12 @@
             "tsConfig": "projects/lick-marketing-simple-header/tsconfig.lib.json",
             "project": "projects/lick-marketing-simple-header/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-simple-header/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -4015,7 +4564,12 @@
             "tsConfig": "projects/lick-marketing-simple-page/tsconfig.lib.json",
             "project": "projects/lick-marketing-simple-page/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-simple-page/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -4050,7 +4604,12 @@
             "tsConfig": "projects/lick-marketing-team1/tsconfig.lib.json",
             "project": "projects/lick-marketing-team1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-team1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -4085,7 +4644,12 @@
             "tsConfig": "projects/lick-marketing-team2/tsconfig.lib.json",
             "project": "projects/lick-marketing-team2/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-team2/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -4120,7 +4684,12 @@
             "tsConfig": "projects/lick-marketing-team3/tsconfig.lib.json",
             "project": "projects/lick-marketing-team3/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-team3/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -4155,7 +4724,12 @@
             "tsConfig": "projects/lick-marketing-try-it1/tsconfig.lib.json",
             "project": "projects/lick-marketing-try-it1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-try-it1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -4190,7 +4764,12 @@
             "tsConfig": "projects/lick-marketing-try-it2/tsconfig.lib.json",
             "project": "projects/lick-marketing-try-it2/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-try-it2/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -4225,7 +4804,12 @@
             "tsConfig": "projects/lick-marketing-try-it3/tsconfig.lib.json",
             "project": "projects/lick-marketing-try-it3/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-try-it3/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -4260,7 +4844,12 @@
             "tsConfig": "projects/lick-marketing-video1/tsconfig.lib.json",
             "project": "projects/lick-marketing-video1/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-video1/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -4295,7 +4884,12 @@
             "tsConfig": "projects/lick-marketing-video2/tsconfig.lib.json",
             "project": "projects/lick-marketing-video2/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-marketing-video2/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -4333,7 +4927,7 @@
             "main": "projects/scratch-factory/src/main.ts",
             "polyfills": "projects/scratch-factory/src/polyfills.ts",
             "tsConfig": "projects/scratch-factory/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "projects/scratch-factory/src/favicon.ico",
               "projects/scratch-factory/src/assets"
@@ -4372,7 +4966,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -4483,7 +5076,7 @@
             "main": "projects/scratch-km/src/main.ts",
             "polyfills": "projects/scratch-km/src/polyfills.ts",
             "tsConfig": "projects/scratch-km/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "projects/scratch-km/src/favicon.ico",
               "projects/scratch-km/src/assets"
@@ -4522,7 +5115,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -4633,7 +5225,7 @@
             "main": "projects/scratch-crm/src/main.ts",
             "polyfills": "projects/scratch-crm/src/polyfills.ts",
             "tsConfig": "projects/scratch-crm/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "projects/scratch-crm/src/favicon.ico",
               "projects/scratch-crm/src/assets"
@@ -4660,6 +5252,14 @@
             ]
           },
           "configurations": {
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/scratch-crm/src/environments/environment.ts",
+                  "with": "projects/scratch-crm/src/environments/environment.dev.ts"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -4672,7 +5272,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -4783,7 +5382,7 @@
             "main": "projects/scratch-news/src/main.ts",
             "polyfills": "projects/scratch-news/src/polyfills.ts",
             "tsConfig": "projects/scratch-news/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "projects/scratch-news/src/favicon.ico",
               "projects/scratch-news/src/assets"
@@ -4810,6 +5409,14 @@
             ]
           },
           "configurations": {
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/scratch-news/src/environments/environment.ts",
+                  "with": "projects/scratch-news/src/environments/environment.dev.ts"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -4822,7 +5429,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -4933,7 +5539,7 @@
             "main": "projects/scratch-home/src/main.ts",
             "polyfills": "projects/scratch-home/src/polyfills.ts",
             "tsConfig": "projects/scratch-home/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "projects/scratch-home/src/favicon.ico",
               "projects/scratch-home/src/assets"
@@ -4960,6 +5566,14 @@
             ]
           },
           "configurations": {
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/scratch-home/src/environments/environment.ts",
+                  "with": "projects/scratch-home/src/environments/environment.dev.ts"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -4972,14 +5586,13 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
+                  "maximumWarning": "3mb",
                   "maximumError": "5mb"
                 },
                 {
@@ -5083,7 +5696,7 @@
             "main": "projects/scratch-commerce/src/main.ts",
             "polyfills": "projects/scratch-commerce/src/polyfills.ts",
             "tsConfig": "projects/scratch-commerce/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "projects/scratch-commerce/src/favicon.ico",
               "projects/scratch-commerce/src/assets"
@@ -5099,6 +5712,7 @@
               "projects/styles/colors/color-1.css",
               "projects/styles/simple-line-icons.css",
               "projects/styles/styles.css",
+              "projects/styles/shop.css",
               "projects/styles/ta-styles.css",
               "projects/styles/circle.css"
             ],
@@ -5122,7 +5736,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -5180,6 +5793,7 @@
               "projects/styles/colors/color-1.css",
               "projects/styles/simple-line-icons.css",
               "projects/styles/styles.css",
+              "projects/styles/shop.css",
               "projects/styles/ta-styles.css",
               "projects/styles/circle.css"
             ],

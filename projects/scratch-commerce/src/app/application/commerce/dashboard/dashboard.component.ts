@@ -14,6 +14,8 @@ export class DashboardComponent extends LickAppPageComponent implements OnInit, 
 
   totalRecords : number = 0;
 
+  searchArgument;
+
   FAQheadingText = "e-Commerce Dashboard";
   descriptionText = "Welcome to 16AHEAD e-Commerce. This page, over time, will turn into your sales dashboard. You can also think of this as your start page. Once you add products and receive orders, this page will show valuable information you should be aware of regarding your customers and products.";
   faqHeading1 = "Getting Started";

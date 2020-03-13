@@ -7,8 +7,8 @@ import { ApplicationModule } from './application/application.module';
 
 
 const routes: Routes = [
-  { path: 'about', loadChildren: './marketing/marketing.module#MarketingModule' },
-  { path: 'application', loadChildren: './application/application.module#ApplicationModule' },
+  { path: 'about', loadChildren: () => import('./marketing/marketing.module').then(m => m.MarketingModule) },
+  { path: 'application', loadChildren: () => import('./application/application.module').then(m => m.ApplicationModule) },
   { path: '',   redirectTo: 'about', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }
 ];

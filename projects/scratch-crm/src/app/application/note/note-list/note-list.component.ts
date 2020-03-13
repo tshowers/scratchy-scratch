@@ -14,6 +14,8 @@ import { JUST_TEXTS } from 'licky-services';
 })
 export class NoteListComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  readonly JUST_TEXTS = JUST_TEXTS;
+
   data$: Observable<any[]>;
 
   private _justTexts: JustText[];

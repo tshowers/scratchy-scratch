@@ -41,6 +41,10 @@ export class UserProfilePageComponent extends LickAppPageComponent implements On
     this.router.navigate(['application', 'topics'], {queryParams: { searchArgument: value}})
   }
 
+  onBreadCrumb(link): void {
+    this.router.navigate([link]);
+  }
+
   get diagnostic() {
     return JSON.stringify(this.message, null, 2);
   }

@@ -13,6 +13,8 @@ import { SHOPPING_CARTS } from 'licky-services';
 })
 export class ShoppingCartListComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
+  readonly SHOPPING_CARTS = SHOPPING_CARTS;
+
   store_id;
 
   store: Store;

@@ -17,9 +17,16 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
 import { TermsPageComponent } from './terms-page/terms-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
+import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
+import { WishlistPageComponent } from './wishlist-page/wishlist-page.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
+import { ProductPageComponent } from './product-page/product-page.component';
+import { ShopSidebarListPageComponent } from './shop-sidebar-list-page/shop-sidebar-list-page.component';
+import { ShopProductGridPageComponent } from './shop-product-grid-page/shop-product-grid-page.component';
+import { ShopProductListPageComponent } from './shop-product-list-page/shop-product-list-page.component';
 
 @NgModule({
-  declarations: [HomePageComponent, PrivacyPageComponent, TermsPageComponent, ContactPageComponent],
+  declarations: [HomePageComponent, PrivacyPageComponent, TermsPageComponent, ContactPageComponent, CheckoutPageComponent, WishlistPageComponent, CartPageComponent, ProductPageComponent, ShopSidebarListPageComponent, ShopProductGridPageComponent, ShopProductListPageComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -38,7 +45,7 @@ export class MarketingModule { }
 
 @NgModule({})
 export class LickMarketingModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<MarketingModule> {
     return {
       ngModule: MarketingModule,
       providers: []

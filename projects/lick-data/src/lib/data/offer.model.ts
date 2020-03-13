@@ -20,6 +20,7 @@ export class Offer {
   public expirationDate?;
   public providerTag?: string;
   public placement?: string;
+  public targetURI?: string;
   public presentationMethod?: string;
   public category?: string;
   public attributes?;
