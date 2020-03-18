@@ -5708,11 +5708,12 @@
               "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
               "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
               "node_modules/ngx-lightbox/lightbox.css",
+              "projects/styles/util.css",
+              "projects/styles/shop.css",
               "projects/styles/intro-style.css",
               "projects/styles/colors/color-1.css",
               "projects/styles/simple-line-icons.css",
               "projects/styles/styles.css",
-              "projects/styles/shop.css",
               "projects/styles/ta-styles.css",
               "projects/styles/circle.css"
             ],
@@ -5789,11 +5790,12 @@
               "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
               "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
               "node_modules/ngx-lightbox/lightbox.css",
+              "projects/styles/util.css",
+              "projects/styles/shop.css",
               "projects/styles/intro-style.css",
               "projects/styles/colors/color-1.css",
               "projects/styles/simple-line-icons.css",
               "projects/styles/styles.css",
-              "projects/styles/shop.css",
               "projects/styles/ta-styles.css",
               "projects/styles/circle.css"
             ],
@@ -5828,6 +5830,206 @@
             "production": {
               "devServerTarget": "scratch-commerce:serve:production"
             }
+          }
+        }
+      }
+    },
+    "lick-app-widget-product-grid": {
+      "projectType": "library",
+      "root": "projects/lick-app-widget-product-grid",
+      "sourceRoot": "projects/lick-app-widget-product-grid/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-product-grid/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-product-grid/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-product-grid/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-product-grid/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-product-grid/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-product-grid/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-product-grid/tsconfig.lib.json",
+              "projects/lick-app-widget-product-grid/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-product-list": {
+      "projectType": "library",
+      "root": "projects/lick-app-widget-product-list",
+      "sourceRoot": "projects/lick-app-widget-product-list/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-product-list/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-product-list/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-product-list/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-product-list/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-product-list/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-product-list/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-product-list/tsconfig.lib.json",
+              "projects/lick-app-widget-product-list/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-product-categories": {
+      "projectType": "library",
+      "root": "projects/lick-app-widget-product-categories",
+      "sourceRoot": "projects/lick-app-widget-product-categories/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-product-categories/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-product-categories/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-product-categories/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-product-categories/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-product-categories/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-product-categories/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-product-categories/tsconfig.lib.json",
+              "projects/lick-app-widget-product-categories/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-product-best-sellers": {
+      "projectType": "library",
+      "root": "projects/lick-app-widget-product-best-sellers",
+      "sourceRoot": "projects/lick-app-widget-product-best-sellers/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-product-best-sellers/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-product-best-sellers/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-product-best-sellers/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-product-best-sellers/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-product-best-sellers/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-product-best-sellers/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-product-best-sellers/tsconfig.lib.json",
+              "projects/lick-app-widget-product-best-sellers/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-product-search-by-tag": {
+      "projectType": "library",
+      "root": "projects/lick-app-widget-product-search-by-tag",
+      "sourceRoot": "projects/lick-app-widget-product-search-by-tag/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-product-search-by-tag/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-product-search-by-tag/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lick-app-widget-product-search-by-tag/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-product-search-by-tag/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-product-search-by-tag/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-product-search-by-tag/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-product-search-by-tag/tsconfig.lib.json",
+              "projects/lick-app-widget-product-search-by-tag/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }

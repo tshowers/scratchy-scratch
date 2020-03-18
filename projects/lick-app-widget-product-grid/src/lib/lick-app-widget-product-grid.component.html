@@ -1,0 +1,44 @@
+<div class="shop-grid">
+  <div class="row">
+    <!-- - -->
+    <div class="col-sm-6 col-lg-4 p-b-30" *ngFor="let item of products; let i = index">
+      <!-- Block1 -->
+      <div class="block1">
+        <div class="block1-bg wrap-pic-w bo-all-1 bocl12 hov3 trans-04">
+          <img src="{{item?.url}}" alt="{{item?.name}}">
+
+          <div class="block1-content flex-col-c-m p-b-46">
+            <a (click)="onDetail(item)">
+              {{item?.name}}
+            </a>
+
+            <span>
+              {{item?.price | currency}}
+            </span>
+
+            <div class="block1-wrap-icon flex-c-m flex-w trans-05">
+              <a (click)="onDetail(item)" class="block1-icon flex-c-m wrap-pic-max-w">
+                <i class="fa fa-eye text-white" aria-hidden="true"></i>
+              </a>
+
+              <a (click)="onCart(item)" class="block1-icon flex-c-m wrap-pic-max-w js-addcart-b1">
+                <i class="fa fa-shopping-cart text-white" aria-hidden="true"></i>
+              </a>
+
+              <a href="onWishList(item)" class="block1-icon flex-c-m wrap-pic-max-w js-addwish-b1">
+                <i class="fa fa-heart-o text-white" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<ngb-pagination [(page)]="currentPage" (pageChange)="onPageChange($event)" [pageSize]="pageSize" [collectionSize]="totalRecords"></ngb-pagination>
+
+
+<ng-template #noData>
+  <licky-lick-app-widget-no-data [newButton]="false"></licky-lick-app-widget-no-data>
+</ng-template>

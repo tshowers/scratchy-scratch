@@ -1,0 +1,12 @@
+<div>
+    <h4>
+        {{headerText}}
+    </h4>
+    <div class="flex-w m-r--10">
+        <span *ngFor="let item of tags">
+            <a (click)="onTag(item)" class="dis-block bg12 cl6 hov-btn1 trans-03 p-tb-5 p-rl-12 m-r-10 m-b-10">
+                {{item?.name}}
+            </a>
+        </span>
+    </div>
+</div>

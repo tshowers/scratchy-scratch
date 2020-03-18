@@ -750,6 +750,26 @@
       ],
       "lick-marketing-video2/*": [
         "dist/lick-marketing-video2/*"
+      ],
+      "lick-app-widget-product-grid": [
+        "dist/lick-app-widget-product-grid/lick-app-widget-product-grid",
+        "dist/lick-app-widget-product-grid"
+      ],
+      "lick-app-widget-product-list": [
+        "dist/lick-app-widget-product-list/lick-app-widget-product-list",
+        "dist/lick-app-widget-product-list"
+      ],
+      "lick-app-widget-product-categories": [
+        "dist/lick-app-widget-product-categories/lick-app-widget-product-categories",
+        "dist/lick-app-widget-product-categories"
+      ],
+      "lick-app-widget-product-best-sellers": [
+        "dist/lick-app-widget-product-best-sellers/lick-app-widget-product-best-sellers",
+        "dist/lick-app-widget-product-best-sellers"
+      ],
+      "lick-app-widget-product-search-by-tag": [
+        "dist/lick-app-widget-product-search-by-tag/lick-app-widget-product-search-by-tag",
+        "dist/lick-app-widget-product-search-by-tag"
       ]
     }
   },

@@ -1,0 +1,42 @@
+<div class="shop-list">
+  <div class="row p-b-30" *ngFor="let item of products">
+    <div class=" col-sm-5 col-lg-4">
+      <a (click)="onDetail(item)" class="wrap-pic-w bo-all-1 bocl12 hov8 trans-04">
+        <img src="{{item?.url}}" alt="{{item?.name}}">
+      </a>
+    </div>
+
+    <div class=" col-sm-7 col-lg-8">
+      <div class="p-t-5 p-b-20">
+        <div class="flex-w flex-sb-m">
+          <a (click)="onDetail(item)">
+            {{item?.name}}
+          </a>
+
+          <a (click)="onWishList(item)" class="lh-00 pos-relative how-icon1 m-tb-15 js-addwish1">
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <span>
+          {{item?.price | currency}}
+        </span>
+
+        <div class="cl6 p-t-18" innerHTML="{{item?.description}}">
+        </div>
+
+        <div class="flex-w p-t-29">
+          <button class="btn btn-theme" (click)="onCart(item)">
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ngb-pagination [(page)]="currentPage" (pageChange)="onPageChange($event)" [pageSize]="pageSize" [collectionSize]="totalRecords"></ngb-pagination>
+
+
+<ng-template #noData>
+  <licky-lick-app-widget-no-data [newButton]="false"></licky-lick-app-widget-no-data>
+</ng-template>

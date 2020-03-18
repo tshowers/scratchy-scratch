@@ -7,9 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopProductGridPageComponent implements OnInit {
 
+  listStyle = "none";
+  gridStyle = ""; 
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  onDetailEvent() : void {
+
+  }
+
+  onCartEvent() : void {
+
+  }
+
+  onWishListEvent() : void {
+
+  }
+
+
 
 }

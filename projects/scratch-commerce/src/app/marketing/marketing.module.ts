@@ -12,6 +12,8 @@ import { LickMarketingFeatures1Module } from 'lick-marketing-features1';
 import { LickMarketingAboutProduct7Module } from 'lick-marketing-about-product7';
 import { LickMarketingReviews2Module } from 'lick-marketing-reviews2';
 import { LickMarketingFooter2Module} from 'lick-marketing-footer2';
+import { LickAppWidgetProductGridModule } from 'lick-app-widget-product-grid';
+import { LickAppWidgetProductListModule } from 'lick-app-widget-product-list';
 
 import { HomePageComponent } from './home-page/home-page.component';
 import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
@@ -38,7 +40,9 @@ import { ShopProductListPageComponent } from './shop-product-list-page/shop-prod
     LickMarketingAboutProduct7Module,
     LickMarketingReviews2Module,
     LickMarketingCarouselModule,
-    LickMarketingFooter2Module
+    LickMarketingFooter2Module,
+    LickAppWidgetProductGridModule,
+    LickAppWidgetProductListModule
   ]
 })
 export class MarketingModule { }
