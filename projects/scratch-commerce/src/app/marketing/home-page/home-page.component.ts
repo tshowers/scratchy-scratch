@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, Review, Carousel } from 'lick-data';
+import { Review } from 'lick-data';
 import { Router } from '@angular/router';
 
 @Component({
@@ -40,89 +40,6 @@ export class HomePageComponent implements OnInit {
   //   {src : "assets/images/NedRa-Bonds-Quilt3.jpg", caption: "Three", thumb: "assets/images/NedRa-Bonds-Quilt3-sm.jpg"},
   //   {src : "assets/images/NedRa-Bonds-Quilt4.jpg", caption: "Four", thumb: "assets/images/NedRa-Bonds-Quilt4-sm.jpg"},
   // ];
-  carousel: Carousel[] = [
-    {
-      "id" :  Math.floor(Math.random() * 1000).toString(),
-      "name" : "Welcome To The Artist Market",
-      "step" : 1,
-      "textFont" : "Verdana",
-      "headingTextColor" : "#ffffff",
-      "textColor" : "#ffffff",
-      "textBackgroundColor" : null,
-      "textPosition" : "Right Bottom",
-      "description" : "Buy merchandise from renowned artists such as NedRa Bonds",
-      "url" : "assets/images/home1.jpg",
-      "link" : "/application/stores",
-      "linkText" : "Shop Now",
-      "lastUpdatedBy" : "System",
-      "lastUpdated" : new Date(),
-      "draft" : false,
-      "deleted" : false,
-      "keywords" : "NedRa Bonds",
-      "user_id" : Math.floor(Math.random() * 1000).toString(),
-      "blog_id" : null,
-      "store_id" : null,
-      "views" : Math.floor(Math.random() * 1000),
-      "lastViewed" : new Date(),
-      "userName" : "System",
-      "timeStamp" : new Date(),
-      "shared" : true,
-    },
-    {
-      "id" :  Math.floor(Math.random() * 1000).toString(),
-      "name" : "Friendly Customer Service",
-      "step" : 2,
-      "textFont" : "Verdana",
-      "headingTextColor" : "#ffffff",
-      "textColor" : "#ffffff",
-      "textBackgroundColor" : null,
-      "textPosition" : "Center",
-      "description" : "We will make every effort to ensure your shopping experience is a pleasurable hastle free one.",
-      "url" : "assets/images/home2.jpg",
-      "link" : "/application/stores",
-      "linkText" : "Shop Now",
-      "lastUpdatedBy" : "System",
-      "lastUpdated" : new Date(),
-      "draft" : false,
-      "deleted" : false,
-      "keywords" : "carousel",
-      "user_id" : Math.floor(Math.random() * 1000).toString(),
-      "blog_id" : null,
-      "store_id" : null,
-      "views" : Math.floor(Math.random() * 1000),
-      "lastViewed" : new Date(),
-      "userName" : "System",
-      "timeStamp" : new Date(),
-      "shared" : true,
-    },
-    {
-      "id" :  Math.floor(Math.random() * 1000).toString(),
-      "name" : "Shopping Made Simple",
-      "step" : 3,
-      "textFont" : "Verdana",
-      "headingTextColor" : "#ffffff",
-      "textColor" : "#ffffff",
-      "textBackgroundColor" : null,
-      "textPosition" : "Center",
-      "description" : "We have take a different approach to online shopping. Tell us what you think.",
-      "url" : "assets/images/home3.jpg",
-      "link" : "/",
-      "linkText" : "Shop Now",
-      "lastUpdatedBy" : "System",
-      "lastUpdated" : new Date(),
-      "draft" : false,
-      "deleted" : false,
-      "keywords" : "carousel",
-      "user_id" : Math.floor(Math.random() * 1000).toString(),
-      "blog_id" : null,
-      "store_id" : null,
-      "views" : Math.floor(Math.random() * 1000),
-      "lastViewed" : new Date(),
-      "userName" : "System",
-      "timeStamp" : new Date(),
-      "shared" : true,
-    }
-  ];
   // prices2_products: Product[] = [
   //   {
   //     "name": "Lady's T",
@@ -338,8 +255,5 @@ export class HomePageComponent implements OnInit {
 
   }
 
-  onShopNow(link) : void {
-    this.router.navigate([link]);
-  }
 
 }

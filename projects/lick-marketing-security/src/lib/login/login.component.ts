@@ -36,11 +36,12 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   @Input() subText: "Just one step away from catching up on all the news.";
 
+  loginCheck;
+
   constructor(private _dateUtilService: DateUtilService) { }
 
   ngOnInit() {
     this.subscribeToLoginErrors();
-
     this.determineUser();
   }
 
@@ -50,17 +51,32 @@ export class LoginComponent implements OnInit, OnDestroy {
       if (status) {
         console.info("LIBRARY: " , firebaseUser, "STATUS: ", status);
         this.getVerified(firebaseUser);
-        this.router.navigate([this.successRoute]);
       }
     })
+    this.setIntervalChek();
   }
-
 
   ngOnDestroy() {
     if (this._loginError)
       this._loginError.unsubscribe();
     if (this._userSubscription)
       this._userSubscription.unsubscribe();
+  }
+
+  setIntervalChek() : void {
+    console.info("setIntervalChek");
+    this.loginCheck = setInterval(() => {
+      this.checkLogin(), 3000
+    })
+  }
+
+  checkLogin() : void {
+    const isLoggedIn: boolean = this.loginService.isLoggedIn()
+    console.info("checkLogin", isLoggedIn)
+    if (isLoggedIn) {
+      clearInterval(this.loginCheck);
+      this.router.navigate([this.successRoute]);
+    }
   }
 
   private subscribeToLoginErrors(): void {

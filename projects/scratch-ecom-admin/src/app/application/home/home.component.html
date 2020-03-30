@@ -1,0 +1,63 @@
+<div id="page" class="site">
+    <header id="masthead" class="site-header">
+        <licky-lick-marketing-menu [logo]="logo" [logoName]="logoName" [verified]="false" [companyLink]="companyLink"
+            [menuItems]="menuItems"></licky-lick-marketing-menu>
+        <licky-lick-marketing-header4 [heading1]="'16AHEAD'" [heading2]="'E-Commerce'"
+            [headerText]="'Simple yet powerful'"
+            (pageEvent)="onEmailAddress($event)"
+            [descriptionText]="'Can you imagine an e-commerce solution that suggests how to increase sales and which customers you should contact who may be interested in buying today? We did, and that is the goal of 16HEAD. Let us tell you our story.'"
+            [thankYou]="isThankYouHidden"></licky-lick-marketing-header4>
+
+    </header>
+</div>
+<div class="site-content">
+    <div class="content-area">
+        <div class="site-main">
+            <licky-lick-marketing-features1
+                [descriptionText]="'Sure, there are more sophisticated e-commerce solutions, but if you are seeking a solution that does more than store product information and serves that information upon request, then you are in the right place.'"
+                [featureDescription1]="'Productivity should mean, the software is more productive, not you. You should relax and let the software do the work.'"
+                [featureDescription2]="'Expect a consistent, defect-free experience across our entire suite of applications.'"
+                [featureDescription3]="'You are always working with the latest version of the software. Updates are constant and consistent.'">
+            </licky-lick-marketing-features1>
+            <licky-lick-marketing-about-product1 [headerText]="'The Magic Elf'"
+                [descriptionText]="'Behind the simplicity, lots of things are happening within the application. Examination of cross-application analysis and trends by software agents present unforeseen circumstances that allows you to take action before problems arise.'"
+                [buttonLink]="null" [featureBlockText1]="'Simple Interface'" [featureBlockText2]="'Fast and Responsive'"
+                [featureBlockText3]="'Dashboard Overview'" [featureBlockText4]="'Contextural Feedback'"
+                [featureBlockIcon3]="'icon-screen-desktop'" [featureBlockIcon4]="'icon-speech'">
+            </licky-lick-marketing-about-product1>
+            <licky-lick-marketing-parallax1
+                [headingText]="'If everyone is thinking alike, then somebody isn\'t thinking.'"
+                [descriptionText]="'George S. Patton'" [imageURL]="'assets/images/thinking.jpg'"
+                [textColor]="'#eeeeee'"></licky-lick-marketing-parallax1>
+            <licky-lick-marketing-faq1 [headingText]="'Frequently Asked Questions'"
+                [descriptionText]="'Below are the top questions people have asked about the 16AHEAD e-commerce application and the answer to those questions.'"
+                [faqHeading1]="'WHAT MAKES THIS SOFTWARE DIFFERENT?'"
+                [faqDescription1]="'Using artificial intelligence, we proactively suggest courses of action, such as who is essential to contact today.'"
+                [faqHeading2]="'HOW WILL THIS SOFTWARE HELP ME?'"
+                [faqDescription2]="'Data analysis occurs on the backend, while software agents learn what is relevant to your business, the software will suggest courses of action.'"
+                [faqHeading3]="'WHY SHOULD I TRY IT?'"
+                [faqDescription3]="'The 16AHEAD e-commerce application is part of a suite to help you grow your business. Once you get acquainted with the e-commerce app, you will discover the benefits of coordinated artificial intelligence. '">
+            </licky-lick-marketing-faq1>
+            <licky-lick-marketing-how-to1 [headingText]="'How do I get started?'"
+                [descriptionText]="'Implementing these steps puts your business on the path to being more predictable. A business owner or department manager willing to give time and attention to these steps will flourish.'"
+                [header1]="'SIGN UP'" [header2]="'VERIFY'" [header3]="'LOGIN'"
+                [description1]="'Provide a name, email address, password, and link to an avatar (the image you would like to use to depict yourself).'"
+                [description2]="'After submission, you will receive an email to verify your email address.'"
+                [description3]="'Once the email address verification is complete, you can log in and use the application.'">
+            </licky-lick-marketing-how-to1>
+            <licky-lick-marketing-try-it1 [headingText]="'Try it out'" [buttonText]="'Start Today'"
+                [buttonLink]="'/sign-up'" (pageEvent)="onTryIt($event)"></licky-lick-marketing-try-it1>
+            <licky-lick-marketing-team1 [headingText]="'Meet The Team'" [descriptionText]="'Vikki co-founded two IT startups and other business ventures, including a pop culture and arts ezine and a private wine tasting company. Her penchant for planning, coordinating, and executing is grounded in events and project management. She oversees Taliferro project initiatives and serves as an internal consultant on matters of agile and change management.'" [users]="team">
+            </licky-lick-marketing-team1>
+            <licky-lick-marketing-contact-us1 (pageEvent)="onContactUs($event)"></licky-lick-marketing-contact-us1>
+        </div>
+    </div>
+</div>
+<licky-lick-marketing-footer2 [buttonText1]="'Home'" [buttonLink1]="'/'" [buttonText2]="'Privacy'"
+    [buttonLink2]="'/about/privacy'" [buttonText3]="'Terms'" [buttonLink3]="'/about/terms'" [buttonText4]="null"
+    [buttonLink4]="null" [socialText1]="'Twitter'" [socialText2]="'GitHub'" [socialText3]="'YouTube'"
+    [socialText4]="null" [socialText5]="null" [socialLink1]="'https://twitter.com/16Ahead'"
+    [socialLink2]="'https://github.com/tshowers/licky-lick'"
+    [socialLink3]="'https://www.youtube.com/channel/UCmsqXdXkbD8Seh-kvHPApig'" [socialLink4]="null" [socialLink5]="null"
+    [socialIcon1]="'fa-twitter'" [socialIcon2]="'fa-github'" [socialIcon3]="'fa-youtube'" [router]="router">
+</licky-lick-marketing-footer2>

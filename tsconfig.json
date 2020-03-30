@@ -770,6 +770,22 @@
       "lick-app-widget-product-search-by-tag": [
         "dist/lick-app-widget-product-search-by-tag/lick-app-widget-product-search-by-tag",
         "dist/lick-app-widget-product-search-by-tag"
+      ],
+      "lick-app-widget-product-checkout": [
+        "dist/lick-app-widget-product-checkout/lick-app-widget-product-checkout",
+        "dist/lick-app-widget-product-checkout"
+      ],
+      "lick-app-widget-product-wishlist": [
+        "dist/lick-app-widget-product-wishlist/lick-app-widget-product-wishlist",
+        "dist/lick-app-widget-product-wishlist"
+      ],
+      "lick-marketing-product1": [
+        "dist/lick-marketing-product1/lick-marketing-product1",
+        "dist/lick-marketing-product1"
+      ],
+      "lick-marketing-related-products1": [
+        "dist/lick-marketing-related-products1/lick-marketing-related-products1",
+        "dist/lick-marketing-related-products1"
       ]
     }
   },

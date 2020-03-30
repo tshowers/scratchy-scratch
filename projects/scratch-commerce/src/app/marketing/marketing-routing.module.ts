@@ -25,6 +25,7 @@ const routes: Routes = [
   { path: 'terms', component: TermsPageComponent, data: { title: 'Terms of Use - 16 AHEAD - eCommerce' } },
   { path: 'products-list', component: ShopProductListPageComponent, data: { title: 'Products - 16 AHEAD - eCommerce' } },
   { path: 'products-w-sidebar', component: ShopSidebarListPageComponent, data: { title: 'Products with Sidebar - 16 AHEAD - eCommerce' } },
+  { path: 'product', component: ProductPageComponent, data: { title: 'Product - 16 AHEAD - eCommerce' } },
   { path: 'products/:id', component: ProductPageComponent, data: { title: 'Product - 16 AHEAD - eCommerce' } }
 ];
 

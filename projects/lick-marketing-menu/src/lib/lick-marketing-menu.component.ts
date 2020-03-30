@@ -12,6 +12,7 @@ export class LickMarketingMenuComponent implements OnInit {
   @Input() verified : boolean = true;
   @Input() resendVerificationLink : boolean = false;
   @Output() menuEvent = new EventEmitter();
+  @Output() menuItemEvent = new EventEmitter();
   @Input() verificationText = "Unverified";
   @Input() profileLink;
   @Input() profileImage;
@@ -63,5 +64,8 @@ export class LickMarketingMenuComponent implements OnInit {
     this.menuEvent.emit('resendVerification');
   }
 
+  onMenuItem(link) : void {
+    this.menuItemEvent.emit(link)
+  }
 
 }

@@ -1,1 +1,297 @@
-<p>checkout-page works!</p>
+<div>
+    <div class="container">
+        <!-- Login -->
+        <div>
+            <div class="text-center">
+                <span>
+                    Returning customer?
+                </span>
+
+                <a (click)="onLogin()" class="text-primary">
+                    Click here to login
+                </a>
+            </div>
+
+            <div class="mt-4">
+                <form #dataForm="ngForm" class="form-group">
+                    <p class="text-center m-5">
+                        If you have shopped with us before, please enter your details in the boxes below. If you are a new customer, please proceed to the Billing & Shipping section.
+                    </p>
+
+                    <div class="row">
+                        <div class="col-sm-6 p-b-20">
+                            <div>
+                                <div>
+                                    Username or email <span class="cl12">*</span>
+                                </div>
+
+                                <input class="form-control form-control-lg ta-input-element" type="text" name="username">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 p-b-20">
+                            <div>
+                                <div>
+                                    Password <span class="cl12">*</span>
+                                </div>
+
+                                <input class="form-control form-control-lg ta-input-element" type="password" name="password">
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <button class="btn btn-primary btn-lg btn-round">
+                                Login
+                            </button>
+
+                            <div class="mt-3">
+                                <input id="check-ca" class="size-a-35 m-r-10" type="checkbox" name="isCreateAccount">
+                                Create an account?
+                            </div>
+
+                            <a class="mt-3 text-primary" (click)="onLostPassword()">
+                                Lost your password?
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- enter code -->
+        <div class="mt-4">
+            <div class="text-center mb-2">
+                <span>
+                    Have a coupon?
+                </span>
+
+                <a (click)="onCoupon()" class="text-primary">
+                    Click here to enter your code
+                </a>
+            </div>
+
+            <div>
+                <div>
+                    <input class="form-control form-control-lg ta-input-element" type="text" name="coupon" placeholder="Coupon code">
+                    <button class="btn btn-primary btn-lg btn-round mt-2">
+                        Apply Coupon
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-7 col-lg-8 p-b-50">
+                <div>
+                    <h4>
+                        Billing Details
+                    </h4>
+
+                    <div class="row p-b-50">
+                        <div class="col-sm-6 p-b-23">
+                            <div>
+                                <div>
+                                    First Name <span class="cl12">*</span>
+                                </div>
+
+                                <input class="form-control form-control-lg ta-input-element" type="text" name="first-name">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 p-b-23">
+                            <div>
+                                <div>
+                                    Last Name <span class="cl12">*</span>
+                                </div>
+
+                                <input class="form-control form-control-lg ta-input-element" type="text" name="last-name">
+                            </div>
+                        </div>
+
+                        <div class="col-12 p-b-23">
+                            <div>
+                                <div>
+                                    Company Name
+                                </div>
+
+                                <input class="form-control form-control-lg ta-input-element" type="text" name="company-name">
+                            </div>
+                        </div>
+
+                        <div class="col-12 p-b-23">
+                            <div>
+                                <div>
+                                    Country <span class="cl12">*</span>
+                                </div>
+
+                                <div class="rs1-select2 rs2-select2 bg0 w-full bo-all-1 bocl15 m-tb-7 m-r-15">
+                                    <select class="form-control form-control-lg ta-input-element" name="country">
+                                        <option>US</option>
+                                        <option>UK</option>
+                                    </select>
+                                    <div class="dropDownSelect2"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 p-b-23">
+                            <div>
+                                <div>
+                                    Address <span class="cl12">*</span>
+                                </div>
+
+                                <input class="form-control form-control-lg ta-input-element mb-1" type="text" name="street" placeholder="Street address">
+
+                                <input class="form-control form-control-lg ta-input-element" type="text" name="add" placeholder="Apartment, suite, unit etc. (optional)">
+                            </div>
+                        </div>
+
+                        <div class="col-12 p-b-23">
+                            <div>
+                                <div>
+                                    Town/City <span class="cl12">*</span>
+                                </div>
+
+                                <input class="form-control form-control-lg ta-input-element" type="text" name="city">
+                            </div>
+                        </div>
+
+                        <div class="col-12 p-b-23">
+                            <div>
+                                <div>
+                                    County <span class="cl12">*</span>
+                                </div>
+
+                                <input class="form-control form-control-lg ta-input-element" type="text" name="ct">
+                            </div>
+                        </div>
+
+                        <div class="col-12 p-b-23">
+                            <div>
+                                <div>
+                                    Postcode / Zip <span class="cl12">*</span>
+                                </div>
+
+                                <input class="form-control form-control-lg ta-input-element" type="text" name="postcode">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 p-b-23">
+                            <div>
+                                <div>
+                                    Phone <span class="cl12">*</span>
+                                </div>
+
+                                <input class="form-control form-control-lg ta-input-element" type="text" name="phone">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 p-b-23">
+                            <div>
+                                <div>
+                                    Email Address <span class="cl12">*</span>
+                                </div>
+
+                                <input class="form-control form-control-lg ta-input-element" type="text" name="email">
+                            </div>
+                        </div>
+
+                        <div class="flex-w flex-m p-rl-15 m-t--10">
+                            <input id="check-ca" class="size-a-35 m-r-10" type="checkbox" name="ca">
+                            <label for="check-ca">
+                                Create an account?
+                            </label>
+                        </div>
+                    </div>
+
+                    <h4>
+                        Additional information
+                    </h4>
+
+                    <div>
+                        <div>
+                            Order notes
+                        </div>
+
+                        <textarea class="form-control form-control-lg ta-input-element" name="note" placeholder="Note about your order, eg. special notes fordelivery."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5 col-lg-4 p-b-50">
+                <div class="how-bor4 p-t-35 p-b-40 p-rl-30 m-t-5">
+                    <h4>
+                        Your order
+                    </h4>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                          Product
+                          <span>Total</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                          <span> Pro <i class="fa fa-times-circle" aria-hidden="true"></i> 2</span>
+                          <span class="badge badge-light badge-pill ta-list-data">$32</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                          <span> Premium <i class="fa fa-times-circle" aria-hidden="true"></i> 1</span>
+                          <span class="badge badge-light badge-pill ta-list-data">$51</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Subtotal 
+                            <span class="badge badge-light badge-pill ta-list-data">$83</span>
+                          </li>
+                          <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Total 
+                            <span class="badge badge-light badge-pill ta-large">$83</span>
+                          </li>
+                        </ul>
+                    
+                    
+
+
+                    <div>
+                        <div class="flex-w flex-m bo-b-1 bocl15 p-rl-20 p-tb-16">
+                            <input class="m-r-15" id="radio1" type="radio" name="pay" value="payment" checked="checked">
+                            <label for="radio1">
+                                Check Payments
+                            </label>
+                        </div>
+
+                        <div>
+                            <p>
+                                Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.
+                            </p>
+                        </div>
+
+                        <div>
+                            <input class="m-r-15" id="radio2" type="radio" name="pay" value="paypal">
+                            <label for="radio2">
+                                Paypal
+                            </label>
+
+                            <div class="w-full p-l-29 p-t-16">
+                                <a href="#"><img src="assets/images/icons/paypal.png" alt="IMG"></a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p>
+                                Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.
+                            </p>
+                        </div>
+
+                        <div>
+                            <a (click)="onPayPal()" class="text-primary">
+                                What is paypal?
+                            </a>
+                        </div>								
+                    </div>
+
+                    <button class="btn btn-primary btn-lg btn-round">
+                        Place Order
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -68,8 +68,11 @@ export const DEFAULT_PACKAGE = "deluxe";
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import * as firebase from 'firebase';
-
+import * as firebase from 'firebase/app';
+ 
+// These imports load individual services into the firebase namespace.
+import 'firebase/auth';
+import 'firebase/database';
 
 
 @Injectable({

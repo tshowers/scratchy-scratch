@@ -14,6 +14,7 @@ export class Product {
   public store_id?;
   public discontinued?: boolean = false;
   public features?;
+  public images? : Array<any>;
   public deliverable_id?: string;
   public description? : string;
   public longDescription? : string;

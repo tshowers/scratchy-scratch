@@ -1,0 +1,178 @@
+<section class="sec-product-detail bg0 p-t-105 p-b-70">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-7 col-lg-6">
+				<div class="m-r--30 m-r-0-lg">
+					<!-- Slide 100 -->
+					<div id="slide100-01">
+						<div class="wrap-main-pic-100 bo-all-1 bocl12 pos-relative">
+							<div class="main-frame">
+								<div class="wrap-main-pic">
+									<div class="main-pic">
+										<img src="{{product?.url}}" alt="{{product?.name}}">
+									</div>
+								</div>
+							</div>
+
+							<!-- <div class="wrap-arrow-slide-100 s-full ab-t-l trans-04">
+								<span class="my-arrow back prev-slide-100"><i class="fa fa-angle-left m-r-1"
+										aria-hidden="true"></i></span>
+								<span class="my-arrow next next-slide-100"><i class="fa fa-angle-right m-l-1"
+										aria-hidden="true"></i></span>
+							</div> -->
+						</div>
+
+						<div class="wrap-thumb-100 flex-w flex-sb p-t-30"
+							*ngIf="product && product.images && (product.images.length > 0)">
+							<licky-lick-marketing-lightbox1 [images]="images"></licky-lick-marketing-lightbox1>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-5 col-lg-6">
+				<div class="p-l-70 p-t-35 p-l-0-lg">
+					<h2>
+						{{product?.name}}
+					</h2>
+
+					<span>
+						{{product?.price | currency}}
+					</span>
+
+					<div class="flex-w flex-m p-t-30 p-b-27">
+
+						<span class="stars">
+							<i class="fa fa-star" [ngClass]="{'no' : !reviews[rnd].stars[0]}"
+								[attr.aria-hidden]="true"></i>
+							<i class="fa fa-star" [ngClass]="{'no' : !reviews[rnd].stars[1]}"
+								[attr.aria-hidden]="true"></i>
+							<i class="fa fa-star" [ngClass]="{'no' : !reviews[rnd].stars[2]}"
+								[attr.aria-hidden]="true"></i>
+							<i class="fa fa-star" [ngClass]="{'no' : !reviews[rnd].stars[3]}"
+								[attr.aria-hidden]="true"></i>
+							<i class="fa fa-star" [ngClass]="{'no' : !reviews[rnd].stars[4]}"
+								[attr.aria-hidden]="true"></i>
+						</span>
+
+
+						<span class="cl6 p-b-3" *ngIf="reviews && reviews.length && (reviews.length > 0)">
+							({{reviews?.length}} customer review)
+						</span>
+					</div>
+
+					<div innerHTML="{{product?.description}}">
+
+					</div>
+
+					<div class="flex-w flex-m p-t-55 p-b-30">
+						<div class="wrap-num-product flex-w flex-m bg12 p-rl-10 m-r-30 m-b-30">
+
+							<input class="form-control form-control-lg ta-input-element" type="number"
+								name="num-product" value="1">
+						</div>
+
+						<button class="btn btn-primary btn-lg btn-round" (click)="onAddToCart()">
+							Add to Cart
+						</button>
+					</div>
+
+					<div>
+						<span>
+							Sku:
+						</span>
+
+						<span>
+							{{product?.sku}}
+						</span>
+					</div>
+
+					<div>
+						<span>
+							Category:
+						</span>
+
+						<span>
+							{{product?.category}}
+						</span>
+					</div>
+
+					<div>
+						<licky-lick-app-widget-product-search-by-tag [headerText]="'Tags'">
+						</licky-lick-app-widget-product-search-by-tag>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<ul class="nav nav-tabs mt-5" id="myTab" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab"
+					aria-controls="description" aria-selected="true">Description</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="profile"
+					aria-selected="false">Additional Information</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab"
+					aria-controls="contact" aria-selected="false">Reviews</a>
+			</li>
+		</ul>
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active font-weight-light" id="description" role="tabpanel"
+				aria-labelledby="description-tab" innerHTML="{{product?.longDescription}}">
+
+			</div>
+			<div class="tab-pane fade font-weight-light" id="info" role="tabpanel" aria-labelledby="info-tab">
+				<ul class="list-group-flush">
+					<li class="list-group-item">
+						<span>
+							Weight
+						</span>
+
+						<span>
+							{{product?.weight}}
+						</span>
+					</li>
+
+					<li class="list-group-item">
+						<span>
+							{{product?.orderQuantityMeasure}}
+						</span>
+
+						<span>
+							{{product?.orderQuantity}}
+						</span>
+					</li>
+					<li class="list-group-item" *ngIf="product?.author">
+						<span>
+							Author
+						</span>
+
+						<span>
+							{{product?.author}}
+						</span>
+					</li>
+
+					<li class="list-group-item" *ngIf="product?.manufacturer">
+						<span>
+							Manufacturer
+						</span>
+
+						<span>
+							{{product?.manufacturer}}
+						</span>
+					</li>
+				</ul>
+
+			</div>
+			<div class="tab-pane fade font-weight-light" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+				<licky-lick-marketing-reviews1 [reviews]="reviews" [descriptionText]="null"
+					[headingText]="'Customer Reviews'"></licky-lick-marketing-reviews1>
+			</div>
+		</div>
+
+	</div>
+</section>

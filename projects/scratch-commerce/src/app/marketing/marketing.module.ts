@@ -4,16 +4,25 @@ import { SharedModule } from '../shared/shared.module';
 
 import { MarketingRoutingModule } from './marketing-routing.module';
 
-import { LickMarketingCarouselModule } from 'lick-marketing-carousel';
 import { LickMarketingPrices2Module } from 'lick-marketing-prices2';
 import { LickMarketingFaq1Module } from 'lick-marketing-faq1';
 import { LickMarketingVideo1Module } from 'lick-marketing-video1';
 import { LickMarketingFeatures1Module } from 'lick-marketing-features1';
+import { LickMarketingFeatures2Module } from 'lick-marketing-features2';
+import { LickMarketingAboutProduct2Module } from 'lick-marketing-about-product2';
 import { LickMarketingAboutProduct7Module } from 'lick-marketing-about-product7';
 import { LickMarketingReviews2Module } from 'lick-marketing-reviews2';
-import { LickMarketingFooter2Module} from 'lick-marketing-footer2';
+import { LickMarketingNewsletter1Module} from 'lick-marketing-newsletter1';
+import { LickMarketingParallax1Module } from 'lick-marketing-parallax1';
+
+import { LickMarketingReviews1Module} from 'lick-marketing-reviews1';
+import { LickMarketingProduct1Module} from 'lick-marketing-product1';
+
 import { LickAppWidgetProductGridModule } from 'lick-app-widget-product-grid';
 import { LickAppWidgetProductListModule } from 'lick-app-widget-product-list';
+import { LickAppWidgetProductCategoriesModule } from 'lick-app-widget-product-categories';
+import { LickAppWidgetProductSearchByTagModule} from 'lick-app-widget-product-search-by-tag';
+import { LickAppWidgetProductBestSellersModule} from 'lick-app-widget-product-best-sellers';
 
 import { HomePageComponent } from './home-page/home-page.component';
 import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
@@ -39,10 +48,17 @@ import { ShopProductListPageComponent } from './shop-product-list-page/shop-prod
     LickMarketingFeatures1Module,
     LickMarketingAboutProduct7Module,
     LickMarketingReviews2Module,
-    LickMarketingCarouselModule,
-    LickMarketingFooter2Module,
     LickAppWidgetProductGridModule,
-    LickAppWidgetProductListModule
+    LickAppWidgetProductListModule,
+    LickAppWidgetProductCategoriesModule,
+    LickAppWidgetProductSearchByTagModule,
+    LickAppWidgetProductBestSellersModule,
+    LickMarketingNewsletter1Module,
+    LickMarketingReviews1Module,
+    LickMarketingProduct1Module,
+    LickMarketingFeatures2Module,
+    LickMarketingAboutProduct2Module,
+    LickMarketingParallax1Module
   ]
 })
 export class MarketingModule { }

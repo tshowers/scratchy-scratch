@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopProductGridPageComponent implements OnInit {
 
-  listStyle = "none";
-  gridStyle = ""; 
+  listStyle = "";
+  gridStyle = "none"; 
 
   constructor() { }
 

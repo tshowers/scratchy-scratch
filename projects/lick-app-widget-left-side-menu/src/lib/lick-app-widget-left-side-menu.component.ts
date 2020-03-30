@@ -24,6 +24,11 @@ export class LickAppWidgetLeftSideMenuComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit() {
+    if (this.newsService)
+      this.setLeftSide();
+  }
+
+  setLeftSide() : void {
     if (this.searchArgument)
       this.searchNews();
     else

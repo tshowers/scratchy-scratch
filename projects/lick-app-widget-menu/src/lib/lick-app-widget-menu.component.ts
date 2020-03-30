@@ -12,7 +12,7 @@ import { LickAppWidgetMenuService } from './lick-app-widget-menu.service';
 export class LickAppWidgetMenuComponent implements OnInit {
 
   @Input() router: Router;
-  @Input() photoURL = "http://via.placeholder.com/32";
+  @Input() photoURL = "http://via.placeholder.com/32x32";
   @Input() placeholder = "Find a contact ...";
 
   @Input() displayName = "unknown";
@@ -20,6 +20,8 @@ export class LickAppWidgetMenuComponent implements OnInit {
   @Input() emailAddress = "unknown@16ahead.com";
   @Input() userContact: Contact;
   @Input() logoutPage = "/";
+  @Input() logo = "http://via.placeholder.com/32x32";
+  @Input() companyName = "Company";
 
   @Input() version: string = "0.3";
   @Input() loggedIn: boolean = false;
@@ -42,7 +44,7 @@ export class LickAppWidgetMenuComponent implements OnInit {
 
   searchDisplay = '';
   cancelDisplay = 'none';
-  @Input() defaultPhoto = "/assets/images/default-user.png"
+  @Input() defaultPhoto = "http://via.placeholder.com/32x32"
 
   @Output() settingsEvent = new EventEmitter();
   @Output() profileEvent = new EventEmitter();

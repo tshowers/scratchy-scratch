@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'lib-lick-app-widget-product-search-by-tag',
+  selector: 'licky-lick-app-widget-product-search-by-tag',
   templateUrl: './lick-app-widget-product-search-by-tag.component.html',
   styles: []
 })

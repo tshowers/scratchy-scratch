@@ -1,5 +1,5 @@
 <div class="shop-list">
-  <div class="row p-b-30" *ngFor="let item of products">
+  <div class="row pb-3" *ngFor="let item of products">
     <div class=" col-sm-5 col-lg-4">
       <a (click)="onDetail(item)" class="wrap-pic-w bo-all-1 bocl12 hov8 trans-04">
         <img src="{{item?.url}}" alt="{{item?.name}}">
@@ -13,7 +13,7 @@
             {{item?.name}}
           </a>
 
-          <a (click)="onWishList(item)" class="lh-00 pos-relative how-icon1 m-tb-15 js-addwish1">
+          <a (click)="onWishList(item)" class="text-theme">
             <i class="fa fa-heart-o" aria-hidden="true"></i>
           </a>
         </div>

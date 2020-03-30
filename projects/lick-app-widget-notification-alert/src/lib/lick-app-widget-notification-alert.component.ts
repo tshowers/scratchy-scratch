@@ -24,6 +24,13 @@ export class LickAppWidgetNotificationAlertComponent implements OnInit, AfterVie
   constructor(private _sortHelperService: SortHelperService, private _cd: ChangeDetectorRef) { }
 
   ngOnInit() {
+    if (this.loginService && this.db) {
+      this.setNotifications();
+    }
+
+  }
+
+  private setNotifications() : void {
     this.user = this.loginService.getUser();
     this.alerts$ = this.db.getDataCollection(ALERTS)
       .pipe(map((alerts: Alert[]) => {

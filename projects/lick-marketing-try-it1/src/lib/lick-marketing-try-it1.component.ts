@@ -19,6 +19,7 @@ export class LickMarketingTryIt1Component implements OnInit {
   }
 
   onPageEvent(link) : void {
+    console.log("Link clicked", link)
     this.pageEvent.emit(link);
   }
 

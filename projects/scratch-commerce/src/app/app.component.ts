@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from "@angular/common";
 import { Title } from '@angular/platform-browser';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import {filter, map, mergeMap} from 'rxjs/operators';
@@ -11,7 +12,9 @@ import { NgwWowService } from 'ngx-wow';
 })
 export class AppComponent implements OnInit {
 
-  public constructor(private _activatedRoute: ActivatedRoute, public router: Router, private _titleService: Title, private _wowService: NgwWowService) {  }
+  isHome: boolean = false;
+
+  public constructor(private _location: Location, private _activatedRoute: ActivatedRoute, public router: Router, private _titleService: Title, private _wowService: NgwWowService) {  }
 
   ngOnInit() {
     this.router.events
@@ -26,9 +29,14 @@ export class AppComponent implements OnInit {
         mergeMap((route) => route.data))
       .subscribe((event) => {
         this._titleService.setTitle(event['title']);
+        this.areWeHome();  
         this._wowService.init();
       });
+  }
 
+  areWeHome() : void {
+      this.isHome = (this._location.path() === '/shop');
+      console.info("Current path is " + this._location.path(), ", isHome=" + this.isHome);
   }
 
 

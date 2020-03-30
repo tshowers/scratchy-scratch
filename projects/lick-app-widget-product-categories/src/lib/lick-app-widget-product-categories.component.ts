@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'lib-lick-app-widget-product-categories',
+  selector: 'licky-lick-app-widget-product-categories',
   templateUrl: './lick-app-widget-product-categories.component.html',
   styles: []
 })

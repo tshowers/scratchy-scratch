@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Product } from 'lick-data';
 
 @Component({
-  selector: 'lib-lick-app-widget-product-best-sellers',
+  selector: 'licky-lick-app-widget-product-best-sellers',
   templateUrl: './lick-app-widget-product-best-sellers.component.html',
   styles: []
 })
@@ -210,10 +210,15 @@ export class LickAppWidgetProductBestSellersComponent implements OnInit {
       "publishedAt": new Date()
     },
   ];
+  @Output() itemEvent = new EventEmitter()
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onItem(item) : void {
+    this.itemEvent.emit(item);
   }
 
 }

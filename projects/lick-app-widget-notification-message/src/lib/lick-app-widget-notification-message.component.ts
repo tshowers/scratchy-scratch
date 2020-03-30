@@ -30,6 +30,11 @@ export class LickAppWidgetNotificationMessageComponent implements OnInit, AfterV
   constructor(private _sortHelperService: SortHelperService, private _cd: ChangeDetectorRef) { }
 
   ngOnInit() {
+    if (this.db && this.loginService)
+      this.setNotifications();
+  }
+
+  private setNotifications(): void {
     this._user = this.loginService.getUser();
     this.messages$ = this.db.getDataCollection(MESSAGES)
       .pipe(map((messages: Message[]) => {

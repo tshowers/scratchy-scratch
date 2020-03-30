@@ -46,6 +46,10 @@ export class NavComponent implements OnInit, OnDestroy {
       "name": "Wish List"
     },
     {
+      "link": "/shop/product",
+      "name": "Product"
+    },
+    {
       "link": "/shop/checkout",
       "name": "Check Out"
     },
