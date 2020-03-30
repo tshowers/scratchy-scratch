@@ -9,24 +9,17 @@ import { StoreModule } from './commerce/store/store.module';
 import { AccessModule } from './access/access.module';
 import { DashboardModule } from './commerce/dashboard/dashboard.module';
 import { HomeModule } from './home/home.module';
+import { LickyServicesModule } from 'licky-services';
 
-import {
-    FirebaseDataService,
-    DropdownService,
-    DateUtilService,
-    LickyLoginService,
-    NewsService,
-    RemoteAssetService,
-    UserLocationService,
-    UploadService,
-    TypeFindService,
-    SortHelperService,
-    WeatherService
-} from 'licky-services';
+import { environment } from '../../environments/environment';
+
+export const firebaseConfig = environment.firebaseConfig;
+
 
 @NgModule({
     imports: [
         CommonModule,
+        LickyServicesModule.forRoot(firebaseConfig),
         CatalogModule,
         OfferModule,
         OrderModule,
@@ -40,18 +33,7 @@ import {
     declarations: [
     ],
     providers: [
-        FirebaseDataService,
-        DropdownService,
-        DateUtilService,
-        LickyLoginService,
-        NewsService,
-        RemoteAssetService,
-        UserLocationService,
-        UploadService,
-        TypeFindService,
-        SortHelperService,
-        WeatherService,
-        HomeModule
+        // HomeModule
     ]
 })
 export class CoreModule {

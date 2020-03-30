@@ -1,32 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'lick-data/lick-data';
+import { LickyLoginService } from 'licky-services';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   logo = "assets/images/logo.png";
   logoName = "16AHEAD";
   companyLink = "/";
-  menuItems: any[] = [
+  menuItems: any[] = [];
+  private _notLoggedInMenu: any[] = [
     {
-      "link" : "/login",
-      "name" : "Login",
+      "link": "/login",
+      "name": "Login",
     },
     {
-      "link" : "/sign-up",
-      "name" : "Sign Up"
+      "link": "/sign-up",
+      "name": "Sign Up"
     }
   ];
+  private _loggedInMenu: any[] = [
+    {
+      "link": "/logout",
+      "name": "Logout",
+    },
+  ]
   isThankYouHidden: boolean = true;
-  team : User[] = [
+  team: User[] = [
     {
       "status": "Active",
-      "account" : "null",
+      "account": "null",
       "email": "vikki.owens@taliferro.com",
       "name": "Vikki Owens",
       "helpNeeded": false,
@@ -47,7 +56,7 @@ export class HomeComponent implements OnInit {
     },
     {
       "status": "Active",
-      "account" : "null",
+      "account": "null",
       "email": "ty.showers@taliferro.com",
       "name": "Tyrone Showers",
       "helpNeeded": false,
@@ -65,22 +74,44 @@ export class HomeComponent implements OnInit {
       "userImage": "https://firebasestorage.googleapis.com/v0/b/addieprod.appspot.com/o/app-images%2Fteam-slider2.jpg?alt=media&token=8487f9ca-ab68-4812-a9d2-bbea95399ca4",
       "contact": { "name": "Tyrone Showers", "profession": "<span>Engineer</span>", "shared": true, "firstName": "Tyrone", "lastName": "Showers" }
     }
-  ]
+  ];
 
-  constructor(public router: Router) { }
+  private _firebaseUserSubscription : Subscription;
+
+  constructor(public router: Router, private _loginService: LickyLoginService) { }
 
   ngOnInit(): void {
+    this._firebaseUserSubscription = this._loginService.firebaseUser.subscribe((firebaseUser) => {
+      console.info("firebaseUser Status", firebaseUser);
+      this.setMenu(firebaseUser);
+    })
   }
 
-  onEmailAddress(emailAddress) : void {
+  ngOnDestroy() {
+    if (this._firebaseUserSubscription)
+      this._firebaseUserSubscription.unsubscribe();
+  }
+
+  private setMenu(firebaseUser): void {
+    if (firebaseUser) {
+      console.info("Logged In", firebaseUser);
+      this.menuItems = this._loggedInMenu;
+    }
+    else {
+      console.info("Not Logged In", firebaseUser);
+      this.menuItems = this._notLoggedInMenu;
+    }
+  }
+
+  onEmailAddress(emailAddress): void {
     console.log(JSON.stringify(emailAddress))
   }
 
-  onContactUs(contact) : void {
+  onContactUs(contact): void {
     console.log(JSON.stringify(contact))
   }
 
-  onTryIt(link) : void {
+  onTryIt(link): void {
     this.router.navigate([link])
   }
 }
