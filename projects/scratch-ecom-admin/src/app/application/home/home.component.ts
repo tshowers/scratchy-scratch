@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'lick-data/lick-data';
-import { LickyLoginService } from 'licky-services';
+import { User, Contact } from 'lick-data';
+import { LickyLoginService, LEADS } from 'licky-services';
 import { Subscription } from 'rxjs';
+import { DataMediationService } from '../../shared/services/data-mediation.service';
 
 @Component({
   selector: 'app-home',
@@ -27,11 +28,20 @@ export class HomeComponent implements OnInit, OnDestroy {
   ];
   private _loggedInMenu: any[] = [
     {
+      "link": "/stores/dashboard",
+      "name": "Dashboard",
+    },
+    {
+      "link": "/stores",
+      "name": "Stores",
+    },
+    {
       "link": "/logout",
       "name": "Logout",
     },
   ]
   isThankYouHidden: boolean = true;
+  contactUsDescriptionText = "You will not be spammed."
   team: User[] = [
     {
       "status": "Active",
@@ -78,7 +88,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private _firebaseUserSubscription : Subscription;
 
-  constructor(public router: Router, private _loginService: LickyLoginService) { }
+  constructor(public dm: DataMediationService, public router: Router, private _loginService: LickyLoginService) { }
 
   ngOnInit(): void {
     this._firebaseUserSubscription = this._loginService.firebaseUser.subscribe((firebaseUser) => {
@@ -103,15 +113,45 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  onEmailAddress(emailAddress): void {
-    console.log(JSON.stringify(emailAddress))
+  onEmailAddress(event): void {
+    console.log(JSON.stringify(event));
+    this.createLead(event);
+    this.isThankYouHidden = false;
+    setTimeout(() => {
+      this.isThankYouHidden = true;
+    }, 5000)
+  }
+
+  createLead(c) : void {
+    const contact = new Contact();
+    contact.emailAddresses = c.emailAddress;
+    contact.description = "From home page solicitation";
+    this.dm.db.writeData(LEADS, contact).subscribe((key) =>{
+      contact.id = key
+    })
   }
 
   onContactUs(contact): void {
-    console.log(JSON.stringify(contact))
+    console.log(JSON.stringify(contact));
+    this.contactUsDescriptionText = "Thank You!";
+    this.createContactRecord(contact);
+    setTimeout(() => {
+      this.contactUsDescriptionText = "You will not be spammed.";
+    }, 5000)
   }
 
   onTryIt(link): void {
     this.router.navigate([link])
+  }
+
+  createContactRecord(c) : void {
+    const contact = new Contact();
+    contact.firstName = c.firstName;
+    contact.lastName = c.lastName;
+    contact.emailAddresses = c.emailAddress;
+    contact.description = c.message;
+    this.dm.db.writeData(LEADS, contact).subscribe((key) =>{
+      contact.id = key
+    })
   }
 }

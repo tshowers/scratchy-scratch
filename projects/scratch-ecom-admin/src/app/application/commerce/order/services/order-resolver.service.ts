@@ -20,7 +20,7 @@ export class OrderResolverService {
     if (id1)
       return this.getOrder(id1, id2);
     else
-      this.router.navigate(['application', 'stores'])
+      this.router.navigate([ 'stores'])
   }
 
   getOrder(id1, id2) : Observable<Order> {

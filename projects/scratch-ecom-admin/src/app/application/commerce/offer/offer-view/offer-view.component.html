@@ -1,1 +1,84 @@
-<p>offer-view works!</p>
+<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)">
+</licky-lick-app-widget-breadcrumb>
+<div class="d-flex justify-content-center">
+  <div class="card" style="width: 30rem;">
+    <a *ngIf="offer?.url" title="Review Product"
+      routerLink="/application/stores/{{store?.id}}/catalogs/{{catalog?.id}}/products/{{offer?.product_id}}"><img
+        class="card-img-top" src="{{offer?.url}}" alt="{{offer?.name}}"></a>
+    <div class="card-body">
+      <h5 class="card-title">{{offer?.title}}</h5>
+      <div innerHTML={{offer?.description}}></div>
+      <div innerHTML={{offer?.longDescription}}></div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngIf="offer?.name">
+          <div class="row">
+            <div class="col"> <strong class="ta-label">name:</strong> </div>
+            <div class="col">
+              <p class="card-text">{{offer?.name}}</p>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item" *ngIf="offer?.type">
+          <div class="row">
+            <div class="col"> <strong class="ta-label">type:</strong> </div>
+            <div class="col">
+              <p class="card-text">{{offer?.type}}</p>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item" *ngIf="offer?.expirationDate">
+          <div class="row">
+            <div class="col"> <strong class="ta-label">expirationDate:</strong> </div>
+            <div class="col">
+              <p class="card-text">{{offer?.expirationDate | date}}</p>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item" *ngIf="offer?.providerTag">
+          <div class="row">
+            <div class="col"> <strong class="ta-label">provider:</strong> </div>
+            <div class="col">
+              <p class="card-text">{{offer?.providerTag}}</p>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item" *ngIf="offer?.category">
+          <div class="row">
+            <div class="col"> <strong class="ta-label">category:</strong> </div>
+            <div class="col">
+              <p class="card-text">{{offer?.category}}</p>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item" *ngIf="offer?.attributes">
+          <div class="row">
+            <div class="col"> <strong class="ta-label">attributes:</strong> </div>
+            <div class="col">
+              <p class="card-text">{{offer?.attributes}}</p>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item" *ngIf="offer?.keywords">
+          <div class="row">
+            <div class="col"> <strong class="ta-label">keywords:</strong> </div>
+            <div class="col">
+              <p class="card-text">{{offer?.keywords}}</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <a *ngIf="offer?.targetURI" routerLink="offer?.targetURI" class="btn btn-primary">Learn More</a>
+    </div>
+    <div class="row">
+      <div class="col text-center">
+        <button *ngIf="canEdit" class="btn btn-primary btn-lg btn-round" (click)="onEdit()">Edit
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </button>&nbsp;
+        <button *ngIf="canDelete" class="btn btn-danger btn-lg btn-round" (click)="onDelete()">Delete
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>

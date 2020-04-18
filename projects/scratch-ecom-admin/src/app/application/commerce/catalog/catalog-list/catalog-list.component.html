@@ -1,1 +1,13 @@
-<p>catalog-list works!</p>
+<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)">
+</licky-lick-app-widget-breadcrumb>
+<licky-lick-app-widget-stats15 *ngIf="(data$ | async)?.length > 0" [total]="totalRecords" [headingText]="'Catalogs'"
+  [iconClass1]="'fa fa-paperclip'" [count1]="uploadCatalogs" [countText1]="'With Attachment'"
+  [iconClass2]="'fa fa-share-alt-square'" [count2]="sharedCatalogs" [countText2]="'Shared'"
+  [iconClass3]="'fa fa-pencil-square-o'" [count3]="draftCatalogs" [countText3]="'Draft'" [iconClass4]="'fa fa-trash-o'"
+  [count4]="deletedCatalogs" [countText4]="'Deleted'" (newItemEvent)="onNewItem()" [router]="router">
+</licky-lick-app-widget-stats15>
+<licky-lick-app-widget-table-data [data]="data$ | async" (newItemEvent)="onNewItem()" (detailEvent)="onDetail($event)"
+  (deleteEvent)="onDelete($event)" (editEvent)="onEdit($event)" [headingText]="'Catalogs'" [router]="router"
+  [pageSize]="pageSize" [totalRecords]="totalRecords" (currentPageEvent)="newPage($event)"
+  [path]="STORES + '/' + store_id">No Catalogs Were Found</licky-lick-app-widget-table-data>
+<licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>

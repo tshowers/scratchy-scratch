@@ -1,26 +1,44 @@
 <aside class="aside-menu">
   <div class="aside-header bg-theme text-uppercase">{{panelHeaderText}}</div>
   <div class="aside-body">
-    <section class="container-fluid section-block how-to-use-2 color-block">
-    <h2>{{helpHeaderText}}</h2>
-    <div class="block-desc">
-      <p>{{descriptionText}}</p>
-    </div>
-    <div class="how-to-block-2" *ngIf="header1">
-      <span class="number">1</span>
-      <h3>{{header1}}</h3>
-      <p>{{description1}}</p>
-    </div> <!-- .how-to-block -->
-    <div class="how-to-block-2" *ngIf="header2">
-      <span class="number">2</span>
-      <h3>{{header2}}</h3>
-      <p>{{description2}}</p>
-    </div> <!-- .how-to-block -->
-    <div class="how-to-block-2" *ngIf="header3">
-      <span class="number">3</span>
-      <h3>{{header3}}</h3>
-      <p>{{description3}}</p>
-    </div> <!-- .how-to-block -->
+
+    <section id="side-faq" class="container-fluid section-block faq">
+      <div class="container-fluid">
+        <div class="row">
+    
+          <h2 class="wow fadeInUp">{{helpHeaderText}}</h2>
+          <div class="block-desc wow fadeInUp">
+            <p>{{descriptionText}}</p>
+          </div>
+    
+          <div class="col-md-12">
+            <!-- Accordion -->
+            <div id="accordion" class="panel-group faq-group" role="tablist" aria-multiselectable="true">
+    
+              <div class="panel panel-default wow slideInUp" *ngFor="let item of faq; let i = index">
+                <div class="panel-heading" role="tab" id="heading{{i}}">
+                  <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{i}}" aria-expanded="true" aria-controls="'collapse' + i">
+                      {{item?.heading}}
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse{{i}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="'heading' + i">
+                  <div class="panel-body">
+                    <p>
+                      {{item?.description}}
+                    </p>
+                  </div>
+                </div>
+              </div> <!-- .panel-default -->
+    
+    
+            </div> <!-- .panel-group -->
+          </div>
+    
+        </div> <!-- .row -->
+      </div> <!-- .container -->
     </section>
+
   </div>
 </aside>

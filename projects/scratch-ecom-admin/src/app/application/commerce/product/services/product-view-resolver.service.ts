@@ -26,9 +26,9 @@ export class ProductViewResolverService {
         return (product.id == id3) ? product : null;
       } else {
         if (id1 && id2)
-          this.router.navigate(['application', 'stores', id1, 'catalogs', id2, 'products']);
+          this.router.navigate([ 'stores', id1, 'catalogs', id2, 'products']);
         else
-          this.router.navigate(['application', 'stores']);
+          this.router.navigate([ 'stores']);
         return null;
       }
     }));

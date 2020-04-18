@@ -21,7 +21,7 @@ export class ProductBundleResolverService {
     if (id1)
       return this.getProductBundle(id1, id2, id3);
     else
-      this.router.navigate(['application', 'stores'])
+      this.router.navigate([ 'stores'])
   }
 
   getProductBundle(id1, id2, id3) : Observable<ProductBundle> {

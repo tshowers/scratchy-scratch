@@ -21,7 +21,7 @@ export class StoreViewResolverService {
         this.incrementViewCount(store, id);
         return store;
       } else {
-        this.router.navigate(['application', 'stores']);
+        this.router.navigate([ 'stores']);
         return null;
       }
     }));

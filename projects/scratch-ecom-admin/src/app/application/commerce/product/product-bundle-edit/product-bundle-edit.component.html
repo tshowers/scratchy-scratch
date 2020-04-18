@@ -1,1 +1,164 @@
-<p>product-bundle-edit works!</p>
+<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)">
+</licky-lick-app-widget-breadcrumb>
+<div class="card">
+  <div class="card-body">
+    <form #dataForm="ngForm" class="form-group">
+      <div class="container-fluid"> <br>
+        <div *ngIf="currentUpload">
+          <div class="progress" *ngIf="currentUpload?.progress < 100">
+            <div class="progress-bar progress-bar-striped progress-bar-animated"
+              [ngStyle]="{ 'width': currentUpload?.progress + '%' }">Progress: {{currentUpload?.name}} |
+              {{currentUpload?.progress}}% Complete</div>
+          </div>
+        </div>
+        <ngb-tabset type="pills" #t="ngbTabset">
+          <ngb-tab title="Attributes" id="nameTab">
+            <ng-template ngbTabContent>
+              <div class="form-group"> <label for="name">Title</label> <input [(ngModel)]="productBundle.name"
+                  #productBundleName="ngModel" id="name" name="name" placeholder="Product Bundle Title" type="text"
+                  class="form-control form-control-lg ta-input-element" required autofocus>
+                <div [hidden]="productBundleName.valid || productBundleName.pristine" class="alert alert-danger"> <i
+                    class="fa fa-exclamation-triangle" aria-hidden="true"></i> Title required </div>
+              </div>
+              <div class="form-group"> <label for="productBundleText">Description</label>
+                <textarea name="productBundleText" [(ngModel)]="productBundle.description" id="productBundleText"
+                  name="productBundleText" placeholder="Product Bundle Description" cols="30" rows="10"
+                  class="form-control form-control-lg ta-input-element" required></textarea>
+              </div>
+              <div class="form-group"> <label for="productBundlePrice">Price</label> <input
+                  [(ngModel)]="productBundle.price" id="productBundlePrice" name="productBundlePrice"
+                  placeholder="Price" type="number" class="form-control form-control-lg input-element"
+                  placeholder="x.xx"></div>
+              <div class="form-group"><label for="productBundleHourlyRate">Hourly Price</label> <input
+                  [(ngModel)]="productBundle.hourlyRate" id="productBundleHourlyRate" name="productBundleHourlyRate"
+                  type="number" class="form-control form-control-lg input-element"></div>
+              <div class="form-group">
+                <label>Status</label><br>
+                <ui-switch [(ngModel)]="productBundle.activated" id="activated" name="activated"></ui-switch>
+              </div>
+              <div class="form-group" *ngIf="productBundle.id">
+                <img *ngIf="productBundle?.url" src="{{productBundle?.url}}" alt="productBundle?.url"
+                  class="img-fluid mx-auto d-block img-thumbnail">
+              </div>
+              <div class="form-group">
+                <div class="form-group"><small>For best results ensure image is 1920 x 1080</small> <br>
+                  <label for="selectedFiles"><span *ngIf="productBundle.id">Replace </span> Image</label>
+                  <input class="form-control form-control-lg ta-input-element" type="file" id="selectedFiles"
+                    name="selectedFiles" (change)="detectFiles($event)" accept=".jpg, .jpeg, .png, .gif"> </div>
+              </div>
+
+
+
+
+              <div class="form-group">
+                <label for="dataDraft"
+                  title="Draft indicates the record is not finished and should not be made public">Draft </label><br>
+                <ui-switch [(ngModel)]="productBundle.draft" id="dataDraft" name="dataDraft"></ui-switch>
+
+              </div>
+              <div class="form-group">
+                <label for="dataDraft"
+                  title="Draft indicates the record is not finished and should not be made public">Shared </label><br>
+                <ui-switch [(ngModel)]="productBundle.shared" id="dataShare" name="dataShare"></ui-switch>
+
+              </div>
+              <div class="form-group">
+                <label for="dataDeleted"
+                  title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted
+                </label><br>
+                <ui-switch [(ngModel)]="productBundle.deleted" id="dataDeleted" name="dataDeleted"></ui-switch>
+
+              </div>
+
+              <div class="form-group"><label for="dataKeywords">Keywords</label> <input
+                  [(ngModel)]="productBundle.keywords" id="dataKeywords" name="dataKeywords" type="text"
+                  class="form-control form-control-lg ta-input-element"
+                  placeholder="Enter keywords seperated by commas"></div>
+              <h3>Sections</h3>
+              <div class="form-group">
+                <label for="sectionName">Section Name</label>
+                <input [(ngModel)]="section.name" id="sectionName" name="sectionName" placeholder="Section Name"
+                  class="form-control form-control-lg ta-input-element" type="text">
+              </div>
+              <div class="form-group">
+                <label for="sectionDescription">Section Text</label>
+                <textarea [(ngModel)]="section.description" id="sectionDescription" name="sectionDescription" rows="5"
+                  cols="80" class="form-control form-control-lg ta-input-element"></textarea>
+              </div>
+
+              <button type="button" class="btn btn-primary" (click)="newSection()"><i class="fa fa-plus"></i>
+                Add Additional Sections</button>
+              <br>
+              <div *ngIf="(productBundle && productBundle.sections && (productBundle.sections.length > 0))">
+                <ul class="list-group">
+                  <li class="list-group-item" *ngFor="let section of productBundle.sections; let i = index">
+                    <div class="row">
+                      <div class="col-2">
+                        <button type="button" class="btn btn-primary btn-sm" (click)="editSection(i)"><i
+                            class="fa fa-pencil-square-o"></i> Edit </button>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removeSection(i)"><i
+                            class="fa fa-times"></i> Delete </button>
+                      </div>
+                      <div class="col-10">
+                        <h2> {{section?.name}}</h2>
+                        ({{section?.description}})
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Products" [disabled]="!dataForm.form.valid">
+            <ng-template ngbTabContent>
+              <div class="form-group"> <label for="productsInBundle">Products Selection</label>
+                <select [(ngModel)]="product" name="productsInBundle" id="productsInBundle"
+                  class='form-control form-control-lg ta-input-element'>
+                  <option value=""></option>
+                  <option *ngFor="let p of products" value="{{p.id}}">{{p.name}}</option>
+                </select> </div>
+              <div style="cursor:pointer" (click)="newProductForBundle()" *ngIf="product"> <i
+                  class="fa fa-plus-circle text-theme fa-lg ta-add"></i> Click to Add to Bundle </div>
+              <div *ngIf="productBundle.products.length > 0">
+                <div class="list-group">
+                  <div class="list-group-item list-group-item-action">
+                    <div class="row">
+                      <div class="col"></div>
+                      <div class="col">Name</div>
+                      <div class="col">Description</div>
+                      <div class="col">Image</div>
+                    </div>
+                  </div>
+                  <div class="list-group-item" *ngFor="let pd of productBundle.products; let i = index">
+                    <div class="row">
+                      <div class="col"> <i class="fa fa-times fa-lg ta-delete" (click)="removeProductInBundle(i)"></i>
+                      </div>
+                      <div class="col"> {{pd?.name}} </div>
+                      <div class="col">
+                        <div innerHTML={{pd?.description}}></div>
+                      </div>
+                      <div class="col"> <img src="{{pd?.url}}" alt="{{pd?.name}}" class="ta-list-image"> </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+        <div class="row">
+          <div class="col text-center">
+            <button class="btn btn-primary btn-lg btn-round" (click)="onSubmit();t.select('nameTab')" type="submit"
+              [disabled]="!dataForm.form.valid" title="Submit to database">Save
+              <i class="fa fa-cloud" aria-hidden="true"></i>
+            </button> <button *ngIf="canDelete" class="btn btn-damger btn-lg"
+              (click)="onDelete();dataForm.reset();t.select('nameTab')" [disabled]="!productBundle.id">Delete
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>

@@ -18,7 +18,7 @@
           <div class="header-newsletter-form wow fadeIn">
             <div class="header-center-form">
               <form #dataForm="ngForm" id="header-newsletter-form" class="newsletter-form">
-                <input [(ngModel)]="emailAddress" id="header-newsletter-email" class="newsletter-email" type="email" name="emailAddress" placeholder="Enter your email" required>
+                <input [(ngModel)]="emailAddress" id="header-newsletter-email" class="newsletter-email" type="email" name="emailAddress" placeholder="Enter your email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
                 <input id="header-newsletter-submit" class="button-form newsletter-submit" name="newsletter-submit" value="Submit" type="submit" (click)="onSubmit();dataForm.reset();" [disabled]="!dataForm.form.valid">
                 <p [hidden]="thankYou">Thank You! We'll be in touch.</p>
 

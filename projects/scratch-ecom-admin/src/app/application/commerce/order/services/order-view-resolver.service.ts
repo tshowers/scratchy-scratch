@@ -25,9 +25,9 @@ export class OrderViewResolverService {
         return (order.id == id2) ? order : null;
       } else {
         if (id1)
-          this.router.navigate(['application', 'stores', id1, 'orders']);
+          this.router.navigate([ 'stores', id1, 'orders']);
         else
-          this.router.navigate(['application', 'stores']);
+          this.router.navigate([ 'stores']);
         return null;
       }
     }));

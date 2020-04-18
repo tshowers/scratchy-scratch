@@ -26,9 +26,9 @@ export class ProductBundleViewResolverService {
         return (productBundle.id == id3) ? productBundle : null;
       } else {
         if (id1 && id2)
-          this.router.navigate(['application', 'stores', id1, 'catalogs', id2, 'product-bundles']);
+          this.router.navigate([ 'stores', id1, 'catalogs', id2, 'product-bundles']);
         else
-          this.router.navigate(['application', 'stores']);
+          this.router.navigate([ 'stores']);
         return null;
       }
     }));

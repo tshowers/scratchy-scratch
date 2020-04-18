@@ -1,1 +1,13 @@
-<p>product-bundle-list works!</p>
+<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)">
+</licky-lick-app-widget-breadcrumb>
+<licky-lick-app-widget-stats15 *ngIf="(data$ | async)?.length > 0" [total]="totalRecords"
+  [headingText]="'Product Bundles'" [iconClass1]="'fa fa-paperclip'" [count1]="uploadProductBundles"
+  [countText1]="'With Attachment'" [iconClass2]="'fa fa-share-alt-square'" [count2]="sharedProductBundles"
+  [countText2]="'Shared'" [iconClass3]="'fa fa-pencil-square-o'" [count3]="draftProductBundles" [countText3]="'Draft'"
+  [iconClass4]="'fa fa-trash-o'" [count4]="deletedProductBundles" [countText4]="'Deleted'" (newItemEvent)="onNewItem()"
+  [router]="router"></licky-lick-app-widget-stats15>
+<licky-lick-app-widget-table-data [data]="data$ | async" (newItemEvent)="onNewItem()" (detailEvent)="onDetail($event)"
+  (deleteEvent)="onDelete($event)" (editEvent)="onEdit($event)" [headingText]="'ProductBundles'" [router]="router"
+  [pageSize]="pageSize" [totalRecords]="totalRecords" (currentPageEvent)="newPage($event)" [path]="PRODUCT_BUNDLES">
+  No Product Bundles Are Created</licky-lick-app-widget-table-data>
+<licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>

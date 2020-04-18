@@ -27,9 +27,11 @@ export class LickAppWidgetNotificationTaskComponent implements OnInit, AfterView
   ngOnInit() {
     if (this.db && this.loginService)
       this.setNotifications();
+    else
+      this.tasksChecked = true;
   }
 
-  private setNotifications() : void {
+  private setNotifications(): void {
     this._user = this.loginService.getUser();
     this.tasks$ = this.db.getDataCollection(TASKS)
       .pipe(map((tasks: Task[]) => {

@@ -1,1 +1,7 @@
-<p>dashboard works!</p>
+<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)">
+</licky-lick-app-widget-breadcrumb>
+<licky-lick-marketing-faq2 *ngIf="totalRecords == 0" [headingText]="FAQheadingText" [descriptionText]="descriptionText"
+  [faqHeading1]="faqHeading1" [faqDescription1]="faqDescription1" [faqHeading2]="faqHeading2"
+  [faqDescription2]="faqDescription2" [faqHeading3]="faqHeading3" [faqDescription3]="faqDescription3"
+  [faqHeading4]="faqHeading4" [faqDescription4]="faqDescription4"></licky-lick-marketing-faq2>
+<licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Renderer2, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Contact } from 'lick-data';
+import { MenuIcon } from 'lick-app-widget-notification';
 import { LickyLoginService, FirebaseDataService } from 'licky-services';
 import { LickAppWidgetMenuService } from './lick-app-widget-menu.service';
 
@@ -34,6 +35,7 @@ export class LickAppWidgetMenuComponent implements OnInit {
   @Input() taskLink;
   @Input() cartLink;
   searchArgument = '';
+  @Input() menuIcons: MenuIcon[] = [];
 
   leftSidebar: boolean = true;
   rightSidebar: boolean = false;

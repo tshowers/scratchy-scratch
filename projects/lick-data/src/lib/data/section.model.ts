@@ -1,4 +1,4 @@
 export class Section {
   public name;
-  public description;
+  public description = "";
 }

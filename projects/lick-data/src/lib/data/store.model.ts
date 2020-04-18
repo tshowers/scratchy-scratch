@@ -10,7 +10,7 @@ export class Store  {
   public link?: string;
   public shared: boolean = false;
 
-  public description: string;
+  public description: string = "";
   public stripeKey: string;
 
   public publishedAt;

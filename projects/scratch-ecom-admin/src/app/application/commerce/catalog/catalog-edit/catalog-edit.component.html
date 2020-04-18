@@ -1,1 +1,102 @@
-<p>catalog-edit works!</p>
+<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)">
+</licky-lick-app-widget-breadcrumb>
+<div class="card">
+  <div class="card-body">
+    <form #dataForm="ngForm" class="form-group">
+      <div class="container-fluid">
+        <div *ngIf="currentUpload">
+          <div class="progress" *ngIf="currentUpload?.progress < 100">
+            <div class="progress-bar progress-bar-striped progress-bar-animated"
+              [ngStyle]="{ 'width': currentUpload?.progress + '%' }">Progress: {{currentUpload?.name}} |
+              {{currentUpload?.progress}}% Complete</div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="form-group"> <label for="name">Name</label> <input [(ngModel)]="catalog.name" #name="ngModel"
+            id="name" name="name" placeholder="Catalog Name" type="text"
+            class="form-control form-control-lg ta-input-element" required autofocus>
+          <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Name required </div>
+        </div>
+        <div class="form-group"> <label for="description">Description</label>
+          <textarea [(ngModel)]="catalog.description" id="description" name="description" rows="5" cols="80"
+            class="form-control form-control-lg ta-input-element"></textarea>
+        </div>
+        <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
+          <label for="dataDraft"
+            title="Draft indicates the record is not finished and should not be made public">Draft</label>
+          <br>
+          <ui-switch [(ngModel)]="catalog.draft" id="dataDraft" name="dataDraft"></ui-switch>
+        </div>
+        <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
+          <label for="dataDeleted"
+            title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted</label>
+          <br>
+          <ui-switch [(ngModel)]="catalog.deleted" id="dataDeleted" name="dataDeleted"></ui-switch>
+        </div>
+        <div class="form-group"><label for="dataKeywords">Keywords</label> <input [(ngModel)]="catalog.keywords"
+            id="dataKeywords" name="dataKeywords" type="text" class="form-control form-control-lg ta-input-element"
+            placeholder="Enter keywords seperated by commas"></div>
+        <div class="form-group" *ngIf="catalog?.id">
+          <img *ngIf="catalog?.url" src="{{catalog?.url}}" alt="catalog?.url"
+            class="img-fluid mx-auto d-block img-thumbnail">
+        </div>
+        <div class="form-group">
+          <div class="form-group"><small>For best results ensure image is 1920 x 1080</small> <br>
+            <label for="selectedFiles"><span *ngIf="catalog.id">Replace </span> Image</label>
+            <input class="form-control form-control-lg ta-input-element" type="file" id="selectedFiles"
+              name="selectedFiles" (change)="detectFiles($event)" accept=".jpg, .jpeg, .png, .gif"> </div>
+        </div>
+
+        <h3>Sections</h3>
+        <div class="form-group">
+          <label for="sectionName">Section Name</label>
+          <input [(ngModel)]="section.name" id="sectionName" name="sectionName" placeholder="Section Name"
+            class="form-control form-control-lg ta-input-element" type="text">
+        </div>
+        <div class="form-group">
+          <label for="sectionDescription">Section Text</label>
+          <textarea [(ngModel)]="section.description" id="sectionDescription" name="sectionDescription" rows="5"
+            cols="80" class="form-control form-control-lg ta-input-element"></textarea>
+        </div>
+
+        <button type="button" class="btn btn-primary" (click)="newSection()"><i class="fa fa-plus"></i>
+          Add Additional Sections</button>
+        <br>
+        <div *ngIf="(catalog && catalog.sections && (catalog.sections.length > 0))">
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let section of catalog.sections; let i = index">
+              <div class="row">
+                <div class="col-2">
+                  <button type="button" class="btn btn-primary btn-sm" (click)="editSection(i)"><i
+                      class="fa fa-pencil-square-o"></i> Edit </button>
+                  <button type="button" class="btn btn-danger btn-sm" (click)="removeSection(i)"><i
+                      class="fa fa-times"></i> Delete </button>
+                </div>
+                <div class="col-10">
+                  <h2> {{section?.name}}</h2>
+                  ({{section?.description}})
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="row">
+          <div class="col text-center">
+            <button class="btn btn-primary btn-lg btn-round" (click)="onSubmit()" type="submit"
+              [disabled]="!dataForm.form.valid" title="Submit to database">Save
+              <i class="fa fa-cloud" aria-hidden="true"></i>
+            </button>
+            <button *ngIf="canDelete" class="btn btn-danger btn-lg btn-round" (click)="onDelete();dataForm.reset()"
+              [disabled]="!catalog.id">Delete
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>

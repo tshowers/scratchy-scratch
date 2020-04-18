@@ -1,31 +1,8 @@
-<div class="row">
-  <div class="col-6  text-right">
-    <i class="fa fa-table text-primary"
-       aria-hidden="true"></i>
-    <i class="text-theme">Toggle between table and column view</i>
-  </div>
-  <div class="col-6">
-    <ui-switch [(ngModel)]="isList"
-               size="small"></ui-switch>
-  </div>
-</div>
+<div class="col-md-12" *ngIf="data && (data.length > 0); else noData">
 
-
-
-
-
-
-
-<div class="col-md-12"
-     *ngIf="data && (data.length > 0); else noData">
-
-     <licky-lick-app-widget-card-column *ngIf="!isList"
-                                        [data]="data"
-                                        [pagination]="false"
-                                        (detailEvent)="onDetail($event)"
-                                        (deleteEvent)="onDelete($event)"
-                                        (editEvent)="onEdit($event)"
-                                        ></licky-lick-app-widget-card-column>
+  <licky-lick-app-widget-card-column *ngIf="!isList" [data]="data" [pagination]="false" (detailEvent)="onDetail($event)"
+    (deleteEvent)="onDelete($event)" (editEvent)="onEdit($event)">
+  </licky-lick-app-widget-card-column>
 
 
 
@@ -50,36 +27,30 @@
               </td>
               <td>{{item?.lastUpdated | date : 'fullDate'}}</td>
               <td class="text-nowrap">
-                <a (click)="onDetail(item)"
-                   data-toggle="tooltip"
-                   data-original-title="View">
+                <a (click)="onDetail(item)" data-toggle="tooltip" data-original-title="View">
                   <i class="fa fa-eye"></i>
                 </a>
-                <a (click)="onEdit(item)"
-                   data-toggle="tooltip"
-                   data-original-title="Edit">
+                <a (click)="onEdit(item)" data-toggle="tooltip" data-original-title="Edit">
                   <i class="fa fa-pencil text-inverse m-r-10"></i>
                 </a>
-                <a (click)="onDelete(item)" *ngIf="!item?.deleted"
-                   data-toggle="tooltip"
-                   data-original-title="Delete">
+                <a (click)="onDelete(item)" *ngIf="!item?.deleted" data-toggle="tooltip" data-original-title="Delete">
                   <i class="fa fa-close text-danger"></i>
                 </a>
               </td>
             </tr>
           </tbody>
         </table>
-        <ngb-pagination [(page)]="currentPage"
-                        (pageChange)="onPageChange($event)"
-                        [pageSize]="pageSize"
-                        [collectionSize]="totalRecords"></ngb-pagination>
+        <ngb-pagination [(page)]="currentPage" (pageChange)="onPageChange($event)" [pageSize]="pageSize"
+          [collectionSize]="totalRecords"></ngb-pagination>
 
       </div>
     </div>
-    <!-- end card-body -->
   </div>
+
   <!-- end card -->
 </div>
 <ng-template #noData>
-  <licky-lick-app-widget-no-data (newItemEvent)="onNewItem()"></licky-lick-app-widget-no-data>
+  <licky-lick-app-widget-no-data (newItemEvent)="onNewItem()">
+    <ng-content></ng-content>
+  </licky-lick-app-widget-no-data>
 </ng-template>

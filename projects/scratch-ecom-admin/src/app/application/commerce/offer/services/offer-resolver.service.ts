@@ -21,7 +21,7 @@ export class OfferResolverService {
     if (id1)
       return this.getOffer(id1, id2, id3);
     else
-      this.router.navigate(['application', 'stores'])
+      this.router.navigate([ 'stores'])
   }
 
   getOffer(id1, id2, id3) : Observable<Offer> {

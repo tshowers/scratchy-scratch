@@ -32,6 +32,8 @@ export class LickAppWidgetNotificationMessageComponent implements OnInit, AfterV
   ngOnInit() {
     if (this.db && this.loginService)
       this.setNotifications();
+    else
+      this.messagesChecked = true;
   }
 
   private setNotifications(): void {

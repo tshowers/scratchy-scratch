@@ -786,6 +786,18 @@
       "lick-marketing-related-products1": [
         "dist/lick-marketing-related-products1/lick-marketing-related-products1",
         "dist/lick-marketing-related-products1"
+      ],
+      "lick-app-widget-notification": [
+        "dist/lick-app-widget-notification/lick-app-widget-notification",
+        "dist/lick-app-widget-notification"
+      ],
+      "lick-app-widget-drop-box": [
+        "dist/lick-app-widget-drop-box/lick-app-widget-drop-box",
+        "dist/lick-app-widget-drop-box"
+      ],
+      "lick-app-widget-section-edit": [
+        "dist/lick-app-widget-section-edit/lick-app-widget-section-edit",
+        "dist/lick-app-widget-section-edit"
       ]
     }
   },

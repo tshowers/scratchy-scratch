@@ -26,6 +26,8 @@ export class LickAppWidgetNotificationAlertComponent implements OnInit, AfterVie
   ngOnInit() {
     if (this.loginService && this.db) {
       this.setNotifications();
+    } else {
+      this.alertsChecked = true;
     }
 
   }

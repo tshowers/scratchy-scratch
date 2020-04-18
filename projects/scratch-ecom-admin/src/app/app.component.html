@@ -1,10 +1,13 @@
 <div *ngIf="!isHome; else home">
-  <licky-lick-app-widget-menu></licky-lick-app-widget-menu>
+  <licky-lick-app-widget-menu [menuIcons]="homeMenu" [logo]="'assets/images/logo.png'" [photoURL]="dm.photoURL"
+    [displayName]="dm.displayName" [isTaskNotification]="false" [isCart]="false" [emailAddress]="dm.emailAddress"
+    [loggedIn]="dm.loggedIn" [userName]="dm.userName" [emailVerified]="dm.emailVerified" (settingsEvent)="onSettings()"
+    [logoutPage]="'/logout'" [loginService]="dm.loginService" [companyName]="'AHEAD'"></licky-lick-app-widget-menu>
   <div class="app-body">
-    <licky-lick-app-widget-left-side-menu></licky-lick-app-widget-left-side-menu>
+    <licky-lick-app-widget-left-side-menu [newsService]="newsService"></licky-lick-app-widget-left-side-menu>
     <main class="main">
       <div class="container-fluid">
-          <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
       </div>
       <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
     </main>
@@ -15,5 +18,3 @@
 <ng-template #home>
   <router-outlet></router-outlet>
 </ng-template>
-
-

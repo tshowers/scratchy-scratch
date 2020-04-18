@@ -28,6 +28,8 @@ export class LickAppWidgetNotificationCartComponent implements OnInit, OnDestroy
   ngOnInit() {
     if (this.db && this.loginService) {
       this.setUser();
+    } else {
+      this.cartChecked = true;
     }
   }
 

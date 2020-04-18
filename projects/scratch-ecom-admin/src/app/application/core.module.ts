@@ -8,10 +8,13 @@ import { ProductModule } from './commerce/product/product.module';
 import { StoreModule } from './commerce/store/store.module';
 import { AccessModule } from './access/access.module';
 import { DashboardModule } from './commerce/dashboard/dashboard.module';
+import { SettingsModule } from './settings/settings.module';
 import { HomeModule } from './home/home.module';
 import { LickyServicesModule } from 'licky-services';
-
+import { DataMediationService } from '../shared/services/data-mediation.service';
+import { BreadCrumbService } from '../shared/services/bread-crumb.service';
 import { environment } from '../../environments/environment';
+
 
 export const firebaseConfig = environment.firebaseConfig;
 
@@ -28,12 +31,14 @@ export const firebaseConfig = environment.firebaseConfig;
         StoreModule,
         AccessModule,
         DashboardModule,
-        HomeModule
+        HomeModule,
+        SettingsModule
     ],
     declarations: [
     ],
     providers: [
-        // HomeModule
+        DataMediationService,
+        BreadCrumbService
     ]
 })
 export class CoreModule {

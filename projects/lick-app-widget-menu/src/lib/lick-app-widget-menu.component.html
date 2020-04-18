@@ -21,8 +21,7 @@
       <div class="hamburger-inner"></div>
     </div>
   </div>
-  <!-- end hamburger -->
-  <div class="navbar-search d-none d-xl-block">
+  <!-- <div class="navbar-search d-none d-xl-block">
     <form #searchForm="ngForm"
           class="form-group">
       <div class="input-group"> <button [ngStyle]="{'display' : searchDisplay}"
@@ -52,9 +51,9 @@
                required>
       </div>
     </form>
-  </div>
-  <!-- end navbar-search -->
+  </div> -->
   <ul class="nav navbar-nav ">
+    <licky-lick-app-widget-notification *ngFor="let m of menuIcons" [menuIcon]="m"></licky-lick-app-widget-notification>
     <licky-lick-app-widget-notification-alert *ngIf="isAlertNotification"
                                               [loginService]="loginService"
                                               [db]="db"

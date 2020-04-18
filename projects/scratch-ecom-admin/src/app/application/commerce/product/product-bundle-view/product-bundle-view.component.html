@@ -1,1 +1,36 @@
-<p>product-bundle-view works!</p>
+<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)">
+</licky-lick-app-widget-breadcrumb>
+<div class="d-flex justify-content-center">
+  <div class="card" style="width: 30rem;"> <img *ngIf="productBundle?.url" class="card-img-top"
+      src="{{productBundle?.url}}" alt="{{productBundle?.name}}" style="height: 220px">
+    <div class="card-header">
+      <h4 class="card-title">{{productBundle?.name}}</h4>
+    </div>
+    <div class="card-body">
+      <p class="card-subtitle mb-2 text-muted"> <span *ngIf="productBundle.activated">Active: Yes</span> <span
+          *ngIf="!productBundle.activated">Active: No</span></p>
+      <div innerHTML={{productBundle?.description}}></div>
+      <p class="card-text">Catalog: <br> {{catalog?.name}}</p>
+      <p class="card-text">Store: <br> {{store?.name}}</p>
+      <div class="list-group" *ngIf="productBundle.products.length > 0">
+        <div class="list-group-item list-group-item-action" *ngFor="let p of productBundle.products">
+          <div class="row">
+            <div class="col"> <strong>{{p?.name }}</strong> </div>
+            <div class="col"> {{ p.price | currency:'USD':'symbol' }} <span *ngIf="p?.hourlyRate"> per hour</span>
+            </div>
+            <div class="col"> <img src="{{p?.url}}" alt="{{p?.name}}" class="ta-store-list-image"> </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center"> <button *ngIf="canEdit" class="btn btn-primary btn-lg btn-round"
+            (click)="onEdit()">Edit
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          </button> <button *ngIf="canDelete" class="btn btn-danger btn-lg btn-round" (click)="onDelete()">Delete
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </button> </div>
+      </div>
+    </div>
+  </div>
+</div>
+<licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>

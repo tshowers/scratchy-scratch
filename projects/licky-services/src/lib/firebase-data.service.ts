@@ -13,6 +13,7 @@ export const PARALLAXS = '/parallaxs';
 export const FAVORITES = '/favorites';
 export const SERVICE_BOXES = '/service-boxes';
 export const CONTACTS = '/contacts';
+export const LEADS = '/leads';
 export const DOCUMENTS = '/uploads';
 export const DROPDOWNS = '/dropdowns';
 export const EMAILS = '/emails';
