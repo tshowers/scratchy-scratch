@@ -6,7 +6,7 @@
       </div>
       <div class="ta-side-news">
         <article *ngFor="let item of data; let i = index">
-          <div class="img-container">
+          <div *ngIf="item?.urlToImage" class="img-container">
             <div class="img">
               <img src="{{item?.urlToImage}}" alt="{{item?.title}}">
             </div>
@@ -17,6 +17,7 @@
               <div class="ta-small" innerHTML="{{item?.description}}"></div>
             </div>
           </div>
+          <div *ngIf="!item?.urlToImage"><p>&nbsp;</p> </div>
         </article>
       </div>
     </div>

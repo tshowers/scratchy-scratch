@@ -225,6 +225,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     this._newsCategorySubscription1 = this._newsService.getNewsByCategory(category).subscribe(
       (news) => {
         this.businessArticles = news.articles;
+        console.log("Business Articles", JSON.stringify( this.businessArticles))
       }
     )
   }
@@ -236,6 +237,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     this._newsCategorySubscription2 = this._newsService.getNewsByCategory(category).subscribe(
       (news) => {
         this.entertainmentArticles = news.articles;
+        console.log("Entertainment Articles", JSON.stringify( this.businessArticles))
       }
     )
   }
