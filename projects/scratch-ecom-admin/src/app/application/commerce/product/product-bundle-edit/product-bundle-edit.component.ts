@@ -6,6 +6,9 @@ import { UploadService, DropdownService, TypeFindService, PRODUCT_BUNDLES } from
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
 import { Subscription } from 'rxjs';
+import { BreadCrumbService, PRODUCT_BUNDLE } from '../../../../shared/services/bread-crumb.service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { LickAppWidgetSectionEditComponent } from 'lick-app-widget-section-edit';
 
 
 @Component({
@@ -20,6 +23,8 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
   private _paramSubscription: Subscription;
 
   private _productBundleSubscription: Subscription;
+
+  public Editor = ClassicEditor;
 
   private _storeSubscription: Subscription;
   private _productSubscription: Subscription;
@@ -45,7 +50,7 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
 
   canDelete: boolean = true;
 
-  section: Section = new Section();
+  @ViewChild(LickAppWidgetSectionEditComponent) sectionEdit: LickAppWidgetSectionEditComponent;
 
   toggleClass;
   products: Product[] = [];
@@ -55,6 +60,7 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
     protected renderer2: Renderer2,
     public router: Router,
     public typeFindService: TypeFindService,
+    public breadCrumbService: BreadCrumbService, 
     private _dropdownService: DropdownService,
     private _uploadService: UploadService,
     private _route: ActivatedRoute) {
@@ -145,6 +151,10 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
     }
   }
 
+  deleteAttachment() {
+    this.selectedFiles = null;
+  }
+
   public detectFiles(event) {
     this.selectedFiles = event.target.files;
   }
@@ -189,13 +199,9 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
 
 
   setBreadCrumb(): void {
-    this.crumbs = [
-      { name: "dashboard", link: "/stores/dashboard", active: false },
-      { name: this.store.name, link: "/stores/" + this.store_id, active: false },
-      { name: this.catalog.name, link: "/stores/" + this.store_id + "/catalogs/" + this.catalog_id, active: false },
-      { name: "product bundles", link: "/stores/" + this.store_id + "/catalogs/" + this.catalog_id + "/product-bundles", active: false },
-      { name: "new", link: "/stores/" + this.store_id + "/catalogs/" + this.catalog_id + "/product-bundles/new", active: true },
-    ]
+    this.breadCrumbService.setContext(PRODUCT_BUNDLE);
+    this.breadCrumbService.setBreadCrumb(this.store_id, this.catalog_id);
+    this.crumbs = this.breadCrumbService.getBreadCrumb();
   }
 
   private setStoreContext(): void {
@@ -245,24 +251,8 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
   }
 
   modelCheck() {
-    if (this.section.name)
-      this.newSection();
+    this.sectionEdit.modelCheck();
   }
-
-  newSection(): void {
-    this.productBundle.sections.push(this.section);
-    this.section = new Section();
-  }
-
-  editSection(at: number): void {
-    this.section = this.productBundle.sections[at];
-    this.removeSection(at);
-  }
-
-  removeSection(at: number): void {
-    this.productBundle.sections.splice(at, 1);
-  }
-
 
   get diagnostic() {
     return JSON.stringify(this.productBundle, null, 2)

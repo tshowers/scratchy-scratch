@@ -10,7 +10,7 @@ export class Store  {
   public link?: string;
   public shared: boolean = false;
 
-  public description: string = "";
+  public description?: string = "";
   public stripeKey: string;
 
   public publishedAt;
@@ -46,7 +46,7 @@ export class Store  {
     data.link = data.hasOwnProperty('link') ? data.link : null;
     data.shared = data.hasOwnProperty('shared') ? data.shared : false;
 
-    data.description = data.hasOwnProperty('description') ? data.description : null;
+    data.description = data.hasOwnProperty('description') ? data.description : "";
     data.stripeKey = data.hasOwnProperty('stripeKey') ? data.stripeKey : null;
 
     data.publishedAt = data.hasOwnProperty('publishedAt') ? data.publishedAt : null;

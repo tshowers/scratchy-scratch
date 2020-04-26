@@ -1,0 +1,26 @@
+<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" [context]="'Settings'" (pageEvent)="onBreadCrumb($event)">
+</licky-lick-app-widget-breadcrumb>
+<div class="card">
+    <div class="card-body">
+        <form #dataForm="ngForm" class="form-group">
+            <div class="form-group"> <label for="name">Display Name</label>
+                <input [(ngModel)]="displayName" #dName="ngModel" id="dName" name="dName"
+                    placeholder="Enter Display Name" type="text" class="form-control form-control-lg ta-input-element"
+                    required autofocus>
+                <div [hidden]="dName.valid || dName.pristine" class="alert alert-danger">
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Display Name required </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-primary btn-lg btn-round" (click)="onSubmit()" type="submit"
+                        [disabled]="!dataForm.form.valid" title="Submit to database">Save
+                        <i class="fa fa-cloud" aria-hidden="true"></i>
+                    </button>
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>

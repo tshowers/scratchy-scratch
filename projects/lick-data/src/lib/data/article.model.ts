@@ -13,7 +13,7 @@ export class Article {
   public blog_id?;
   public title?: string;
 
-  public description;
+  public description?: string = "";
   public articleText;
   public author;
 
@@ -53,7 +53,7 @@ export class Article {
     data.blog_id = data.hasOwnProperty('blog_id') ? data.blog_id : null;
     data.title = data.hasOwnProperty('title') ? data.title : null;
 
-    data.description = data.hasOwnProperty('description') ? data.description : null;
+    data.description = data.hasOwnProperty('description') ? data.description : "";
     data.articleText = data.hasOwnProperty('articleText') ? data.articleText : null;
     data.author = data.hasOwnProperty('author') ? data.author : null;
 

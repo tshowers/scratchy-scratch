@@ -6,6 +6,9 @@ import { UploadService, DropdownService, TypeFindService, ORDERS } from 'licky-s
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
 import { Subscription } from 'rxjs';
+import { BreadCrumbService, ORDER } from '../../../../shared/services/bread-crumb.service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { LickAppWidgetSectionEditComponent } from 'lick-app-widget-section-edit';
 
 
 @Component({
@@ -16,6 +19,8 @@ import { Subscription } from 'rxjs';
 export class OrderEditComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
   order: Order = new Order();
+
+  public Editor = ClassicEditor;
 
   orderTypes: Dropdown[];
 
@@ -45,7 +50,7 @@ export class OrderEditComponent extends LickAppPageComponent implements OnInit, 
 
   searchArgument;
 
-  section: Section = new Section();
+  @ViewChild(LickAppWidgetSectionEditComponent) sectionEdit: LickAppWidgetSectionEditComponent;
 
   canDelete: boolean = true;
 
@@ -55,6 +60,7 @@ export class OrderEditComponent extends LickAppPageComponent implements OnInit, 
     public typeFindService: TypeFindService,
     private _dropdownService: DropdownService,
     private _uploadService: UploadService,
+    public breadCrumbService: BreadCrumbService, 
     private _route: ActivatedRoute) {
     super(router, renderer2);
   }
@@ -135,6 +141,10 @@ export class OrderEditComponent extends LickAppPageComponent implements OnInit, 
     }
   }
 
+  deleteAttachment() {
+    this.selectedFiles = null;
+  }
+
   private detectFiles(event) {
     this.selectedFiles = event.target.files;
   }
@@ -145,13 +155,9 @@ export class OrderEditComponent extends LickAppPageComponent implements OnInit, 
 
 
   setBreadCrumb(): void {
-    this.crumbs = [
-      { name: "dashboard", link: "/stores/dashboard", active: false },
-      { name: "stores", link: "/stores", active: false },
-      { name: this.store.name, link: "/stores/" + this.store.id, active: false },
-      { name: "orders", link: "/stores/" + this.store_id + "/orders", active: false },
-      { name: "new", link: "/stores/" + this.store_id + "/orders/new", active: true },
-    ]
+    this.breadCrumbService.setContext(ORDER);
+    this.breadCrumbService.setBreadCrumb(this.store_id);
+    this.crumbs = this.breadCrumbService.getBreadCrumb();
   }
 
   private setStoreContext(): void {
@@ -187,24 +193,8 @@ export class OrderEditComponent extends LickAppPageComponent implements OnInit, 
   }
 
   modelCheck() {
-    if (this.section.name)
-      this.newSection();
+    this.sectionEdit.modelCheck();
   }
-
-  newSection(): void {
-    this.order.sections.push(this.section);
-    this.section = new Section();
-  }
-
-  editSection(at: number): void {
-    this.section = this.order.sections[at];
-    this.removeSection(at);
-  }
-
-  removeSection(at: number): void {
-    this.order.sections.splice(at, 1);
-  }
-
 
   get diagnostic() {
     return JSON.stringify(this.order, null, 2)

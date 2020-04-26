@@ -6,6 +6,9 @@ import { UploadService, DropdownService, TypeFindService, PAYMENTS } from 'licky
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
 import { Subscription } from 'rxjs';
+import { BreadCrumbService, PAYMENT } from '../../../../shared/services/bread-crumb.service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { LickAppWidgetSectionEditComponent } from 'lick-app-widget-section-edit';
 
 
 @Component({
@@ -19,6 +22,11 @@ export class PaymentEditComponent extends LickAppPageComponent implements OnInit
 
   paymentLine: PaymentLine = new PaymentLine();
 
+  @ViewChild(LickAppWidgetSectionEditComponent) sectionEdit: LickAppWidgetSectionEditComponent;
+
+
+  public Editor = ClassicEditor;
+
   paymentTypes: Dropdown[];
 
   ccTypes: Dropdown[];
@@ -30,6 +38,10 @@ export class PaymentEditComponent extends LickAppPageComponent implements OnInit
   creditCard: boolean = false;
 
   bankAccount: boolean = false;
+
+  paypal: boolean = false;
+
+  cash: boolean = false;
 
   private _paramSubscription: Subscription;
 
@@ -56,6 +68,7 @@ export class PaymentEditComponent extends LickAppPageComponent implements OnInit
   constructor(public dm: DataMediationService,
     protected renderer2: Renderer2,
     public router: Router,
+    public breadCrumbService: BreadCrumbService,
     public typeFindService: TypeFindService,
     private _dropdownService: DropdownService,
     private _uploadService: UploadService,
@@ -113,8 +126,26 @@ export class PaymentEditComponent extends LickAppPageComponent implements OnInit
     });
   }
 
-  onFOP() : void {
+  onFOP(): void {
+    console.log(this.payment.fopType);
+    this.resetFopTypes();
+    if (this.payment.fopType.toLowerCase() === "cash")
+      this.cash = true;
+    else if (this.payment.fopType.toLowerCase() === "charge")
+      this.creditCard = true;
+    else if (this.payment.fopType.toLowerCase() === "check")
+      this.bankAccount = true;
+    else if (this.payment.fopType.toLowerCase() === "paypal")
+      this.paypal = true;
+    else if (this.payment.fopType.toLowerCase() === "transfer")
+      this.bankAccount = true;
+  }
 
+  resetFopTypes(): void {
+    this.cash = false;
+    this.bankAccount = false;
+    this.creditCard = false;
+    this.paypal = false;
   }
 
   private redirect(redirectPath): void {
@@ -143,6 +174,10 @@ export class PaymentEditComponent extends LickAppPageComponent implements OnInit
     }
   }
 
+  deleteAttachment() {
+    this.selectedFiles = null;
+  }
+
   public detectFiles(event) {
     this.selectedFiles = event.target.files;
   }
@@ -154,13 +189,9 @@ export class PaymentEditComponent extends LickAppPageComponent implements OnInit
 
 
   setBreadCrumb(): void {
-    this.crumbs = [
-      { name: "dashboard", link: "/stores/dashboard", active: false },
-      { name: "stores", link: "/stores", active: false },
-      { name: this.store.name, link: "/stores/" + this.store.id, active: false },
-      { name: "payments", link: "/stores/" + this.store_id + "/payments", active: false },
-      { name: "new", link: "/stores/" + this.store_id + "/payments/new", active: true },
-    ]
+    this.breadCrumbService.setContext(PAYMENT);
+    this.breadCrumbService.setBreadCrumb(this.store_id);
+    this.crumbs = this.breadCrumbService.getBreadCrumb();
   }
 
   private setStoreContext(): void {
@@ -193,28 +224,14 @@ export class PaymentEditComponent extends LickAppPageComponent implements OnInit
     this.router.navigate([link]);
   }
 
-  onSearch(value) : void {
-    this.router.navigate([ 'stores', this.store_id, 'payments'], {queryParams: { searchArgument: value}})
+  onSearch(value): void {
+    this.router.navigate(['stores', this.store_id, 'payments'], { queryParams: { searchArgument: value } })
   }
 
   modelCheck() {
-    if (this.section.name)
-      this.newSection();
+    this.sectionEdit.modelCheck();
   }
 
-  newSection(): void {
-    this.payment.sections.push(this.section);
-    this.section = new Section();
-  }
-
-  editSection(at: number): void {
-    this.section = this.payment.sections[at];
-    this.removeSection(at);
-  }
-
-  removeSection(at: number): void {
-    this.payment.sections.splice(at, 1);
-  }
 
 
   get diagnostic() {

@@ -15,8 +15,8 @@ export class Offer {
   public product_id?;
   public store_id?;
   public type?: string;
-  public description?: string;
-  public longDescription?: string;
+  public description?: string = "";
+  public longDescription: string = "";
   public expirationDate?;
   public providerTag?: string;
   public placement?: string;
@@ -63,8 +63,8 @@ export class Offer {
     data.product_id = data.hasOwnProperty('product_id') ? data.product_id : null;
     data.store_id = data.hasOwnProperty('store_id') ? data.store_id : null;
     data.type = data.hasOwnProperty('type') ? data.type : null;
-    data.description = data.hasOwnProperty('description') ? data.description : null;
-    data.longDescription = data.hasOwnProperty('longDescription') ? data.longDescription : null;
+    data.description = data.hasOwnProperty('description') ? data.description : "";
+    data.longDescription = data.hasOwnProperty('longDescription') ? data.longDescription : "";
     data.providerTag = data.hasOwnProperty('providerTag') ? data.providerTag : null;
     data.placement = data.hasOwnProperty('placement') ? data.placement : null;
     data.presentationMethod = data.hasOwnProperty('presentationMethod') ? data.presentationMethod : null;

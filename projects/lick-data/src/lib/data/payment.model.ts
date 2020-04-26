@@ -14,13 +14,13 @@ export class Payment {
   public processingTime?: string;
   public date?;
   public paymentMethodCode?: string;
-  public paymentLine?: PaymentLine;
-  public paymentAttachment?: PaymentAttachment;
-  public fromBankAccount?: FromBankAccount;
+  public paymentLine: PaymentLine = new PaymentLine();
+  public paymentAttachment: PaymentAttachment = new PaymentAttachment();
+  public fromBankAccount: FromBankAccount = new FromBankAccount();
   public check?: Check;
-  public paypal?: Paypal;
+  public paypal: Paypal = new Paypal();
   public approvalCode?: string;
-  public creditCardPayment?: CardPayment;
+  public creditCardPayment: CardPayment = new CardPayment();
   public merchantId?: string;
   public paymentChannelCode?: string;
   public paymentSource?: string;
@@ -129,7 +129,7 @@ export class PaymentLine {
   creditIndicator: boolean = false;
   allocationTypeCode: string;
   allocationAmount: number;
-  description: string;
+  description: string = "";
   financialAccountNumber: string;
 
   public sections?: Array<Section> = [];
@@ -161,7 +161,7 @@ export class PaymentAttachment {
   name: string;
   title: string;
   URI: string;
-  description: string;
+  description: string = "";
 
   public sections?: Array<Section> = [];
   public lastUpdated;

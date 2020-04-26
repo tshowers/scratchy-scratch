@@ -1,4 +1,4 @@
-<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)">
+<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" [context]="store?.name" (pageEvent)="onBreadCrumb($event)">
 </licky-lick-app-widget-breadcrumb>
 <div class="card">
   <div class="card-body">
@@ -66,7 +66,7 @@
                 <input [(ngModel)]="payment.date" #paymentrDate="ngModel" id="paymentDate" name="paymentDate"
                   placeholder="yyyy-mm-dd" type="text" class="form-control input-lg ta-input-element" ngbDatepicker
                   #e="ngbDatepicker" required>
-                <div class="input-group-addon" (click)="e.toggle()"><img src="assets/calendar-icon.svg"
+                <div class="input-group-addon" (click)="e.toggle()"><img src="assets/images/calendar-icon.svg"
                     style="width: 1.2rem; height: 1rem; cursor: pointer;" /></div>
               </div>
             </div>
@@ -81,9 +81,15 @@
         <div class="row" [hidden]="!creditCard" *ngIf="(payment && paymentLine)">
           <div class="col">
             <div class="form-group">
-              <label for="creditIndicator">Credit Indicator</label><input
+              <label for="creditIndicator">Credit Indicator</label>
+              <br>
+
+              <ui-switch [(ngModel)]="payment.paymentLine.creditIndicator" id="creditIndicator" name="creditIndicator"></ui-switch>
+
+              <!-- <input
                 [(ngModel)]="payment.paymentLine.creditIndicator" #creditIndicator="ngModel" id="creditIndicator"
-                name="creditIndicator" type="checkbox" class="form-control input-lg input-element"></div>
+                name="creditIndicator" type="checkbox" class="form-control input-lg input-element"> -->
+              </div>
           </div>
           <div class="col">
             <div class="form-group">
@@ -101,12 +107,15 @@
                 name="allocationAmount" placeholder="x,xxx.xx" type="text" class="form-control input-lg input-element"
                 pattern="^\d+(?:,\d{3})*\.\d{2}$"></div>
           </div>
+        </div>
+        <div class="row" [hidden]="!creditCard" *ngIf="(payment && paymentLine)">  
           <div class="col">
             <div class="form-group">
-              <label for="paymentLineDescription">Description</label>
-              <input [(ngModel)]="payment.paymentLine.description" #paymentLineDescription="ngModel"
-                id="paymentLineDescription" name="paymentLineDescription" placeholder="Description" type="text"
-                class="form-control input-lg input-element"></div>
+              <label for="paymentLineDescription">Payment Description</label>
+              <ckeditor [(ngModel)]="payment.paymentLine.description" [editor]="Editor" #paymentLineDescription="ngModel" id="paymentLineDescription"
+              name="paymentLineDescription"></ckeditor>
+  
+              </div>
           </div>
         </div>
         <div class="row" [hidden]="!bankAccount" *ngIf="(payment && paymentLine)">
@@ -296,9 +305,13 @@
           <div class="col">
             <div class="form-group">
               <label for="manualPaymentIndicator">Manual Payment</label>
-              <input [(ngModel)]="payment.manualPaymentIndicator" #manualPaymentIndicator="ngModel"
+              <br>
+              <ui-switch [(ngModel)]="payment.manualPaymentIndicator" id="manualPaymentIndicator" name="manualPaymentIndicator">
+              </ui-switch>
+              <!-- <input [(ngModel)]="payment.manualPaymentIndicator" #manualPaymentIndicator="ngModel"
                 id="manualPaymentIndicator" name="manualPaymentIndicator" type="checkbox"
-                class="form-control input-lg input-element"></div>
+                class="form-control input-lg input-element"> -->
+              </div>
           </div>
         </div>
         <div class="row">
@@ -311,7 +324,7 @@
           </div>
           <div class="col">
             <div class="form-group">
-              <label for="paymentAttachmentName"></label>
+              <label for="paymentAttachmentName">Attachment Name</label>
               <input [(ngModel)]="payment.paymentAttachment.name" #paymentAttachmentName="ngModel"
                 id="paymentAttachmentName" name="paymentAttachmentName" placeholder="Attachment Name" type="text"
                 class="form-control input-lg input-element"></div>
@@ -336,10 +349,10 @@
         <div class="row">
           <div class="col">
             <div class="form-group">
-              <label for="paymentAttachmentDescription">Description</label>
-              <textarea [(ngModel)]="payment.paymentAttachment.description" name="paymentAttachmentDescription"
-                id="paymentAttachmentDescription" cols="30" rows="10"
-                class="form-control input-lg input-element"></textarea>
+              <label for="paymentAttachmentDescription">Attachment Description</label>
+              <ckeditor [(ngModel)]="payment.paymentAttachment.description" [editor]="Editor" #paymentAttachmentDescription="ngModel" id="paymentAttachmentDescription"
+              name="paymentAttachmentDescription"></ckeditor>
+
             </div>
           </div>
         </div>

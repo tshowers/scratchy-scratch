@@ -37,7 +37,7 @@ export class Event {
   public confirmed?: boolean = false;
   public availableSpaces?: number = 0;
   public costPerPerson?: number = 0;
-  public description?: string;
+  public description?: string = "";
   public recurrence?: Recurrence;
 
   public publishedAt;
@@ -100,7 +100,7 @@ export class Event {
     data.confirmed = data.hasOwnProperty('confirmed') ? data.confirmed : false;
     data.availableSpaces = data.hasOwnProperty('availableSpaces') ? data.availableSpaces : 0;
     data.costPerPerson = data.hasOwnProperty('costPerPerson') ? data.costPerPerson : 0;
-    data.description = data.hasOwnProperty('description') ? data.description : null;
+    data.description = data.hasOwnProperty('description') ? data.description : "";
     data.recurrence = data.hasOwnProperty('recurrence') ? data.recurrence : null;
 
     data.publishedAt = data.hasOwnProperty('publishedAt') ? data.publishedAt : null;

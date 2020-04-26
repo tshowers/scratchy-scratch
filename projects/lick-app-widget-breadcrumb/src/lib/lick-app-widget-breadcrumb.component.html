@@ -7,4 +7,8 @@
        (click)="onPageEvent(c.link)">{{c?.name}}</a>
     <span *ngIf="!c.link">{{c?.name}}</span>
   </li>
+  <li *ngIf="context" class="ml-auto wow fadeInRight text-capitalize">
+  Context: <strong>{{context}}</strong>
+  </li>
+
 </ol>

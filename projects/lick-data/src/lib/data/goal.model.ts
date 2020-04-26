@@ -11,7 +11,7 @@ export class Goal {
   public shared: boolean = false;
 
   public goalYear?: number;
-  public description?: string;
+  public description?: string = "";
   public revenueGoal?: TimeGoal;
   public contactGoal?: TimeGoal;
   public orderGoal?: TimeGoal;

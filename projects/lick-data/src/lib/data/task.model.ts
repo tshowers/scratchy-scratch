@@ -20,7 +20,7 @@ export class Task {
 
   public isPastDate?: boolean = false;
   public project_id?: string;
-  public description?: string;
+  public description?: string = "";
   public status?: string;
   public timeToComplete?: TaTime;
   public timerEndTime?;
@@ -69,7 +69,7 @@ export class Task {
 
     data.isPastDate = data.hasOwnProperty('isPastDate') ? data.isPastDate : false;
     data.project_id = data.hasOwnProperty('project_id') ? data.project_id : null;
-    data.description = data.hasOwnProperty('description') ? data.description : null;
+    data.description = data.hasOwnProperty('description') ? data.description : "";
     data.status = data.hasOwnProperty('status') ? data.status : null;
     data.timeToComplete = data.hasOwnProperty('timeToComplete') ? data.timeToComplete : null;
     data.timerEndTime = data.hasOwnProperty('timerEndTime') ? data.timerEndTime : null;

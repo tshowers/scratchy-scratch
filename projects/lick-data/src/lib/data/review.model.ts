@@ -12,7 +12,7 @@ export class Review  {
   public shared: boolean = false;
 
   public stars  = [];
-  public description?;
+  public description?: string = "";
   public company? : Company;
 
   public profession?;
@@ -50,7 +50,7 @@ export class Review  {
     data.shared = data.hasOwnProperty('shared') ? data.shared : false;
 
     data.stars = data.hasOwnProperty('id') ? data.id : [];
-    data.description = data.hasOwnProperty('description') ? data.description : null;
+    data.description = data.hasOwnProperty('description') ? data.description : "";
     data.company = data.hasOwnProperty('company') ? data.company : null;
 
     data.profession = data.hasOwnProperty('profession') ? data.profession : null;

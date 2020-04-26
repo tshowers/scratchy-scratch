@@ -16,7 +16,7 @@ export class Project  {
   public startDate?;
   public endDate?;
   public billingEstimate?: number;
-  public description?: string;
+  public description?: string = "";
   public purchaseOrderNumber?: string;
 
   public events?: Array<any> = [];
@@ -73,7 +73,7 @@ export class Project  {
     data.startDate = data.hasOwnProperty('startDate') ? data.startDate : null;
     data.endDate = data.hasOwnProperty('endDate') ? data.endDate : null;
     data.billingEstimate = data.hasOwnProperty('billingEstimate') ? data.billingEstimate : 0;
-    data.description = data.hasOwnProperty('description') ? data.description : null;
+    data.description = data.hasOwnProperty('description') ? data.description : "";
     data.purchaseOrderNumber = data.hasOwnProperty('purchaseOrderNumber') ? data.purchaseOrderNumber : null;
 
     data.events = data.hasOwnProperty('events') ? data.events : [];

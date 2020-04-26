@@ -15,7 +15,7 @@ export class Contact {
   public lastName: string;
 
   public isCompany?: boolean = false;
-  public description?: string;
+  public description?: string = "";
   public ssn?: string;
   public company?: Company = new Company();
   public prefix?: string;
@@ -86,7 +86,7 @@ export class Contact {
     data.lastName = data.hasOwnProperty('lastName') ? data.lastName : null;
 
     data.isCompany = data.hasOwnProperty('isCompany') ? data.isCompany : false;
-    data.description = data.hasOwnProperty('description') ? data.description : null;
+    data.description = data.hasOwnProperty('description') ? data.description : "";
     data.ssn = data.hasOwnProperty('ssn') ? data.ssn : null;
     data.company = data.hasOwnProperty('company') ? data.company : new Company();
     data.prefix = data.hasOwnProperty('prefix') ? data.prefix : null;

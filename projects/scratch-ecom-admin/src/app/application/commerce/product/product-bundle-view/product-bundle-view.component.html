@@ -1,4 +1,4 @@
-<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)">
+<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" [context]="store?.name + ' / ' + catalog?.name" (pageEvent)="onBreadCrumb($event)">
 </licky-lick-app-widget-breadcrumb>
 <div class="d-flex justify-content-center">
   <div class="card" style="width: 30rem;"> <img *ngIf="productBundle?.url" class="card-img-top"

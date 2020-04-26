@@ -21,7 +21,7 @@ export class NewsArticle {
   public title?;
   public source?: NewsSource;
   public author?;
-  public description?;
+  public description?: string = "";
   public isExternal : boolean = false;
 
   public publishedAt;
@@ -62,7 +62,7 @@ export class NewsArticle {
     data.title = data.hasOwnProperty('title') ? data.title : null;
     data.source = data.hasOwnProperty('source') ? data.source : null;
     data.author = data.hasOwnProperty('author') ? data.author : null;
-    data.description = data.hasOwnProperty('description') ? data.description : null;
+    data.description = data.hasOwnProperty('description') ? data.description : "";
     data.isExternal = data.hasOwnProperty('isExternal') ? data.isExternal : null;
 
     data.publishedAt = data.hasOwnProperty('publishedAt') ? data.publishedAt : null;

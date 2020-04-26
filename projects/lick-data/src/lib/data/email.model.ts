@@ -13,7 +13,7 @@ export class Email  {
   public shared: boolean = false;
 
   public subject: string;
-  public message: string
+  public message: string = "";
   public toAddresses?: Array<any>;
   public fromAddress?: EmailAddress;
   public fromFriendlyName?: string ;

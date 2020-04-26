@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 
 import { LoginPageComponent } from './application/access/login-page/login-page.component';
 import { LogoutPageComponent } from './application/access/logout-page/logout-page.component';
@@ -54,6 +55,12 @@ import { PrivacyComponent } from './application/home/privacy/privacy.component';
 import { TermsComponent } from './application/home/terms/terms.component';
 import { AboutComponent } from './application/home/about/about.component';
 import { GeneralComponent } from './application/settings/general/general.component';
+import { DisplayNameComponent } from './application/settings/display-name/display-name.component';
+import { EmailAddressComponent } from './application/settings/email-address/email-address.component';
+import { AvatarComponent } from './application/settings/avatar/avatar.component';
+import { VeriifyComponent } from './application/settings/veriify/veriify.component';
+
+import { MaintenanceComponent } from './application/home/maintenance/maintenance.component';
 
 
 
@@ -63,7 +70,7 @@ const routes: Routes = [
   { path: 'sign-up', component: SignUpPageComponent, data: { title: 'Sign Up - eCommerce Admin - 16 AHEAD' } },
   { path: 'reset', component: ResetPageComponent, data: { title: 'Password Reset - eCommerce Admin - 16 AHEAD' } },
   { path: 'logout', component: LogoutPageComponent, data: { title: 'You Are Logged Out - eCommerce Admin - 16 AHEAD' } },
-  { path: 'general-settings', component: GeneralComponent, data: { title: 'General Settings - eCommerce Admin - 16 AHEAD' } },
+  { path: 'maintenance', component: MaintenanceComponent, data: { title: 'Maintenance - eCommerce Admin - 16 AHEAD' } },
   { path: 'not-found', component: NotFoundComponent, data: { title: '404 - Page Not Found' } },
   {
     path: 'about', component: AboutComponent, children: [
@@ -72,46 +79,50 @@ const routes: Routes = [
 
     ]
   },
-  { path: 'stores', component: StoreListComponent, data: { title: 'Stores - eCommerce Admin - 16 AHEAD' } },
-  { path: 'stores/new', resolve: { store: StoreResolverService }, component: StoreEditComponent, data: { title: 'New Store - eCommerce - 16 AHEAD' } },
-  { path: 'stores/dashboard', component: DashboardComponent, data: { title: 'Dashboard - eCommerce Admin - 16 AHEAD' } },
-  { path: 'stores/general-settings', component: GeneralComponent, data: { title: 'General Settings - eCommerce Admin - 16 AHEAD' } },
-  { path: 'stores/:id', resolve: { store: StoreViewResolverService }, component: StoreViewComponent, data: { title: 'Store - eCommerce - 16 AHEAD' } },
-  { path: 'stores/:id/edit', resolve: { store: StoreResolverService }, component: StoreEditComponent, data: { title: 'Edit Store - eCommerce - 16 AHEAD' } },
-  { path: 'stores/:id/orders', component: OrderListComponent, data: { title: 'Orders - eCommerce - 16 AHEAD' } },
-  { path: 'stores/:id/catalogs', component: CatalogListComponent, data: { title: 'Catalogs - eCommerce - 16 AHEAD' } },
-  { path: 'stores/:id/payments', component: PaymentListComponent, data: { title: 'Payments - eCommerce - 16 AHEAD' } },
+  { path: 'stores', canActivate: [AuthGuard], component: StoreListComponent, data: { title: 'Store Listing' } },
+  { path: 'stores/new', canActivate: [AuthGuard], resolve: { store: StoreResolverService }, component: StoreEditComponent, data: { title: 'Store Creation' } },
+  { path: 'stores/dashboard', canActivate: [AuthGuard], component: DashboardComponent, data: { title: 'eCommerce Dashboard' } },
+  { path: 'stores/general-settings', canActivate: [AuthGuard], component: GeneralComponent, data: { title: 'General Settings' } },
+  { path: 'stores/settings-display-name', canActivate: [AuthGuard], component: DisplayNameComponent, data: { title: 'Display Name' } },
+  { path: 'stores/settings-email-address', canActivate: [AuthGuard], component: EmailAddressComponent, data: { title: 'Email Address' } },
+  { path: 'stores/settings-avatar', canActivate: [AuthGuard], component: AvatarComponent, data: { title: 'Avatar' } },
+  { path: 'stores/settings-verify', canActivate: [AuthGuard], component: VeriifyComponent, data: { title: 'Email Address Verification' } },
+  { path: 'stores/:id', canActivate: [AuthGuard], resolve: { store: StoreViewResolverService }, component: StoreViewComponent, data: { title: 'Store' } },
+  { path: 'stores/:id/edit', canActivate: [AuthGuard], resolve: { store: StoreResolverService }, component: StoreEditComponent, data: { title: 'Store Edit' } },
+  { path: 'stores/:id/orders', canActivate: [AuthGuard], component: OrderListComponent, data: { title: 'Order Listing' } },
+  { path: 'stores/:id/catalogs', canActivate: [AuthGuard], component: CatalogListComponent, data: { title: 'Catalog Listing' } },
+  { path: 'stores/:id/payments', canActivate: [AuthGuard], component: PaymentListComponent, data: { title: 'Payment Listing' } },
 
-  { path: 'stores/:id/orders/new', resolve: { order: OrderResolverService }, component: OrderEditComponent, data: { title: 'New Order - eCommerce - 16 AHEAD' } },
-  { path: 'stores/:id/catalogs/new', resolve: { catalog: CatalogResolverService }, component: CatalogEditComponent, data: { title: 'New Catalog - eCommerce - 16 AHEAD' } },
-  { path: 'stores/:id/payments/new', resolve: { payment: PaymentResolverService }, component: PaymentEditComponent, data: { title: 'New Payment - eCommerce - 16 AHEAD' } },
+  { path: 'stores/:id/orders/new', canActivate: [AuthGuard], resolve: { order: OrderResolverService }, component: OrderEditComponent, data: { title: 'Order Creation' } },
+  { path: 'stores/:id/catalogs/new', canActivate: [AuthGuard], resolve: { catalog: CatalogResolverService }, component: CatalogEditComponent, data: { title: 'Catalog Creation' } },
+  { path: 'stores/:id/payments/new', canActivate: [AuthGuard], resolve: { payment: PaymentResolverService }, component: PaymentEditComponent, data: { title: 'Payment Creation' } },
 
-  { path: 'stores/:id/payments/:id2', resolve: { payment: PaymentViewResolverService }, component: PaymentViewComponent, data: { title: 'Payment - eCommerce - 16 AHEAD' } },
-  { path: 'stores/:id/catalogs/:id2', resolve: { catalog: CatalogViewResolverService }, component: CatalogViewComponent, data: { title: 'Catalog - eCommerce - 16 AHEAD' } },
-  { path: 'stores/:id/orders/:id2', resolve: { order: OrderViewResolverService }, component: OrderViewComponent, data: { title: 'Order - eCommerce - 16 AHEAD' } },
+  { path: 'stores/:id/payments/:id2', canActivate: [AuthGuard], resolve: { payment: PaymentViewResolverService }, component: PaymentViewComponent, data: { title: 'Payment' } },
+  { path: 'stores/:id/catalogs/:id2', canActivate: [AuthGuard], resolve: { catalog: CatalogViewResolverService }, component: CatalogViewComponent, data: { title: 'Catalog' } },
+  { path: 'stores/:id/orders/:id2', canActivate: [AuthGuard], resolve: { order: OrderViewResolverService }, component: OrderViewComponent, data: { title: 'Order' } },
 
-  { path: 'stores/:id/catalogs/:id2/edit', resolve: { catalog: CatalogResolverService }, component: CatalogEditComponent, data: { title: 'Edit Catalog - eCommerce - 16 AHEAD' } },
-  { path: 'stores/:id/orders/:id2/edit', resolve: { order: OrderResolverService }, component: OrderEditComponent, data: { title: 'Edit Order - eCommerce - 16 AHEAD' } },
-  { path: 'stores/:id/payments/:id2/edit', resolve: { payment: PaymentResolverService }, component: PaymentEditComponent, data: { title: 'Edit Payment - eCommerce - 16 AHEAD' } },
-
-
-  { path: 'stores/:id/catalogs/:id2/offers', component: OfferListComponent, data: { title: 'Offers - eCommerce - 16 AHEAD' } },
-  { path: 'stores/:id/catalogs/:id2/products', component: ProductListComponent, data: { title: 'Products - eCommerce - 16 AHEAD' } },
-  { path: 'stores/:id/catalogs/:id2/product-bundles', component: ProductBundleListComponent, data: { title: 'Product Bundles - eCommerce - 16 AHEAD' } },
-
-  { path: 'stores/:id/catalogs/:id2/offers/new', resolve: { offer: OfferResolverService }, component: OfferEditComponent, data: { title: 'New Offer - eCommerce - 16 AHEAD' } },
-  { path: 'stores/:id/catalogs/:id2/products/new', resolve: { product: ProductResolverService }, component: ProductEditComponent, data: { title: 'New Product - eCommerce - 16 AHEAD' } },
-  { path: 'stores/:id/catalogs/:id2/product-bundles/new', resolve: { productBundle: ProductBundleResolverService }, component: ProductBundleEditComponent, data: { title: 'New ProductBundle - eCommerce - 16 AHEAD' } },
+  { path: 'stores/:id/catalogs/:id2/edit', canActivate: [AuthGuard], resolve: { catalog: CatalogResolverService }, component: CatalogEditComponent, data: { title: 'Catalog Edit' } },
+  { path: 'stores/:id/orders/:id2/edit', canActivate: [AuthGuard], resolve: { order: OrderResolverService }, component: OrderEditComponent, data: { title: 'Order Edit' } },
+  { path: 'stores/:id/payments/:id2/edit', canActivate: [AuthGuard], resolve: { payment: PaymentResolverService }, component: PaymentEditComponent, data: { title: 'Payment Edit' } },
 
 
-  { path: 'stores/:id/catalogs/:id2/offers/:id3', resolve: { offer: OfferViewResolverService }, component: OfferViewComponent, data: { title: 'Offer - eCommerce - 16 AHEAD' } },
-  { path: 'stores/:id/catalogs/:id2/products/:id3', resolve: { product: ProductViewResolverService }, component: ProductViewComponent, data: { title: 'Product - eCommerce - 16 AHEAD' } },
-  { path: 'stores/:id/catalogs/:id2/product-bundles/:id3', resolve: { productBundle: ProductBundleViewResolverService }, component: ProductBundleViewComponent, data: { title: 'ProductBundle - eCommerce - 16 AHEAD' } },
+  { path: 'stores/:id/catalogs/:id2/offers', canActivate: [AuthGuard], component: OfferListComponent, data: { title: 'Offer Listing' } },
+  { path: 'stores/:id/catalogs/:id2/products', canActivate: [AuthGuard], component: ProductListComponent, data: { title: 'Product Listing' } },
+  { path: 'stores/:id/catalogs/:id2/product-bundles', canActivate: [AuthGuard], component: ProductBundleListComponent, data: { title: 'Product Bundle Listing' } },
+
+  { path: 'stores/:id/catalogs/:id2/offers/new', canActivate: [AuthGuard], resolve: { offer: OfferResolverService }, component: OfferEditComponent, data: { title: 'Offer Creation' } },
+  { path: 'stores/:id/catalogs/:id2/products/new', canActivate: [AuthGuard], resolve: { product: ProductResolverService }, component: ProductEditComponent, data: { title: 'Product Creation' } },
+  { path: 'stores/:id/catalogs/:id2/product-bundles/new', canActivate: [AuthGuard], resolve: { productBundle: ProductBundleResolverService }, component: ProductBundleEditComponent, data: { title: 'Product Bundle Creation' } },
 
 
-  { path: 'stores/:id/catalogs/:id2/offers/:id3/edit', resolve: { offer: OfferResolverService }, component: OfferEditComponent, data: { title: 'Edit Offer - eCommerce - 16 AHEAD' } },
-  { path: 'stores/:id/catalogs/:id2/products/:id3/edit', resolve: { product: ProductResolverService }, component: ProductEditComponent, data: { title: 'Edit Product - eCommerce - 16 AHEAD' } },
-  { path: 'stores/:id/catalogs/:id2/product-bundles/:id3/edit', resolve: { productBundle: ProductBundleResolverService }, component: ProductBundleEditComponent, data: { title: 'Edit ProductBundle - eCommerce - 16 AHEAD' } },
+  { path: 'stores/:id/catalogs/:id2/offers/:id3', canActivate: [AuthGuard], resolve: { offer: OfferViewResolverService }, component: OfferViewComponent, data: { title: 'Offer' } },
+  { path: 'stores/:id/catalogs/:id2/products/:id3', canActivate: [AuthGuard], resolve: { product: ProductViewResolverService }, component: ProductViewComponent, data: { title: 'Product' } },
+  { path: 'stores/:id/catalogs/:id2/product-bundles/:id3', canActivate: [AuthGuard], resolve: { productBundle: ProductBundleViewResolverService }, component: ProductBundleViewComponent, data: { title: 'Product Bundle' } },
+
+
+  { path: 'stores/:id/catalogs/:id2/offers/:id3/edit', canActivate: [AuthGuard], resolve: { offer: OfferResolverService }, component: OfferEditComponent, data: { title: 'Offer Edit' } },
+  { path: 'stores/:id/catalogs/:id2/products/:id3/edit', canActivate: [AuthGuard], resolve: { product: ProductResolverService }, component: ProductEditComponent, data: { title: 'Product Edit' } },
+  { path: 'stores/:id/catalogs/:id2/product-bundles/:id3/edit', canActivate: [AuthGuard], resolve: { productBundle: ProductBundleResolverService }, component: ProductBundleEditComponent, data: { title: 'Product Bundle Edit' } },
 
   { path: '**', redirectTo: '/not-found' }
 

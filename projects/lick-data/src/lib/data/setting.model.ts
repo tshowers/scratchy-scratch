@@ -11,7 +11,7 @@ export class Setting  {
   public shared: boolean = false;
 
   public step?: number;
-  public description?: string;
+  public description?: string = "";
   public activated?: boolean = false;
 
   public publishedAt;
@@ -48,7 +48,7 @@ export class Setting  {
     data.shared = data.hasOwnProperty('shared') ? data.shared : false;
 
     data.step = data.hasOwnProperty('step') ? data.step : null;
-    data.description = data.hasOwnProperty('description') ? data.description : null;
+    data.description = data.hasOwnProperty('description') ? data.description : "";
     data.activated = data.hasOwnProperty('activated') ? data.activated : false;
 
     data.publishedAt = data.hasOwnProperty('publishedAt') ? data.publishedAt : null;

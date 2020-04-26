@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
-import {BreadCrumbService, STORE} from '../../../../shared/services/bread-crumb.service';
+import { BreadCrumbService, STORE } from '../../../../shared/services/bread-crumb.service';
 import { Observable, Subscription } from 'rxjs';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { Store } from 'lick-data';
@@ -82,7 +82,7 @@ export class StoreListComponent extends LickAppPageComponent implements OnInit, 
     if (this.searchArgument != '')
       this._stores = this._storesOriginal.filter(
         (store) => {
-          return ((store.name && (store.name.toLowerCase().indexOf(this.searchArgument) >= 0)) )
+          return ((store.name && (store.name.toLowerCase().indexOf(this.searchArgument) >= 0)))
         });
     else
       this._stores = this._storesOriginal;
@@ -133,8 +133,8 @@ export class StoreListComponent extends LickAppPageComponent implements OnInit, 
     this.router.navigate([link]);
   }
 
-  onNewItem() : void {
-    this.router.navigate([ 'stores', 'new']);
+  onNewItem(): void {
+    this.router.navigate(['stores', 'new']);
   }
 
   newPage(value: number): void {
@@ -146,24 +146,24 @@ export class StoreListComponent extends LickAppPageComponent implements OnInit, 
   }
 
   onDetail(data): void {
-    this.router.navigate([ 'stores',  data.id])
+    this.router.navigate(['stores', data.id])
   }
 
   onEdit(data): void {
-    this.router.navigate([ 'stores', data.id, 'edit'])
+    this.router.navigate(['stores', data.id, 'edit'])
   }
 
   onDelete(data): void {
     this.dm.db.setDeleted(STORES, data.id, data);
-    this.router.navigate([ 'stores',  data.id])
+    this.router.navigate(['stores', data.id])
   }
 
-  onSearch(value) : void {
-    this.router.navigate([ 'stores'], {queryParams: { searchArgument: value}})
+  onSearch(value): void {
+    this.router.navigate(['stores'], { queryParams: { searchArgument: value } })
   }
 
   get diagnostic() {
-    return "Stores=" + JSON.stringify( this._stores);
+    return "Stores=" + JSON.stringify(this._stores);
   }
 
 }

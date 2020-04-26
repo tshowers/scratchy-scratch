@@ -16,7 +16,7 @@ export class JustText  {
   public offer_id?;
   public product_id?;
   public blog_id?;
-  public text;
+  public text: string = "";
 
   public sections?: Array<Section> = [];
   public lastUpdated;
@@ -55,7 +55,7 @@ export class JustText  {
     data.offer_id = data.hasOwnProperty('offer_id') ? data.offer_id : null;
     data.product_id = data.hasOwnProperty('product_id') ? data.product_id : null;
     data.blog_id = data.hasOwnProperty('blog_id') ? data.blog_id : null;
-    data.text = data.hasOwnProperty('text') ? data.text : null;
+    data.text = data.hasOwnProperty('text') ? data.text : "";
 
     data.sections = data.hasOwnProperty('sections') ? data.sections : [];
 

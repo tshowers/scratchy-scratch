@@ -12,6 +12,11 @@ export class GeneralComponent implements OnInit {
   dashboard: boolean = true;
   news: boolean = true;
   columnView: boolean = false;
+  history: boolean = false;
+  displayName: string;
+  emailAddress: string;
+  image: string;
+  verified: string;
 
   constructor() { }
 

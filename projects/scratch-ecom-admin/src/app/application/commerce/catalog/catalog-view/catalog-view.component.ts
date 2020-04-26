@@ -5,6 +5,7 @@ import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { CATALOGS } from 'licky-services';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
 import { Subscription } from 'rxjs';
+import { BreadCrumbService, CATALOG } from '../../../../shared/services/bread-crumb.service';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class CatalogViewComponent extends LickAppPageComponent implements OnInit
 
   store: Store;
 
-  constructor(public dm: DataMediationService, protected renderer2: Renderer2,
+  constructor(public breadCrumbService: BreadCrumbService, public dm: DataMediationService, protected renderer2: Renderer2,
     public router: Router,
     private _route: ActivatedRoute) {
     super(router, renderer2);
@@ -56,12 +57,9 @@ export class CatalogViewComponent extends LickAppPageComponent implements OnInit
   }
 
   setBreadCrumb(): void {
-    this.crumbs = [
-      { name: "dashboard", link: "/stores/dashboard", active: false },
-      { name: this.store.name, link: "/stores/" + this.store_id, active: false },
-      { name: this.catalog.name, link: "/stores/" + this.store_id + "/catalogs/" + this.catalog.id, active: false },
-      { name: "new", link: "/stores/" + this.store_id + "/catalogs/new", active: false },
-    ]
+    this.breadCrumbService.setContext(CATALOG);
+    this.breadCrumbService.setBreadCrumb(this.store_id, this.catalog.id);
+    this.crumbs = this.breadCrumbService.getBreadCrumb();
   }
 
   private setStore(): void {

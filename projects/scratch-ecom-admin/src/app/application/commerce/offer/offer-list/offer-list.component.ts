@@ -5,6 +5,7 @@ import { Router, Params, ActivatedRoute } from '@angular/router';
 import { Offer, Store, Catalog } from 'lick-data';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { OFFERS } from 'licky-services';
+import { BreadCrumbService, OFFER } from '../../../../shared/services/bread-crumb.service';
 
 
 @Component({
@@ -47,7 +48,7 @@ export class OfferListComponent extends LickAppPageComponent implements OnInit, 
   draftOffers: number = 0;
   uploadOffers: number = 0;
 
-  constructor(public dm: DataMediationService, protected renderer2: Renderer2, public router: Router, private _route: ActivatedRoute) {
+  constructor(public breadCrumbService: BreadCrumbService, public dm: DataMediationService, protected renderer2: Renderer2, public router: Router, private _route: ActivatedRoute) {
     super(router, renderer2);
   }
 
@@ -156,13 +157,9 @@ export class OfferListComponent extends LickAppPageComponent implements OnInit, 
   }
 
   setBreadCrumb(): void {
-    this.crumbs = [
-      { name: "dashboard", link: "/stores/dashboard", active: false },
-      { name: this.store.name, link: "/stores/" + this.store_id, active: false },
-      { name: this.catalog.name, link: "/stores/" + this.store_id + "/catalogs/" + this.catalog_id, active: false },
-      { name: "offers", link: "/stores/" + this.store_id + "/catalogs/" + this.catalog_id + "/offers", active: false },
-      { name: "new", link: "/stores/" + this.store_id + "/catalogs/" + this.catalog_id + "/offers/new", active: false },
-    ]
+    this.breadCrumbService.setContext(OFFER);
+    this.breadCrumbService.setBreadCrumb(this.store_id, this.catalog_id);
+    this.crumbs = this.breadCrumbService.getBreadCrumb();
   }
 
   onBreadCrumb(link): void {

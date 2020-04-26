@@ -11,7 +11,7 @@ export class Property {
   public link?: string;
   public shared: boolean = false;
 
-  public description?: string;
+  public description?: string = "";
   public upload?;
   public square_feet?: number;
   public address?: Address;
@@ -62,7 +62,7 @@ export class Showing  {
 
 
   public show_date;
-  public description?: string;
+  public description?: string = "";
 
   public sections?: Array<Section>;
   public publishedAt;

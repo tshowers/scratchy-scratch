@@ -13,7 +13,7 @@ export class Topic {
   public phrase?: string;
   public target?: string;
   public notes?: string;
-  public description?: string;
+  public description?: string = "";
   public author?: string;
   public upload?= [];
 
@@ -54,7 +54,7 @@ export class Topic {
     data.phrase = data.hasOwnProperty('phrase') ? data.phrase : null;
     data.target = data.hasOwnProperty('target') ? data.target : null;
     data.notes = data.hasOwnProperty('notes') ? data.notes : null;
-    data.description = data.hasOwnProperty('description') ? data.description : null;
+    data.description = data.hasOwnProperty('description') ? data.description : "";
     data.author = data.hasOwnProperty('author') ? data.author : null;
     data.upload = data.hasOwnProperty('upload') ? data.upload : [];
 

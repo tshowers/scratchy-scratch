@@ -1,4 +1,4 @@
-<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)">
+<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" [context]="store?.name + ' / ' + catalog?.name" (pageEvent)="onBreadCrumb($event)">
 </licky-lick-app-widget-breadcrumb>
 <div class="card">
   <div class="card-body">
@@ -18,14 +18,13 @@
               class="fa fa-exclamation-triangle" aria-hidden="true"></i> Product name required </div>
         </div>
         <div class="form-group"> <label for="productDescription">Description</label>
-          <input [(ngModel)]="product.description" #productDescription="ngModel" id="productDescription"
-            name="productDescription" placeholder="Product Description" type="text"
-            class="form-control form-control-lg input-element">
-        </div>
+            <ckeditor [(ngModel)]="product.description" [editor]="Editor1" #description="ngModel" id="description"
+            name="description"></ckeditor>
+          </div>
         <div class="form-group"> <label for="longDescription">Long Description</label>
-          <textarea [(ngModel)]="product.longDescription" id="longDescription" name="longDescription"
-            placeholder="Long Description" cols="30" rows="10"
-            class="form-control form-control-lg input-element"></textarea>
+          <ckeditor [(ngModel)]="product.longDescription" [editor]="Editor2" #longDescription="ngModel" id="longDescription"
+          name="longDescription"></ckeditor>
+
         </div>
         <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
           <label for="dataDraft"
@@ -42,12 +41,6 @@
         <div class="form-group"><label for="dataKeywords">Keywords</label> <input [(ngModel)]="product.keywords"
             id="dataKeywords" name="dataKeywords" type="text" class="form-control form-control-lg ta-input-element"
             placeholder="Enter keywords seperated by commas"></div>
-        <div class="form-group" *ngIf="product.url"> <img *ngIf="product?.url" src="{{product?.url}}" alt="product?.url"
-            class="img-fluid mx-auto d-block img-thumbnail"> </div>
-        <div class="form-group"> <small>For best results ensure image is 1920 x 1080</small> <br><label
-            for="selectedFiles"><span *ngIf="product.id">Replace </span> Image</label> <input
-            class="form-control form-control-lg ta-input-element" type="file" id="selectedFiles" name="selectedFiles"
-            (change)="detectFiles($event)" accept=".jpg, .jpeg, .png, .gif"> </div>
         <div class="form-group"> <label for="category">Category</label> <select [(ngModel)]="product.category"
             name="category" id="category" class="form-control form-control-lg input-element">
             <option value=""></option>
@@ -64,24 +57,44 @@
         <div class="form-group"> <label for="author">Author</label> <input [(ngModel)]="product.author"
             #author="ngModel" id="author" name="author" placeholder="Author or Creator" type="text"
             class="form-control form-control-lg input-element"></div>
-        <div class="form-group"> <label for="discontinued">Discontinued?</label> <input
+        <div class="form-group"> <label for="discontinued">Discontinued?</label> 
+          <br>
+          <ui-switch [(ngModel)]="product.discontinued" id="discontinued" name="discontinued"></ui-switch>
+
+          <!-- <input
             [(ngModel)]="product.discontinued" #discontinued="ngModel" id="discontinued" name="discontinued"
-            type="checkbox" class="form-control form-control-lg input-element"></div>
+            type="checkbox" class="form-control form-control-lg input-element"> -->
+          </div>
         <div class="form-group"> <label for="price">Price</label> <input [(ngModel)]="product.price" #price="ngModel"
             id="price" name="price" placeholder="Price" type="number"
             class="form-control form-control-lg input-element"></div>
-        <div class="form-group"><label for="hourlyRate">Hourly Price</label> <input [(ngModel)]="product.hourlyRate"
+        <div class="form-group"><label for="hourlyRate">Hourly Price</label> 
+          <br>
+          <ui-switch [(ngModel)]="product.hourlyRate" id="hourlyRate" name="hourlyRate"></ui-switch>
+
+          <!-- <input [(ngModel)]="product.hourlyRate"
             #hourlyRate="ngModel" id="hourlyRate" name="hourlyRate" type="checkbox"
-            class="form-control form-control-lg input-element"></div>
-        <div class="form-group"> <label for="onSale">On Sale?</label> <input [(ngModel)]="product.onSale"
+            class="form-control form-control-lg input-element"> -->
+          </div>
+        <div class="form-group"> <label for="onSale">On Sale?</label> 
+          <br>
+          <ui-switch [(ngModel)]="product.onSale" id="onSale" name="onSale"></ui-switch>
+          <!-- <input [(ngModel)]="product.onSale"
             #onSale="ngModel" id="onSale" name="onSale" type="checkbox"
-            class="form-control form-control-lg input-element"></div>
-        <div class="form-group"> <label for="salePrice">Sale Price</label> <input [(ngModel)]="product.salePrice"
+            class="form-control form-control-lg input-element"> -->
+          </div>
+        <div class="form-group"> <label for="salePrice">Sale Price</label> 
+          <input [(ngModel)]="product.salePrice"
             #salePrice="ngModel" id="salePrice" name="salePrice" placeholder="Sale Price" type="number"
-            class="form-control form-control-lg input-element"></div>
-        <div class="form-group"> <label for="subscription">Subscription?</label> <input
+            class="form-control form-control-lg input-element">
+          </div>
+        <div class="form-group"> <label for="subscription">Subscription?</label> 
+          <br>
+          <ui-switch [(ngModel)]="product.subscription" id="subscription" name="subscription"></ui-switch>
+          <!-- <input
             [(ngModel)]="product.subscription" #subscription="ngModel" id="subscription" name="subscription"
-            type="checkbox" class="form-control form-control-lg input-element"></div>
+            type="checkbox" class="form-control form-control-lg input-element"> -->
+          </div>
         <div class="form-group"> <label for="height">Height</label> <input [(ngModel)]="product.height"
             #height="ngModel" id="height" name="height" placeholder="Height" type="number"
             class="form-control form-control-lg input-element"></div>
@@ -106,40 +119,11 @@
         <div class="form-group"> <label for="leadTime">Lead Time</label> <input [(ngModel)]="product.leadTime"
             #leadTime="ngModel" id="leadTime" name="leadTime" placeholder="Lead Time" type="number"
             class="form-control form-control-lg input-element"></div>
-        <h3>Sections</h3>
-        <div class="form-group">
-          <label for="sectionName">Section Name</label>
-          <input [(ngModel)]="section.name" id="sectionName" name="sectionName" placeholder="Section Name"
-            class="form-control form-control-lg ta-input-element" type="text">
-        </div>
-        <div class="form-group">
-          <label for="sectionDescription">Section Text</label>
-          <textarea [(ngModel)]="section.description" id="sectionDescription" name="sectionDescription" rows="5"
-            cols="80" class="form-control form-control-lg ta-input-element"></textarea>
-        </div>
 
-        <button type="button" class="btn btn-primary" (click)="newSection()"><i class="fa fa-plus"></i>
-          Add Additional Sections</button>
-        <br>
-        <div *ngIf="(product && product.sections && (product.sections.length > 0))">
-          <ul class="list-group">
-            <li class="list-group-item" *ngFor="let section of product.sections; let i = index">
+            <licky-lick-app-widget-section-edit [data]="product"></licky-lick-app-widget-section-edit>
+            <licky-lick-app-widget-drop-box [selectedFiles]="selectedFiles" [data]="product"
+            (detectFileEvent)="detectFiles($event)" (deleteEvent)="deleteAttachment()"></licky-lick-app-widget-drop-box>
               <div class="row">
-                <div class="col-2">
-                  <button type="button" class="btn btn-primary btn-sm" (click)="editSection(i)"><i
-                      class="fa fa-pencil-square-o"></i> Edit </button>
-                  <button type="button" class="btn btn-danger btn-sm" (click)="removeSection(i)"><i
-                      class="fa fa-times"></i> Delete </button>
-                </div>
-                <div class="col-10">
-                  <h2> {{section?.name}}</h2>
-                  ({{section?.description}})
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="row">
           <div class="col text-center"> <button class="btn btn-primary btn-lg btn-round" (click)="onSubmit()"
               type="submit" [disabled]="!dataForm.form.valid" title="Submit to database">Save
               <i class="fa fa-cloud" aria-hidden="true"></i>

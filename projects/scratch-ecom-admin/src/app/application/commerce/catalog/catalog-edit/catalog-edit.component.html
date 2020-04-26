@@ -1,4 +1,4 @@
-<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)">
+<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" [context]="store?.name" (pageEvent)="onBreadCrumb($event)">
 </licky-lick-app-widget-breadcrumb>
 <div class="card">
   <div class="card-body">
@@ -20,8 +20,8 @@
             <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Name required </div>
         </div>
         <div class="form-group"> <label for="description">Description</label>
-          <textarea [(ngModel)]="catalog.description" id="description" name="description" rows="5" cols="80"
-            class="form-control form-control-lg ta-input-element"></textarea>
+          <ckeditor [(ngModel)]="catalog.description" [editor]="Editor" #description="ngModel" id="description"
+            name="description"></ckeditor>
         </div>
         <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
           <label for="dataDraft"
@@ -38,50 +38,11 @@
         <div class="form-group"><label for="dataKeywords">Keywords</label> <input [(ngModel)]="catalog.keywords"
             id="dataKeywords" name="dataKeywords" type="text" class="form-control form-control-lg ta-input-element"
             placeholder="Enter keywords seperated by commas"></div>
-        <div class="form-group" *ngIf="catalog?.id">
-          <img *ngIf="catalog?.url" src="{{catalog?.url}}" alt="catalog?.url"
-            class="img-fluid mx-auto d-block img-thumbnail">
-        </div>
-        <div class="form-group">
-          <div class="form-group"><small>For best results ensure image is 1920 x 1080</small> <br>
-            <label for="selectedFiles"><span *ngIf="catalog.id">Replace </span> Image</label>
-            <input class="form-control form-control-lg ta-input-element" type="file" id="selectedFiles"
-              name="selectedFiles" (change)="detectFiles($event)" accept=".jpg, .jpeg, .png, .gif"> </div>
-        </div>
 
-        <h3>Sections</h3>
-        <div class="form-group">
-          <label for="sectionName">Section Name</label>
-          <input [(ngModel)]="section.name" id="sectionName" name="sectionName" placeholder="Section Name"
-            class="form-control form-control-lg ta-input-element" type="text">
-        </div>
-        <div class="form-group">
-          <label for="sectionDescription">Section Text</label>
-          <textarea [(ngModel)]="section.description" id="sectionDescription" name="sectionDescription" rows="5"
-            cols="80" class="form-control form-control-lg ta-input-element"></textarea>
-        </div>
+        <licky-lick-app-widget-section-edit [data]="catalog"></licky-lick-app-widget-section-edit>
+        <licky-lick-app-widget-drop-box [selectedFiles]="selectedFiles" [data]="catalog"
+          (detectFileEvent)="detectFiles($event)" (deleteEvent)="deleteAttachment()"></licky-lick-app-widget-drop-box>
 
-        <button type="button" class="btn btn-primary" (click)="newSection()"><i class="fa fa-plus"></i>
-          Add Additional Sections</button>
-        <br>
-        <div *ngIf="(catalog && catalog.sections && (catalog.sections.length > 0))">
-          <ul class="list-group">
-            <li class="list-group-item" *ngFor="let section of catalog.sections; let i = index">
-              <div class="row">
-                <div class="col-2">
-                  <button type="button" class="btn btn-primary btn-sm" (click)="editSection(i)"><i
-                      class="fa fa-pencil-square-o"></i> Edit </button>
-                  <button type="button" class="btn btn-danger btn-sm" (click)="removeSection(i)"><i
-                      class="fa fa-times"></i> Delete </button>
-                </div>
-                <div class="col-10">
-                  <h2> {{section?.name}}</h2>
-                  ({{section?.description}})
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
 
         <div class="row">
           <div class="col text-center">

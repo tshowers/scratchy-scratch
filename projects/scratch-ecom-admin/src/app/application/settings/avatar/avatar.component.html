@@ -1,0 +1,21 @@
+<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" [context]="'Settings'" (pageEvent)="onBreadCrumb($event)">
+</licky-lick-app-widget-breadcrumb>
+<div class="card">
+    <div class="card-body">
+        <form #dataForm="ngForm" class="form-group">
+            <licky-lick-app-widget-drop-box [selectedFiles]="selectedFiles" [data]="user"
+            (detectFileEvent)="detectFiles($event)" (deleteEvent)="deleteAttachment()"></licky-lick-app-widget-drop-box>
+              <div class="row">
+                <div class="col">
+                    <button class="btn btn-primary btn-lg btn-round" (click)="onSubmit()" type="submit"
+                        [disabled]="!dataForm.form.valid" title="Submit to database">Save
+                        <i class="fa fa-cloud" aria-hidden="true"></i>
+                    </button>
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>

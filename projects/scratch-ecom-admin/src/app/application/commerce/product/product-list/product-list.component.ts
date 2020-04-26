@@ -5,6 +5,7 @@ import { Router, Params, ActivatedRoute } from '@angular/router';
 import { Product, Catalog, Store } from 'lick-data';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { PRODUCTS, STORES } from 'licky-services';
+import { BreadCrumbService, PRODUCT } from '../../../../shared/services/bread-crumb.service';
 
 @Component({
   selector: 'app-product-list',
@@ -51,7 +52,7 @@ export class ProductListComponent extends LickAppPageComponent implements OnInit
 
   newItemLink = 'application/stores/' + this.store_id + '/catalogs/' + this.catalog_id + '/products/new';
 
-  constructor(public dm: DataMediationService, protected renderer2: Renderer2, public router: Router, private _route: ActivatedRoute) {
+  constructor(public breadCrumbService: BreadCrumbService, public dm: DataMediationService, protected renderer2: Renderer2, public router: Router, private _route: ActivatedRoute) {
     super(router, renderer2);
   }
 
@@ -163,13 +164,9 @@ export class ProductListComponent extends LickAppPageComponent implements OnInit
   }
 
   setBreadCrumb(): void {
-    this.crumbs = [
-      { name: "dashboard", link: "/dashboard", active: false },
-      { name: this.store.name, link: "/stores/" + this.store_id, active: false },
-      { name: this.catalog.name, link: "/stores/" + this.store_id + "/catalogs/" + this.catalog_id, active: false },
-      { name: "products", link: "/stores/" + this.store_id + "/catalogs/" + this.catalog_id + "/products", active: true },
-      { name: "new", link: "/stores/" + this.store_id + "/products/new", active: false },
-    ]
+    this.breadCrumbService.setContext(PRODUCT);
+    this.breadCrumbService.setBreadCrumb(this.store_id, this.catalog_id);
+    this.crumbs = this.breadCrumbService.getBreadCrumb();
   }
 
   onBreadCrumb(link): void {

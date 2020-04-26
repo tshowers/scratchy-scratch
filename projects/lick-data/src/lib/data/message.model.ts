@@ -13,7 +13,7 @@ export class Message  {
   public shared: boolean = false;
 
   public title?;
-  public text?;
+  public text: string = "";
   public status?;
   public handle?;
   public article : Article;
@@ -52,7 +52,7 @@ export class Message  {
     data.shared = data.hasOwnProperty('shared') ? data.shared : false;
 
     data.title = data.hasOwnProperty('title') ? data.title : null;
-    data.text = data.hasOwnProperty('text') ? data.text : null;
+    data.text = data.hasOwnProperty('text') ? data.text : "";
     data.status = data.hasOwnProperty('status') ? data.status : null;
     data.handle = data.hasOwnProperty('handle') ? data.handle : null;
     data.article = data.hasOwnProperty('article') ? data.article : null;

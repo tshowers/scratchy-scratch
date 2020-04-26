@@ -43,25 +43,6 @@
                                      [countText4]="'Deleted'"
                                      (newItemEvent)="onNewItem()"
                                      [router]="router"></licky-lick-app-widget-stats15>
-      <!-- <div class="row">
-        <div class="col-6  text-right">
-          <i class="fa fa-table text-primary"
-             aria-hidden="true"></i>
-          <i class="text-theme">Toggle between table and column view</i>
-        </div>
-        <div class="col-6">
-          <ui-switch [(ngModel)]="isList"
-                     size="small"></ui-switch>
-        </div>
-      </div> -->
-      <!-- <licky-lick-app-widget-card-column
-                                         [data]="data$ | async"
-                                         [pageSize]="pageSize"
-                                         [totalRecords]="totalRecords"
-                                         (detailEvent)="onDetail($event)"
-                                         (deleteEvent)="onDelete($event)"
-                                         (editEvent)="onEdit($event)"
-                                         (currentPageEvent)="newPage($event)"></licky-lick-app-widget-card-column> -->
       <licky-lick-app-widget-table-data
                                         [data]="data$ | async"
                                         (newItemEvent)="onNewItem()"

@@ -1,4 +1,4 @@
-<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)">
+<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" [context]="store?.name" (pageEvent)="onBreadCrumb($event)">
 </licky-lick-app-widget-breadcrumb>
 <licky-lick-app-widget-table-data [data]="data$ | async" (newItemEvent)="onNewItem()" (detailEvent)="onDetail($event)"
   (deleteEvent)="onDelete($event)" (editEvent)="onEdit($event)" [headingText]="'Phone Numbers'" [router]="router"

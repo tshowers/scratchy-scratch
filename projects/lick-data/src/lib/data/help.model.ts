@@ -9,7 +9,7 @@ export class Help {
   public link?: string;
   public shared: boolean = false;
 
-  public description?: string;
+  public description?: string = "";
   public author?: string;
   public step?;
 
@@ -45,7 +45,7 @@ export class Help {
     data.link = data.hasOwnProperty('link') ? data.link : null;
     data.shared = data.hasOwnProperty('shared') ? data.shared : false;
 
-    data.description = data.hasOwnProperty('description') ? data.description : null;
+    data.description = data.hasOwnProperty('description') ? data.description : "";
     data.author = data.hasOwnProperty('author') ? data.author : null;
     data.step = data.hasOwnProperty('step') ? data.step : null;
     data.publishedAt = data.hasOwnProperty('publishedAt') ? data.publishedAt : null;

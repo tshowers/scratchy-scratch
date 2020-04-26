@@ -1,4 +1,4 @@
-<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)">
+<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" [context]="store?.name" (pageEvent)="onBreadCrumb($event)">
 </licky-lick-app-widget-breadcrumb>
 <div class="card">
   <div class="card-body">
@@ -20,18 +20,18 @@
           <div class="col">
             <div class="form-group">
               <label>Amount</label><br>
-              {{cartTotal  | currency:'USD':true }}
+              <!-- {{cartTotal  | currency:'USD':true }} -->
               <input [(ngModel)]="order.amount" #orderAmount="ngModel" id="orderAmount" name="orderAmount"
                 placeholder="Order Amount" type="number" class="form-control input-lg input-element"
-                [disabled]="canDelete">
+                [disabled]="(order?.id)">
             </div>
           </div>
           <div class="col">
             <div class="form-group">
               <label>Tax</label><br>
-              {{cartTaxTotal | currency:'USD':true}}
+              <!-- {{cartTaxTotal | currency:'USD':true}} -->
               <input [(ngModel)]="order.tax" #orderTax="ngModel" id="orderTax" name="orderTax" type="number"
-                class="form-control input-lg input-element" [disabled]="canDelete">
+                class="form-control input-lg input-element" [disabled]="(order?.id)">
             </div>
           </div>
         </div>
@@ -43,39 +43,10 @@
             </div>
           </div>
         </div>
-        <h3>Sections</h3>
-        <div class="form-group">
-          <label for="sectionName">Section Name</label>
-          <input [(ngModel)]="section.name" id="sectionName" name="sectionName" placeholder="Section Name"
-            class="form-control form-control-lg ta-input-element" type="text">
-        </div>
-        <div class="form-group">
-          <label for="sectionDescription">Section Text</label>
-          <textarea [(ngModel)]="section.description" id="sectionDescription" name="sectionDescription" rows="5"
-            cols="80" class="form-control form-control-lg ta-input-element"></textarea>
-        </div>
 
-        <button type="button" class="btn btn-primary" (click)="newSection()"><i class="fa fa-plus"></i>
-          Add Additional Sections</button>
-        <br>
-        <div *ngIf="(order && order.sections && (order.sections.length > 0))">
-          <ul class="list-group">
-            <li class="list-group-item" *ngFor="let section of order.sections; let i = index">
-              <div class="row">
-                <div class="col-2">
-                  <button type="button" class="btn btn-primary btn-sm" (click)="editSection(i)"><i
-                      class="fa fa-pencil-square-o"></i> Edit </button>
-                  <button type="button" class="btn btn-danger btn-sm" (click)="removeSection(i)"><i
-                      class="fa fa-times"></i> Delete </button>
-                </div>
-                <div class="col-10">
-                  <h2> {{section?.name}}</h2>
-                  ({{section?.description}})
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
+        <licky-lick-app-widget-section-edit [data]="order"></licky-lick-app-widget-section-edit>
+        
+
       </div>
     </form>
   </div>

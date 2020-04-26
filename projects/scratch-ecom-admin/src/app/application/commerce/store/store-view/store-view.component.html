@@ -1,4 +1,4 @@
-<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)">
+<licky-lick-app-widget-breadcrumb [crumbs]="crumbs"  [context]="store?.name" (pageEvent)="onBreadCrumb($event)">
 </licky-lick-app-widget-breadcrumb>
 <licky-lick-marketing-about-product7 [imageURL]="store?.url" [headingText]="store?.name"
   [descriptionText]="store?.description" [instructionText]="store?.keywords" [customButtonText1]="'Edit'"

@@ -6,6 +6,9 @@ import { UploadService, DropdownService, TypeFindService, OFFERS, STORES } from 
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
 import { Subscription } from 'rxjs';
+import { BreadCrumbService, OFFER } from '../../../../shared/services/bread-crumb.service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { LickAppWidgetSectionEditComponent } from 'lick-app-widget-section-edit';
 
 
 @Component({
@@ -18,6 +21,9 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
   readonly OFFERS = OFFERS;
 
   readonly STORES = STORES;
+
+  public Editor1 = ClassicEditor;
+  public Editor2 = ClassicEditor;
 
   canDelete: boolean = true;
 
@@ -53,11 +59,12 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
 
   searchArgument;
 
-  section: Section = new Section();
+  @ViewChild(LickAppWidgetSectionEditComponent) sectionEdit: LickAppWidgetSectionEditComponent;
 
   constructor(public dm: DataMediationService,
     protected renderer2: Renderer2,
     public router: Router,
+    public breadCrumbService: BreadCrumbService, 
     public typeFindService: TypeFindService,
     private _dropdownService: DropdownService,
     private _uploadService: UploadService,
@@ -150,6 +157,10 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
     }
   }
 
+  deleteAttachment() {
+    this.selectedFiles = null;
+  }
+
   public detectFiles(event) {
     this.selectedFiles = event.target.files;
   }
@@ -160,13 +171,9 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
 
 
   setBreadCrumb(): void {
-    this.crumbs = [
-      { name: "dashboard", link: "/stores/dashboard", active: false },
-      { name: this.store.name, link: "/stores/" + this.store_id, active: false },
-      { name: this.catalog.name, link: "/stores/" + this.store_id + "/catalogs/" + this.catalog_id, active: false },
-      { name: "offers", link: "/stores/" + this.store_id + "/catalogs/" + this.catalog_id + "/offers", active: false },
-      { name: "new", link: "/stores/" + this.store_id + "/catalogs/" + this.catalog_id + "/offers/new", active: true },
-    ]
+    this.breadCrumbService.setContext(OFFER);
+    this.breadCrumbService.setBreadCrumb(this.store_id, this.catalog_id);
+    this.crumbs = this.breadCrumbService.getBreadCrumb();
   }
 
   private setStoreContext(): void {
@@ -223,22 +230,7 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
   }
 
   modelCheck() {
-    if (this.section.name)
-      this.newSection();
-  }
-
-  newSection(): void {
-    this.offer.sections.push(this.section);
-    this.section = new Section();
-  }
-
-  editSection(at: number): void {
-    this.section = this.offer.sections[at];
-    this.removeSection(at);
-  }
-
-  removeSection(at: number): void {
-    this.offer.sections.splice(at, 1);
+    this.sectionEdit.modelCheck();
   }
 
 

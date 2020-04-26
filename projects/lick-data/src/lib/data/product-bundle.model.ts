@@ -10,7 +10,7 @@ export class ProductBundle {
   public link?: string;
   public shared: boolean = true;
 
-  public description?;
+  public description?: string = "";
   public products?: Array<any> = [];
   public activated?: boolean = false;
   public price?: number;
@@ -49,7 +49,7 @@ export class ProductBundle {
     data.link = data.hasOwnProperty('link') ? data.link : null;
     data.shared = data.hasOwnProperty('shared') ? data.shared : false;
 
-    data.description = data.hasOwnProperty('description') ? data.description : null;
+    data.description = data.hasOwnProperty('description') ? data.description : "";
     data.products = data.hasOwnProperty('products') ? data.products : null;
     data.activated = data.hasOwnProperty('activated') ? data.activated : false;
     data.price = data.hasOwnProperty('price') ? data.price : 0;

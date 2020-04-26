@@ -10,7 +10,7 @@ export class Group {
   public link?: string;
   public shared: boolean = false;
 
-  public description?: string;
+  public description?: string = "";
 
   public members?: Array<any>;
   public contact_id?;
@@ -46,7 +46,7 @@ export class Group {
     data.link = data.hasOwnProperty('link') ? data.link : null;
     data.shared = data.hasOwnProperty('shared') ? data.shared : false;
 
-    data.description = data.hasOwnProperty('description') ? data.description : null;
+    data.description = data.hasOwnProperty('description') ? data.description : "";
 
     data.members = data.hasOwnProperty('members') ? data.members : [];
     data.contact_id = data.hasOwnProperty('contact_id') ? data.contact_id : null;

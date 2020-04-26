@@ -1,3 +1,5 @@
+<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" [context]="store?.name + ' / ' + catalog?.name" (pageEvent)="onBreadCrumb($event)">
+</licky-lick-app-widget-breadcrumb>
 <div class="card">
   <div class="card-body">
 
@@ -42,8 +44,9 @@
                     class="fa fa-exclamation-triangle" aria-hidden="true"></i> Offer title required </div>
               </div>
               <div class="form-group"> <label for="shortDescription">Description</label>
-
-              </div>
+                <ckeditor [(ngModel)]="offer.description" [editor]="Editor1" #shortDescription="ngModel" id="shortDescription"
+                name="shortDescription"></ckeditor>
+                  </div>
               <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
                 <label for="dataDraft"
                   title="Draft indicates the record is not finished and should not be made public">Draft</label>
@@ -65,15 +68,15 @@
           <ngb-tab title="Meta" [disabled]="!dataForm.form.valid">
             <ng-template ngbTabContent>
               <div class="form-group"> <label for="longDescription">Long Description</label>
-                <textarea name="longDescription" [(ngModel)]="offer.longDescription" #longDescription="ngModel"
-                  id="longDescription" name="longDescription" placeholder="Long Description" cols="30" rows="10"
-                  class="form-control form-control-lg ta-input-element"></textarea>
+                <ckeditor [(ngModel)]="offer.longDescription" [editor]="Editor2" #longDescription="ngModel" id="longDescription"
+                name="longDescription"></ckeditor>
+
               </div>
               <div class="form-group"> <label for="expirationDate">Expiration Date</label>
                 <div class="input-group"> <input [(ngModel)]="offer.expirationDate" id="expirationDate"
                     name="expirationDate" type="text" class="form-control form-control-lg ta-input-element"
                     placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker">
-                  <div class="input-group-addon" (click)="d.toggle()"> <img src="assets/calendar-icon.svg"
+                  <div class="input-group-addon" (click)="d.toggle()"> <img src="assets/iamges/calendar-icon.svg"
                       style="width: 1.2rem; height: 1rem; cursor: pointer;" /> </div>
                 </div>
               </div>
@@ -98,52 +101,17 @@
                   [(ngModel)]="offer.attributes" #offerAttributes="ngModel" id="offerAttributes" name="offerAttributes"
                   placeholder="Offer Attributes seperated by commas" type="text"
                   class="form-control form-control-lg ta-input-element"> </div>
-              <h3>Sections</h3>
-              <div class="form-group">
-                <label for="sectionName">Section Name</label>
-                <input [(ngModel)]="section.name" id="sectionName" name="sectionName" placeholder="Section Name"
-                  class="form-control form-control-lg ta-input-element" type="text">
-              </div>
-              <div class="form-group">
-                <label for="sectionDescription">Section Text</label>
-                <textarea [(ngModel)]="section.description" id="sectionDescription" name="sectionDescription" rows="5"
-                  cols="80" class="form-control form-control-lg ta-input-element"></textarea>
-              </div>
 
-              <button type="button" class="btn btn-primary" (click)="newSection()"><i class="fa fa-plus"></i>
-                Add Additional Sections</button>
-              <br>
-              <div *ngIf="(offer && offer.sections && (offer.sections.length > 0))">
-                <ul class="list-group">
-                  <li class="list-group-item" *ngFor="let section of offer.sections; let i = index">
-                    <div class="row">
-                      <div class="col-2">
-                        <button type="button" class="btn btn-primary btn-sm" (click)="editSection(i)"><i
-                            class="fa fa-pencil-square-o"></i> Edit </button>
-                        <button type="button" class="btn btn-danger btn-sm" (click)="removeSection(i)"><i
-                            class="fa fa-times"></i> Delete </button>
-                      </div>
-                      <div class="col-10">
-                        <h2> {{section?.name}}</h2>
-                        ({{section?.description}})
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-
+                  <licky-lick-app-widget-section-edit [data]="offer"></licky-lick-app-widget-section-edit>
+                 
             </ng-template>
           </ngb-tab>
           <ngb-tab title="Images" [disabled]="!dataForm.form.valid">
             <ng-template ngbTabContent>
-              <div class="form-group" *ngIf="offer.id"> <img *ngIf="offer?.url" src="{{offer?.url}}" alt="offer?.url"
-                  class="img-fluid mx-auto d-block img-thumbnail"> </div>
-              <div class="form-group">
-                <small>For best results ensure image is 1920 x 1080</small> <br> <label for="selectedFiles"><span
-                    *ngIf="offer.id">Replace </span> Image</label> <input
-                  class="form-control form-control-lg ta-input-element" type="file" id="selectedFiles"
-                  name="selectedFiles" (change)="detectFiles($event)" accept=".jpg, .jpeg, .png, .gif"> </div>
 
+              <licky-lick-app-widget-drop-box [selectedFiles]="selectedFiles" [data]="offer"
+              (detectFileEvent)="detectFiles($event)" (deleteEvent)="deleteAttachment()"></licky-lick-app-widget-drop-box>
+    
             </ng-template>
           </ngb-tab>
         </ngb-tabset>

@@ -20,6 +20,7 @@ export class LickAppWidgetBreadcrumbComponent implements OnInit {
     { name: "contacts", link: "/", active: false },
     { name: "create", link: "/", active: true }
   ];
+  @Input() context: string = "N/A";
 
   @Output() pageEvent = new EventEmitter();
 

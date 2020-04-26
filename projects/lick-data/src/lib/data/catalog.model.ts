@@ -10,7 +10,7 @@ export class Catalog {
   public link?: string;
   public shared: boolean = false;
 
-  public description?: string;
+  public description?: string = "";
 
   public store_id?: string;
 
@@ -45,7 +45,7 @@ export class Catalog {
     data.link = data.hasOwnProperty('link') ? data.link : null;
     data.shared = data.hasOwnProperty('shared') ? data.shared : false;
 
-    data.description = data.hasOwnProperty('description') ? data.description : null;
+    data.description = data.hasOwnProperty('description') ? data.description : "";
 
     data.store_id = data.hasOwnProperty('store_id') ? data.store_id : null;
 

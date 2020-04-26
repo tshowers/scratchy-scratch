@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, Renderer2  } from '@angular/core';
 import { Router } from '@angular/router';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { DataMediationService } from '../../../shared/services/data-mediation.service';
+import { BreadCrumbService } from '../../../shared/services/bread-crumb.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -25,7 +26,7 @@ export class DashboardComponent extends LickAppPageComponent implements OnInit, 
   faqHeading4 = "The Secret Sause";
   faqDescription4 = "The magic happens in monitoring the products and customers in various systems such as your calendar, CRM system, or the news. 16AHEAD will offer suggestions on products and customers you should review and why.";
 
-  constructor(public dm: DataMediationService, protected renderer2: Renderer2, public router: Router) {
+  constructor(public breadCrumbService: BreadCrumbService, public dm: DataMediationService, protected renderer2: Renderer2, public router: Router) {
     super(router, renderer2);
   }
 
@@ -35,11 +36,8 @@ export class DashboardComponent extends LickAppPageComponent implements OnInit, 
   }
 
   setBreadCrumb(): void {
-    this.crumbs = [
-      { name: "dashboard", link: "/stores/dashboard", active: true },
-      { name: "stores", link: "/stores", active: false },
-      { name: "new", link: "/stores/new", active: false },
-    ]
+    this.breadCrumbService.setBreadCrumb();
+    this.crumbs = this.breadCrumbService.getBreadCrumb();
   }
 
   ngOnDestroy() {

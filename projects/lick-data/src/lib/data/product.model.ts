@@ -16,8 +16,8 @@ export class Product {
   public features?;
   public images? : Array<any>;
   public deliverable_id?: string;
-  public description? : string;
-  public longDescription? : string;
+  public description?: string = "";
+  public longDescription : string = "";
   public manufacturer? : string;
   public author? : string;
   public category? : string;
@@ -76,8 +76,8 @@ export class Product {
     data.discontinued = data.hasOwnProperty('discontinued') ? data.discontinued : false;
     data.features = data.hasOwnProperty('features') ? data.features : null;
     data.deliverable_id = data.hasOwnProperty('deliverable_id') ? data.deliverable_id : null;
-    data.description = data.hasOwnProperty('description') ? data.description : null;
-    data.longDescription = data.hasOwnProperty('longDescription') ? data.longDescription : null;
+    data.description = data.hasOwnProperty('description') ? data.description : "";
+    data.longDescription = data.hasOwnProperty('longDescription') ? data.longDescription : "";
     data.manufacturer = data.hasOwnProperty('manufacturer') ? data.manufacturer : null;
     data.author = data.hasOwnProperty('author') ? data.author : null;
     data.category = data.hasOwnProperty('category') ? data.category : null;

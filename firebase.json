@@ -1,12 +1,10 @@
 {
-  "hosting": [{
+  "hosting": [
+    {
       "target": "home",
       "public": "dist/scratch-home",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-      "rewrites": [{
-        "source": "**",
-        "destination": "/index.html"
-      }]
+      "rewrites": [{"source": "**", "destination": "/index.html"}]
     },
     {
       "target": "factory",
@@ -17,6 +15,12 @@
     {
       "target": "news",
       "public": "dist/scratch-news",
+      "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],
+      "rewrites": [{ "source": "**", "destination": "/index.html"  }]
+    },
+    {
+      "target": "e-com-dev",
+      "public": "dist/scratch-ecom-admin",
       "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],
       "rewrites": [{ "source": "**", "destination": "/index.html"  }]
     },

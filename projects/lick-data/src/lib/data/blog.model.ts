@@ -17,7 +17,7 @@ export class Blog {
   public headingFontSize?: number;
   public bodyTextFont?: string;
   public bodyTextFontSize?: number;
-  public description?: string;
+  public description?: string = "";
 
   public sections?: Array<Section> = [];
   public lastUpdated;
@@ -57,7 +57,7 @@ export class Blog {
     data.headingFontSize = data.hasOwnProperty('headingFontSize') ? data.headingFontSize : null;
     data.bodyTextFont = data.hasOwnProperty('bodyTextFont') ? data.bodyTextFont : null;
     data.bodyTextFontSize = data.hasOwnProperty('bodyTextFontSize') ? data.bodyTextFontSize : null;
-    data.description = data.hasOwnProperty('description') ? data.description : null;
+    data.description = data.hasOwnProperty('description') ? data.description : "";
 
     data.sections = data.hasOwnProperty('sections') ? data.sections : [];
 

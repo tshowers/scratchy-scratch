@@ -51,7 +51,7 @@ export class Stat {
     data.blog_id = data.hasOwnProperty('blog_id') ? data.blog_id : null;
     data.value = data.hasOwnProperty('value') ? data.value : null;
     data.topValue = data.hasOwnProperty('topValue') ? data.topValue : null;
-    data.description = data.hasOwnProperty('description') ? data.description : null;
+    data.description = data.hasOwnProperty('description') ? data.description : "";
 
     data.publishedAt = data.hasOwnProperty('publishedAt') ? data.publishedAt : null;
 

@@ -6,6 +6,7 @@ import { Upload, Store, Dropdown, Section } from 'lick-data';
 import { UploadService, DropdownService, TypeFindService, STORES } from 'licky-services';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
+import { BreadCrumbService, STORE } from '../../../../shared/services/bread-crumb.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
@@ -40,7 +41,7 @@ export class StoreEditComponent extends LickAppPageComponent implements OnInit, 
 
   canDelete: boolean = true;
 
-  constructor(public dm: DataMediationService, protected renderer2: Renderer2, public router: Router, public typeFindService: TypeFindService, private _uploadService: UploadService, private _dropdownService: DropdownService, private _route: ActivatedRoute) {
+  constructor(public breadCrumbService: BreadCrumbService, public dm: DataMediationService, protected renderer2: Renderer2, public router: Router, public typeFindService: TypeFindService, private _uploadService: UploadService, private _dropdownService: DropdownService, private _route: ActivatedRoute) {
     super(router, renderer2);
   }
 
@@ -63,12 +64,9 @@ export class StoreEditComponent extends LickAppPageComponent implements OnInit, 
   }
 
   setBreadCrumb(): void {
-
-    this.crumbs = [
-      { name: "dashboard", link: "/stores/dashboard", active: false },
-      { name: "stores", link: "//stores", active: false },
-      { name: (this.store.id ? (this.store.name) : "edit"), link: (this.store.id ? (`/stores/${this.store.id}`) : "/stores/new"), active: true },
-    ]
+    this.breadCrumbService.setContext(STORE);
+    this.breadCrumbService.setBreadCrumb(this.store.id);
+    this.crumbs = this.breadCrumbService.getBreadCrumb();
   }
 
   onBreadCrumb(link): void {
@@ -80,10 +78,6 @@ export class StoreEditComponent extends LickAppPageComponent implements OnInit, 
     (this.store.id ? this.onUpdate() : this.saveNewStore());
   }
 
-  deleteAttachment() {
-    console.log("deleteAttachment()");
-    this.selectedFiles = null;
-  }
 
   private redirect(redirectPath): void {
     if (!this.currentUpload) {
@@ -110,6 +104,11 @@ export class StoreEditComponent extends LickAppPageComponent implements OnInit, 
         this._uploadService.pushFileToStorage(this.currentUpload, STORES, '/stores/' + this.store.id, this.store, this.dm.db);
       }
     }
+  }
+
+  deleteAttachment() {
+    console.log("deleteAttachment()");
+    this.selectedFiles = null;
   }
 
   public detectFiles(event) {

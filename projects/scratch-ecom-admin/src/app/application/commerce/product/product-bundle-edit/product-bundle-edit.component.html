@@ -1,4 +1,4 @@
-<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)">
+<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" [context]="store?.name + ' / ' + catalog?.name" (pageEvent)="onBreadCrumb($event)">
 </licky-lick-app-widget-breadcrumb>
 <div class="card">
   <div class="card-body">
@@ -21,9 +21,10 @@
                     class="fa fa-exclamation-triangle" aria-hidden="true"></i> Title required </div>
               </div>
               <div class="form-group"> <label for="productBundleText">Description</label>
-                <textarea name="productBundleText" [(ngModel)]="productBundle.description" id="productBundleText"
-                  name="productBundleText" placeholder="Product Bundle Description" cols="30" rows="10"
-                  class="form-control form-control-lg ta-input-element" required></textarea>
+                
+                <ckeditor [(ngModel)]="productBundle.description" [editor]="Editor" #productBundleText="ngModel" id="productBundleText"
+                name="productBundleText"></ckeditor>
+    
               </div>
               <div class="form-group"> <label for="productBundlePrice">Price</label> <input
                   [(ngModel)]="productBundle.price" id="productBundlePrice" name="productBundlePrice"
@@ -33,21 +34,9 @@
                   [(ngModel)]="productBundle.hourlyRate" id="productBundleHourlyRate" name="productBundleHourlyRate"
                   type="number" class="form-control form-control-lg input-element"></div>
               <div class="form-group">
-                <label>Status</label><br>
+                <label>Active</label><br>
                 <ui-switch [(ngModel)]="productBundle.activated" id="activated" name="activated"></ui-switch>
               </div>
-              <div class="form-group" *ngIf="productBundle.id">
-                <img *ngIf="productBundle?.url" src="{{productBundle?.url}}" alt="productBundle?.url"
-                  class="img-fluid mx-auto d-block img-thumbnail">
-              </div>
-              <div class="form-group">
-                <div class="form-group"><small>For best results ensure image is 1920 x 1080</small> <br>
-                  <label for="selectedFiles"><span *ngIf="productBundle.id">Replace </span> Image</label>
-                  <input class="form-control form-control-lg ta-input-element" type="file" id="selectedFiles"
-                    name="selectedFiles" (change)="detectFiles($event)" accept=".jpg, .jpeg, .png, .gif"> </div>
-              </div>
-
-
 
 
               <div class="form-group">
@@ -74,39 +63,11 @@
                   [(ngModel)]="productBundle.keywords" id="dataKeywords" name="dataKeywords" type="text"
                   class="form-control form-control-lg ta-input-element"
                   placeholder="Enter keywords seperated by commas"></div>
-              <h3>Sections</h3>
-              <div class="form-group">
-                <label for="sectionName">Section Name</label>
-                <input [(ngModel)]="section.name" id="sectionName" name="sectionName" placeholder="Section Name"
-                  class="form-control form-control-lg ta-input-element" type="text">
-              </div>
-              <div class="form-group">
-                <label for="sectionDescription">Section Text</label>
-                <textarea [(ngModel)]="section.description" id="sectionDescription" name="sectionDescription" rows="5"
-                  cols="80" class="form-control form-control-lg ta-input-element"></textarea>
-              </div>
 
-              <button type="button" class="btn btn-primary" (click)="newSection()"><i class="fa fa-plus"></i>
-                Add Additional Sections</button>
-              <br>
-              <div *ngIf="(productBundle && productBundle.sections && (productBundle.sections.length > 0))">
-                <ul class="list-group">
-                  <li class="list-group-item" *ngFor="let section of productBundle.sections; let i = index">
-                    <div class="row">
-                      <div class="col-2">
-                        <button type="button" class="btn btn-primary btn-sm" (click)="editSection(i)"><i
-                            class="fa fa-pencil-square-o"></i> Edit </button>
-                        <button type="button" class="btn btn-danger btn-sm" (click)="removeSection(i)"><i
-                            class="fa fa-times"></i> Delete </button>
-                      </div>
-                      <div class="col-10">
-                        <h2> {{section?.name}}</h2>
-                        ({{section?.description}})
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
+                  <licky-lick-app-widget-section-edit [data]="productBundle"></licky-lick-app-widget-section-edit>
+                  <licky-lick-app-widget-drop-box [selectedFiles]="selectedFiles" [data]="productBundle"
+                    (detectFileEvent)="detectFiles($event)" (deleteEvent)="deleteAttachment()"></licky-lick-app-widget-drop-box>
+                            
 
             </ng-template>
           </ngb-tab>

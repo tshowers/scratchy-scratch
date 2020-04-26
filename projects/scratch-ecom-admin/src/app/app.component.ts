@@ -21,6 +21,7 @@ export class AppComponent extends LickAppPageComponent implements OnInit {
   isHome: boolean = false;
   private _store_id: string;
   private _catalog_id: string;
+  pageName: string;
 
   homeMenu: any[] = [];
 
@@ -48,6 +49,7 @@ export class AppComponent extends LickAppPageComponent implements OnInit {
         mergeMap((route) => route.data))
       .subscribe((event) => {
         this._titleService.setTitle(event['title']);
+        this.pageTitle = event['title'];
         this.isHome = (this._location.path().indexOf('stores') < 0);
         this._wowService.init();
       });

@@ -6236,6 +6236,14 @@
             ]
           },
           "configurations": {
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/scratch-crm/src/environments/environment.ts",
+                  "with": "projects/scratch-crm/src/environments/environment.dev.ts"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
