@@ -11,6 +11,10 @@
   bottom: 15px;
   right: 28px;
 }
+.ta-right-collapse-height {
+  height: 60vh;
+   overflow-y: scroll;
+}
 .ta-chat-popup {
   position: fixed;
   bottom: 50px;

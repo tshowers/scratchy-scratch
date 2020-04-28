@@ -6,6 +6,11 @@ import { ShoppingCart } from './shopping-cart.model';
 import { Address } from './address.model';
 import { FOP } from './fop.model';
 
+export enum Role {
+  User = 'User',
+  Admin = 'Admin'
+}
+
 export class User {
   public id?;
 
@@ -53,7 +58,7 @@ export class User {
 
   public currentStep?;
   public currentStepName?;
-  public roles?: Roles[];
+  public roles?: Roles;
   public role?;
 
   public amount?;
@@ -131,7 +136,7 @@ export class User {
 
     data.currentStep = data.hasOwnProperty('currentStep') ? data.currentStep : 0;
     data.currentStepName = data.hasOwnProperty('currentStepName') ? data.currentStepName : null;
-    data.roles = data.hasOwnProperty('roles') ? data.roles : [];
+    data.roles = data.hasOwnProperty('roles') ? data.roles : null;
     data.role = data.hasOwnProperty('role') ? data.role : null;
 
     data.amount = data.hasOwnProperty('amount') ? data.amount : 0;
@@ -262,6 +267,7 @@ export class Favorite {
 
 
 }
+
 
 export class Bookmark {
   public id?: string;

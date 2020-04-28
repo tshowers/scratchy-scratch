@@ -23,7 +23,7 @@ export class LickyLoginService {
   public userChanged = new BehaviorSubject<User>(null);
   public firebaseUser = new BehaviorSubject<firebase.User>(null);
   private _firebaseUser: firebase.User;
-  private _user: User ;
+  private _user: User;
   private _users: any;
   private _loggedIn: boolean = false;
   public redirectUrl;
@@ -38,6 +38,28 @@ export class LickyLoginService {
   public setToken(token): void {
     this._token = token;
   }
+
+  public canRead(): boolean {
+    const allowed = ['admin', 'author', 'reader'];
+    return this.matchingRole(allowed);
+  }
+  public canEdit(): boolean {
+    const allowed = ['admin', 'author'];
+    return this.matchingRole(allowed);
+  }
+  public canDelete(): boolean {
+    const allowed = ['admin'];
+    return this.matchingRole(allowed);
+  }
+
+  private matchingRole(allowedRoles): boolean {
+    if (!this._user || !this._user.roles) return false;
+    const userRoles = Object.keys(this._user.roles);
+
+    let intersection = userRoles.filter(x => allowedRoles.includes(x));
+    return (intersection.length != 0);
+  }
+
 
   private initFirebase() {
     console.info("Initializing Firebase with " + JSON.stringify(this.config))
@@ -223,7 +245,7 @@ export class LickyLoginService {
     this._fds.getDataCollection(USERS).subscribe((users) => {
       if (!users) {
         console.info("NO USERS FOUND!");
-        this.createUser();
+        this.createAdminUser();
       } else {
         this._users = users;
         this.usersChanged.next(this._users);
@@ -248,8 +270,19 @@ export class LickyLoginService {
     })
   }
 
+  private createAdminUser(): void {
+    let user = new User();
+    user.roles = { reader: true, author: true, admin: true };
+    this.setUserID(user);
+  }
+
   private createUser(): void {
     let user = new User();
+    user.roles = { reader: true, author: true };
+    this.setUserID(user);
+  }
+
+  private setUserID(user: User): void {
     user.account = IdGeneratorService.generateUUID();
     this.setAppUser(user);
     this._fds.updateData(USERS, this._firebaseUser.uid, user);

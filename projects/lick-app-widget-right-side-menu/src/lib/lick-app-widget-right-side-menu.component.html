@@ -7,11 +7,11 @@
         <div class="row">
     
           <h2 class="wow fadeInUp">{{helpHeaderText}}</h2>
-          <div class="block-desc wow fadeInUp">
-            <p>{{descriptionText}}</p>
+          <div class="wow fadeInUp" innerHTML="{{descriptionText}}">
+            
           </div>
     
-          <div class="col-md-12">
+          <div class="col-md-12 ta-right-collapse-height">
             <!-- Accordion -->
             <div id="accordion" class="panel-group faq-group" role="tablist" aria-multiselectable="true">
     
@@ -24,10 +24,7 @@
                   </h4>
                 </div>
                 <div id="collapse{{i}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="'heading' + i">
-                  <div class="panel-body">
-                    <p>
-                      {{item?.description}}
-                    </p>
+                  <div class="panel-body" innerHTML="{{item?.description}}">
                   </div>
                 </div>
               </div> <!-- .panel-default -->

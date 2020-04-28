@@ -18,6 +18,8 @@ export class GeneralComponent implements OnInit {
   image: string;
   verified: string;
 
+  roles = { reader: true, author: true, admin: true };
+
   constructor() { }
 
   ngOnInit(): void {

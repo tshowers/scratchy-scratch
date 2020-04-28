@@ -1,1 +1,28 @@
-<p>veriify works!</p>
+<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" [context]="'Settings'" (pageEvent)="onBreadCrumb($event)">
+</licky-lick-app-widget-breadcrumb>
+<div class="card">
+    <div class="card-body">
+        <form #dataForm="ngForm" class="form-group">
+            <div class="form-group"> 
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      Email Address Verified?
+                      <span *ngIf="verified"><i class="fa fa-check-square-o fa-2x" aria-hidden="true"></i></span>
+                      <span *ngIf="!verified" class="text-danger"><i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i></span>
+                    </li>
+                  </ul>
+            </div>
+            <div class="row" *ngIf="!verified">
+                <div class="col">
+                    <button class="btn btn-primary btn-lg btn-round" (click)="onSubmit()" type="submit"
+                        [disabled]="!dataForm.form.valid" title="Resend Verification">Resend Verification
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                    </button>
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>

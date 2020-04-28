@@ -107,6 +107,17 @@ export class DataMediationService implements OnDestroy {
       this._userSubscription.unsubscribe();
   }
 
+  public canRead(): boolean {
+    return this.loginService.canRead();
+  }
+  public canEdit(): boolean {
+    return this.loginService.canEdit();
+  }
+  public canDelete(): boolean {
+    return this.loginService.canDelete();
+  }
+
+
   public doStores(): void {
     this.waitForUserSet();
   }

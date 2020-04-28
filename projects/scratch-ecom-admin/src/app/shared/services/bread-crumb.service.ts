@@ -127,8 +127,10 @@ export class BreadCrumbService {
         this.crumbs.push({ name: "create a store", link: "/stores/new", active: false });
       }
 
-    } else if (this._context === STORE)
+    } else if ((this._context === STORE) || (this._context === DASHBOARD)) {
+      // console.log("setNewLink", this._context)
       this.crumbs.push({ name: "create a store", link: "/stores/new", active: false });
+    }
 
   }
 
