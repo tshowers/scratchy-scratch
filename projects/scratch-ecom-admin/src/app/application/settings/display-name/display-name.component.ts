@@ -16,6 +16,7 @@ export class DisplayNameComponent extends LickAppPageComponent implements OnInit
 
   user: User;
 
+  clicked: boolean = false;
 
   constructor(private dm: DataMediationService,
     public breadCrumbService: BreadCrumbService,
@@ -51,7 +52,9 @@ export class DisplayNameComponent extends LickAppPageComponent implements OnInit
   }
 
   onSubmit(): void {
-
+    this.clicked = true;
+    this.dm.loginService.updateDisplayName(this.displayName, this.dm.photoURL);
+    setTimeout(() => { window.location.reload() }, 100);
   }
 
   get diagnostic() {

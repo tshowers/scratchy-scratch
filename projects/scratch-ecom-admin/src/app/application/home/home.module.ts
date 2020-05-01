@@ -15,12 +15,15 @@ import { LickMarketingTeam1Module} from 'lick-marketing-team1';
 import { LickMarketingSimplePageModule} from 'lick-marketing-simple-page';
 import { LickMarketingSimpleHeaderModule } from 'lick-marketing-simple-header';
 import { LickAppWidgetMaintenanceModule } from 'lick-app-widget-maintenance';
+import { LickAppWidgetProfileModule} from 'lick-app-widget-profile';
 import { HomeComponent } from './home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { TermsComponent } from './terms/terms.component';
 import { AboutComponent } from './about/about.component';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
+import { HelpOneComponent } from './help-one/help-one.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
     imports: [
@@ -39,7 +42,8 @@ import { MaintenanceComponent } from './maintenance/maintenance.component';
         LickMarketingFooter2Module,
         LickMarketingTeam1Module,
         LickMarketingSimplePageModule,
-        LickMarketingSimpleHeaderModule
+        LickMarketingSimpleHeaderModule,
+        LickAppWidgetProfileModule
     ],
     declarations: [
         HomeComponent,
@@ -48,6 +52,8 @@ import { MaintenanceComponent } from './maintenance/maintenance.component';
         TermsComponent,
         AboutComponent,
         MaintenanceComponent,
+        HelpOneComponent,
+        ProfileComponent,
     ],
     exports: [
         HomeComponent

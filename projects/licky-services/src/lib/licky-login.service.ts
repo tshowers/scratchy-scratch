@@ -52,6 +52,49 @@ export class LickyLoginService {
     return this.matchingRole(allowed);
   }
 
+  public getRole(): string {
+    if (this.canDelete())
+      return "Admin";
+    else if (this.canEdit())
+      return "Author";
+    else if (this.canRead())
+      return "Reader";
+    else
+      return "User";
+  }
+
+  public updateDisplayName(name: string, url: string): void {
+    this._firebaseUser.updateProfile({
+      displayName: name,
+      photoURL: url
+    }).then(() => {
+      console.log("Display Updated", name, JSON.stringify(this._firebaseUser))
+      if (this._user)
+        this._user.url = url;
+    }).catch(error => {
+      console.error(error);
+    })
+  }
+
+  public updateEmailAddress(emailAddress: string): void {
+    this._firebaseUser.updateEmail(emailAddress).then(() => {
+      if (this._user)
+        this._user.email = emailAddress;
+    }).catch(error => {
+      console.error(error);
+    })
+  }
+
+  public updatePassword(password: string): void {
+    this._firebaseUser.updatePassword(password).then(() => {
+
+    }).catch(error => {
+      console.error(error);
+    })
+  }
+
+
+
   private matchingRole(allowedRoles): boolean {
     if (!this._user || !this._user.roles) return false;
     const userRoles = Object.keys(this._user.roles);
@@ -79,7 +122,7 @@ export class LickyLoginService {
     return this._user;
   }
 
-  public signInWithUserNameAndPassword(emailAddress: string, password: string, router: Router, redirectURL: string) : boolean {
+  public signInWithUserNameAndPassword(emailAddress: string, password: string, router: Router, redirectURL: string): boolean {
     firebase.auth().signInWithEmailAndPassword(emailAddress, password)
       .then((authData) => {
         this._loggedIn = true;
@@ -93,7 +136,7 @@ export class LickyLoginService {
         this.error.next(error.code);
         this.errorMessage.next(error.message);
       })
-      return false;
+    return false;
   }
 
   public updateUserInfo(firstName: string, lastName: string, firebaseUser: firebase.User): void {
@@ -110,13 +153,13 @@ export class LickyLoginService {
     )
   }
 
-  public isLoggedIn() : boolean {
+  public isLoggedIn(): boolean {
     // console.info("LOGIN STATUS", this._firebaseUser, this._user);
     this._loggedIn = (this._firebaseUser && this._user) ? true : false;
     return (this._loggedIn);
   }
 
-  public setUser(user: User) : void {
+  public setUser(user: User): void {
     this._user = user;
   }
 
@@ -154,7 +197,7 @@ export class LickyLoginService {
       this._fds.setUser(null);
       this.userChanged.next(null);
       console.info("Finished logging out user");
-    }, function(error) {
+    }, function (error) {
       console.error(error);
       this.error.next(error.code);
       this.errorMessage.next(error.message);
@@ -301,12 +344,12 @@ export class LickyLoginService {
     this.setFirebaseAttributes(user);
   }
 
-  private setUsersName(user: User) : void {
+  private setUsersName(user: User): void {
     user.name = this._firebaseUser.displayName;
     console.log("NAME", user.name, "DISPLAY NAME", this._firebaseUser.displayName);
     if (this._firebaseUser.displayName == null) {
-        if (this._firstName && this._lastName)
-          user.name = this._firstName + " " + this._lastName;
+      if (this._firstName && this._lastName)
+        user.name = this._firstName + " " + this._lastName;
     }
 
   }
@@ -329,8 +372,15 @@ export class LickyLoginService {
 
   public update(): void {
     if (!this._user) return;
-    this._fds.updateData(USERS, this._user.id, this._user);
-    this.userChanged.next(this._user);
+    this.updateUser(this._user);
   }
+
+  public updateUser(user: User): void {
+    if (!user) return;
+    console.info("UPDATING USER", JSON.stringify(user))
+    this._fds.updateData(USERS, user.id, user);
+    this.userChanged.next(user);
+  }
+
 
 }

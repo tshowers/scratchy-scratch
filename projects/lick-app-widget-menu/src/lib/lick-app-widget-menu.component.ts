@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Renderer2, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, Renderer2, EventEmitter, Output, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Contact } from 'lick-data';
 import { MenuIcon } from 'lick-app-widget-notification';
@@ -10,7 +10,7 @@ import { LickAppWidgetMenuService } from './lick-app-widget-menu.service';
   templateUrl: './lick-app-widget-menu.component.html',
   styles: []
 })
-export class LickAppWidgetMenuComponent implements OnInit {
+export class LickAppWidgetMenuComponent implements OnInit, OnDestroy {
 
   @Input() router: Router;
   @Input() photoURL = "http://via.placeholder.com/32x32";
@@ -58,7 +58,17 @@ export class LickAppWidgetMenuComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.toggleSidebar();
-    }, 3000)
+    }, 3000);
+    this.setRole();
+  }
+
+  ngOnDestroy() {
+
+  }
+
+  setRole(): void {
+    if (this.loginService)
+      this.role = this.loginService.getRole();
   }
 
   logout() {

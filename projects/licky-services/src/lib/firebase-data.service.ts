@@ -223,7 +223,7 @@ export class FirebaseDataService {
 
   getDataCollection(path): Observable<any> {
     path = this.getAugmentedPath(path);
-    // console.log("Getting data for path", path);
+    console.log("Getting data for path", path);
     return Observable.create((observer) => {
 
       this._db.ref(path).on('value', (snapshot) => {

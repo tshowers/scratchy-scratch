@@ -70,6 +70,8 @@ export class UploadService {
     );
   }
 
+  
+
   private deleteFileStored(name: string) {
     const storageRef = firebase.storage().ref();
     storageRef.child(DOCUMENTS + '/' + name).delete();

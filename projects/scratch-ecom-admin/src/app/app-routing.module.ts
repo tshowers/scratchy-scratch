@@ -61,6 +61,8 @@ import { AvatarComponent } from './application/settings/avatar/avatar.component'
 import { VeriifyComponent } from './application/settings/veriify/veriify.component';
 
 import { MaintenanceComponent } from './application/home/maintenance/maintenance.component';
+import { HelpOneComponent } from './application/home/help-one/help-one.component';
+import { ProfileComponent } from './application/home/profile/profile.component';
 
 
 
@@ -81,7 +83,9 @@ const routes: Routes = [
   },
   { path: 'stores', canActivate: [AuthGuard], component: StoreListComponent, data: { title: 'Store Listing' } },
   { path: 'stores/new', canActivate: [AuthGuard], resolve: { store: StoreResolverService }, component: StoreEditComponent, data: { title: 'Store Creation' } },
+  { path: 'stores/help', component: HelpOneComponent, data: { title: 'Help' } },
   { path: 'stores/dashboard', canActivate: [AuthGuard], component: DashboardComponent, data: { title: 'eCommerce Dashboard' } },
+  { path: 'stores/profile', canActivate: [AuthGuard], component: ProfileComponent, data: { title: 'Profile' } },
   { path: 'stores/general-settings', canActivate: [AuthGuard], component: GeneralComponent, data: { title: 'General Settings' } },
   { path: 'stores/settings-display-name', canActivate: [AuthGuard], component: DisplayNameComponent, data: { title: 'Display Name' } },
   { path: 'stores/settings-email-address', canActivate: [AuthGuard], component: EmailAddressComponent, data: { title: 'Email Address' } },

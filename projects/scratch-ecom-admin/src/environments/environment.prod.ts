@@ -12,5 +12,13 @@ export const environment = {
   stripeKey: 'pk_test_N5dHl4vGjMGFLOTiccfaXscI',
   newsAPIKey: '8edae266107643bd847972bb713a67bb',
   maintenance: false,
+  apps : [
+    { "name" : "CRM",  "link": "https://crm.16ahead.com"},
+    { "name" : "Knowledge Management",  "link": "https://km.16ahead.com"},
+    { "name" : "16AHEAD",  "link": "https://16ahead.com"},
+    { "name" : "16AHEAD Factory",  "link": "https://factory.16ahead.com"},
+    { "name" : "e-Commerce",  "link": "https://store.16ahead.com"},
+  ]
+
 
 };

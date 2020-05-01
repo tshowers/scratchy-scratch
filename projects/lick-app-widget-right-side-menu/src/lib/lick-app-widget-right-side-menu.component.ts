@@ -16,28 +16,7 @@ export class LickAppWidgetRightSideMenuComponent implements OnInit {
   @Input() description2 = "Rerum hic tenetur a sapiente delectus, ut perspiciatis, unde odio omnis dolor. Sint, obcaecati cupiditate non provident.";
   @Input() header3 = "KEEP CALM AND USE";
   @Input() description3 = "Quidem rerum unde facilis est eligendi. Numquam eius odiotempora. Ducimus, qui quis nostrum exercitationem ullam.";
-  @Input() faq: any[] = [
-    {
-      "heading": "DOWNLOAD AND INSTALL",
-      "description": "Voluptatem, quia dolor repellendus iusto odio dignissimos ducimus, qui. Adipisci velit, sed quia voluptas assumenda est."
-    },
-    {
-      "heading": "SETUP THE APPLICATION",
-      "description": "Rerum hic tenetur a sapiente delectus, ut perspiciatis, unde odio omnis dolor. Sint, obcaecati cupiditate non provident."
-    },
-    {
-      "heading": "KEEP CALM AND USE",
-      "description": "Quidem rerum unde facilis est eligendi. Numquam eius odiotempora. Ducimus, qui quis nostrum exercitationem ullam."
-    },
-    {
-      "heading": "ENJOY THE DAY",
-      "description": "Rerum hic tenetur a sapiente delectus, ut perspiciatis, unde odio omnis dolor. Sint, obcaecati cupiditate non provident."
-    },
-    {
-      "heading": "BE HAPPY",
-      "description": "Voluptatem, quia dolor repellendus iusto odio dignissimos ducimus, qui. Adipisci velit, sed quia voluptas assumenda est."
-    },
-  ];
+  @Input() apps: any[] = [];
 
   constructor() { }
 

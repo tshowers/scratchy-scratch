@@ -42,6 +42,13 @@ export class User {
   public emailAddresses?: EmailAddress[];
   public shopping_cart_id?: string;
   public shoppingCart?: ShoppingCart;
+  public feedback?: boolean = true;
+  public dashboard?: boolean = true;
+  public useNewsPersonalization?: boolean = true;
+  public columnView?: boolean = false;
+  public trackHistory?: boolean = false;
+  
+
 
   public messagesLastCheckedDate?;
   public tasksLastCheckedDate?;

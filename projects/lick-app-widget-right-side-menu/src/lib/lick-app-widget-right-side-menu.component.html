@@ -1,41 +1,9 @@
 <aside class="aside-menu">
   <div class="aside-header bg-theme text-uppercase">{{panelHeaderText}}</div>
   <div class="aside-body">
-
-    <section id="side-faq" class="container-fluid section-block faq">
-      <div class="container-fluid">
-        <div class="row">
-    
-          <h2 class="wow fadeInUp">{{helpHeaderText}}</h2>
-          <div class="wow fadeInUp" innerHTML="{{descriptionText}}">
-            
-          </div>
-    
-          <div class="col-md-12 ta-right-collapse-height">
-            <!-- Accordion -->
-            <div id="accordion" class="panel-group faq-group" role="tablist" aria-multiselectable="true">
-    
-              <div class="panel panel-default wow slideInUp" *ngFor="let item of faq; let i = index">
-                <div class="panel-heading" role="tab" id="heading{{i}}">
-                  <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{i}}" aria-expanded="true" aria-controls="'collapse' + i">
-                      {{item?.heading}}
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapse{{i}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="'heading' + i">
-                  <div class="panel-body" innerHTML="{{item?.description}}">
-                  </div>
-                </div>
-              </div> <!-- .panel-default -->
-    
-    
-            </div> <!-- .panel-group -->
-          </div>
-    
-        </div> <!-- .row -->
-      </div> <!-- .container -->
-    </section>
-
+<licky-lick-app-widget-weather></licky-lick-app-widget-weather>
+    <ul class="list-group">
+      <li *ngFor="let item of apps" class="list-group-item"> <a href="{{item?.link}}" target="_blank">{{item?.name}}</a> </li>
+    </ul>
   </div>
 </aside>

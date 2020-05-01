@@ -65,6 +65,11 @@ export class AvatarComponent extends LickAppPageComponent implements OnInit, OnD
 
   onSubmit(): void {
     this.uploadSingle();
+    setTimeout(() => {
+      this.dm.loginService.updateDisplayName(this.user.url, this.dm.photoURL);
+    }, 5000)
+
+
   }
 
   private uploadSingle() {

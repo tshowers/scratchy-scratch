@@ -1,11 +1,11 @@
-<h3>Sections</h3>
+<h3>Sections <i class="fa fa-info-circle text-info" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Sections are titles and descriptons defined by you. Sections allow you to add custom information you want to capture and display. For example information that 16AHEAD is not specifically asking for you can add with a section."></i></h3>
 <div class="form-group">
-  <label for="sectionName">Section Name</label>
+  <label for="sectionName">Section Name <i class="fa fa-info-circle text-info" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="A named area defined by you. This allows you to customize the information you capture."></i></label>
   <input [(ngModel)]="section.name" id="sectionName" name="sectionName" placeholder="Section Name"
     class="form-control form-control-lg ta-input-element" type="text">
 </div>
 <div class="form-group">
-  <label for="sectionDescription">Section Text</label>
+  <label for="sectionDescription">Section Text <i class="fa fa-info-circle text-info" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="The content associated with the name you have given."></i></label>
   <ckeditor [(ngModel)]="section.description" [editor]="sectionEditor" id="sectionDescription" name="sectionDescription"></ckeditor>
 </div>
 

@@ -38,6 +38,7 @@ export class BreadCrumbService {
     ];
 
 
+    this.setNewLink(store_id, catalog_id);
     this.pushStore(store_id);
 
     this.pushSetting();
@@ -49,7 +50,6 @@ export class BreadCrumbService {
     else if (store_id)
       this.pushStoreItems(store_id);
 
-    this.setNewLink(store_id, catalog_id);
   }
 
   private pushSetting() : void {
