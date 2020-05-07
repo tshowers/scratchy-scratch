@@ -10,6 +10,8 @@ import { Product } from 'lick-data';
 export class LickAppWidgetProductGridComponent implements OnInit {
 
   currentPage: number = 1;
+  loading: boolean = true;
+
   @Input() pageSize: number = 20;
   @Input() totalRecords: number = 0;
   @Input() products: Product[] = [
@@ -224,6 +226,7 @@ export class LickAppWidgetProductGridComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    setTimeout(() => {this.loading = false}, 750);
   }
 
   onCart(item) {

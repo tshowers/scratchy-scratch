@@ -1,6 +1,6 @@
 <div *ngIf="!isHome; else home">
   <licky-lick-app-widget-menu [menuIcons]="homeMenu" [logo]="'assets/images/logo.png'" [photoURL]="dm.photoURL"
-    [displayName]="dm.displayName" [isTaskNotification]="false" [isCart]="false" [emailAddress]="dm.emailAddress"
+    [displayName]="dm.displayName" [isTaskNotification]="false" [isCart]="false" [emailAddress]="dm.emailAddress" [router]="router"
     [loggedIn]="dm.loggedIn" [userName]="dm.userName" [emailVerified]="dm.emailVerified" (settingsEvent)="onSettings()" (profileEvent)="onProfile()"
     [logoutPage]="'/logout'" [loginService]="dm.loginService" [companyName]="'AHEAD'"></licky-lick-app-widget-menu>
   <div class="app-body">

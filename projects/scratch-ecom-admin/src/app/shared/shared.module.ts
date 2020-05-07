@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
 import { UiSwitchModule } from 'ngx-ui-switch';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTypeaheadModule, NgbPopoverModule, NgbTabsetModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
@@ -46,7 +46,7 @@ export const firebaseConfig = environment.firebaseConfig;
       HttpClientModule,
       RouterModule,
       AgmCoreModule.forRoot({ apiKey: environment.googleMapsKey, libraries: ["places"] }),
-      NgbModule,
+      NgbTypeaheadModule, NgbPopoverModule, NgbTabsetModule, NgbDatepickerModule,
       UiSwitchModule,
       LickDataModule,
       LickAppPageModule,
@@ -77,7 +77,7 @@ export const firebaseConfig = environment.firebaseConfig;
       RouterModule,
       AgmCoreModule,
       HttpClientModule,
-      NgbModule,
+      NgbTypeaheadModule, NgbPopoverModule, NgbTabsetModule, NgbDatepickerModule,
       UiSwitchModule,
       LickDataModule,
       LickAppPageModule,

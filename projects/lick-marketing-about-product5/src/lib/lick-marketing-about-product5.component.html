@@ -7,7 +7,7 @@
         <div class="about-image-block">
           <div class="about-image">
 
-            <img src="{{imageURL}}" alt="{{headingText}}">
+            <img *ngIf="imageURL" src="{{imageURL}}" alt="{{headingText}}">
 
             <!-- Feature block -->
             <div class="feature-box feature-box-second feature-image wow fadeInUp">

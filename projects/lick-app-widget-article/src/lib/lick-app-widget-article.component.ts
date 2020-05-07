@@ -14,9 +14,13 @@ export class LickAppWidgetArticleComponent implements OnInit {
   @Input() totalRecords: number = 0;
   @Output() currentPageEvent = new EventEmitter();
 
+  loading: boolean = true;
+
+
   constructor() { }
 
   ngOnInit() {
+    setTimeout(() => {this.loading = false}, 750);
   }
 
   public onPageChange(value): void {

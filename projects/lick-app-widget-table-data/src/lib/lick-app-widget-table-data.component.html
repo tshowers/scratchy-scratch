@@ -13,7 +13,7 @@
           <thead>
             <tr>
               <th class="wow fadeInDown">Name</th>
-              <th class="wow fadeInDown">Data Owner</th>
+              <th class="wow fadeInDown">Created By</th>
               <th class="wow fadeInDown">Last Updated</th>
               <th class="text-nowrap wow fadeInDown">Action</th>
             </tr>
@@ -50,7 +50,7 @@
   <!-- end card -->
 </div>
 <ng-template #noData>
-  <licky-lick-app-widget-no-data (newItemEvent)="onNewItem()">
+  <licky-lick-app-widget-no-data (newItemEvent)="onNewItem()" [isLoading]="loading">
     <ng-content></ng-content>
   </licky-lick-app-widget-no-data>
 </ng-template>

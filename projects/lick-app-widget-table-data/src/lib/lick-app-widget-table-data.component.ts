@@ -74,14 +74,18 @@ export class LickAppWidgetTableDataComponent implements OnInit {
   currentPage: number = 1;
   @Input() pageSize: number = 20;
   @Input() totalRecords: number = 0;
+  loading: boolean = true;
 
   isList = true;
 
   constructor() { }
 
   ngOnInit() {
+    setTimeout(() => {this.loading = false}, 750);
   }
 
+
+  
   onNewItem() {
     this.newItemEvent.emit();
   }

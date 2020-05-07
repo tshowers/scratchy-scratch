@@ -52,7 +52,7 @@ export class BreadCrumbService {
 
   }
 
-  private pushSetting() : void {
+  private pushSetting(): void {
     if (this._context === SETTING_GENERAL) {
       this.crumbs.push({ name: "settings", link: "/stores/general-settings", active: (this._context === SETTING_GENERAL) })
     } else if (this._context === SETTING_DISPLAY_NAME) {
@@ -72,19 +72,17 @@ export class BreadCrumbService {
   }
 
   private pushStore(store_id: string): void {
+    this.crumbs.push({ name: "stores", link: "/stores", active: (this._context === STORE) });
     if (store_id) {
-      this.crumbs.push({ name: "stores", link: "/stores/" + store_id, active: (this._context === STORE) });
-    } else {
-      this.crumbs.push({ name: "stores", link: "/stores", active: (this._context === STORE) });
+      this.crumbs.push({ name: "current store", link: "/stores/" + store_id, active: (this._context === STORE) });
     }
   }
 
   private pushCatalog(store_id: string, catalog_id: string) {
     if (((this._context === STORE) && store_id) || (this._context === CATALOG) || (this._context === PRODUCT) || (this._context === PRODUCT_BUNDLE)) {
+      this.crumbs.push({ name: "catalogs", link: "/stores/" + store_id + "/catalogs", active: (this._context === CATALOG) });
       if (catalog_id)
-        this.crumbs.push({ name: "catalogs", link: "/stores/" + store_id + "/catalogs/" + catalog_id, active: (this._context === CATALOG) });
-      else
-        this.crumbs.push({ name: "catalogs", link: "/stores/" + store_id + "/catalogs", active: (this._context === CATALOG) });
+        this.crumbs.push({ name: "current catalog", link: "/stores/" + store_id + "/catalogs/" + catalog_id, active: (this._context === CATALOG) });
     }
   }
 

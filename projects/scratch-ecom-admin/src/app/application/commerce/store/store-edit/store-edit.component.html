@@ -12,37 +12,37 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="name">Name <i class="fa fa-info-circle text-info" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="The name of your store"></i> </label>
-          <input [(ngModel)]="store.name" #name="ngModel" id="name" name="name" placeholder="Store Name" type="text"
+          <label for="name">Name <i class="fa fa-info-circle text-info" aria-hidden="true" ngbPopover="You can multiple stores, and each store can sell products specific to that store. Give the store a unique name." popoverTitle="Store Name" placement="right" ></i> </label>
+          <input [(ngModel)]="store.name" #name="ngModel" id="name" name="name" placeholder="Store Name" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
             class="form-control form-control-lg ta-input-element" required autofocus>
           <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
             <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Name required
           </div>
         </div>
         <div class="form-group">
-          <label for="description">Description <i class="fa fa-info-circle text-info" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Give your store a nice description so people will know the purpose of your store and what you sell."></i></label>
+          <label for="description">Description <i class="fa fa-info-circle text-info" aria-hidden="true"  popoverTitle="Store Description" placement="right" ngbPopover="Give your store a nice description so people will know the purpose of your store and what you sell."></i></label>
           <ckeditor [(ngModel)]="store.description" [editor]="Editor" #description="ngModel" id="description"
             name="description"></ckeditor>
         </div>
         <div class="form-group">
-          <label for="stripeKey">Stripe Key <i class="fa fa-info-circle text-info" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="If you have an account with stripe.com you can enter your key here. All transactions, purchases and returns will be handled by stripe.com."></i></label>
+          <label for="stripeKey">Stripe Key <i class="fa fa-info-circle text-info" aria-hidden="true"  popoverTitle="Stripe Key" placement="right" ngbPopover="If you have an account with stripe.com you can enter your key here. All transactions, purchases and returns will be handled by stripe.com."></i></label>
           <input [(ngModel)]="store.stripeKey" #name="ngModel" id="stripeKey" name="stripeKey" placeholder="Stripe Key"
             type="password" class="form-control form-control-lg ta-input-element" required>
         </div>
         <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
           <label for="dataDraft"
-            title="Draft indicates the record is not finished and should not be made public">Draft <i class="fa fa-info-circle text-info" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Draft means you are not ready for the rest of the world to see your store. Turning draft on makes your web store visible to all."></i></label>
+            title="Draft indicates the record is not finished and should not be made public">Draft <i class="fa fa-info-circle text-info" aria-hidden="true"  popoverTitle="Draft" placement="right" ngbPopover="Draft means you are not ready for the rest of the world to see your store. Turning draft on makes your web store visible to all."></i></label>
           <br>
           <ui-switch [(ngModel)]="store.draft" id="dataDraft" name="dataDraft"></ui-switch>
         </div>
         <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
           <label for="dataDeleted"
-            title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted <i class="fa fa-info-circle text-info" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="When deleted is enabled, this means your store is not visible to anyone but you, not even other team members. Deleted stores are not included in any statistics or reports."></i></label>
+            title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted <i class="fa fa-info-circle text-info" aria-hidden="true"  popoverTitle="Deleted" placement="right" ngbPopover="When deleted is enabled, this means your store is not visible to anyone but you, not even other team members. Deleted stores are not included in any statistics or reports."></i></label>
           <br>
           <ui-switch [(ngModel)]="store.deleted" id="dataDeleted" name="dataDeleted"></ui-switch>
         </div>
-        <div class="form-group"><label for="dataKeywords">Keywords <i class="fa fa-info-circle text-info" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Enter single words seperated by commas to describe your store. Keywords associated with your store allows others to find your store faster through searching."></i></label> <input [(ngModel)]="store.keywords"
-            id="dataKeywords" name="dataKeywords" type="text" class="form-control form-control-lg ta-input-element"
+        <div class="form-group"><label for="dataKeywords">Keywords <i class="fa fa-info-circle text-info" aria-hidden="true"  popoverTitle="Keywords" placement="right" ngbPopover="Enter single words seperated by commas to describe your store. Keywords associated with your store allows others to find your store faster through searching."></i></label> <input [(ngModel)]="store.keywords"
+            id="dataKeywords" name="dataKeywords" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off" class="form-control form-control-lg ta-input-element"
             placeholder="Enter keywords seperated by commas"></div>
         <licky-lick-app-widget-section-edit [data]="store"></licky-lick-app-widget-section-edit>
         <licky-lick-app-widget-drop-box [selectedFiles]="selectedFiles" [data]="store"

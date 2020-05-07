@@ -54,7 +54,9 @@ export class DisplayNameComponent extends LickAppPageComponent implements OnInit
   onSubmit(): void {
     this.clicked = true;
     this.dm.loginService.updateDisplayName(this.displayName, this.dm.photoURL);
-    setTimeout(() => { window.location.reload() }, 100);
+    setTimeout(() => { 
+      window.location.href = "/?q=stores/settings-display-name";
+    }, 100);
   }
 
   get diagnostic() {

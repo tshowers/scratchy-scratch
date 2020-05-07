@@ -13,11 +13,10 @@ export const environment = {
     newsAPIKey: '8edae266107643bd847972bb713a67bb',
     maintenance: false,
     apps : [
-      { "name" : "CRM",  "link": "https://crm-dev.16ahead.com"},
-      { "name" : "Knowledge Management",  "link": "https://km-dev.16ahead.com"},
-      { "name" : "16AHEAD",  "link": "https://dev.16ahead.com"},
-      { "name" : "16AHEAD Factory",  "link": "https://factory-dev.16ahead.com"},
-      { "name" : "e-Commerce",  "link": "https://store-beta.16ahead.com"},
+      { "name" : "CRM",  "link": "https://crm-dev.16ahead.com", "icon" : "fa-address-book-o"},
+      { "name" : "Knowledge Management",  "link": "https://km-dev.16ahead.com", "icon" : "fa-book"},
+      { "name" : "16AHEAD Factory",  "link": "https://factory-dev.16ahead.com", "icon" : "fa-industry"},
+      { "name" : "e-Commerce",  "link": "https://store-beta.16ahead.com", "icon" : "fa-shopping-cart"},
     ]
   
   };

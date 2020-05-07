@@ -19,6 +19,12 @@
       "rewrites": [{ "source": "**", "destination": "/index.html"  }]
     },
     {
+      "target": "taliferro",
+      "public": "dist/taliferro",
+      "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],
+      "rewrites": [{ "source": "**", "destination": "/index.html"  }]
+    },
+    {
       "target": "e-com-dev",
       "public": "dist/scratch-ecom-admin",
       "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],

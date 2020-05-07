@@ -55,10 +55,13 @@ export class LickAppWidgetListContentComponent implements OnInit {
     "userName": "Barbara McNamara"
   }];
   @Output() itemEvent = new EventEmitter();
+  loading: boolean = true;
+
 
   constructor() { }
 
   ngOnInit() {
+    setTimeout(() => {this.loading = false}, 750);
   }
 
   public onListItem(item): void {

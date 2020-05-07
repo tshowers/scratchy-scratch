@@ -19,6 +19,10 @@ export class AvatarComponent extends LickAppPageComponent implements OnInit, OnD
 
   currentUpload: Upload;
 
+  displayName;
+
+  clicked: boolean = false;
+
 
   constructor(private dm: DataMediationService,
     public breadCrumbService: BreadCrumbService,
@@ -43,6 +47,9 @@ export class AvatarComponent extends LickAppPageComponent implements OnInit, OnD
     if (this.dm.photoURL)
       this.user.url = this.dm.photoURL;
 
+    if (this.dm.displayName)
+      this.displayName = this.dm.displayName;  
+
   }
 
   ngOnDestroy() {
@@ -64,10 +71,11 @@ export class AvatarComponent extends LickAppPageComponent implements OnInit, OnD
   }
 
   onSubmit(): void {
+    this.clicked = true;
     this.uploadSingle();
     setTimeout(() => {
-      this.dm.loginService.updateDisplayName(this.user.url, this.dm.photoURL);
-    }, 5000)
+      this.dm.loginService.updateDisplayName(this.displayName, this.dm.photoURL);
+    }, 5000);
 
 
   }

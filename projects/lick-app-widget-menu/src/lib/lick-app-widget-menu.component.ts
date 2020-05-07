@@ -75,7 +75,7 @@ export class LickAppWidgetMenuComponent implements OnInit, OnDestroy {
     this.router.navigate([this.logoutPage]);
     if (this.loginService)
       this.loginService.signOut();
-    setTimeout(() => { window.location.reload() }, 500);
+    // setTimeout(() => { window.location.reload() }, 500);
   }
 
   toggleRightSidebar(): void {

@@ -3,7 +3,7 @@
     <div class="row">
 
       <div class="col-md-6 col-xs-12 download-img">
-        <img src="{{imageURL}}" alt="{{headingText}}">
+        <img *ngIf="imageURL" src="{{imageURL}}" alt="{{headingText}}">
       </div>
 
       <div class="col-md-6 col-xs-12 download-text">

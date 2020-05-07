@@ -218,10 +218,12 @@ export class LickAppWidgetProductListComponent implements OnInit {
   @Output() wishListEvent = new EventEmitter();
   @Output() currentPageEvent = new EventEmitter();
   @Output() newItemEvent = new EventEmitter();
+  loading: boolean = true;
 
   constructor() { }
 
   ngOnInit(): void {
+    setTimeout(() => {this.loading = false}, 750);
   }
 
   onCart(item) {

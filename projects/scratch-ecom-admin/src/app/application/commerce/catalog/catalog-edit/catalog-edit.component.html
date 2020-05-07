@@ -13,30 +13,30 @@
         </div>
       </div>
       <div class="container-fluid">
-        <div class="form-group"> <label for="name">Name <i class="fa fa-info-circle text-info" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="The catalog is the next step in setting up your store. After creating the catalog you will add products to the catalog. Give the catalog a name that logically groups products and services."></i></label> <input [(ngModel)]="catalog.name" #name="ngModel"
-            id="name" name="name" placeholder="Catalog Name" type="text"
+        <div class="form-group"> <label for="name">Name <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Catalog Name" placement="right" ngbPopover="The catalog is the next step in setting up your store. After creating the catalog you will add products to the catalog. Give the catalog a name that logically groups products and services."></i></label> <input [(ngModel)]="catalog.name" #name="ngModel"
+            id="name" name="name" placeholder="Catalog Name" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
             class="form-control form-control-lg ta-input-element" required autofocus>
           <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
             <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Name required </div>
         </div>
-        <div class="form-group"> <label for="description">Description <i class="fa fa-info-circle text-info" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Give you catalog a description so that shoppers clearly understand what they will find in the catalog."></i></label>
+        <div class="form-group"> <label for="description">Description <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Description" placement="right" ngbPopover="Give you catalog a description so that shoppers clearly understand what they will find in the catalog."></i></label>
           <ckeditor [(ngModel)]="catalog.description" [editor]="Editor" #description="ngModel" id="description"
             name="description"></ckeditor>
         </div>
         <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
           <label for="dataDraft"
-            title="Draft indicates the record is not finished and should not be made public">Draft <i class="fa fa-info-circle text-info" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Draft means you are not ready for the rest of the world to see your catalog. Turning draft on makes your web catalog visible to all."></i></label>
+            title="Draft indicates the record is not finished and should not be made public">Draft <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Drart" placement="right" ngbPopover="Draft means you are not ready for the rest of the world to see your catalog. Turning draft on makes your web catalog visible to all."></i></label>
           <br>
           <ui-switch [(ngModel)]="catalog.draft" id="dataDraft" name="dataDraft"></ui-switch>
         </div>
         <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
           <label for="dataDeleted"
-            title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted</label>
+            title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Deleted" placement="right" ngbPopover="When deleted is enabled, this means your store is not visible to anyone but you, not even other team members. Deleted stores are not included in any statistics or reports."></i></label>
           <br>
           <ui-switch [(ngModel)]="catalog.deleted" id="dataDeleted" name="dataDeleted"></ui-switch>
         </div>
-        <div class="form-group"><label for="dataKeywords">Keywords <i class="fa fa-info-circle text-info" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Keywords are single words seperated by commas that allow searching for you catalog easy. The more keywords, the easier your catalog will be to find."></i></label> <input [(ngModel)]="catalog.keywords"
-            id="dataKeywords" name="dataKeywords" type="text" class="form-control form-control-lg ta-input-element"
+        <div class="form-group"><label for="dataKeywords">Keywords <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Keywords" placement="right" ngbPopover="Keywords are single words seperated by commas that allow searching for you catalog easy. The more keywords, the easier your catalog will be to find."></i></label> <input [(ngModel)]="catalog.keywords"
+            id="dataKeywords" name="dataKeywords" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off" class="form-control form-control-lg ta-input-element"
             placeholder="Enter keywords seperated by commas"></div>
 
         <licky-lick-app-widget-section-edit [data]="catalog"></licky-lick-app-widget-section-edit>

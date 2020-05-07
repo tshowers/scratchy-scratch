@@ -40,6 +40,7 @@ export class LickAppWidgetWeatherComponent implements OnInit, OnDestroy {
   }
 
   setWeather(address: Address) : void {
+    console.log("setWeather", JSON.stringify(address));
     this._weatherSubscription = this._weatherService.getWeatherByLonLat(address.longitude, address.latitude).subscribe((weather) => {
       this.weather = weather;
     })

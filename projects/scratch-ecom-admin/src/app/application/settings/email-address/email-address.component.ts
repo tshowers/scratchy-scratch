@@ -16,6 +16,8 @@ export class EmailAddressComponent extends LickAppPageComponent implements OnIni
 
   user: User;
 
+  clicked: boolean = false;
+
   constructor(private dm: DataMediationService,
     public breadCrumbService: BreadCrumbService,
     protected renderer2: Renderer2,
@@ -50,6 +52,9 @@ export class EmailAddressComponent extends LickAppPageComponent implements OnIni
   }
 
   onSubmit(): void {
+    this.clicked = true;
+    this.dm.loginService.updateEmailAddress(this.emailAddress);
+    setTimeout(() => { window.location.reload() }, 100);
 
   }
 

@@ -1,9 +1,11 @@
 <aside class="aside-menu">
   <div class="aside-header bg-theme text-uppercase">{{panelHeaderText}}</div>
   <div class="aside-body">
-<licky-lick-app-widget-weather></licky-lick-app-widget-weather>
-    <ul class="list-group">
-      <li *ngFor="let item of apps" class="list-group-item"> <a href="{{item?.link}}" target="_blank">{{item?.name}}</a> </li>
+    <licky-lick-app-widget-weather></licky-lick-app-widget-weather>
+    <br>
+    <ul class="list-group ta-panel-box">
+      <li *ngFor="let item of apps" class="list-group-item">  <a href="{{item?.link}}" target="_blank"><i class="fa" [ngClass]="item?.icon" aria-hidden="true"></i> {{item?.name}}</a>
+      </li>
     </ul>
   </div>
 </aside>

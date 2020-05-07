@@ -47,14 +47,14 @@
             <div class="form-group">
               <label for="confirmationNumber">Confirmation Number</label>
               <input [(ngModel)]="payment.confirmationNumber" #confirmationNumber="ngModel" id="confirmationNumber"
-                name="confirmationNumber" placeholder="Confirmation Number" type="text"
+                name="confirmationNumber" placeholder="Confirmation Number" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="processingTime">Processing Time</label>
               <input [(ngModel)]="payment.processingTime" #processingTime="ngModel" id="processingTime"
-                name="processingTime" placeholder="Processing Time" type="text"
+                name="processingTime" placeholder="Processing Time" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
         </div>
@@ -74,7 +74,7 @@
           <div class="col" [hidden]="!creditCard">
             <div class="form-group">
               <label for="paymentMethodCode">Payment Method Code</label><input [(ngModel)]="payment.paymentMethodCode"
-                #paymentMethodCode="ngModel" id="paymentMethodCode" name="paymentMethodCode"
+                #paymentMethodCode="ngModel" id="paymentMethodCode" name="paymentMethodCode" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 placeholder="Payment Method Code" type="text" class="form-control input-lg input-element"></div>
           </div>
         </div>
@@ -95,7 +95,7 @@
             <div class="form-group">
               <label for="allocationTypeCode">Allocation Type Code</label><input
                 [(ngModel)]="payment.paymentLine.allocationTypeCode" #allocationTypeCode="ngModel"
-                id="allocationTypeCode" name="allocationTypeCode" placeholder="Allocation Type Code" type="text"
+                id="allocationTypeCode" name="allocationTypeCode" placeholder="Allocation Type Code" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
         </div>
@@ -104,7 +104,7 @@
             <div class="form-group">
               <label for="allocationAmount">Allocation Amount</label><input
                 [(ngModel)]="payment.paymentLine.allocationAmount" #allocationAmount="ngModel" id="allocationAmount"
-                name="allocationAmount" placeholder="x,xxx.xx" type="text" class="form-control input-lg input-element"
+                name="allocationAmount" placeholder="x,xxx.xx" type="text" class="form-control input-lg input-element" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 pattern="^\d+(?:,\d{3})*\.\d{2}$"></div>
           </div>
         </div>
@@ -124,13 +124,13 @@
               <label for="financialAccountNumber">Account Number</label><input
                 [(ngModel)]="payment.paymentLine.financialAccountNumber" #financialAccountNumber="ngModel"
                 id="financialAccountNumber" name="financialAccountNumber" placeholder="Financial Account Number"
-                type="text" class="form-control input-lg input-element"></div>
+                type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off" class="form-control input-lg input-element"></div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="fromAccountNumber">Account Number</label><input
                 [(ngModel)]="payment.fromBankAccount.accountNumber" #fromAccountNumber="ngModel" id="fromAccountNumber"
-                name="fromAccountNumber" placeholder="Account Number" type="text"
+                name="fromAccountNumber" placeholder="Account Number" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
         </div>
@@ -138,14 +138,14 @@
           <div class="col">
             <div class="form-group">
               <label for="fromBankName">Bank Name</label><input [(ngModel)]="payment.fromBankAccount.bankName"
-                #fromBankName="ngModel" id="fromBankName" name="fromBankName" placeholder="Bank Name" type="text"
+                #fromBankName="ngModel" id="fromBankName" name="fromBankName" placeholder="Bank Name" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="routingNumber">Routing Number</label>
               <input [(ngModel)]="payment.fromBankAccount.routingNumber" #routingNumber="ngModel" id="routingNumber"
-                name="routingNumber" placeholder="Routing Number" type="text"
+                name="routingNumber" placeholder="Routing Number" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
         </div>
@@ -154,13 +154,13 @@
             <div class="form-group">
               <label for="accountHolderName">Account Holder Name</label><input
                 [(ngModel)]="payment.check.accountHolderName" #accountHolderName="ngModel" id="accountHolderName"
-                name="accountHolderName" placeholder="Acount Holder Name" type="text"
+                name="accountHolderName" placeholder="Acount Holder Name" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="checkBankName">Bank Name</label><input [(ngModel)]="payment.check.bankName"
-                #checkBankName="ngModel" id="checkBankName" name="checkBankName" placeholder="Bank Name" type="text"
+                #checkBankName="ngModel" id="checkBankName" name="checkBankName" placeholder="Bank Name" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
         </div>
@@ -169,14 +169,14 @@
             <div class="form-group">
               <label for="checkAccountNumber">Account Number</label>
               <input [(ngModel)]="payment.check.accountNumber" #checkAccountNumber="ngModel" id="checkAccountNumber"
-                name="checkAccountNumber" placeholder="Account Number" type="text"
+                name="checkAccountNumber" placeholder="Account Number" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="checkRoutingNumber">Routing Number</label>
               <input [(ngModel)]="payment.check.routingNumber" #checkRoutingNumber="ngModel" id="checkRoutingNumber"
-                name="checkRoutingNumber" placeholder="Routing Number" type="text"
+                name="checkRoutingNumber" placeholder="Routing Number" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
         </div>
@@ -184,14 +184,14 @@
           <div class="col">
             <div class="form-group">
               <label for="checkNumber">Check Number</label>
-              <input [(ngModel)]="payment.check.checkNumber" #checkNumber="ngModel" id="checkNumber" name="checkNumber"
+              <input [(ngModel)]="payment.check.checkNumber" #checkNumber="ngModel" id="checkNumber" name="checkNumber" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 placeholder="Check Number" type="text" class="form-control input-lg input-element" pattern="[0-9]+">
             </div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="approvalCode">Approval Code</label>
-              <input [(ngModel)]="payment.approvalCode" #approvalCode="ngModel" id="approvalCode" name="approvalCode"
+              <input [(ngModel)]="payment.approvalCode" #approvalCode="ngModel" id="approvalCode" name="approvalCode" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 placeholder="Approval Code" type="text" class="form-control input-lg input-element"></div>
           </div>
         </div>
@@ -199,7 +199,7 @@
           <div class="col">
             <div class="form-group">
               <label for="traceNumber">Trace Number</label>
-              <input [(ngModel)]="payment.creditCardPayment.traceNumber" #traceNumber="ngModel" id="traceNumber"
+              <input [(ngModel)]="payment.creditCardPayment.traceNumber" #traceNumber="ngModel" id="traceNumber" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 name="traceNumber" placeholder="Trace Number" type="text" class="form-control input-lg input-element">
             </div>
           </div>
@@ -219,14 +219,14 @@
             <div class="form-group">
               <label for="cardHolderName">Name on Card</label>
               <input [(ngModel)]="payment.creditCardPayment.cardHolderName" #cardHolderName="ngModel"
-                id="cardHolderName" name="cardHolderName" placeholder="Name on the Card" type="text"
+                id="cardHolderName" name="cardHolderName" placeholder="Name on the Card" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="expirationMonthYear">Expires</label>
               <input [(ngModel)]="payment.creditCardPayment.expirationMonthYear" #expirationMonthYear="ngModel"
-                id="expirationMonthYear" name="expirationMonthYear" placeholder="MM/YYYY" type="text"
+                id="expirationMonthYear" name="expirationMonthYear" placeholder="MM/YYYY" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
         </div>
@@ -235,13 +235,13 @@
             <div class="form-group">
               <label for="merchantId">Merchant ID</label>
               <input [(ngModel)]="payment.merchantId" #merchantId="ngModel" id="merchantId" name="merchantId"
-                placeholder="Merchant ID" type="text" class="form-control input-lg input-element"></div>
+                placeholder="Merchant ID" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off" class="form-control input-lg input-element"></div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="paymentChannelCode">Payment Channel Code</label>
               <input [(ngModel)]="payment.paymentChannelCode" #paymentChannelCode="ngModel" id="paymentChannelCode"
-                name="paymentChannelCode" placeholder="Payment Channel" type="text"
+                name="paymentChannelCode" placeholder="Payment Channel" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
         </div>
@@ -250,14 +250,14 @@
             <div class="form-group">
               <label for="paymentSource">Payment Source</label>
               <input [(ngModel)]="payment.paymentSource" #paymentSource="ngModel" id="paymentSource"
-                name="paymentSource" placeholder="Payment Source" type="text"
+                name="paymentSource" placeholder="Payment Source" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="paymentSchedulingType">Schedule Type</label>
               <input [(ngModel)]="payment.paymentSchedulingType" #paymentSchedulingType="ngModel"
-                id="paymentSchedulingType" name="paymentSchedulingType" placeholder="Payment Schedule Type" type="text"
+                id="paymentSchedulingType" name="paymentSchedulingType" placeholder="Payment Schedule Type" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
         </div>
@@ -266,14 +266,14 @@
             <div class="form-group">
               <label for="transactionType">Transaction Type</label>
               <input [(ngModel)]="payment.transactionType" #transactionType="ngModel" id="transactionType"
-                name="transactionType" placeholder="Transaction Type" type="text"
+                name="transactionType" placeholder="Transaction Type" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="paymentAmount">Amount</label>
               <input [(ngModel)]="payment.amount" #paymentAmount="ngModel" id="paymentAmount" name="paymentAmount"
-                placeholder="x,xxx.xx" type="text" class="form-control input-lg input-element"
+                placeholder="x,xxx.xx" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off" class="form-control input-lg input-element"
                 pattern="^\d+(?:,\d{3})*\.\d{2}$"></div>
           </div>
         </div>
@@ -290,7 +290,7 @@
             <div class="form-group">
               <label for="authorizationChannel">Authorization Channel</label>
               <input [(ngModel)]="payment.authorizationChannel" #authorizationChannel="ngModel"
-                id="authorizationChannel" name="authorizationChannel" placeholder="Authorization Channel" type="text"
+                id="authorizationChannel" name="authorizationChannel" placeholder="Authorization Channel" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
         </div>
@@ -299,7 +299,7 @@
             <div class="form-group">
               <label for="pointOfSaleReceiptNumber">Point of Sale Receipt Number</label>
               <input [(ngModel)]="payment.pointOfSaleReceiptNumber" #pointOfSaleReceiptNumber="ngModel"
-                id="pointOfSaleReceiptNumber" name="pointOfSaleReceiptNumber" placeholder="Receipt Number" type="text"
+                id="pointOfSaleReceiptNumber" name="pointOfSaleReceiptNumber" placeholder="Receipt Number" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
           <div class="col">
@@ -319,14 +319,14 @@
             <div class="form-group">
               <label for="paymentAttachmentTypeCode">Type Code</label>
               <input [(ngModel)]="payment.paymentAttachment.typeCode" #paymentAttachmentTypeCode="ngModel"
-                id="paymentAttachmentTypeCode" name="paymentAttachmentTypeCode" placeholder="Attachment Type Code"
+                id="paymentAttachmentTypeCode" name="paymentAttachmentTypeCode" placeholder="Attachment Type Code" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 type="text" class="form-control input-lg input-element"></div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="paymentAttachmentName">Attachment Name</label>
               <input [(ngModel)]="payment.paymentAttachment.name" #paymentAttachmentName="ngModel"
-                id="paymentAttachmentName" name="paymentAttachmentName" placeholder="Attachment Name" type="text"
+                id="paymentAttachmentName" name="paymentAttachmentName" placeholder="Attachment Name" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
         </div>
@@ -335,14 +335,14 @@
             <div class="form-group">
               <label for="paymentAttachmentTitle">Attachment Title</label>
               <input [(ngModel)]="payment.paymentAttachment.title" #paymentAttachmentTitle="ngModel"
-                id="paymentAttachmentTitle" name="paymentAttachmentTitle" placeholder="Attachment Title" type="text"
+                id="paymentAttachmentTitle" name="paymentAttachmentTitle" placeholder="Attachment Title" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element"></div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="paymentAttachmentURI">URI</label>
               <input [(ngModel)]="payment.paymentAttachment.URI" #paymentAttachmentURI="ngModel"
-                id="paymentAttachmentURI" name="paymentAttachmentURI" placeholder="Include http://" type="text"
+                id="paymentAttachmentURI" name="paymentAttachmentURI" placeholder="Include http://" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
                 class="form-control input-lg input-element" pattern="https?://.+"></div>
           </div>
         </div>

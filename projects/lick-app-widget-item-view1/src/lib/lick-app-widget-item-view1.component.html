@@ -22,8 +22,7 @@
       <li class="list-group-item" *ngFor="let f of fields">
         <div class="row">
           <div class="col"> <strong class="ta-label">{{f.key}} :</strong> </div>
-          <div class="col">
-            <p class="card-text">{{f?.value}}</p>
+          <div class="col" innerHTML="{{f?.value}}">
           </div>
         </div>
       </li>
