@@ -12,7 +12,7 @@ import { User } from 'lick-data';
 })
 export class DashboardComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
-  totalRecords : number = 0;
+  totalRecords : number = 1;
 
   searchArgument;
 

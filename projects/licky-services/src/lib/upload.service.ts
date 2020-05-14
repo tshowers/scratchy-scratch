@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FirebaseDataService, DOCUMENTS } from './firebase-data.service';
+import { LickyLoginService } from './licky-login.service';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
 import { Contact, Property, Topic, Project, Store, Product, Group, Offer, Catalog, ProductBundle, Help, Upload, Docuttach, Carousel, ServiceBox, Featurette, Parallax, Article } from 'lick-data';
@@ -39,7 +40,7 @@ export class UploadService {
   }
 
 
-  pushFileToStorage(upload: Upload, dataPath: string, uploadRef: string, data: any, db: FirebaseDataService) {
+  pushFileToStorage(upload: Upload, dataPath: string, uploadRef: string, data: any, db: FirebaseDataService, isUpdateFirebase?: boolean, loginService?: LickyLoginService, displayName?: string) {
     const storageRef = firebase.storage().ref();
     const extention = upload.file.name.substring(upload.file.name.lastIndexOf("."));
     const fn = IdGeneratorService.generateUUID() + extention;
@@ -61,13 +62,20 @@ export class UploadService {
         upload.ref = uploadRef;
         storageRef.child(storeLocation).getDownloadURL().then((url) => {
           upload.url = url;
+
           console.info("Calling saveFilePointer");
           this.saveFilePointer(true, upload, fn, db);
           data.url = upload.url;
           db.updateData(dataPath, data.id, data);
+
+          if (isUpdateFirebase && loginService && displayName)
+            loginService.updateDisplayName(displayName, url);
         }).catch((error) => console.error(error));
       }
     );
+  }
+
+  private updateFirebaseUser( displayName, url) : void {
   }
 
   

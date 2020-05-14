@@ -349,7 +349,7 @@ export class DataMediationService implements OnDestroy {
   private setStores(): void {
     this._storeSubscription = this.db.getDataCollection(STORES)
       .subscribe((data: Store[]) => {
-        console.log("STORES", JSON.stringify(data));
+        // console.log("STORES", JSON.stringify(data));
 
         if (data) {
           this._stores = this.db.getListToArray(data);

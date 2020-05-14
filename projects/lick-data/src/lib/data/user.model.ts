@@ -29,6 +29,7 @@ export class User {
   public helpNeeded? : boolean =true;
   public openView? : boolean = false;
   public newsSources? = [];
+  public metric?: boolean = false;
 
   public contact_id?: string;
   public contact?: Contact;

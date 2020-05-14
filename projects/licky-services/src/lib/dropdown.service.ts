@@ -3,7 +3,56 @@ import { Dropdown } from 'lick-data';
 import { IdGeneratorService } from './id-generator.service';
 import { FirebaseDataService } from './firebase-data.service';
 
+export const US_LENGTH_MEASUREMENTS = [
+  'inch',
+  'foot',
+  'yard',
+  'rod',
+  'furlong',
+  'mile',
+  'fathom',
+  'nautical'
+];
 
+export const METRIC_LENGTH_MEASUREMINTS = [
+  'millimeter',
+  'centimeter',
+  'decimeter',
+  'meter',
+  'dekameter',
+  'kilometer'
+];
+
+export const US_WEIGHT_MEASUREMENTS = [
+  'grain',
+  'dram',
+  'ounce',
+  'pound',
+  'short',
+  'long',
+  'short ton',
+  'long ton'
+];
+
+export const METRIC_WEIGHT_MEASUREMENTS = [
+  'milligram',
+  'centigram',
+  'decigram',
+  'gram',
+  'dekagram',
+  'hectogram',
+  'kilogram',
+  'metric ton'
+];
+
+export const TIME_PERIODS = [
+  "Hourly",
+  "Daily",
+  "Weekly",
+  "Monthly",
+  "Quarterly",
+  "Yearly"
+]
 
 export const STATES = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',
   'Connecticut', 'Delaware', 'District Of Columbia', 'Federated States Of Micronesia', 'Florida', 'Georgia',
@@ -24,8 +73,8 @@ export const PHONE_TYPES = ['Mobile', 'Personal', 'Office', 'Corporate', 'Other'
 
 export const FONTS = ['Arial', 'Helvetica', 'Times New Roman', 'Courier New', 'Verdana', 'Georgia', 'Palatino', 'Garamond', 'Bookman', 'Trebuchet MS', 'Impact', 'Comic Sans MS'];
 
-export const EFFECTS = ['bounce', 'flash', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble', 'jello', 'bounceIn', 'bounceInDown', 'bounceInDown', 'bounceInLeft', 'bounceInRight', 'bounceInUp', 'bounceOut', 'bounceOutDown', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight', 'bounceOutUp', 'fadeIn', 'fadeInDown', 'fadeInDownBig', 'fadeInLeft', 'fadeInLeftBig', 'fadeInRight', 'fadeInRightBig', 'fadeInUp', 'fadeInUpBig', 'fadeOut', 'fadeOutDown', 'fadeOutDownBig', 'fadeOutLeft', 'fadeOutLeftBig', 'fadeOutRight', 'fadeOutRightBig', 'fadeOutUp', 'fadeOutUpBig', 'flip', 'flipInX', 'flipInY', 'flipOutX', 'flipOutY', 'lightSpeedIn', 'lightSpeedOut', 'rotateIn',  'rotateInDownLeft', 'rotateInDownRight', 'rotateInUpLeft', 'rotateInUpRight',  'rotateOut',  'rotateOutDownLeft', 'rotateOutDownRight', 'rotateOutUpLeft', 'rotateOutUpRight', 'slideInUp', 'slideInDown', 'slideInLeft', 'slideInRight', 'slideOutUp', 'slideOutDown', 'slideOutLeft', 'slideOutRight',
-'zoomIn', 'zoomInDown', 'zoomInLeft', 'zoomInRight', 'zoomInUp', 'zoomOut', 'zoomOutDown', 'zoomOutLeft', 'zoomOutRight', 'zoomOutUp', 'hinge', 'jackInTheBox', 'rollIn', 'rollOut'];
+export const EFFECTS = ['bounce', 'flash', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble', 'jello', 'bounceIn', 'bounceInDown', 'bounceInDown', 'bounceInLeft', 'bounceInRight', 'bounceInUp', 'bounceOut', 'bounceOutDown', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight', 'bounceOutUp', 'fadeIn', 'fadeInDown', 'fadeInDownBig', 'fadeInLeft', 'fadeInLeftBig', 'fadeInRight', 'fadeInRightBig', 'fadeInUp', 'fadeInUpBig', 'fadeOut', 'fadeOutDown', 'fadeOutDownBig', 'fadeOutLeft', 'fadeOutLeftBig', 'fadeOutRight', 'fadeOutRightBig', 'fadeOutUp', 'fadeOutUpBig', 'flip', 'flipInX', 'flipInY', 'flipOutX', 'flipOutY', 'lightSpeedIn', 'lightSpeedOut', 'rotateIn', 'rotateInDownLeft', 'rotateInDownRight', 'rotateInUpLeft', 'rotateInUpRight', 'rotateOut', 'rotateOutDownLeft', 'rotateOutDownRight', 'rotateOutUpLeft', 'rotateOutUpRight', 'slideInUp', 'slideInDown', 'slideInLeft', 'slideInRight', 'slideOutUp', 'slideOutDown', 'slideOutLeft', 'slideOutRight',
+  'zoomIn', 'zoomInDown', 'zoomInLeft', 'zoomInRight', 'zoomInUp', 'zoomOut', 'zoomOutDown', 'zoomOutLeft', 'zoomOutRight', 'zoomOutUp', 'hinge', 'jackInTheBox', 'rollIn', 'rollOut'];
 
 export const ADDRESS_TYPES = ['Home', 'Office', 'Corporate', 'Other'];
 
@@ -91,7 +140,7 @@ export class DropdownService {
 
   }
 
-  getDataToDropdown(data: any[]) : Dropdown[] {
+  getDataToDropdown(data: any[]): Dropdown[] {
     let dropDown: Dropdown[] = [];
     data.forEach((item) => {
       dropDown.push(new Dropdown(item.id, item.name));
@@ -100,116 +149,136 @@ export class DropdownService {
   }
 
   getSettings(): Dropdown[] {
-    return SETTINGS_NAMES.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return SETTINGS_NAMES.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getRelationships(): Dropdown[] {
-    return RELATIONSHIPS.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return RELATIONSHIPS.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
 
   getProjectSponsors(): Dropdown[] {
-    return PROJECT_SPONSORS.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return PROJECT_SPONSORS.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
+  getTimePeriods(): Dropdown[] {
+    return TIME_PERIODS.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+  }
+
+  getUSLengthMeasurments(): Dropdown[] {
+    return US_LENGTH_MEASUREMENTS.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+  }
+
+  getUSWeightMeasurments(): Dropdown[] {
+    return US_WEIGHT_MEASUREMENTS.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+  }
+
+  getMetricLengthMeasurments(): Dropdown[] {
+    return METRIC_LENGTH_MEASUREMINTS.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+  }
+
+  getMetricWeightMeasurments(): Dropdown[] {
+    return METRIC_WEIGHT_MEASUREMENTS.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+  }
+  
   getShippers(): Dropdown[] {
-    return SHIPPERS.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return SHIPPERS.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getEmailProviders(): Dropdown[] {
-    return EMAIL_PROVIDERS.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return EMAIL_PROVIDERS.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getOfferTypes(): Dropdown[] {
-    return OFFER_TYPES.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return OFFER_TYPES.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getCreditCardTypes(): Dropdown[] {
-    return CREDIT_CARD_TYPES.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return CREDIT_CARD_TYPES.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getDaysOfWeek(): Dropdown[] {
-    return DAYS_OF_WEEK.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return DAYS_OF_WEEK.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getEventTypes(): Dropdown[] {
-    return EVENT_TYPES.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return EVENT_TYPES.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getFOPTypes(): Dropdown[] {
-    return FOP_TYPES.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return FOP_TYPES.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getEffects(): Dropdown[] {
-    return EFFECTS.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return EFFECTS.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getFonts(): Dropdown[] {
-    return FONTS.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return FONTS.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getTextPositions(): Dropdown[] {
-    return TEXT_POSITIONS.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return TEXT_POSITIONS.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getSimpleTextPositions(): Dropdown[] {
-    return SIMPLE_TEXT_POSITIONS.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return SIMPLE_TEXT_POSITIONS.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getProjectTypes(): Dropdown[] {
-    return PROJECT_TYPES.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return PROJECT_TYPES.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getCategories(): Dropdown[] {
-    return CATEGORIES.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return CATEGORIES.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getSources(): Dropdown[] {
-    return SOURCES.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return SOURCES.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getOpportunityTypes(): Dropdown[] {
-    return OPPORTUNITY_TYPES.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return OPPORTUNITY_TYPES.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getCurrentStages(): Dropdown[] {
-    return CURRENT_STAGES.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return CURRENT_STAGES.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getNextSteps(): Dropdown[] {
-    return NEXT_STEPS.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return NEXT_STEPS.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getPrefixes(): Dropdown[] {
-    return PREFIXES.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return PREFIXES.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getStatus(): Dropdown[] {
-    return STATUS.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return STATUS.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getGenders(): Dropdown[] {
-    return GENDERS.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return GENDERS.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getStates(): Dropdown[] {
-    return STATES.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return STATES.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getPhoneTypes(): Dropdown[] {
-    return PHONE_TYPES.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return PHONE_TYPES.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getTaskTypes(): Dropdown[] {
-    return TASK_TYPES.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return TASK_TYPES.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getAddressTypes(): Dropdown[] {
-    return ADDRESS_TYPES.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return ADDRESS_TYPES.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getEmailTypes(): Dropdown[] {
-    return EMAIL_TYPES.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
+    return EMAIL_TYPES.map((item) => { return new Dropdown(IdGeneratorService.generateUUID(), item) }).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }
 
   getStateByID(id) {

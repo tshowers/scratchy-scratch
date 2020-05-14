@@ -107,7 +107,7 @@ export class FirebaseDataService {
   constructor() { }
 
   init(): void {
-    console.info("Setting Firebase database to " + firebase.database())
+    // console.info("Setting Firebase database to " + firebase.database())
     this._db = firebase.database();
   }
 

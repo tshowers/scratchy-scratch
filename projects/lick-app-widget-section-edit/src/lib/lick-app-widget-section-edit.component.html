@@ -18,7 +18,7 @@
 <button type="button" class="btn btn-primary" (click)="newSection()" [disabled]="!section.name"><i class="fa"
     [ngClass]="{'fa-plus': !section.name, 'fa-cloud': section.name}"></i>
   <span *ngIf="!section.name"> Add Additional Fields</span>
-  <span *ngIf="section.name"> Save</span>
+  <span *ngIf="section.name"> Add Custom Field</span>
 </button>
 <br>
 <div *ngIf="(data && data.sections && (data.sections.length > 0))">

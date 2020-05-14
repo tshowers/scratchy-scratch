@@ -68,7 +68,7 @@ export class LickyLoginService {
       displayName: name,
       photoURL: url
     }).then(() => {
-      console.log("Display Updated", name, JSON.stringify(this._firebaseUser))
+      console.log("Display Updated", name, url, JSON.stringify(this._firebaseUser))
       if (this._user)
         this._user.url = url;
     }).catch(error => {

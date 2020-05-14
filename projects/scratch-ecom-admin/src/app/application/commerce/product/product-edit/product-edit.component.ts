@@ -25,6 +25,12 @@ export class ProductEditComponent extends LickAppPageComponent implements OnInit
 
   categories: Dropdown[];
 
+  lengths: Dropdown[];
+
+  weights: Dropdown[];
+
+  timePeriods: Dropdown[];
+
   private _paramSubscription: Subscription;
 
   private _productSubscription: Subscription;
@@ -56,7 +62,7 @@ export class ProductEditComponent extends LickAppPageComponent implements OnInit
   constructor(public dm: DataMediationService,
     protected renderer2: Renderer2,
     public router: Router,
-    public breadCrumbService: BreadCrumbService, 
+    public breadCrumbService: BreadCrumbService,
     public typeFindService: TypeFindService,
     private _dropdownService: DropdownService,
     private _uploadService: UploadService,
@@ -187,20 +193,28 @@ export class ProductEditComponent extends LickAppPageComponent implements OnInit
     this.dm.catalog.subscribe((catalog) => {
       this.catalog = catalog;
       if (catalog)
-      this.setBreadCrumb();
+        this.setBreadCrumb();
     })
   }
 
   private initializeDropdowns(): void {
     this.categories = this._dropdownService.getCategories();
+    this.timePeriods = this._dropdownService.getTimePeriods();
+    if (this.dm.user.metric) {
+      this.lengths = this._dropdownService.getMetricLengthMeasurments();
+      this.weights = this._dropdownService.getMetricWeightMeasurments();
+    } else {
+      this.lengths = this._dropdownService.getUSLengthMeasurments();
+      this.weights = this._dropdownService.getUSWeightMeasurments();
+    }
   }
 
   onBreadCrumb(link): void {
     this.router.navigate([link]);
   }
 
-  onSearch(value) : void {
-    this.router.navigate([ 'stores', this.store_id, 'catalogs', this.catalog_id,  'products'], {queryParams: { searchArgument: value}})
+  onSearch(value): void {
+    this.router.navigate(['stores', this.store_id, 'catalogs', this.catalog_id, 'products'], { queryParams: { searchArgument: value } })
   }
 
   modelCheck() {

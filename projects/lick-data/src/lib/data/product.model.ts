@@ -31,10 +31,15 @@ export class Product {
   public reOrderLevel?: number = 0;
   public sku? : string;
   public subscription?: boolean = false;
+  public subscriptionTime?: string;
   public weight?: number = 0;
+  public weightMeasurement?: string;
   public height?: number = 0;
+  public heightMeasurement?: string;
   public width?: number = 0;
+  public widthMeasurement?: string;
   public length?: number = 0;
+  public lengthMeasurement?: string;
   public unitsOnOrder?: number = 0;
   public unitsInStock?: number = 0;
   public publishedAt;
