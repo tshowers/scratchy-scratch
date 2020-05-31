@@ -1,5 +1,6 @@
-<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)">
-</licky-lick-app-widget-breadcrumb>
+<!-- <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)">
+</licky-lick-app-widget-breadcrumb> -->
+<licky-lick-app-widget-generic-nav [links]="crumbs"></licky-lick-app-widget-generic-nav>
 <licky-lick-marketing-faq2 *ngIf="totalRecords == 0" [headingText]="FAQheadingText" [descriptionText]="descriptionText"
   [faqHeading1]="faqHeading1" [faqDescription1]="faqDescription1" [faqHeading2]="faqHeading2"
   [faqDescription2]="faqDescription2" [faqHeading3]="faqHeading3" [faqDescription3]="faqDescription3"
@@ -8,12 +9,21 @@
 <div class="container-fluid" *ngIf="totalRecords > 0">
   <div class="row ta-row">
     <div class="col">
-      <licky-lick-app-widget-stats4></licky-lick-app-widget-stats4>
+      <licky-lick-app-widget-stats14 [headingText]="stats14headingText"></licky-lick-app-widget-stats14>
+    </div>
+  </div>
+  <div class="row ta-row">
+    <div class="col">
+      <licky-lick-app-widget-stats4 [headingText]="stats4headingText"
+      [subHeadingText]="stats4subHeadingText"
+      [iconClass]="stats4iconClass"
+      [count]="storeCount"
+      ></licky-lick-app-widget-stats4>
     </div>
   </div>
   <div class="row ta-row">
     <div class="col-md-4">
-      <licky-lick-app-widget-stats9></licky-lick-app-widget-stats9>
+      <licky-lick-app-widget-stats9 [headingText]="stats9HeadingText" [buttonText1]="stats9ButtonText1" [buttonText2]="stats9ButtonText2" [buttonText3]="stats9ButtonText3" [subHeadingText]="stats9SubHeadingText"></licky-lick-app-widget-stats9>
     </div>
     <div class="col-md-4">
       <licky-lick-app-widget-stats3></licky-lick-app-widget-stats3>

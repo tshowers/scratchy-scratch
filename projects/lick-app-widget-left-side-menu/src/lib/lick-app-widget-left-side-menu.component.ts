@@ -59,6 +59,7 @@ export class LickAppWidgetLeftSideMenuComponent implements OnInit, OnDestroy {
     if (this.newsService)
       this._newsSubscription = this.newsService.getNewsByCountry("us").subscribe(
         (news) => {
+          console.log(JSON.stringify(news));
           this.searchResults = news.articles.slice(0, 5);
         }
       )

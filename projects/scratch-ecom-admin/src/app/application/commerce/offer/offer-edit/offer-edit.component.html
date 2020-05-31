@@ -1,5 +1,4 @@
-<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" [context]="store?.name + ' / ' + catalog?.name" (pageEvent)="onBreadCrumb($event)">
-</licky-lick-app-widget-breadcrumb>
+<licky-lick-app-widget-generic-nav [links]="crumbs"></licky-lick-app-widget-generic-nav>
 <div class="card">
   <div class="card-body">
 
@@ -15,64 +14,96 @@
         <ngb-tabset type="pills" #t="ngbTabset">
           <ngb-tab title="Attributes" id="attributesTab">
             <ng-template ngbTabContent>
-              <div class="form-group"> <label for="offerName">Name <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Offer Name" placement="right" ngbPopover="An offer is a special or event that you would like to showcase for a specific product. Here is where you provide the name of the offer."></i></label> <input [(ngModel)]="offer.name"
-                  #offerName="ngModel" id="offerName" name="offerName" placeholder="Name of Offer" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
-                  class="form-control form-control-lg ta-input-element" required autofocus>
+              <div class="form-group"> <label for="offerName">Name <i class="fa fa-info-circle text-info"
+                    aria-hidden="true" popoverTitle="Offer Name" placement="right"
+                    ngbPopover="An offer is a special or event that you would like to showcase for a specific product. Here is where you provide the name of the offer."></i></label>
+                <input [(ngModel)]="offer.name" #offerName="ngModel" id="offerName" name="offerName"
+                  placeholder="Name of Offer" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"
+                  autocomplete="off" class="form-control form-control-lg ta-input-element" required autofocus>
                 <div [hidden]="offerName.valid || offerName.pristine" class="alert alert-danger"> <i
                     class="fa fa-exclamation-triangle" aria-hidden="true"></i> Offer name required </div>
               </div>
-              <div class="form-group"> <label for="product_id">Product <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Product" placement="right" ngbPopover="Select a product you would like to provide a special offer."></i></label> <select [(ngModel)]="offer.product_id"
-                  name="product_id" id="product_id" class="form-control form-control-lg ta-input-element" required>
+              <div class="form-group"> <label for="product_id">Product <i class="fa fa-info-circle text-info"
+                    aria-hidden="true" popoverTitle="Product" placement="right"
+                    ngbPopover="Select a product you would like to provide a special offer."></i></label> <select
+                  [(ngModel)]="offer.product_id" name="product_id" id="product_id"
+                  class="form-control form-control-lg ta-input-element" required>
                   <option value=""></option>
                   <option *ngFor="let product of products" value="{{product.id}}">{{product.name}}</option>
                 </select> </div>
-              <div class="form-group"> <label for="category">Category <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Category" placement="right" ngbPopover="Select an optional category for the offer to let the buyer know the categorization of the offer."></i></label> <select [(ngModel)]="offer.category"
-                  name="category" id="category" class="form-control form-control-lg ta-input-element" required>
+              <div class="form-group"> <label for="category">Category <i class="fa fa-info-circle text-info"
+                    aria-hidden="true" popoverTitle="Category" placement="right"
+                    ngbPopover="Select an optional category for the offer to let the buyer know the categorization of the offer."></i></label>
+                <select [(ngModel)]="offer.category" name="category" id="category"
+                  class="form-control form-control-lg ta-input-element" required>
                   <option value=""></option>
                   <option *ngFor="let category of offerCategories" value="{{category.name}}">{{category.name}}
                   </option>
                 </select> </div>
-              <div class="form-group"> <label for="offerTypes">Type <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Type" placement="right" ngbPopover="To further refine the offer, select a type."></i></label> <select [(ngModel)]="offer.type"
-                  name="offerTypes" id="offerTypes" class="form-control form-control-lg ta-input-element" required>
+              <div class="form-group"> <label for="offerTypes">Type <i class="fa fa-info-circle text-info"
+                    aria-hidden="true" popoverTitle="Type" placement="right"
+                    ngbPopover="To further refine the offer, select a type."></i></label> <select
+                  [(ngModel)]="offer.type" name="offerTypes" id="offerTypes"
+                  class="form-control form-control-lg ta-input-element" required>
                   <option value=""></option>
                   <option *ngFor="let offerType of offerTypes" value="{{offerType.name}}">{{offerType.name}}</option>
                 </select> </div>
-              <div class="form-group"> <label for="offerTitle">Title <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Title" placement="right" ngbPopover="Supply a nice appealing title for the offer that will catch the buyers eye."></i></label> <input [(ngModel)]="offer.title"
-                  #offerTitle="ngModel" id="offerTitle" name="offerTitle" placeholder="Offer Title" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
-                  class="form-control form-control-lg ta-input-element" required>
+              <div class="form-group"> <label for="offerTitle">Title <i class="fa fa-info-circle text-info"
+                    aria-hidden="true" popoverTitle="Title" placement="right"
+                    ngbPopover="Supply a nice appealing title for the offer that will catch the buyers eye."></i></label>
+                <input [(ngModel)]="offer.title" #offerTitle="ngModel" id="offerTitle" name="offerTitle"
+                  placeholder="Offer Title" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"
+                  autocomplete="off" class="form-control form-control-lg ta-input-element" required>
                 <div [hidden]="offerTitle.valid || offerTitle.pristine" class="alert alert-danger"> <i
                     class="fa fa-exclamation-triangle" aria-hidden="true"></i> Offer title required </div>
               </div>
-              <div class="form-group"> <label for="shortDescription">Description <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Description" placement="right" ngbPopover="Having an appealing description helps entice the buyer to click to learn more about the offer."></i></label>
-                <ckeditor [(ngModel)]="offer.description" [editor]="Editor1" #shortDescription="ngModel" id="shortDescription"
-                name="shortDescription"></ckeditor>
-                  </div>
+              <div class="form-group"> <label for="shortDescription">Description <i class="fa fa-info-circle text-info"
+                    aria-hidden="true" popoverTitle="Description" placement="right"
+                    ngbPopover="Having an appealing description helps entice the buyer to click to learn more about the offer."></i></label>
+                <ckeditor [(ngModel)]="offer.description" [editor]="Editor1" #shortDescription="ngModel"
+                  id="shortDescription" name="shortDescription"></ckeditor>
+              </div>
               <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
                 <label for="dataDraft"
-                  title="Draft indicates the record is not finished and should not be made public">Draft <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Draft" placement="right" ngbPopover="Enabling draft makes the offer private, disabling draft makes the offer public for all to see. You may want to test out an offer to see what it looks like, you can do this by setting draft to on."></i></label>
+                  title="Draft indicates the record is not finished and should not be made public">Draft <i
+                    class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Draft" placement="right"
+                    ngbPopover="Enabling draft makes the offer private, disabling draft makes the offer public for all to see. You may want to test out an offer to see what it looks like, you can do this by setting draft to on."></i></label>
                 <br>
                 <ui-switch [(ngModel)]="offer.draft" id="dataDraft" name="dataDraft"></ui-switch>
               </div>
               <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
                 <label for="dataDeleted"
-                  title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Deleted" placement="right" ngbPopover="Enabling delete removes the offer all reports, and views. Only you can see a deleted offer."></i></label>
+                  title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted
+                  <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Deleted" placement="right"
+                    ngbPopover="Enabling delete removes the offer all reports, and views. Only you can see a deleted offer."></i></label>
                 <br>
                 <ui-switch [(ngModel)]="offer.deleted" id="dataDeleted" name="dataDeleted"></ui-switch>
               </div>
-              <div class="form-group"><label for="dataKeywords">Keywords <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Keywords" placement="right" ngbPopover="Assigning keywords helps the system find offers when searching."></i></label> <input [(ngModel)]="offer.keywords"
-                  id="dataKeywords" name="dataKeywords" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
+              <div class="form-group"><label for="dataKeywords">Keywords <i class="fa fa-info-circle text-info"
+                    aria-hidden="true" popoverTitle="Keywords" placement="right"
+                    ngbPopover="Assigning keywords helps the system find offers when searching."></i></label> <input
+                  [(ngModel)]="offer.keywords" id="dataKeywords" name="dataKeywords" type="text" autocorrect="off"
+                  autocapitalize="off" spellcheck="off" autocomplete="off"
                   class="form-control form-control-lg ta-input-element"
                   placeholder="Enter keywords seperated by commas"></div>
+              <licky-lick-app-widget-section-edit [data]="offer"></licky-lick-app-widget-section-edit>
+
             </ng-template>
           </ngb-tab>
           <ngb-tab title="Meta" [disabled]="!dataForm.form.valid">
             <ng-template ngbTabContent>
-              <div class="form-group"> <label for="longDescription">Long Description <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Long Description" placement="right" ngbPopover="A long description shows when a user clicks an offer to learn more about the details of the offer. Enter details and restrictions about the offer here."></i></label>
-                <ckeditor [(ngModel)]="offer.longDescription" [editor]="Editor2" #longDescription="ngModel" id="longDescription"
-                name="longDescription"></ckeditor>
+              <div class="form-group"> <label for="longDescription">Long Description <i
+                    class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Long Description"
+                    placement="right"
+                    ngbPopover="A long description shows when a user clicks an offer to learn more about the details of the offer. Enter details and restrictions about the offer here."></i></label>
+                <ckeditor [(ngModel)]="offer.longDescription" [editor]="Editor2" #longDescription="ngModel"
+                  id="longDescription" name="longDescription"></ckeditor>
 
               </div>
-              <div class="form-group"> <label for="expirationDate">Expiration Date <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Expiration Date" placement="right" ngbPopover="Set an expiration date in the future when the offer terminates. Once the expiration date is reached the offer no longer displays."></i></label>
+              <div class="form-group"> <label for="expirationDate">Expiration Date <i
+                    class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Expiration Date"
+                    placement="right"
+                    ngbPopover="Set an expiration date in the future when the offer terminates. Once the expiration date is reached the offer no longer displays."></i></label>
                 <div class="input-group"> <input [(ngModel)]="offer.expirationDate" id="expirationDate"
                     name="expirationDate" type="text" class="form-control form-control-lg ta-input-element"
                     placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker">
@@ -84,34 +115,50 @@
           </ngb-tab>
           <ngb-tab title="Presentation" [disabled]="!dataForm.form.valid">
             <ng-template ngbTabContent>
-              <div class="form-group"> <label for="targetURI">Target URI <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Target URI" placement="right" ngbPopover="Supply a specific URL you would like the buyer to go to for the offer. This field is optional. If no URL is supplied a default offer page is displayed when the user clicks the offer."></i></label> <input [(ngModel)]="offer.targetURI"
-                  #targetURI="ngModel" id="targetURI" name="targetURI" placeholder="Target URI" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
+              <div class="form-group"> <label for="targetURI">Target URI <i class="fa fa-info-circle text-info"
+                    aria-hidden="true" popoverTitle="Target URI" placement="right"
+                    ngbPopover="Supply a specific URL you would like the buyer to go to for the offer. This field is optional. If no URL is supplied a default offer page is displayed when the user clicks the offer."></i></label>
+                <input [(ngModel)]="offer.targetURI" #targetURI="ngModel" id="targetURI" name="targetURI"
+                  placeholder="Target URI" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"
+                  autocomplete="off" class="form-control form-control-lg ta-input-element"> </div>
+              <div class="form-group"> <label for="providerTag">Provider Tag <i class="fa fa-info-circle text-info"
+                    aria-hidden="true" popoverTitle="Provider Tag" placement="right"
+                    ngbPopover="A provider tag is a unique identifier that relates the supplier of the offer, such as a vendor or manufacturer ID."></i></label>
+                <input [(ngModel)]="offer.providerTag" #providerTag="ngModel" id="providerTag" name="providerTag"
+                  placeholder="Provider Tag" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"
+                  autocomplete="off" class="form-control form-control-lg ta-input-element"> </div>
+              <div class="form-group"> <label for="placement">Placement <i class="fa fa-info-circle text-info"
+                    aria-hidden="true" popoverTitle="Placement" placement="right"
+                    ngbPopover="You can specify specific page placement for the offer. You may want the offer to display at the bottom of the page."></i></label>
+                <input [(ngModel)]="offer.placement" #placement="ngModel" id="placement" name="placement"
+                  placeholder="Top, Bottom, Left, Right" type="text" autocorrect="off" autocapitalize="off"
+                  spellcheck="off" autocomplete="off" class="form-control form-control-lg ta-input-element"> </div>
+              <div class="form-group"> <label for="presentationMethod">Presentation Method <i
+                    class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Presentation Method"
+                    placement="right"
+                    ngbPopover="The presentation method is how you want to offer to be presented to the buyer, e.g. as a popup."></i></label>
+                <input [(ngModel)]="offer.presentationMethod" #presentationMethod="ngModel" id="presentationMethod"
+                  name="presentationMethod" placeholder="Presentation Method" type="text" autocorrect="off"
+                  autocapitalize="off" spellcheck="off" autocomplete="off"
                   class="form-control form-control-lg ta-input-element"> </div>
-              <div class="form-group"> <label for="providerTag">Provider Tag <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Provider Tag" placement="right" ngbPopover="A provider tag is a unique identifier that relates the supplier of the offer, such as a vendor or manufacturer ID."></i></label> <input
-                  [(ngModel)]="offer.providerTag" #providerTag="ngModel" id="providerTag" name="providerTag"
-                  placeholder="Provider Tag" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off" class="form-control form-control-lg ta-input-element"> </div>
-              <div class="form-group"> <label for="placement">Placement <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Placement" placement="right" ngbPopover="You can specify specific page placement for the offer. You may want the offer to display at the bottom of the page."></i></label> <input [(ngModel)]="offer.placement"
-                  #placement="ngModel" id="placement" name="placement" placeholder="Top, Bottom, Left, Right"
-                  type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off" class="form-control form-control-lg ta-input-element"> </div>
-              <div class="form-group"> <label for="presentationMethod">Presentation Method <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Presentation Method" placement="right" ngbPopover="The presentation method is how you want to offer to be presented to the buyer, e.g. as a popup."></i></label> <input
-                  [(ngModel)]="offer.presentationMethod" #presentationMethod="ngModel" id="presentationMethod"
-                  name="presentationMethod" placeholder="Presentation Method" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
-                  class="form-control form-control-lg ta-input-element"> </div>
-              <div class="form-group"> <label for="offerAttributes">Attributes <i class="fa fa-info-circle text-info" aria-hidden="true" popoverTitle="Attributes" placement="right" ngbPopover="You can supply a list of attributes to allow further refinement of the offer."></i></label> <input
-                  [(ngModel)]="offer.attributes" #offerAttributes="ngModel" id="offerAttributes" name="offerAttributes"
-                  placeholder="Offer Attributes seperated by commas" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
+              <div class="form-group"> <label for="offerAttributes">Attributes <i class="fa fa-info-circle text-info"
+                    aria-hidden="true" popoverTitle="Attributes" placement="right"
+                    ngbPopover="You can supply a list of attributes to allow further refinement of the offer."></i></label>
+                <input [(ngModel)]="offer.attributes" #offerAttributes="ngModel" id="offerAttributes"
+                  name="offerAttributes" placeholder="Offer Attributes seperated by commas" type="text"
+                  autocorrect="off" autocapitalize="off" spellcheck="off" autocomplete="off"
                   class="form-control form-control-lg ta-input-element"> </div>
 
-                  <licky-lick-app-widget-section-edit [data]="offer"></licky-lick-app-widget-section-edit>
-                 
+
             </ng-template>
           </ngb-tab>
           <ngb-tab title="Images" [disabled]="!dataForm.form.valid">
             <ng-template ngbTabContent>
 
               <licky-lick-app-widget-drop-box [selectedFiles]="selectedFiles" [data]="offer"
-              (detectFileEvent)="detectFiles($event)" (deleteEvent)="deleteAttachment()"></licky-lick-app-widget-drop-box>
-    
+                (detectFileEvent)="detectFiles($event)" (deleteEvent)="deleteAttachment()">
+              </licky-lick-app-widget-drop-box>
+
             </ng-template>
           </ngb-tab>
         </ngb-tabset>

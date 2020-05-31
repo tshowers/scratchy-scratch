@@ -798,6 +798,10 @@
       "lick-app-widget-section-edit": [
         "dist/lick-app-widget-section-edit/lick-app-widget-section-edit",
         "dist/lick-app-widget-section-edit"
+      ],
+      "lick-app-widget-generic-nav": [
+        "dist/lick-app-widget-generic-nav/lick-app-widget-generic-nav",
+        "dist/lick-app-widget-generic-nav"
       ]
     }
   },

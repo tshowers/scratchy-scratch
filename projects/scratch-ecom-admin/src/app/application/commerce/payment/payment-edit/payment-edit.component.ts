@@ -158,7 +158,7 @@ export class PaymentEditComponent extends LickAppPageComponent implements OnInit
           clearInterval(uploadCheck);
           this.router.navigate([redirectPath]);
         }
-      }, 1000)
+      }, 2000)
     }
   }
 

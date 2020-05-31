@@ -1,5 +1,4 @@
-<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" [context]="store?.name + ' / ' + catalog?.name" (pageEvent)="onBreadCrumb($event)">
-</licky-lick-app-widget-breadcrumb>
+<licky-lick-app-widget-generic-nav [links]="crumbs"></licky-lick-app-widget-generic-nav>
 <licky-lick-app-widget-stats15 *ngIf="(data$ | async)?.length > 0" [total]="totalRecords" [headingText]="'Catalogs'"
   [iconClass1]="'fa fa-paperclip'" [count1]="uploadOffers" [countText1]="'With Attachment'"
   [iconClass2]="'fa fa-share-alt-square'" [count2]="sharedOffers" [countText2]="'Shared'"

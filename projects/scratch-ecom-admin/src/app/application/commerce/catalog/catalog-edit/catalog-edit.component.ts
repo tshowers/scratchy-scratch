@@ -112,10 +112,12 @@ export class CatalogEditComponent extends LickAppPageComponent implements OnInit
 
   private redirect(redirectPath): void {
     if (!this.currentUpload) {
+      console.log("NO UPLOAD");
       this.router.navigate([redirectPath]);
     }
     else {
       let uploadCheck = setInterval(() => {
+        console.log("UPLOAD PROGRESS=" + this.currentUpload.progress);
         if (this.currentUpload.progress >= 100) {
           clearInterval(uploadCheck);
           this.router.navigate([redirectPath]);

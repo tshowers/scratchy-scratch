@@ -1,13 +1,13 @@
 <ol class="breadcrumb wow fadeInLeft">
   <li class="breadcrumb-item text-capitalize"
-      [ngClass]="{'active': c.active}"
-      *ngFor="let c of crumbs">
+      [ngClass]="{'active': c.active, 'd-none': (i>1), 'd-xl-block': (i>1)}"
+      *ngFor="let c of crumbs; let i = index">
     <a *ngIf="c.link"
        style="cursor:pointer"
        (click)="onPageEvent(c.link)">{{c?.name}}</a>
     <span *ngIf="!c.link">{{c?.name}}</span>
   </li>
-  <li *ngIf="context" class="ml-auto wow fadeInRight text-capitalize">
+  <li class="d-none d-xl-block" *ngIf="context" class="ml-auto wow fadeInRight text-capitalize">
   Context: <strong>{{context}}</strong>
   </li>
 

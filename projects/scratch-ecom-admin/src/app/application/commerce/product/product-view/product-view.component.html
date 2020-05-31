@@ -1,13 +1,12 @@
-<licky-lick-app-widget-breadcrumb [crumbs]="crumbs" [context]="store?.name + ' / ' + catalog?.name" (pageEvent)="onBreadCrumb($event)">
-</licky-lick-app-widget-breadcrumb>
+<licky-lick-app-widget-generic-nav [links]="crumbs"></licky-lick-app-widget-generic-nav>
 <div class="container-fluid">
   <div class="row">
-    <div class="col">
+    <div class="col-md-9">
       <licky-lick-app-widget-item-view1 [data]="product" [details]="true" (editEvent)="onEdit()"
         (deleteEvent)="onDelete()"></licky-lick-app-widget-item-view1>
     </div>
-    <div class="col">
-      <div class="card" style="width: 20rem;">
+    <div class="col-md-3">
+      <div class="card">
         <div class="card-body">
           <h1>
             <span *ngIf="!product.onSale"
@@ -20,7 +19,6 @@
           <h4 class="card-title">{{product?.name}}</h4>
           <input [(ngModel)]="quantity" id="quantity" name="quantity" type="number"
             class="form-control form-control-lg input-element" style="max-width: 100px;"><br>
-          <div innerHTML={{product?.longDescription}}></div>
         </div>
       </div>
     </div>

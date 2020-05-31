@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { SortHelperService, NewsService, FirebaseDataService, LickyLoginService, STORES, RECEIPTS, INVOICES, SHOPPING_CARTS, PRODUCTS, CATALOGS, PAYMENTS, OFFERS, ORDERS, PRODUCT_BUNDLES } from 'licky-services';
+import { SortHelperService, NewsService, FirebaseDataService, LickyLoginService, STORES, RECEIPTS, INVOICES, SHOPPING_CARTS, PRODUCTS, CATALOGS, PAYMENTS, OFFERS, ORDERS, PRODUCT_BUNDLES, CONTACTS } from 'licky-services';
 import { Subscription, BehaviorSubject, Subject } from 'rxjs';
-import { Store, Product, Catalog, Payment, Offer, ProductBundle, Order, Invoice, Receipt, ShoppingCart, User } from 'lick-data';
+import { Contact, Store, Product, Catalog, Payment, Offer, ProductBundle, Order, Invoice, Receipt, ShoppingCart, User } from 'lick-data';
 
 @Injectable({
   providedIn: 'root'
@@ -73,6 +73,10 @@ export class DataMediationService implements OnDestroy {
 
   private _userSubscription: Subscription;
   private _firebaseUserSubscription: Subscription;
+
+  private _contactSubscription: Subscription;
+  public contacts = new BehaviorSubject<Contact[]>(null);
+  private _contacts: Contact[];
 
 
   constructor(public newsService: NewsService, public loginService: LickyLoginService, public db: FirebaseDataService, public sortHelper: SortHelperService) {
@@ -258,6 +262,17 @@ export class DataMediationService implements OnDestroy {
       });
   }
 
+  public doContacts(): void {
+    this._contactSubscription = this.db.getDataCollection(CONTACTS)
+    .subscribe((contactData: Contact[]) => {
+      if (contactData) {
+        this._contacts = this.db.getListToArray(contactData);
+        this.contacts.next(this._contacts);
+      }
+    });
+
+  }
+
   public getOrderListToArray(data: any): any[] {
     let list: any[] = [];
     for (let item in data) {
@@ -345,6 +360,8 @@ export class DataMediationService implements OnDestroy {
       this.setStores();
     }
   }
+
+
 
   private setStores(): void {
     this._storeSubscription = this.db.getDataCollection(STORES)

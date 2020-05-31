@@ -9,6 +9,7 @@ import { LickAppWidgetStats5Module } from 'lick-app-widget-stats5';
 import { LickAppWidgetStats6Module } from 'lick-app-widget-stats6';
 import { LickAppWidgetStats9Module } from 'lick-app-widget-stats9';
 import { LickAppWidgetStats11Module } from 'lick-app-widget-stats11';
+import { LickAppWidgetStats14Module } from 'lick-app-widget-stats14';
 
 
 
@@ -22,7 +23,8 @@ import { LickAppWidgetStats11Module } from 'lick-app-widget-stats11';
         LickAppWidgetStats5Module,
         LickAppWidgetStats6Module,
         LickAppWidgetStats9Module,
-        LickAppWidgetStats11Module
+        LickAppWidgetStats11Module,
+        LickAppWidgetStats14Module
     ],
     declarations: [
         DashboardComponent,

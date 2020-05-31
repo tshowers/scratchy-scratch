@@ -122,6 +122,10 @@ export class LickyLoginService {
     return this._user;
   }
 
+  public getUsers(): User[] {
+    return this._users;
+  }
+
   public signInWithUserNameAndPassword(emailAddress: string, password: string, router: Router, redirectURL: string): boolean {
     firebase.auth().signInWithEmailAndPassword(emailAddress, password)
       .then((authData) => {

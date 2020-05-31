@@ -26,6 +26,7 @@ export class Invoice {
   public paid?: boolean = false;
   public address?: Address;
   public notes?: string;
+  public amount?: number = 0;
 
   public sections?: Array<Section> = [];
   public lastUpdated;

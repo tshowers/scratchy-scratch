@@ -105,7 +105,9 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
   }
 
   onSubmit(): void {
+    console.log("Check for sections");
     this.modelCheck();
+    console.log("Submitting offer");
     (this.offer.id ? this.onUpdate() : this.saveNewOffer());
   }
 
@@ -141,7 +143,7 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
           clearInterval(uploadCheck);
           this.router.navigate([redirectPath]);
         }
-      }, 1000)
+      }, 2000)
     }
   }
 
@@ -230,6 +232,7 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
   }
 
   modelCheck() {
+    if (!this.sectionEdit) return
     this.sectionEdit.modelCheck();
   }
 

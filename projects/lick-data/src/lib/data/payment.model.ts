@@ -32,6 +32,7 @@ export class Payment {
   public authorizationChannel?: string;
   public pointOfSaleReceiptNumber?: string;
   public manualPaymentIndicator?: boolean = false;
+  public order_id?: string;
 
   public sections?: Array<Section> = [];
   public lastUpdated;

@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { merge } from 'rxjs';
 
 @Injectable()
 export class NewsService {
+
+  private _proxyurl = "https://cors-anywhere.herokuapp.com/";
+  private headers = new  HttpHeaders({ 'Access-Control-Allow-Origin': '*' });
 
   private NEWS_KEY: string = "8edae266107643bd847972bb713a67bb";
 
@@ -204,19 +207,19 @@ export class NewsService {
   constructor(private _http: HttpClient) { }
 
   getNewsByCountry(country: string): Observable<any> {
-    return this._http.get(this._topHeadlinesByCountry + country + this._key + this._pageSizeParam + this._pageSize + this._pageNumberParam + this._pageNumber, { responseType: 'json' });
+    return this._http.get(this._proxyurl + this._topHeadlinesByCountry + country + this._key + this._pageSizeParam + this._pageSize + this._pageNumberParam + this._pageNumber, { headers: this.headers, responseType: 'json' });
   }
 
   getNewsByCategory(category: string): Observable<any> {
-    return this._http.get(this._categoryURL + category + this._local + this._country + this._key + this._pageSizeParam + this._pageSize + this._pageNumberParam + this._pageNumber, { responseType: 'json' });
+    return this._http.get(this._proxyurl + this._categoryURL + category + this._local + this._country + this._key + this._pageSizeParam + this._pageSize + this._pageNumberParam + this._pageNumber, { responseType: 'json' });
   }
 
   getNewsByProvider(provider: string): Observable<any> {
-    return this._http.get(this._sourcesURL1 + provider + this._key + this._language + this._lang + this._pageSizeParam + this._pageSize, { responseType: 'json' });
+    return this._http.get(this._proxyurl + this._sourcesURL1 + provider + this._key + this._language + this._lang + this._pageSizeParam + this._pageSize, { responseType: 'json' });
   }
 
   getNewsBySearchCriteria(argument: string, currentPage? : number): Observable<any> {
-    return this._http.get(this._searchURL + "\"" + encodeURI(argument) + "\"" + this._searchCriteria + this._sortParam + this._language + this._lang + this._pageNumberParam + ((currentPage) ? currentPage : this._pageNumber) + this._key, { responseType: 'json' });
+    return this._http.get(this._proxyurl + this._searchURL + "\"" + encodeURI(argument) + "\"" + this._searchCriteria + this._sortParam + this._language + this._lang + this._pageNumberParam + ((currentPage) ? currentPage : this._pageNumber) + this._key, { responseType: 'json' });
   }
 
   getNewsByProviders(): Observable<any> {
@@ -230,7 +233,7 @@ export class NewsService {
 
   addNews(provider: string): Observable<any> {
     const url = this._sourcesURL1 + provider + this._local + this._country + this._key
-    return this._http.get(url, { responseType: 'json' })
+    return this._http.get(this._proxyurl + url, { responseType: 'json' })
   }
 
   setPageSize(size: number): void {

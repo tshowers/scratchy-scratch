@@ -15,7 +15,6 @@ import { DataMediationService } from '../shared/services/data-mediation.service'
 import { BreadCrumbService } from '../shared/services/bread-crumb.service';
 import { environment } from '../../environments/environment';
 
-
 export const firebaseConfig = environment.firebaseConfig;
 
 

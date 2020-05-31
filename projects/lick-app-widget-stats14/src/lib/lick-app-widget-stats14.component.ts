@@ -577,11 +577,11 @@ export interface LickAppWidgetStats14Box {
   boxHeading: string;
   boxIcon: string;
   label1: string;
-  count1: number;
+  count1: any;
   label2: string;
-  count2: number;
+  count2: any;
   label3: string;
-  count3: number;
+  count3: any;
   label4: string;
   count4: number;
   label5: string;

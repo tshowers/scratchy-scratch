@@ -34,6 +34,11 @@ export class DateUtilService {
     return new Date(dt.setMonth(dt.getMonth() - n))
   }
 
+  public subtractDay(dt, n) {
+    return new Date(dt.setDate(dt.getDate() - n))
+  }
+
+
   public getMonth(month): string {
     switch (month) {
       case 0:

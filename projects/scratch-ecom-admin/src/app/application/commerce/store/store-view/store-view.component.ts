@@ -96,7 +96,7 @@ export class StoreViewComponent extends LickAppPageComponent implements OnInit, 
   }
 
   onProduct(item) : void {
-    this.router.navigate([ 'stores', this.store.id, 'catalogs', this.offer1.catalog_id, 'products', item.id]);
+    this.router.navigate([ 'stores', this.store.id, 'catalogs', item.catalog_id, 'products', item.id]);
   }
 
 

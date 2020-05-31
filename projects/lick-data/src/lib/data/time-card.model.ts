@@ -22,6 +22,7 @@ export class TimeCard {
   public lastUpdatedBy?;
   public views?: number;
   public lastViewed?;
+  public amount?: number = 0;
 
   public draft?: boolean = true;
   public deleted?: boolean = false;

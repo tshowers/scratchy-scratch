@@ -54,8 +54,11 @@ export class OfferViewResolverService {
   }
 
   private setExpirationDate(offer: Offer) : Date {
+
     if (offer.expirationDate && offer.expirationDate.day) {
       offer.expirationDate = new Date(offer.expirationDate.year, (offer.expirationDate.month - 1), offer.expirationDate.day).getTime();
+    } else {
+      offer.expirationDate = new Date();
     }
     return offer.expirationDate;
   }

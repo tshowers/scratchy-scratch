@@ -134,7 +134,7 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
           clearInterval(uploadCheck);
           this.router.navigate([redirectPath]);
         }
-      }, 1000)
+      }, 2000)
     }
   }
 

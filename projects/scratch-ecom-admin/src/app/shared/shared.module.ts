@@ -15,6 +15,7 @@ import { LickDataModule } from 'lick-data';
 import { LickAppPageModule } from 'lick-app-page';
 import { LickAppWidgetChatPopupModule } from 'lick-app-widget-chat-popup';
 import { LickAppWidgetBreadcrumbModule } from 'lick-app-widget-breadcrumb';
+import { LickAppWidgetGenericNavModule} from 'lick-app-widget-generic-nav';
 import { LickAppWidgetDataFooterModule } from 'lick-app-widget-data-footer';
 import { LickAppWidgetProfileModule } from 'lick-app-widget-profile';
 import { LickAppWidgetLeftSideMenuModule } from 'lick-app-widget-left-side-menu';
@@ -68,6 +69,7 @@ export const firebaseConfig = environment.firebaseConfig;
       LickMarketingLightbox1Module,
       CKEditorModule,
       LickAppWidgetDropBoxModule,
+      LickAppWidgetGenericNavModule,
       LickAppWidgetSectionEditModule
     ],
     exports: [
@@ -99,6 +101,7 @@ export const firebaseConfig = environment.firebaseConfig;
       LickMarketingLightbox1Module,
       CKEditorModule,
       LickAppWidgetDropBoxModule,
+      LickAppWidgetGenericNavModule,
       LickAppWidgetSectionEditModule
     ]
   })

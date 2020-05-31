@@ -26,6 +26,7 @@ export class Opportunity {
   public contact_id?: string;
   public contactName?: string;
   public company_id?: string;
+  public amount?: number = 0;
 
   public publishedAt;
   public sections?: Array<Section> = [];
