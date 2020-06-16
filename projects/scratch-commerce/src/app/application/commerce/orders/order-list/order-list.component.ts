@@ -168,7 +168,6 @@ export class OrderListComponent extends LickAppPageComponent implements OnInit, 
   }
 
   onDetail(data): void {
-    console.log(JSON.stringify(data))
     this.router.navigate(['application', 'stores', this.store_id, 'orders',  data.id])
   }
 

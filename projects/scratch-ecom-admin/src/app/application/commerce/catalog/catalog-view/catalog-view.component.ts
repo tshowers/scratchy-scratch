@@ -6,7 +6,7 @@ import { CATALOGS } from 'licky-services';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
 import { Subscription } from 'rxjs';
 import { BreadCrumbService, CATALOG } from '../../../../shared/services/bread-crumb.service';
-
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'app-catalog-view',
@@ -89,7 +89,7 @@ export class CatalogViewComponent extends LickAppPageComponent implements OnInit
   }
 
   onSearch(value): void {
-    console.log("ONSEARCH", value);
+    LickyLoggerService.log("ONSEARCH", value);
     this.router.navigate([ 'stores', this.store_id, 'catalogs'], { queryParams: { searchArgument: value } })
   }
 

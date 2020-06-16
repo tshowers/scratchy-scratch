@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Chart } from 'chart.js';
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'licky-lick-app-widget-stats14',
@@ -431,7 +432,7 @@ export class LickAppWidgetStats14Component implements OnInit {
       }
     }
     catch (err) {
-      console.error(err)
+      LickyLoggerService.error(null,err)
     }
 
   }
@@ -472,7 +473,7 @@ export class LickAppWidgetStats14Component implements OnInit {
       }
     }
     catch (err) {
-      console.error(err)
+      LickyLoggerService.error(null, err)
     }
 
   }
@@ -513,7 +514,7 @@ export class LickAppWidgetStats14Component implements OnInit {
       }
     }
     catch (err) {
-      console.error(err)
+      LickyLoggerService.error(null, err)
     }
 
   }
@@ -553,7 +554,7 @@ export class LickAppWidgetStats14Component implements OnInit {
         })
       }
     } catch (err) {
-      console.error(err)
+      LickyLoggerService.error(null, err)
     }
 
   }

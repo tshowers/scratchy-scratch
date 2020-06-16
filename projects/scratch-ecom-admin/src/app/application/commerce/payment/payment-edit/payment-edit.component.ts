@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 import { BreadCrumbService, PAYMENT } from '../../../../shared/services/bread-crumb.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { LickAppWidgetSectionEditComponent } from 'lick-app-widget-section-edit';
-
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'app-payment-edit',
@@ -28,6 +28,8 @@ export class PaymentEditComponent extends LickAppPageComponent implements OnInit
   public Editor = ClassicEditor;
 
   paymentTypes: Dropdown[];
+
+  orders: Dropdown[];
 
   ccTypes: Dropdown[];
 
@@ -127,7 +129,7 @@ export class PaymentEditComponent extends LickAppPageComponent implements OnInit
   }
 
   onFOP(): void {
-    console.log(this.payment.fopType);
+    LickyLoggerService.log(null, this.payment.fopType);
     this.resetFopTypes();
     if (this.payment.fopType.toLowerCase() === "cash")
       this.cash = true;
@@ -214,6 +216,7 @@ export class PaymentEditComponent extends LickAppPageComponent implements OnInit
   }
 
   private initializeDropdowns(): void {
+    this.doOrders();
     this.paymentTypes = this._dropdownService.getEmailTypes();
     this.ccTypes = this._dropdownService.getCreditCardTypes();
     this.fopTypes = this._dropdownService.getFOPTypes();
@@ -230,6 +233,15 @@ export class PaymentEditComponent extends LickAppPageComponent implements OnInit
 
   modelCheck() {
     this.sectionEdit.modelCheck();
+  }
+
+  private doOrders(): void {
+    this.dm.doOrders(this.store_id);
+    this.dm.orders.subscribe((orders) => {
+      LickyLoggerService.log(null, orders);
+      if (orders)
+        this.orders = this._dropdownService.getDataToDropdown(orders);
+    })
   }
 
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, CanActivateChild, CanLoad, Route, UrlSegment, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { LickyLoginService } from 'licky-services';
+import { LickyLoginService, LickyLoggerService } from 'licky-services';
 
 import { environment } from '../../environments/environment';
 
@@ -28,7 +28,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     route: Route,
     segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
     let url = `/${route.path}`;
-    console.info("canLoad URL in question - " + url);
+    LickyLoggerService.info("canLoad URL in question - " , url);
     return this.checkLogin(url);
   }
 

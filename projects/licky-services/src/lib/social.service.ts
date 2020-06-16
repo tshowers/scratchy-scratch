@@ -59,7 +59,6 @@ export class SocialService {
   //     this.db.saveDataWithMeta(MESSAGES, message, this.authService.getUserID(), this.authService.getDisplayName())
   //     return true;
   //   } catch (err) {
-  //     console.error(err)
   //     return false;
   //   }
   // }

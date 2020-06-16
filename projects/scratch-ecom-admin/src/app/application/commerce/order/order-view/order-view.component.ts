@@ -6,7 +6,7 @@ import { ORDERS } from 'licky-services';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
 import { Subscription } from 'rxjs';
 import { BreadCrumbService, ORDER } from '../../../../shared/services/bread-crumb.service';
-
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'app-order-view',
@@ -46,6 +46,7 @@ export class OrderViewComponent extends LickAppPageComponent implements OnInit, 
         this.store_id = this.order.store_id
         this.setStore();
         this.searchArgument = this.order.name;
+        this.setBreadCrumb();
       });
   }
 
@@ -85,7 +86,7 @@ export class OrderViewComponent extends LickAppPageComponent implements OnInit, 
   }
 
   onSearch(value): void {
-    console.log("ONSEARCH", value);
+    LickyLoggerService.log("ONSEARCH", value);
     this.router.navigate([ 'stores', this.store_id, 'stores', this.store_id, 'orders'], { queryParams: { searchArgument: value } })
   }
 

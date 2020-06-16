@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { NewsArticle } from 'lick-data';
 import { NewsService } from 'licky-services';
 import { Subscription } from 'rxjs';
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'licky-lick-app-widget-left-side-menu',
@@ -59,14 +60,14 @@ export class LickAppWidgetLeftSideMenuComponent implements OnInit, OnDestroy {
     if (this.newsService)
       this._newsSubscription = this.newsService.getNewsByCountry("us").subscribe(
         (news) => {
-          console.log(JSON.stringify(news));
+          LickyLoggerService.log(null,JSON.stringify(news));
           this.searchResults = news.articles.slice(0, 5);
         }
       )
   }
 
   onPageEvent(value): void {
-    console.log("Something happened " + value)
+    LickyLoggerService.log("Something happened " , value)
   }
 
 }

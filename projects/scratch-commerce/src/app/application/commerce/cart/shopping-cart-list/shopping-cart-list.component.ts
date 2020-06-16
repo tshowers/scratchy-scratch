@@ -166,7 +166,6 @@ export class ShoppingCartListComponent extends LickAppPageComponent implements O
   }
 
   onDetail(data): void {
-    console.log(JSON.stringify(data))
     this.router.navigate(['application', 'shoppingCarts',  data.id])
   }
 

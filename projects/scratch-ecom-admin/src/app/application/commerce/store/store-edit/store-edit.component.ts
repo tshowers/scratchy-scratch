@@ -8,6 +8,7 @@ import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
 import { BreadCrumbService, STORE } from '../../../../shared/services/bread-crumb.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'app-store-edit',
@@ -49,7 +50,7 @@ export class StoreEditComponent extends LickAppPageComponent implements OnInit, 
     super.ngOnInit();
     this._route.data
       .subscribe((data: { store: Store }) => {
-        console.log("Store=", data.store)
+        LickyLoggerService.log("Store=", data.store)
         if (data.store) {
           this.store = data.store;
           this.setBreadCrumb();
@@ -81,11 +82,11 @@ export class StoreEditComponent extends LickAppPageComponent implements OnInit, 
 
   private redirect(redirectPath): void {
     if (!this.currentUpload) {
-      console.log("No upload", this.currentUpload, redirectPath)
+      LickyLoggerService.log("No upload", this.currentUpload + redirectPath)
       this.router.navigate([redirectPath]);
     }
     else {
-      console.log("Uploading", this.currentUpload.progress, redirectPath)
+      LickyLoggerService.log("Uploading", this.currentUpload.progress + redirectPath)
       let uploadCheck = setInterval(() => {
         if (this.currentUpload.progress >= 100) {
           clearInterval(uploadCheck);
@@ -107,7 +108,7 @@ export class StoreEditComponent extends LickAppPageComponent implements OnInit, 
   }
 
   deleteAttachment() {
-    console.log("deleteAttachment()");
+    LickyLoggerService.log(null, "deleteAttachment()");
     this.selectedFiles = null;
   }
 

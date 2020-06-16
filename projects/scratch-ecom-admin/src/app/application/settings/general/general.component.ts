@@ -4,7 +4,7 @@ import { DataMediationService } from '../../../shared/services/data-mediation.se
 import { BreadCrumbService, SETTING_GENERAL } from '../../../shared/services/bread-crumb.service';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { User } from 'lick-data';
-
+import { LickyLoggerService } from 'licky-services';
 @Component({
   selector: 'app-general',
   templateUrl: './general.component.html',
@@ -58,7 +58,7 @@ export class GeneralComponent extends LickAppPageComponent implements OnInit, On
     if (!this.user.roles) {
       this.user.roles = { reader: true, author: true };
     }
-    console.info("onSubmit", JSON.stringify(this.user));
+    LickyLoggerService.info("onSubmit", JSON.stringify(this.user));
 
     this.dm.setNewUser(this.user);
   }

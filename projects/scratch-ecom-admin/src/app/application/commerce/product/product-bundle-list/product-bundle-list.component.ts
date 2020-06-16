@@ -6,6 +6,7 @@ import { ProductBundle, Catalog, Store } from 'lick-data';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { PRODUCT_BUNDLES, STORES } from 'licky-services';
 import { BreadCrumbService, PRODUCT_BUNDLE } from '../../../../shared/services/bread-crumb.service';
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'app-product-bundle-list',
@@ -181,7 +182,7 @@ export class ProductBundleListComponent extends LickAppPageComponent implements 
   }
 
   onDetail(data): void {
-    console.log(JSON.stringify(data))
+    LickyLoggerService.log(null, JSON.stringify(data))
     this.router.navigate([ 'stores', this.store_id, 'catalogs', this.catalog_id, 'product-bundles',  data.id])
   }
 

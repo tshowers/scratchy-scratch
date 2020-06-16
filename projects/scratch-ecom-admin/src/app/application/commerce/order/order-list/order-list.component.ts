@@ -6,6 +6,7 @@ import { Order, Store } from 'lick-data';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { ORDERS, STORES } from 'licky-services';
 import { BreadCrumbService, ORDER } from '../../../../shared/services/bread-crumb.service';
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'app-order-list',
@@ -166,7 +167,7 @@ export class OrderListComponent extends LickAppPageComponent implements OnInit, 
   }
 
   onDetail(data): void {
-    console.log(JSON.stringify(data))
+    LickyLoggerService.log(null, JSON.stringify(data))
     this.router.navigate([ 'stores', this.store_id, 'orders',  data.id])
   }
 

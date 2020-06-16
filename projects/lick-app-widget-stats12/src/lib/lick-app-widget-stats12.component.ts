@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'licky-lick-app-widget-stats12',
@@ -122,7 +123,7 @@ export class LickAppWidgetStats12Component implements OnInit {
   }
 
   showMoreDetails(item: any): void {
-    console.log("Show more details " + item);
+    LickyLoggerService.log("Show more details " , item);
   }
 
 

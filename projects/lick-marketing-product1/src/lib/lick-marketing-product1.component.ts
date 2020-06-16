@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import {Product, Review } from 'lick-data';
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'licky-lick-marketing-product1',
@@ -124,7 +125,7 @@ export class LickMarketingProduct1Component implements OnInit {
   ngOnInit(): void {
     if (this.reviews && this.reviews.length)
       this.rnd = Math.floor(Math.random() * this.reviews.length);
-    console.info(`Random review number is: ${this.rnd}`)  
+      LickyLoggerService.info(null,`Random review number is: ${this.rnd}`)  
   }
 
   onAddToCart() : void {

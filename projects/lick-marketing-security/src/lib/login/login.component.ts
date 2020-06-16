@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { LickyLoginService, DateUtilService } from 'licky-services';
+import { LickyLoginService, DateUtilService, LickyLoggerService } from 'licky-services';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this._userSubscription = this.loginService.firebaseUser.subscribe((firebaseUser) => {
       const status: boolean = (firebaseUser && firebaseUser.uid) ? true : false;
       if (status) {
-        console.info("LIBRARY: " , firebaseUser, "STATUS: ", status);
+        LickyLoggerService.info(`LIBRARY: ${firebaseUser}`, `STATUS: ${status}`);
         this.getVerified(firebaseUser);
       }
     })
@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   setIntervalChek() : void {
-    console.info("setIntervalChek");
+    LickyLoggerService.info(null,"setIntervalChek");
     this.loginCheck = setInterval(() => {
       this.checkLogin(), 3000
     })
@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   checkLogin() : void {
     const isLoggedIn: boolean = this.loginService.isLoggedIn()
-    console.info("checkLogin", isLoggedIn)
+    LickyLoggerService.info("checkLogin", isLoggedIn)
     if (isLoggedIn) {
       clearInterval(this.loginCheck);
       this.router.navigate([this.successRoute]);
@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private subscribeToLoginErrors(): void {
     this._loginError = this.loginService.errorMessage.subscribe((error) => {
-      console.error(error);
+      LickyLoggerService.error(null, error);
       this.errorMessage = "\n\n" + error;
     })
   }

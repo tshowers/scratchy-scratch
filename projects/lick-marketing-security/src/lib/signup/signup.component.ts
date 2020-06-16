@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { LickyLoginService} from 'licky-services';
+import { LickyLoginService, LickyLoggerService} from 'licky-services';
 
 @Component({
   selector: 'licky-signup',
@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
 
   public onPageEvent(value) : void {
     if(value.type == 'submit') {
-      console.log("Signing Up user with", JSON.stringify(value), this.loginLink)
+      LickyLoggerService.log("Signing Up user with", JSON.stringify(value) + this.loginLink)
       this.loginService.signUpUser(value.emailAddress, value.password, value.firstName, value.lastName, null, this.router, this.loginLink)
     }
   }

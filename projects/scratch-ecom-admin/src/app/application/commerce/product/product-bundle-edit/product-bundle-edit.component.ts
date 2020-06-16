@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 import { BreadCrumbService, PRODUCT_BUNDLE } from '../../../../shared/services/bread-crumb.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { LickAppWidgetSectionEditComponent } from 'lick-app-widget-section-edit';
-
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'app-product-bundle-edit',
@@ -73,7 +73,7 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
       .subscribe((data: { productBundle: ProductBundle }) => {
         if (data.productBundle) {
           this.productBundle = data.productBundle;
-          console.log("Bundle passed", JSON.stringify(this.productBundle))
+          LickyLoggerService.log("Bundle passed", JSON.stringify(this.productBundle))
           this.store_id = this.productBundle.store_id
           this.initializeDropdowns();
           this.setStoreContext();
@@ -98,7 +98,7 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
 
   onSubmit(): void {
     this.modelCheck();
-    console.log("SAVING", JSON.stringify(this.productBundle));
+    LickyLoggerService.log("SAVING", JSON.stringify(this.productBundle));
     (this.productBundle.id ? this.onUpdate() : this.saveNewProductBundle());
   }
 
@@ -146,7 +146,7 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
         this.currentUpload = new Upload(file);
         this.currentUpload.product_bundle_id = this.productBundle.id;
         this._uploadService.pushFileToStorage(this.currentUpload, PRODUCT_BUNDLES + "/" + this.store_id, '/stores/' + this.store_id, this.productBundle, this.dm.db);
-        console.log("UPLOADED", JSON.stringify(this.productBundle));
+        LickyLoggerService.log("UPLOADED", JSON.stringify(this.productBundle));
       }
     }
   }
@@ -183,7 +183,6 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
 
   newProductForBundle(): void {
     const bundleProduct = this.getProduct(this.product);
-    // console.log("Pushing", this.product, JSON.stringify( bundleProduct));
     if (!this.isProductAlreadyThere(bundleProduct.id))
       this.productBundle.products.push(bundleProduct);
   }

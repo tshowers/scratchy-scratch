@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RemoteAssetService } from 'licky-services';
 import { Subscription } from 'rxjs';
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'app-terms',
@@ -20,7 +21,7 @@ export class TermsComponent implements OnInit, OnDestroy {
     this._fileSubscription = this._remoteAssetService.getFileContents('./assets/terms.txt', this._remoteAssetService.TEXT)
       .subscribe({
         next: data => { this.bodyText = data; },
-        error: err => console.error(err)
+        error: err => LickyLoggerService.error(null, err)
       })
   }
   ngOnDestroy() {

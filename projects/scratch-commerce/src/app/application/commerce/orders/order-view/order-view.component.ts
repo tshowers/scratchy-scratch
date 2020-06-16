@@ -86,7 +86,6 @@ export class OrderViewComponent extends LickAppPageComponent implements OnInit, 
   }
 
   onSearch(value): void {
-    console.log("ONSEARCH", value);
     this.router.navigate(['application', 'stores', this.store_id, 'stores', this.store_id, 'orders'], { queryParams: { searchArgument: value } })
   }
 

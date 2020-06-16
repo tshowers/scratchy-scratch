@@ -4,6 +4,7 @@ import { User, Contact } from 'lick-data';
 import { LickyLoginService, LEADS } from 'licky-services';
 import { Subscription } from 'rxjs';
 import { DataMediationService } from '../../shared/services/data-mediation.service';
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'app-home',
@@ -92,7 +93,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._firebaseUserSubscription = this._loginService.firebaseUser.subscribe((firebaseUser) => {
-      console.info("firebaseUser Status", firebaseUser);
+      LickyLoggerService.info("firebaseUser Status", firebaseUser);
       this.setMenu(firebaseUser);
     })
   }
@@ -104,17 +105,17 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private setMenu(firebaseUser): void {
     if (firebaseUser) {
-      console.info("Logged In", firebaseUser);
+      LickyLoggerService.info("Logged In", firebaseUser);
       this.menuItems = this._loggedInMenu;
     }
     else {
-      console.info("Not Logged In", firebaseUser);
+      LickyLoggerService.info("Not Logged In", firebaseUser);
       this.menuItems = this._notLoggedInMenu;
     }
   }
 
   onEmailAddress(event): void {
-    console.log(JSON.stringify(event));
+    LickyLoggerService.log(null, JSON.stringify(event));
     this.createLead(event);
     this.isThankYouHidden = false;
     setTimeout(() => {
@@ -132,7 +133,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onContactUs(contact): void {
-    console.log(JSON.stringify(contact));
+    LickyLoggerService.log(null,JSON.stringify(contact));
     this.contactUsDescriptionText = "Thank You!";
     this.createContactRecord(contact);
     setTimeout(() => {

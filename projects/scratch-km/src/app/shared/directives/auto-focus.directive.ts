@@ -12,7 +12,6 @@ export class AutoFocusDirective implements AfterContentInit {
   public ngAfterContentInit() {
 
     setTimeout(() => {
-      console.info("AutoFocusDirective");
       this.el.nativeElement.focus();
 
     }, 500);

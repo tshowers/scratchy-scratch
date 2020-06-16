@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 import { BreadCrumbService, CATALOG } from '../../../../shared/services/bread-crumb.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { LickAppWidgetSectionEditComponent } from 'lick-app-widget-section-edit';
-
+import {LickyLoggerService} from 'licky-services';
 
 @Component({
   selector: 'app-catalog-edit',
@@ -68,7 +68,7 @@ export class CatalogEditComponent extends LickAppPageComponent implements OnInit
           this.catalog = data.catalog;
           this.store_id = this.catalog.store_id
           this.setStoreContext();
-          console.log(">>>>>>>", JSON.stringify( this.catalog))
+          LickyLoggerService.log(">>>>>>>", JSON.stringify( this.catalog))
         }
       });
   }
@@ -112,12 +112,12 @@ export class CatalogEditComponent extends LickAppPageComponent implements OnInit
 
   private redirect(redirectPath): void {
     if (!this.currentUpload) {
-      console.log("NO UPLOAD");
+      LickyLoggerService.log(null, "NO UPLOAD");
       this.router.navigate([redirectPath]);
     }
     else {
       let uploadCheck = setInterval(() => {
-        console.log("UPLOAD PROGRESS=" + this.currentUpload.progress);
+        LickyLoggerService.log(null, "UPLOAD PROGRESS=" + this.currentUpload.progress);
         if (this.currentUpload.progress >= 100) {
           clearInterval(uploadCheck);
           this.router.navigate([redirectPath]);

@@ -47,7 +47,6 @@ export class PaymentResolverService {
     let data = new Payment();
     Payment.restoreData(data);
     data.store_id = store_id;
-    console.log("Returning >> new Payment", JSON.stringify(data) );
     return data;
   }
 

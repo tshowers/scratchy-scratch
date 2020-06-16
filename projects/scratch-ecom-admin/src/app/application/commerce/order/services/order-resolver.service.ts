@@ -5,6 +5,7 @@ import { Order } from 'lick-data';
 import { FirebaseDataService, ORDERS } from 'licky-services';
 import { map } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { IdGeneratorService } from 'licky-services';
 
 @Injectable({
   providedIn: 'root'
@@ -45,7 +46,8 @@ export class OrderResolverService {
 
   getNew(store_id: string): Order {
     let data = new Order();
-    data.store_id = store_id
+    data.store_id = store_id;
+    data.name = IdGeneratorService.generateUUID();
     data.draft = true;
     return data;
   }

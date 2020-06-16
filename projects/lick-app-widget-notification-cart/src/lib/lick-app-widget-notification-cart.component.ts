@@ -4,6 +4,7 @@ import { Subscription, Observable } from 'rxjs';
 import { ShoppingCart, Product, User } from 'lick-data';
 import { SortHelperService, LickyLoginService, FirebaseDataService, SHOPPING_CARTS } from 'licky-services';
 import { map } from 'rxjs/operators';
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'licky-lick-app-widget-notification-cart',
@@ -83,7 +84,7 @@ export class LickAppWidgetNotificationCartComponent implements OnInit, OnDestroy
   }
 
   onShoppingCart(): void {
-    console.log(this.cartLink);
+    LickyLoggerService.log(null, this.cartLink);
     this.router.navigate([this.cartLink]);
   }
 

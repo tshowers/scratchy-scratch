@@ -366,7 +366,6 @@ export class DataMediationService implements OnDestroy {
   private setStores(): void {
     this._storeSubscription = this.db.getDataCollection(STORES)
       .subscribe((data: Store[]) => {
-        // console.log("STORES", JSON.stringify(data));
 
         if (data) {
           this._stores = this.db.getListToArray(data);
@@ -377,13 +376,11 @@ export class DataMediationService implements OnDestroy {
 
 
   public setNewUser(user: User) : void {
-    // console.info("setNewUser", JSON.stringify(user));
     this.user = user;
     this.updateUser();
   }
 
   public updateUser() : void {
-    // console.info("Before Call", JSON.stringify(this.user));
     this.loginService.updateUser(this.user);
   }
 

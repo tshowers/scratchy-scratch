@@ -181,7 +181,6 @@ export class DataMediationService implements OnDestroy {
       .subscribe((data: FOP[]) => {
         if (data) {
           this._fops = this.getFOPListToArray(data);
-          console.log("FOPS TO ARRAY", JSON.stringify(this._fops))
           this.fops.next(this._fops);
         }
       });
@@ -192,7 +191,6 @@ export class DataMediationService implements OnDestroy {
       .subscribe((data: JustText[]) => {
         if (data) {
           this._notes = this.getNoteListToArray(data);
-          console.log("NOTES TO ARRAY", JSON.stringify(this._notes))
           this.notes.next(this._notes);
         }
       });
@@ -203,7 +201,6 @@ export class DataMediationService implements OnDestroy {
       .subscribe((data: PhoneNumber[]) => {
         if (data) {
           this._phoneNumbers = this.getPhoneNumberListToArray(data);
-          console.log("PHONE NUMBERS TO ARRAY", JSON.stringify(this._notes))
           this.phoneNumbers.next(this._phoneNumbers);
         }
       });

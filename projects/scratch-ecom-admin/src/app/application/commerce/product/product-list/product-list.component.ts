@@ -95,7 +95,6 @@ export class ProductListComponent extends LickAppPageComponent implements OnInit
     this.dm.doCatalog(this.store_id, this.catalog_id);
     this.dm.catalog.subscribe((catalog) => {
       this.catalog = catalog;
-      // console.log("Just before setting setBreadCrumb", JSON.stringify(catalog))
       if (catalog)
       this.setBreadCrumb();
     })

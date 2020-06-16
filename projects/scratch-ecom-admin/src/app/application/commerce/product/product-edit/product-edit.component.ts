@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 import { BreadCrumbService, PRODUCT } from '../../../../shared/services/bread-crumb.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { LickAppWidgetSectionEditComponent } from 'lick-app-widget-section-edit';
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'app-product-edit',
@@ -122,14 +123,14 @@ export class ProductEditComponent extends LickAppPageComponent implements OnInit
 
   private redirect(redirectPath): void {
     if (!this.currentUpload) {
-      console.log("1", redirectPath)
+      LickyLoggerService.log("1", redirectPath)
       this.router.navigate([redirectPath]);
     }
     else {
       let uploadCheck = setInterval(() => {
         if (this.currentUpload.progress >= 100) {
           clearInterval(uploadCheck);
-          console.log("2", redirectPath)
+          LickyLoggerService.log("2", redirectPath)
           this.router.navigate([redirectPath]);
         }
       }, 1000)

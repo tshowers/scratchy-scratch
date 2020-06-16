@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Lightbox } from 'ngx-lightbox';
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'licky-lick-marketing-lightbox1',
@@ -22,7 +23,7 @@ export class LickMarketingLightbox1Component implements OnInit {
   }
 
   open(index: number): void {
-    console.log("Opening lightbox", index, JSON.stringify(this.images))
+    LickyLoggerService.log(`Opening lightbox${index}`, JSON.stringify(this.images))
     this._lightbox.open(this.images, index);
   }
 

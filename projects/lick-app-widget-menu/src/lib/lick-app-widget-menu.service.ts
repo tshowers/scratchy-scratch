@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LickyLoggerService } from 'licky-services';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class LickAppWidgetMenuService {
   constructor() { }
 
   public signOut() {
-    console.log("Sign Out clicked")
+    LickyLoggerService.log(null, "Sign Out clicked")
   }
 
 }

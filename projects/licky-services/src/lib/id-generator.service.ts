@@ -5,7 +5,7 @@ export class IdGeneratorService {
 
   constructor() { }
 
-  public static generateUUID() { // Public Domain/MIT
+  public static generateUUID() { 
     var d = new Date().getTime();
     if (typeof performance !== 'undefined' && typeof performance.now === 'function') {
       d += performance.now(); //use high-precision timer if available

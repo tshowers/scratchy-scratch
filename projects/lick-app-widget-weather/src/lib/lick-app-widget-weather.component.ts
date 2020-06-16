@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Address } from 'lick-data';
-import { WeatherService, UserLocationService } from 'licky-services';
+import { WeatherService, UserLocationService, LickyLoggerService } from 'licky-services';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -40,7 +40,7 @@ export class LickAppWidgetWeatherComponent implements OnInit, OnDestroy {
   }
 
   setWeather(address: Address) : void {
-    console.log("setWeather", JSON.stringify(address));
+    LickyLoggerService.log("setWeather", JSON.stringify(address));
     this._weatherSubscription = this._weatherService.getWeatherByLonLat(address.longitude, address.latitude).subscribe((weather) => {
       this.weather = weather;
     })

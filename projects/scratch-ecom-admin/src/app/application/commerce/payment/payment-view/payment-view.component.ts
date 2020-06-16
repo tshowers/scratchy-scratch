@@ -6,7 +6,7 @@ import { PAYMENTS } from 'licky-services';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
 import { Subscription } from 'rxjs';
 import { BreadCrumbService, PAYMENT } from '../../../../shared/services/bread-crumb.service';
-
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'app-payment-view',
@@ -87,7 +87,7 @@ export class PaymentViewComponent extends LickAppPageComponent implements OnInit
   }
 
   onSearch(value): void {
-    console.log("ONSEARCH", value);
+    LickyLoggerService.log("ONSEARCH", value);
     this.router.navigate([ 'stores', this.store_id, 'payments'], { queryParams: { searchArgument: value } })
   }
 

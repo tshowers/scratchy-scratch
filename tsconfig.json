@@ -802,6 +802,10 @@
       "lick-app-widget-generic-nav": [
         "dist/lick-app-widget-generic-nav/lick-app-widget-generic-nav",
         "dist/lick-app-widget-generic-nav"
+      ],
+      "lick-logger": [
+        "dist/lick-logger/lick-logger",
+        "dist/lick-logger"
       ]
     }
   },

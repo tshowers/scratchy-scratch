@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FirebaseDataService, DOCUMENTS } from './firebase-data.service';
 import { LickyLoginService } from './licky-login.service';
+import { LickyLoggerService } from './licky-logger.service';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
 import { Contact, Property, Topic, Project, Store, Product, Group, Offer, Catalog, ProductBundle, Help, Upload, Docuttach, Carousel, ServiceBox, Featurette, Parallax, Article } from 'lick-data';
@@ -30,7 +31,7 @@ export class UploadService {
       },
       (error) => {
         // upload failed
-        console.error(error)
+        LickyLoggerService.error(null, error)
       },
       () => {
         // upload success
@@ -53,7 +54,7 @@ export class UploadService {
       },
       (error) => {
         // upload failed
-        console.error(error)
+        LickyLoggerService.error(null, error)
       },
       () => {
         // upload success
@@ -63,14 +64,14 @@ export class UploadService {
         storageRef.child(storeLocation).getDownloadURL().then((url) => {
           upload.url = url;
 
-          console.info("Calling saveFilePointer");
+          LickyLoggerService.info(null, "Calling saveFilePointer");
           this.saveFilePointer(true, upload, fn, db);
           data.url = upload.url;
           db.updateData(dataPath, data.id, data);
 
           if (isUpdateFirebase && loginService && displayName)
             loginService.updateDisplayName(displayName, url);
-        }).catch((error) => console.error(error));
+        }).catch((error) => LickyLoggerService.error(null, error));
       }
     );
   }
@@ -86,7 +87,7 @@ export class UploadService {
   }
 
   private saveFileData(upload: Upload, db: FirebaseDataService) {
-    console.info("saveFileData", JSON.stringify(upload));
+    LickyLoggerService.info("saveFileData", JSON.stringify(upload));
     db.writeData(DOCUMENTS, upload);
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'licky-lick-app-widget-item-view1',
@@ -11,6 +12,7 @@ export class LickAppWidgetItemView1Component implements OnInit {
   @Input() canEdit: boolean = true;
   @Input() canDelete: boolean = true;
   @Input() customButton: boolean = false;
+  @Input() isShowPhoto: boolean = true;
   @Input() details: boolean = true;
   @Input() customButtonText;
   @Input() customButtonIcon = "fa-cart-plus";
@@ -32,6 +34,7 @@ export class LickAppWidgetItemView1Component implements OnInit {
 
   private setFields(): void {
     Object.keys(this.data).forEach(e => {
+      LickyLoggerService.log("Field Name: ", e);
       if ((e != 'description') &&
         (e != 'bookmarked') &&
         (e != 'bookmarkedCount') &&

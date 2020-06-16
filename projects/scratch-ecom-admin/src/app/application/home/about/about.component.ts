@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { filter, map, mergeMap } from 'rxjs/operators';
-
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'app-about',
@@ -45,7 +45,7 @@ export class AboutComponent implements OnInit {
 
 
   private setPageTitle() {
-    console.log(this._titleService.getTitle())
+    LickyLoggerService.log(null, this._titleService.getTitle())
     if (this._titleService.getTitle())
       this.headingText = this._titleService.getTitle();
   }

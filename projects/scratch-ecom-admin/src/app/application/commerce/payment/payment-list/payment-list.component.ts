@@ -6,7 +6,7 @@ import { Payment, Store } from 'lick-data';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { PAYMENTS } from 'licky-services';
 import { BreadCrumbService, PAYMENT } from '../../../../shared/services/bread-crumb.service';
-
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'app-payment-list',
@@ -164,7 +164,7 @@ export class PaymentListComponent extends LickAppPageComponent implements OnInit
   }
 
   onDetail(data): void {
-    console.log(JSON.stringify(data))
+    LickyLoggerService.log(null, JSON.stringify(data))
     this.router.navigate([ 'stores', this.store_id, 'payments',  data.id])
   }
 

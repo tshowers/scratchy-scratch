@@ -21,6 +21,13 @@
           "e-com-dev"
         ]
       }
+    },
+    "taliferro-de66f": {
+      "hosting": {
+        "taliferro": [
+          "taliferro-de66f"
+        ]
+      }
     }
   }
 }

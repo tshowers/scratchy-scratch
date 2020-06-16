@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'licky-lick-marketing-newsletter1',
@@ -24,7 +25,7 @@ export class LickMarketingNewsletter1Component implements OnInit {
   }
 
   onSubmit() {
-    console.log("Submit clicked")
+    LickyLoggerService.log(null,"Submit clicked")
   }
 
 }

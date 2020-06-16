@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { LickyLoginConfigService } from './licky-login-config.service';
 import { Router } from '@angular/router';
-
+import { LickyLoggerService } from './licky-logger.service';
 import * as firebase from 'firebase/app';
 import 'firebase/app';
 import 'firebase/auth';
@@ -68,11 +68,11 @@ export class LickyLoginService {
       displayName: name,
       photoURL: url
     }).then(() => {
-      console.log("Display Updated", name, url, JSON.stringify(this._firebaseUser))
+      LickyLoggerService.log(null, "Display Updated "  + name  + url  + JSON.stringify(this._firebaseUser))
       if (this._user)
         this._user.url = url;
     }).catch(error => {
-      console.error(error);
+      LickyLoggerService.error(null, error);
     })
   }
 
@@ -81,7 +81,7 @@ export class LickyLoginService {
       if (this._user)
         this._user.email = emailAddress;
     }).catch(error => {
-      console.error(error);
+      LickyLoggerService.error(null, error);
     })
   }
 
@@ -89,7 +89,7 @@ export class LickyLoginService {
     this._firebaseUser.updatePassword(password).then(() => {
 
     }).catch(error => {
-      console.error(error);
+      LickyLoggerService.error(null, error);
     })
   }
 
@@ -105,7 +105,7 @@ export class LickyLoginService {
 
 
   private initFirebase() {
-    console.info("Initializing Firebase with " + JSON.stringify(this.config))
+    LickyLoggerService.info("Initializing Firebase with " , JSON.stringify(this.config))
     if (!firebase.apps.length) {
       firebase.initializeApp(this.config);
     }
@@ -130,13 +130,13 @@ export class LickyLoginService {
     firebase.auth().signInWithEmailAndPassword(emailAddress, password)
       .then((authData) => {
         this._loggedIn = true;
-        console.info(emailAddress, "logged in", redirectURL, router)
+        LickyLoggerService.info(null, emailAddress + "logged in"  + redirectURL  + router)
         router.navigate([redirectURL]);
         return true;
       })
       .catch((error) => {
         // Route to error page
-        console.error(error);
+        LickyLoggerService.error(null, error);
         this.error.next(error.code);
         this.errorMessage.next(error.message);
       })
@@ -149,16 +149,16 @@ export class LickyLoginService {
     firebaseUser.updateProfile({
       displayName: firstName + " " + lastName,
     }).then(() => {
-      console.info("DISPLAY NAME UPDATED TO - " + firebaseUser.displayName);
+      LickyLoggerService.info("DISPLAY NAME UPDATED TO - " , firebaseUser.displayName);
     },
       (error) => {
-        console.error(error)
+        LickyLoggerService.error(null,error)
       }
     )
   }
 
   public isLoggedIn(): boolean {
-    // console.info("LOGIN STATUS", this._firebaseUser, this._user);
+    // LickyLoggerService.info("LOGIN STATUS", this._firebaseUser, this._user);
     this._loggedIn = (this._firebaseUser && this._user) ? true : false;
     return (this._loggedIn);
   }
@@ -193,16 +193,16 @@ export class LickyLoginService {
     this.setOffline();
 
     firebase.auth().signOut().then(() => {
-      console.info("Logging out user");
+      LickyLoggerService.info(null,"Logging out user");
       this._loggedIn = false;
       this.firebaseUser.next(null);
       this._firebaseUser = null;
       this._user = null;
       this._fds.setUser(null);
       this.userChanged.next(null);
-      console.info("Finished logging out user");
+      LickyLoggerService.info(null, "Finished logging out user");
     }, function (error) {
-      console.error(error);
+      LickyLoggerService.error(null, error);
       this.error.next(error.code);
       this.errorMessage.next(error.message);
     });
@@ -242,7 +242,7 @@ export class LickyLoginService {
     firebase.auth().currentUser.sendEmailVerification().then(() => {
       this.processMessage.next('Email Verification Sent!')
     }).catch((error) => {
-      console.error(JSON.stringify(error), JSON.stringify(firebase.auth().currentUser));
+      LickyLoggerService.error(JSON.stringify(error), JSON.stringify(firebase.auth().currentUser));
       this.processMessage.next('Unable to process request');
     });
   }
@@ -259,7 +259,7 @@ export class LickyLoginService {
         } else if (errorCode == 'auth/user-not-found') {
           this.errorMessage.next(error.message);
         }
-        console.error(error);
+        LickyLoggerService.error(null, error);
         this.error.next(error.code);
       });
   }
@@ -291,7 +291,7 @@ export class LickyLoginService {
   private initUsers(): void {
     this._fds.getDataCollection(USERS).subscribe((users) => {
       if (!users) {
-        console.info("NO USERS FOUND!");
+        LickyLoggerService.info(null, "NO USERS FOUND!");
         this.createAdminUser();
       } else {
         this._users = users;
@@ -303,15 +303,15 @@ export class LickyLoginService {
 
 
           if (u === null || typeof u != 'object') {
-            // console.log("CREATE USER");
+            // LickyLoggerService.log("CREATE USER");
             this.createUser();
           } else {
-            // console.log("USER FOUND", JSON.stringify(u));
+            // LickyLoggerService.log("USER FOUND", JSON.stringify(u));
             this.setFirebaseAttributes(u);
           }
 
         } catch (err) {
-          console.error(err);
+          LickyLoggerService.error(null, err);
         }
       }
     })
@@ -350,7 +350,7 @@ export class LickyLoginService {
 
   private setUsersName(user: User): void {
     user.name = this._firebaseUser.displayName;
-    console.log("NAME", user.name, "DISPLAY NAME", this._firebaseUser.displayName);
+    LickyLoggerService.log(null, "NAME " + user.name + " DISPLAY NAME" + this._firebaseUser.displayName);
     if (this._firebaseUser.displayName == null) {
       if (this._firstName && this._lastName)
         user.name = this._firstName + " " + this._lastName;
@@ -381,7 +381,7 @@ export class LickyLoginService {
 
   public updateUser(user: User): void {
     if (!user) return;
-    console.info("UPDATING USER", JSON.stringify(user))
+    LickyLoggerService.info("UPDATING USER", JSON.stringify(user))
     this._fds.updateData(USERS, user.id, user);
     this.userChanged.next(user);
   }

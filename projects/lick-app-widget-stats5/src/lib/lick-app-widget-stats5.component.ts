@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'licky-lick-app-widget-stats5',
@@ -42,7 +43,7 @@ export class LickAppWidgetStats5Component implements OnInit {
   }
 
   showMore() : void {
-    console.log("Show More Clicked")
+    LickyLoggerService.log(null, "Show More Clicked")
   }
 
 }

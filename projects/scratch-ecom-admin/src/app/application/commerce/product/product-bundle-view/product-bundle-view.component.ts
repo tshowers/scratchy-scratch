@@ -6,7 +6,7 @@ import { PRODUCT_BUNDLES } from 'licky-services';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
 import { Subscription } from 'rxjs';
 import { BreadCrumbService, PRODUCT_BUNDLE } from '../../../../shared/services/bread-crumb.service';
-
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'app-product-bundle-view',
@@ -110,7 +110,7 @@ export class ProductBundleViewComponent extends LickAppPageComponent implements 
   }
 
   onSearch(value): void {
-    console.log("ONSEARCH", value);
+    LickyLoggerService.log("ONSEARCH", value);
     this.router.navigate([ 'stores', this.store_id, 'catalogs', this.catalog_id, 'product-bundles'], { queryParams: { searchArgument: value } })
   }
 

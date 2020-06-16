@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Section } from 'lick-data';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'licky-lick-app-widget-section-edit',
@@ -33,7 +34,7 @@ export class LickAppWidgetSectionEditComponent implements OnInit {
   }
 
   modelCheck() {
-    console.log("modelCheck()")
+    LickyLoggerService.log(null, "modelCheck()")
     if (this.section.name) {
       this.data.sections.push(this.section);
     }

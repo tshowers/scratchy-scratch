@@ -64,7 +64,6 @@ export class NavComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this._loginSubscription = this.loginService.firebaseUser.subscribe((user) => {
       this.loggedIn = (user) ? true : false;
-      console.info("LOGGED IN = ", this.loggedIn);
       this.setVerified(user);
       if (maintenance) {
         this.loggedIn = false;

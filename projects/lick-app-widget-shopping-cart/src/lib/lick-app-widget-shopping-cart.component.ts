@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import {ShoppingCart} from 'lick-data';
+import {LickyLoggerService} from 'licky-services';
 
 @Component({
   selector: 'licky-lick-app-widget-shopping-cart',
@@ -24,21 +25,21 @@ export class LickAppWidgetShoppingCartComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log("SHOPPING CART RECEIVED", JSON.stringify(this.data))
+    LickyLoggerService.log("SHOPPING CART RECEIVED", JSON.stringify(this.data))
   }
 
   onDetail(item): void {
-    console.log("onDetail", JSON.stringify(item))
+    LickyLoggerService.log("onDetail", JSON.stringify(item))
     this.detailEvent.emit(item);
   }
 
   onDelete(at): void {
-    console.log("onDelete", JSON.stringify(at))
+    LickyLoggerService.log("onDelete", JSON.stringify(at))
     this.deleteEvent.emit(at);
   }
 
   updateQuantity(item): void {
-    console.log("updateQuantity", JSON.stringify(item))
+    LickyLoggerService.log("updateQuantity", JSON.stringify(item))
     this.updateEvent.emit(item);
   }
 

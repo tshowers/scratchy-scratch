@@ -8,6 +8,7 @@ import { NewsService } from './news.service';
 import { WeatherService } from './weather.service';
 import { LickyLoginConfigService } from './licky-login-config.service';
 import { FirebaseConfig } from './firebase-config.model';
+import { LickyLoggerService } from './licky-logger.service'
 
 import { SortHelperService } from './sort-helper.service';
 import { DateUtilService } from './date-util.service';
@@ -45,6 +46,7 @@ import { environment } from '../environment';
     RemoteAssetService,
     DateUtilService,
     UploadService,
+    LickyLoggerService
   ]
 
 })

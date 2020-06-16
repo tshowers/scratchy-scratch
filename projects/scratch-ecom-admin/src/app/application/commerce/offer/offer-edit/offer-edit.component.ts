@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 import { BreadCrumbService, OFFER } from '../../../../shared/services/bread-crumb.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { LickAppWidgetSectionEditComponent } from 'lick-app-widget-section-edit';
-
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'app-offer-edit',
@@ -105,9 +105,9 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
   }
 
   onSubmit(): void {
-    console.log("Check for sections");
+    LickyLoggerService.log(null, "Check for sections");
     this.modelCheck();
-    console.log("Submitting offer");
+    LickyLoggerService.log(null, "Submitting offer");
     (this.offer.id ? this.onUpdate() : this.saveNewOffer());
   }
 
@@ -217,7 +217,6 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
   private doProducts(): void {
     this.dm.doProducts(this.store_id);
     this.dm.products.subscribe((products) => {
-      console.log(products);
       if (products)
         this.products = this._dropdownService.getDataToDropdown(products);
     })

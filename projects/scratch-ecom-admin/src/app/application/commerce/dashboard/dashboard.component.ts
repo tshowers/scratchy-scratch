@@ -6,8 +6,9 @@ import { BreadCrumbService, DASHBOARD } from '../../../shared/services/bread-cru
 import { Contact, Store, Order, Catalog, Payment } from 'lick-data';
 import { Subscription, Observable } from 'rxjs';
 import { LickAppWidgetStats14PeriodData, LickAppWidgetStats14Data, LickAppWidgetStats14Box } from 'lick-app-widget-stats14';
-import { DateUtilService } from 'licky-services';
+import { DateUtilService, LickyLoggerService } from 'licky-services';
 import { CatalogListComponent } from 'projects/scratch-commerce/src/app/application/commerce/catalog/catalog-list/catalog-list.component';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -223,7 +224,6 @@ export class DashboardComponent extends LickAppPageComponent implements OnInit, 
 
   catalogs(store_id): void {
     this.dm.doCatalogs(store_id);
-    console.log("CATALOGS")
     this._catalogSubscription = this.dm.catalogs.subscribe((catalogs: Catalog[]) => {
       if (catalogs) {
         catalogs.forEach((catalog) => {
@@ -245,9 +245,9 @@ export class DashboardComponent extends LickAppPageComponent implements OnInit, 
       for (let index = 0; index < 31; index++) {
         this.dayCheck(catalog, index, this.catalogDayBucket);
       }
-
-      console.log("Catalog Bucket", JSON.stringify(this.catalogBucket))
-      console.log("Catalog Day Bucket", JSON.stringify(this.catalogDayBucket))
+      
+      LickyLoggerService.info(null, "Catalog Bucket" + JSON.stringify(this.catalogBucket))
+      LickyLoggerService.info(null, "Catalog Day Bucket" + JSON.stringify(this.catalogDayBucket))
     }
   }
 
@@ -264,7 +264,7 @@ export class DashboardComponent extends LickAppPageComponent implements OnInit, 
     let m = this._dateUtilService.subtractDay(today, backNumber);
     let dataDay = new Date(data.timeStamp).getDate();
 
-    console.log("Back Day:" + m.getDate(), " Data Data:" + dataDay);
+    LickyLoggerService.info(null, "Back Day:" + m.getDate() + " Data Data:" + dataDay);
     if (m.getDate() === dataDay) {
       if (isAddAmount)
         dayArray[backNumber] += data.amount;
@@ -280,7 +280,7 @@ export class DashboardComponent extends LickAppPageComponent implements OnInit, 
     let m = this._dateUtilService.subtractMonth(today, backNumber);
     let dataMonth = new Date(data.timeStamp).getMonth();
 
-    console.log("Back Month:" + m.getMonth(), " Data Month:" + dataMonth);
+    LickyLoggerService.info(null, "Back Month:" + m.getMonth() + " Data Month:" + dataMonth);
     if (m.getMonth() === dataMonth) {
       if (isAddAmount)
         monthArray[backNumber] += data.amount;
@@ -297,7 +297,7 @@ export class DashboardComponent extends LickAppPageComponent implements OnInit, 
     let today = new Date();
     if (order.timeStamp) {
       let lastYear = this._dateUtilService.subtractMonth(today, 12);
-      console.log("lastYear", JSON.stringify(lastYear))
+      LickyLoggerService.info("lastYear" , JSON.stringify(lastYear))
       // this.setOrdersByMonth(new Date(order.timeStamp).getMonth(), order.amount)
     }
   }

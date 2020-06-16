@@ -24,7 +24,6 @@ export class ShoppingCartResolverService {
       return this._db.getData(SHOPPING_CARTS, id)
         .pipe(
           map(shoppingCart => {
-            console.info("shoppingCart", JSON.stringify(shoppingCart));
             if (shoppingCart) {
               ShoppingCart.restoreData(shoppingCart);
               return (shoppingCart.id == id) ? shoppingCart : (this.getNew());

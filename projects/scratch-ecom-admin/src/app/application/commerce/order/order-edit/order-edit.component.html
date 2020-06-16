@@ -6,6 +6,14 @@
       <div class="container">
         <div class="row">
           <div class="col">
+            <label for="orderName">Name</label>
+            <input [(ngModel)]="order.name" #orderName="ngModel" id="orderName" name="orderName"
+            placeholder="Order Name - default GUID" type="text" class="form-control input-lg input-element"
+            [disabled]="(order?.id)">
+      </div>
+        </div>
+        <div class="row">
+          <div class="col">
             <div class="form-group">
               <label for="orderStatus">Status</label>
               <select [(ngModel)]="order.status" name="orderStatus" id="orderStatus"
@@ -48,6 +56,18 @@
         
 
       </div>
+      <div class="row">
+        <div class="col text-center"> <button class="btn btn-primary btn-lg btn-round"
+            (click)="onSubmit()" type="submit" [disabled]="!dataForm.form.valid"
+            title="Submit to database">Save
+            <i class="fa fa-cloud" aria-hidden="true"></i>
+          </button>
+          <button *ngIf="canDelete" class="btn btn-damger btn-lg"
+            (click)="onDelete();dataForm.reset()" [disabled]="!order.id">Delete
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </button> </div>
+      </div>
+
     </form>
   </div>
 </div>

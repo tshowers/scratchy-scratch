@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FirebaseDataService, LickyLoginService} from 'licky-services';
+import { FirebaseDataService, LickyLoginService, LickyLoggerService} from 'licky-services';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -28,7 +28,7 @@ export class HomePageComponent implements OnInit {
   }
 
   private hideThankYou() : void {
-    console.info("Hiding Thank You");
+    LickyLoggerService.info(null, "Hiding Thank You");
     this.thankYou = true
 
   }

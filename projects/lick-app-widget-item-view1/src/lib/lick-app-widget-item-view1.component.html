@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col" *ngIf="isShowPhoto">
       <img *ngIf="!data.url" class="card-img-top img-reponsive" src="{{NO_PHOTO}}" alt="No Photo Available">
       <img *ngIf="data.url" class="card-img-top img-reponsive" src="{{data?.url}}" alt="{{data?.name}}">
       <div class="card-header">
@@ -9,8 +9,15 @@
         </h4>
       </div>
     </div>
+
     <div class="col">
-      <ul class="list-group list-group-flush">
+      <div class="card-header" *ngIf="!isShowPhoto">
+        <h4 class="my-0 font-weight-normal">
+          {{ data?.name }}
+        </h4>
+      </div>
+
+      <ul class="list-group list-group-flush" *ngIf="data?.description">
         <li class="list-group-item">
           <strong class="ta-label">Description :</strong><br>
           <div class="col" innerHTML="{{data?.description}}"></div>

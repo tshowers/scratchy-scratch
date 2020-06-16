@@ -69,7 +69,6 @@ export class TopicViewComponent extends LickAppPageComponent implements OnInit, 
   }
 
   onSearch(value): void {
-    console.log("ONSEARCH", value);
     this.router.navigate(['application', 'topics'], { queryParams: { searchArgument: value } })
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'licky-lick-marketing-try-it1',
@@ -19,7 +20,7 @@ export class LickMarketingTryIt1Component implements OnInit {
   }
 
   onPageEvent(link) : void {
-    console.log("Link clicked", link)
+    LickyLoggerService.log("Link clicked", link)
     this.pageEvent.emit(link);
   }
 

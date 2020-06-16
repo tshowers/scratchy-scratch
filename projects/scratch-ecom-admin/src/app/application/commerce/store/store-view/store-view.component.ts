@@ -7,6 +7,7 @@ import { STORES } from 'licky-services';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
 import { Subscription } from 'rxjs';
 import { BreadCrumbService, STORE } from '../../../../shared/services/bread-crumb.service';
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'app-store-view',
@@ -114,11 +115,6 @@ export class StoreViewComponent extends LickAppPageComponent implements OnInit, 
     this.dm.doProducts(this.store.id);
     this._productSubscription = this.dm.products.subscribe((products) => {
       if (products) {
-        // let p = products.filter((product) => {
-        //   return (product && product.url)
-        // });
-        // console.log("Products", JSON.stringify(p));
-        // this.products = p;
         this.products = products.slice(0,3);
         this.setLightBoxImages(this.products);
       }
@@ -138,7 +134,7 @@ export class StoreViewComponent extends LickAppPageComponent implements OnInit, 
 
     const today = new Date().getTime()
     for (let i = 0; i < offers.length; i++) {
-      console.log("Comparing", today, offers[i].expirationDate)
+      LickyLoggerService.log("Comparing", today + offers[i].expirationDate)
       if (offers[i].expirationDate < today) {
         if (!this.offer1 && offers[i].url)
           this.offer1 = offers[i];
@@ -158,12 +154,12 @@ export class StoreViewComponent extends LickAppPageComponent implements OnInit, 
   }
 
   onSearch(value): void {
-    console.log("ONSEARCH", value);
+    LickyLoggerService.log("ONSEARCH", value);
     this.router.navigate([ 'stores'], { queryParams: { searchArgument: value } })
   }
 
   onBuy(): void {
-    console.log("Buy Click");
+    LickyLoggerService.log(null, "Buy Click");
   }
 
   get diagnostic() {

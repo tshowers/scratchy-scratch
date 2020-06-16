@@ -148,7 +148,6 @@ export class TopicListComponent extends LickAppPageComponent implements OnInit, 
   }
 
   onDetail(data): void {
-    console.log(JSON.stringify(data))
     this.router.navigate(['application', 'topics',  data.id])
   }
 

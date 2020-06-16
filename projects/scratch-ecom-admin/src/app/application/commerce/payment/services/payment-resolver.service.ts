@@ -5,6 +5,7 @@ import { Payment } from 'lick-data';
 import { FirebaseDataService, PAYMENTS } from 'licky-services';
 import { map } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { LickyLoggerService } from 'licky-services';
 
 @Injectable({
   providedIn: 'root'
@@ -47,7 +48,7 @@ export class PaymentResolverService {
     let data = new Payment();
     Payment.restoreData(data);
     data.store_id = store_id;
-    console.log("Returning >> new Payment", JSON.stringify(data) );
+    LickyLoggerService.log("Returning >> new Payment", JSON.stringify(data) );
     return data;
   }
 

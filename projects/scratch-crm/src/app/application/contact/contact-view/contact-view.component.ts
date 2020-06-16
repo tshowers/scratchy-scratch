@@ -84,7 +84,6 @@ export class ContactViewComponent extends LickAppPageComponent implements OnInit
   }
 
   onSearch(value): void {
-    console.log("ONSEARCH", value);
     this.router.navigate(['application', 'contacts'], { queryParams: { searchArgument: value } })
   }
 

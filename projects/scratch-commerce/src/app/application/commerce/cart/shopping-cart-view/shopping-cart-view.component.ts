@@ -5,6 +5,7 @@ import { Router, Params, ActivatedRoute } from '@angular/router';
 import { Store, ShoppingCart, User, Product } from 'lick-data';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { SHOPPING_CARTS } from 'licky-services';
+import { LickyLoggerService} from 'licky-services';
 
 declare var paypal;
 
@@ -79,7 +80,6 @@ export class ShoppingCartViewComponent extends LickAppPageComponent implements O
         onApprove: async (data, actions) => {
           const order = await actions.order.capture();
           this.isPaid = true;
-          console.log(order);
         },
         onError: err => {
           console.log(err);

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { User } from 'lick-data';
+import { LickyLoggerService } from './licky-logger.service';
 
 export const APP_ACTIVITY = '/app-activity'
 export const BLOGS = '/blogs';
@@ -107,7 +108,7 @@ export class FirebaseDataService {
   constructor() { }
 
   init(): void {
-    // console.info("Setting Firebase database to " + firebase.database())
+    // LickyLoggerService.info("Setting Firebase database to " + firebase.database())
     this._db = firebase.database();
   }
 
@@ -128,7 +129,7 @@ export class FirebaseDataService {
 
   getData(path: string, id: string): Observable<any> {
     path = this.getAugmentedPath(path);
-    console.log("GETTING DATA FOR PATH", path)
+    LickyLoggerService.log("GETTING DATA FOR PATH", path)
     return new Observable((observer) => {
 
       this._db.ref(path + '/' + id).once('value').then(
@@ -149,7 +150,7 @@ export class FirebaseDataService {
 
   getDataReference(path: string, id: string): Observable<any> {
     path = this.getAugmentedPath(path);
-    console.log("GETTING REFERENCE DATA FOR PATH", path)
+    LickyLoggerService.log("GETTING REFERENCE DATA FOR PATH", path)
     return new Observable((observer) => {
 
       this._db.ref(path + '/' + id).on('value').then(
@@ -172,15 +173,15 @@ export class FirebaseDataService {
     path = this.getAugmentedPath(path);
     this.setNewDataValues(data);
     return Observable.create((observer) => {
-      console.log("Writing to " + path)
+      LickyLoggerService.log(null, "Writing to " + path)
       this._db.ref(path).push(data, (error) => {
 
         if (error) {
-          console.error(error);
+          LickyLoggerService.error(null, error);
           this.databaseError.next(error.message);
         }
       }).then((snap) => {
-        console.log("Key", snap);
+        LickyLoggerService.log("Key", snap);
         if (snap)
           observer.next(snap.key);
         else
@@ -195,11 +196,11 @@ export class FirebaseDataService {
     this.setNewDataValues(data);
     this._db.ref(path).push(data, (error) => {
       if (error) {
-        console.error(error);
+        LickyLoggerService.error(null, error);
         this.databaseError.next(error.message);
       }
     }).then((snap) => {
-      console.log("Key", snap);
+      LickyLoggerService.log("Key", snap);
     })
   }
 
@@ -211,7 +212,7 @@ export class FirebaseDataService {
           if (this._user && this._user.account)
             return path + "/" + this._user.account;
           else {
-            console.error("USER OR USER ACCOUNT IS NULL");
+            LickyLoggerService.error(null, "USER OR USER ACCOUNT IS NULL");
             return path;
           }
         }
@@ -223,11 +224,11 @@ export class FirebaseDataService {
 
   getDataCollection(path): Observable<any> {
     path = this.getAugmentedPath(path);
-    console.log("Getting data for path", path);
+    LickyLoggerService.log("Getting data for path", path);
     return Observable.create((observer) => {
 
       this._db.ref(path).on('value', (snapshot) => {
-        // console.log("Snapshot", JSON.stringify( snapshot.val()));
+        // LickyLoggerService.log("Snapshot", JSON.stringify( snapshot.val()));
         observer.next((snapshot) ? snapshot.val() : null);
         observer.complete();
       },
@@ -260,7 +261,7 @@ export class FirebaseDataService {
   }
 
   public getConvertDataToList(data: any): Observable<any> {
-    // console.log(JSON.stringify(data));
+    // LickyLoggerService.log(JSON.stringify(data));
     let list: any[] = [];
     for (let item in data) {
       this.doFixUpData(data, item);
@@ -274,7 +275,7 @@ export class FirebaseDataService {
   }
 
   public getListToArray(data: any): any[] {
-    // console.log(JSON.stringify(data));
+    // LickyLoggerService.log(JSON.stringify(data));
     let list: any[] = [];
     for (let item in data) {
       this.doFixUpData(data, item);

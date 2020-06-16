@@ -36,7 +36,6 @@ export class AppComponent implements OnInit {
 
   areWeHome() : void {
       this.isHome = (this._location.path() === '/shop');
-      console.info("Current path is " + this._location.path(), ", isHome=" + this.isHome);
   }
 
 

@@ -6,7 +6,7 @@ import { PRODUCTS, SHOPPING_CARTS } from 'licky-services';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
 import { Subscription } from 'rxjs';
 import { BreadCrumbService, PRODUCT } from '../../../../shared/services/bread-crumb.service';
-
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'app-product-view',
@@ -121,7 +121,7 @@ export class ProductViewComponent extends LickAppPageComponent implements OnInit
   }
 
   onSearch(value): void {
-    console.log("ONSEARCH", value);
+    LickyLoggerService.log("ONSEARCH", value);
     this.router.navigate([ 'stores', this.store_id, 'catalogs', this.catalog_id, 'products'], { queryParams: { searchArgument: value } })
   }
 
@@ -139,7 +139,7 @@ export class ProductViewComponent extends LickAppPageComponent implements OnInit
 
   private addToProductViewHistory(): void {
     if (!this.shoppingCart) {
-      console.log("Shopping Cart NOT Found for addToProductViewHistory so create one");
+      LickyLoggerService.log(null, "Shopping Cart NOT Found for addToProductViewHistory so create one");
       this.shoppingCart = new ShoppingCart();
     }
     if (!this.isProductOnTop)
@@ -150,7 +150,7 @@ export class ProductViewComponent extends LickAppPageComponent implements OnInit
     const productOnTop = this.shoppingCart.productViewHistory.slice(0, 1);
 
     if (productOnTop) {
-      console.log("Checking Product on Top", JSON.stringify(productOnTop), JSON.stringify(this.product))
+      LickyLoggerService.log("Checking Product on Top", JSON.stringify(productOnTop) + JSON.stringify(this.product))
       return productOnTop[0].id = this.product.id
     }
     return false;
@@ -158,7 +158,7 @@ export class ProductViewComponent extends LickAppPageComponent implements OnInit
 
   private checkShoppingCart(): void {
     if (!this.shoppingCart) {
-      console.info("NO SHOPPING CART FOUND")
+      LickyLoggerService.info(null, "NO SHOPPING CART FOUND")
       this.shoppingCart = new ShoppingCart();
     }
     this.checkOrderLine();
@@ -166,7 +166,7 @@ export class ProductViewComponent extends LickAppPageComponent implements OnInit
 
   private checkOrderLine(): void {
     if (!this.shoppingCart.orderLine) {
-      console.info("NO ORDER LINE IN CART FOUND")
+      LickyLoggerService.info(null, "NO ORDER LINE IN CART FOUND")
       this.shoppingCart.orderLine = [];
     }
     this.addProductToCart();
@@ -185,7 +185,7 @@ export class ProductViewComponent extends LickAppPageComponent implements OnInit
   }
 
   private updateUser(key): void {
-    console.info("CART SAVED KEY and Cart", key, JSON.stringify(this.shoppingCart));
+    LickyLoggerService.info("CART SAVED KEY and Cart", key + JSON.stringify(this.shoppingCart));
     this.dm.user.shopping_cart_id = key;
     this.dm.updateUser();
   }
