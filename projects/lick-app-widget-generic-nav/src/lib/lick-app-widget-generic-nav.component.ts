@@ -8,6 +8,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 export class LickAppWidgetGenericNavComponent implements OnInit {
 
   @Input() homePage = "/stores/dashboard";
+  @Input() isSearchable : boolean = false;
 
   @Input() links: any[] = [
     { name: "home", link: "/", active: false },

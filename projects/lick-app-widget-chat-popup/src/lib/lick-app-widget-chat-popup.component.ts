@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Message, User } from 'lick-data';
+import { FirebaseDataService } from 'licky-services';
 
 @Component({
   selector: 'licky-lick-app-widget-chat-popup',
@@ -9,6 +10,9 @@ import { Message, User } from 'lick-data';
 export class LickAppWidgetChatPopupComponent implements OnInit {
 
   @Input() headingText = "Chat";
+  @Input() db: FirebaseDataService;
+  @Input() isDummyData = false;
+
   @Input() messages: Message[] = [{
     "id": Math.floor(Math.random() * 1000).toString(),
     "text": "Modi ratione aliquid non. Et porro deserunt illum sed velit necessitatibus. ",

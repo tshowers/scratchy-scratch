@@ -1,15 +1,15 @@
 <!-- <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)">
 </licky-lick-app-widget-breadcrumb> -->
 <licky-lick-app-widget-generic-nav [links]="crumbs"></licky-lick-app-widget-generic-nav>
-<licky-lick-marketing-faq2 *ngIf="totalRecords == 0" [headingText]="FAQheadingText" [descriptionText]="descriptionText"
+<licky-lick-marketing-faq2 *ngIf="stats6count2 == 0" [headingText]="FAQheadingText" [descriptionText]="descriptionText"
   [faqHeading1]="faqHeading1" [faqDescription1]="faqDescription1" [faqHeading2]="faqHeading2"
   [faqDescription2]="faqDescription2" [faqHeading3]="faqHeading3" [faqDescription3]="faqDescription3"
   [faqHeading4]="faqHeading4" [faqDescription4]="faqDescription4"></licky-lick-marketing-faq2>
 
-<div class="container-fluid" *ngIf="totalRecords > 0">
+<div class="container-fluid" *ngIf="stats6count2 > 0">
   <div class="row ta-row">
     <div class="col">
-      <licky-lick-app-widget-stats14 [headingText]="stats14headingText"></licky-lick-app-widget-stats14>
+      <licky-lick-app-widget-stats14 [data]="stats14Data" [headingText]="stats14headingText"></licky-lick-app-widget-stats14>
     </div>
   </div>
   <div class="row ta-row">
@@ -22,38 +22,23 @@
     </div>
   </div>
   <div class="row ta-row">
-    <div class="col-md-4">
-      <licky-lick-app-widget-stats9 [headingText]="stats9HeadingText" [buttonText1]="stats9ButtonText1" [buttonText2]="stats9ButtonText2" [buttonText3]="stats9ButtonText3" [subHeadingText]="stats9SubHeadingText"></licky-lick-app-widget-stats9>
-    </div>
-    <div class="col-md-4">
-      <licky-lick-app-widget-stats3></licky-lick-app-widget-stats3>
-    </div>
-    <div class="col-md-4">
-      <licky-lick-app-widget-stats11></licky-lick-app-widget-stats11>
-
+    <div class="col-md-12">
+      <licky-lick-app-widget-stats9 [chartData1]="userData1" [chartData2]="userData2" [chartData3]="userData3" [headingText]="stats9HeadingText" [buttonText1]="stats9ButtonText1" [buttonText2]="stats9ButtonText2" [buttonText3]="stats9ButtonText3" [subHeadingText]="stats9SubHeadingText"></licky-lick-app-widget-stats9>
     </div>
   </div> 
   <div class="row ta-row">
     <div class="col-md-3">
-      <licky-lick-app-widget-stats6></licky-lick-app-widget-stats6>
+      <licky-lick-app-widget-stats6 [label]="stat6label1" [count]="stats6count1" [iconClass]="iconClass1" [showMoreLink]="null"></licky-lick-app-widget-stats6>
     </div>
     <div class="col-md-3">
-      <licky-lick-app-widget-stats6></licky-lick-app-widget-stats6>
+      <licky-lick-app-widget-stats6 [label]="stat6label2" [count]="stats6count2" [iconClass]="iconClass2" [showMoreLink]="null"></licky-lick-app-widget-stats6>
     </div>
     <div class="col-md-3">
-      <licky-lick-app-widget-stats6></licky-lick-app-widget-stats6>
+      <licky-lick-app-widget-stats6 [label]="stat6label3" [count]="stats6count3" [iconClass]="iconClass3" [showMoreLink]="null"></licky-lick-app-widget-stats6>
     </div>
     <div class="col-md-3">
-      <licky-lick-app-widget-stats6></licky-lick-app-widget-stats6>
+      <licky-lick-app-widget-stats6 [label]="stat6label4" [count]="stats6count4" [iconClass]="iconClass4" [showMoreLink]="null"></licky-lick-app-widget-stats6>
     </div>
   </div>  
-  <div class="row ta-row">
-    <div class="col-md-6">
-      <licky-lick-app-widget-stats2></licky-lick-app-widget-stats2>
-    </div>
-    <div class="col-md-6">
-      <licky-lick-app-widget-stats5></licky-lick-app-widget-stats5>
-    </div>
-  </div> 
 </div>
 <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>

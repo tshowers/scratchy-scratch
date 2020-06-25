@@ -1,7 +1,8 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { SortHelperService, NewsService, FirebaseDataService, LickyLoginService, STORES, RECEIPTS, INVOICES, SHOPPING_CARTS, PRODUCTS, CATALOGS, PAYMENTS, OFFERS, ORDERS, PRODUCT_BUNDLES, CONTACTS } from 'licky-services';
+import { SortHelperService, NewsService, FirebaseDataService, LickyLoginService, MESSAGES, STORES, RECEIPTS, INVOICES, SHOPPING_CARTS, PRODUCTS, CATALOGS, PAYMENTS, OFFERS, ORDERS, PRODUCT_BUNDLES, CONTACTS } from 'licky-services';
 import { Subscription, BehaviorSubject, Subject } from 'rxjs';
-import { Contact, Store, Product, Catalog, Payment, Offer, ProductBundle, Order, Invoice, Receipt, ShoppingCart, User } from 'lick-data';
+import { Message, Contact, Store, Product, Catalog, Payment, Offer, ProductBundle, Order, Invoice, Receipt, ShoppingCart, User } from 'lick-data';
+import { LickyLoggerService } from 'licky-services';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class DataMediationService implements OnDestroy {
   public emailVerified;
 
   setupTimer;
+
   public store = new Subject<Store>();
   public stores = new BehaviorSubject<Store[]>(null);
   private _stores: Store[];
@@ -129,12 +131,17 @@ export class DataMediationService implements OnDestroy {
   public doProducts(store_id: string): void {
     this._productSubscription = this.db.getDataCollection(PRODUCTS + "/" + store_id)
       .subscribe((productData: Product[]) => {
+        LickyLoggerService.info("doProducts", store_id + " - " + productData);
         if (productData) {
           this._products = this.getProductListToArray(productData);
           this.products.next(this._products);
+        } else {
+          this._products = null;
+          this.products.next(null);
         }
       });
   }
+
 
   public getProductListToArray(data: any): any[] {
     let list: any[] = [];
@@ -157,6 +164,9 @@ export class DataMediationService implements OnDestroy {
         if (catalogData) {
           this._catalogs = this.getCatalogListToArray(catalogData);
           this.catalogs.next(this._catalogs);
+        } else {
+          this._catalogs = null;
+          this.catalogs.next(null);
         }
       });
   }
@@ -182,6 +192,9 @@ export class DataMediationService implements OnDestroy {
         if (paymentData) {
           this._payments = this.getPaymentListToArray(paymentData);
           this.payments.next(this._payments);
+        } else {
+          this._payments = null;
+          this.payments.next(null);
         }
       });
   }
@@ -207,6 +220,9 @@ export class DataMediationService implements OnDestroy {
         if (offerData) {
           this._offers = this.getOfferListToArray(offerData);
           this.offers.next(this._offers);
+        } else {
+          this._offers = null;
+          this.offers.next(null);
         }
       });
   }
@@ -233,6 +249,9 @@ export class DataMediationService implements OnDestroy {
         if (productBundleData) {
           this._productBundles = this.getProductBundleListToArray(productBundleData);
           this.productBundles.next(this._productBundles);
+        } else {
+          this._productBundles = null;
+          this.productBundles.next(null);
         }
       });
   }
@@ -258,18 +277,24 @@ export class DataMediationService implements OnDestroy {
         if (orderData) {
           this._orders = this.getOrderListToArray(orderData);
           this.orders.next(this._orders);
+        } else {
+          this._orders = null;
+          this.orders.next(null);
         }
       });
   }
 
   public doContacts(): void {
     this._contactSubscription = this.db.getDataCollection(CONTACTS)
-    .subscribe((contactData: Contact[]) => {
-      if (contactData) {
-        this._contacts = this.db.getListToArray(contactData);
-        this.contacts.next(this._contacts);
-      }
-    });
+      .subscribe((contactData: Contact[]) => {
+        if (contactData) {
+          this._contacts = this.db.getListToArray(contactData);
+          this.contacts.next(this._contacts);
+        } else {
+          this._contacts = null;
+          this.contacts.next(null);
+        }
+      });
 
   }
 
@@ -291,61 +316,91 @@ export class DataMediationService implements OnDestroy {
 
   public doStore(id: string): void {
     this.db.getData(STORES, id).subscribe((data) => {
-      this.store.next(data);
+      if (data)
+        this.store.next(data);
+      else
+        this.store.next(null);
     })
   }
 
   public doOrder(store_id: string, id: string): void {
     this.db.getData(ORDERS + "/" + store_id, id).subscribe((data) => {
-      this.order.next(data);
+      if (data)
+        this.order.next(data);
+      else
+        this.order.next(null);
     })
   }
 
   public doProduct(store_id: string, id: string): void {
     this.db.getData(PRODUCTS + "/" + store_id, id).subscribe((data) => {
-      this.product.next(data);
+      if (data)
+        this.product.next(data);
+      else
+        this.product.next(null);
     })
   }
 
   public doCatalog(store_id: string, id: string): void {
     this.db.getData(CATALOGS + "/" + store_id, id).subscribe((data) => {
-      this.catalog.next(data);
+      if (data)
+        this.catalog.next(data);
+      else
+        this.catalog.next(null);
     })
   }
 
   public doPayment(store_id: string, id: string): void {
     this.db.getData(PAYMENTS + "/" + store_id, id).subscribe((data) => {
-      this.payment.next(data);
+      if (data)
+        this.payment.next(data);
+      else
+        this.payment.next(null);
     })
   }
 
   public doOffer(store_id: string, id: string): void {
     this.db.getData(OFFERS + "/" + store_id, id).subscribe((data) => {
-      this.offer.next(data);
+      if (data)
+        this.offer.next(data);
+      else
+        this.offer.next(null);
     })
   }
 
   public doProductBundle(store_id: string, id: string): void {
     this.db.getData(PRODUCT_BUNDLES + "/" + store_id, id).subscribe((data) => {
-      this.productBundle.next(data);
+      if (data)
+        this.productBundle.next(data);
+      else
+        this.productBundle.next(null);
     })
   }
 
   public doInvoice(store_id: string, id: string): void {
     this.db.getData(INVOICES + "/" + store_id, id).subscribe((data) => {
-      this.invoice.next(data);
+      if (data)
+        this.invoice.next(data);
+      else
+        this.invoice.next(null);
     })
   }
 
   public doReceipt(store_id: string, id: string): void {
     this.db.getData(RECEIPTS + "/" + store_id, id).subscribe((data) => {
-      this.receipt.next(data);
+      if (data)
+        this.receipt.next(data);
+      else
+        this.receipt.next(null);
     })
   }
 
   public doShoppingCart(): void {
     this.db.getData(SHOPPING_CARTS, this.user.id).subscribe((data) => {
-      this.shoppingCart.next(data);
+      if (data)
+        this.shoppingCart.next(data);
+      else
+        this.shoppingCart.next(null);
     })
   }
 
@@ -370,17 +425,20 @@ export class DataMediationService implements OnDestroy {
         if (data) {
           this._stores = this.db.getListToArray(data);
           this.stores.next(this._stores);
+        } else {
+          this._stores = null;
+          this.stores.next(null);
         }
       });
   }
 
 
-  public setNewUser(user: User) : void {
+  public setNewUser(user: User): void {
     this.user = user;
     this.updateUser();
   }
 
-  public updateUser() : void {
+  public updateUser(): void {
     this.loginService.updateUser(this.user);
   }
 
@@ -397,6 +455,8 @@ export class DataMediationService implements OnDestroy {
     this._userSubscription = this.loginService.userChanged.subscribe((user) => {
       if (user)
         this.user = user;
+      else
+        this.user = null;
     })
   }
 

@@ -33,12 +33,12 @@
     <!-- end card-body -->
 
     <div class="card-footer">
-        <form class="form-row">
+        <form #dataForm="ngForm" class="form-row">
             <div class="col-md-10 mb-3">
-                <input type="text" class="form-control" id="validationServer01" placeholder="Type Here">
+                <input type="message.text" class="form-control" id="validationServer01" placeholder="Type Here" required>
             </div>
             <div class="col-md-2 mb-3">
-                <button class="btn btn-theme">
+                <button  class="btn btn-theme" [disabled]="!dataForm.form.valid" (click)="onSubmit()">
                     <i class="fa fa-paper-plane"></i>
                 </button>
             </div>

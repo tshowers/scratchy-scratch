@@ -41,7 +41,7 @@ export class ProductViewComponent extends LickAppPageComponent implements OnInit
 
   constructor(public dm: DataMediationService, protected renderer2: Renderer2,
     public router: Router,
-    public breadCrumbService: BreadCrumbService, 
+    public breadCrumbService: BreadCrumbService,
     private _route: ActivatedRoute) {
     super(router, renderer2);
   }
@@ -95,7 +95,10 @@ export class ProductViewComponent extends LickAppPageComponent implements OnInit
   private setCatalog(): void {
     this.dm.doCatalog(this.store_id, this.catalog_id);
     this.dm.catalog.subscribe((catalog) => {
-      this.catalog = catalog;
+      if (catalog)
+        this.catalog = catalog;
+      else
+        this.catalog = null;
       this.setBreadCrumb();
     })
   }
@@ -112,17 +115,17 @@ export class ProductViewComponent extends LickAppPageComponent implements OnInit
   }
 
   onEdit() {
-    this.router.navigate([ 'stores', this.store_id, 'catalogs', this.catalog_id, 'products', this.product.id, 'edit'], { queryParams: { allowEdit: '1' }, fragment: 'top' });
+    this.router.navigate(['stores', this.store_id, 'catalogs', this.catalog_id, 'products', this.product.id, 'edit'], { queryParams: { allowEdit: '1' }, fragment: 'top' });
   }
 
   onDelete() {
     this.dm.db.setDeleted(PRODUCTS + "/" + this.store_id, this.product.id, this.product);
-    this.router.navigate([ 'stores', this.store_id, 'catalogs', this.catalog_id, 'products']);
+    this.router.navigate(['stores', this.store_id, 'catalogs', this.catalog_id, 'products']);
   }
 
   onSearch(value): void {
     LickyLoggerService.log("ONSEARCH", value);
-    this.router.navigate([ 'stores', this.store_id, 'catalogs', this.catalog_id, 'products'], { queryParams: { searchArgument: value } })
+    this.router.navigate(['stores', this.store_id, 'catalogs', this.catalog_id, 'products'], { queryParams: { searchArgument: value } })
   }
 
   onAddToCart(): void {
@@ -134,7 +137,7 @@ export class ProductViewComponent extends LickAppPageComponent implements OnInit
   }
 
   private showSignUpPage(): void {
-    this.router.navigate([ 'sign-up']);
+    this.router.navigate(['sign-up']);
   }
 
   private addToProductViewHistory(): void {
@@ -180,7 +183,7 @@ export class ProductViewComponent extends LickAppPageComponent implements OnInit
   private saveShoppingCart(): void {
     this.dm.db.writeData(SHOPPING_CARTS, this.shoppingCart).subscribe((key) => {
       this.updateUser(key);
-      this.router.navigate([ 'shopping-carts', key]);
+      this.router.navigate(['shopping-carts', key]);
     })
   }
 

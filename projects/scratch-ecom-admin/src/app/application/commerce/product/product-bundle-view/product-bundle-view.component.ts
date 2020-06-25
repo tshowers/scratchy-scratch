@@ -37,7 +37,7 @@ export class ProductBundleViewComponent extends LickAppPageComponent implements 
 
   constructor(public dm: DataMediationService, protected renderer2: Renderer2,
     public router: Router,
-    public breadCrumbService: BreadCrumbService, 
+    public breadCrumbService: BreadCrumbService,
     private _route: ActivatedRoute) {
     super(router, renderer2);
   }
@@ -89,9 +89,13 @@ export class ProductBundleViewComponent extends LickAppPageComponent implements 
   private setCatalog(): void {
     this.dm.doCatalog(this.store_id, this.catalog_id);
     this.dm.store.subscribe((catalog) => {
-      this.catalog = catalog;
-      this.setBreadCrumb();
+      if (catalog) {
+        this.catalog = catalog;
+      } else {
+        this.catalog = null;
+      }
     })
+    this.setBreadCrumb();
   }
 
 
@@ -101,17 +105,17 @@ export class ProductBundleViewComponent extends LickAppPageComponent implements 
   }
 
   onEdit() {
-    this.router.navigate([ 'stores', this.store_id, 'catalogs', this.catalog_id, 'product-bundles', this.productBundle.id, 'edit'], { queryParams: { allowEdit: '1' }, fragment: 'top' });
+    this.router.navigate(['stores', this.store_id, 'catalogs', this.catalog_id, 'product-bundles', this.productBundle.id, 'edit'], { queryParams: { allowEdit: '1' }, fragment: 'top' });
   }
 
   onDelete() {
     this.dm.db.setDeleted(PRODUCT_BUNDLES + "/" + this.store_id, this.productBundle.id, this.productBundle);
-    this.router.navigate([ 'stores', this.store_id, 'catalogs', this.catalog_id, 'product-bundles']);
+    this.router.navigate(['stores', this.store_id, 'catalogs', this.catalog_id, 'product-bundles']);
   }
 
   onSearch(value): void {
     LickyLoggerService.log("ONSEARCH", value);
-    this.router.navigate([ 'stores', this.store_id, 'catalogs', this.catalog_id, 'product-bundles'], { queryParams: { searchArgument: value } })
+    this.router.navigate(['stores', this.store_id, 'catalogs', this.catalog_id, 'product-bundles'], { queryParams: { searchArgument: value } })
   }
 
   get diagnostic() {

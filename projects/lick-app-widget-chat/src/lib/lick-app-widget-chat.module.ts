@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { LickDataModule } from 'lick-data';
 import { CountToModule } from 'angular-count-to';
+import { LickyServicesModule } from 'licky-services';
 import { LickAppWidgetChatComponent } from './lick-app-widget-chat.component';
 
 @NgModule({
@@ -13,7 +14,8 @@ import { LickAppWidgetChatComponent } from './lick-app-widget-chat.component';
     RouterModule,
     FormsModule,
     LickDataModule,
-    CountToModule
+    CountToModule,
+    LickyServicesModule
   ],
   exports: [LickAppWidgetChatComponent]
 })

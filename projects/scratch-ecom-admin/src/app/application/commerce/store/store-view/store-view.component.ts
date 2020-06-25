@@ -107,6 +107,8 @@ export class StoreViewComponent extends LickAppPageComponent implements OnInit, 
       if (offers) {
         this.setPageOffers(offers);
         this.offers = offers;
+      } else {
+        this.offers = null;
       }
     })
   }
@@ -114,9 +116,12 @@ export class StoreViewComponent extends LickAppPageComponent implements OnInit, 
   setProducts() {
     this.dm.doProducts(this.store.id);
     this._productSubscription = this.dm.products.subscribe((products) => {
+      LickyLoggerService.info("setProducts", JSON.stringify(products));
       if (products) {
         this.products = products.slice(0,3);
         this.setLightBoxImages(this.products);
+      } else {
+        this.products = null;
       }
     })
   }

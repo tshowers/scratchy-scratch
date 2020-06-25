@@ -32,7 +32,7 @@ export class BreadCrumbService {
   setBreadCrumb(store_id?: string, catalog_id?: string): void {
     this.crumbs = [];
     this.setNewLink(store_id, catalog_id);
-    this.crumbs.push({ name: "home", link: "/", active: (this._context === HOME) });
+    // this.crumbs.push({ name: "home", link: "/", active: (this._context === HOME) });
     this.crumbs.push({ name: "dashboard", link: "/stores/dashboard", active: (this._context === DASHBOARD) });
     this.pushStore(store_id);
     this.pushSetting();

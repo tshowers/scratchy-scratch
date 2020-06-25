@@ -14,15 +14,15 @@ export class LickyLoggerService {
   public static info(description, message): void {
     if (debug)
       (!description) ?
-        console.log('%c' + message, 'color: #0000ff') :
-        console.log('%c' + description, 'color: #0000ff', message);
+        console.log('%c' + message, 'color: #4964a3') :
+        console.log('%c' + description, 'color: #4964a3', message);
   }
 
   public static log(description, message): void {
     if (debug)
       (!description) ?
-        console.log('%c' + message, 'color: #00ff00') :
-        console.log('%c' + description, 'color: #00ff00', message);
+        console.log('%c' + message, 'color: #376346') :
+        console.log('%c' + description, 'color: #376346', message);
   }
 
   public static error(description, message): void {

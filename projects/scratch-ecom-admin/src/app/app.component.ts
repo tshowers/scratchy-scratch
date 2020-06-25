@@ -10,6 +10,7 @@ import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { Subscription } from 'rxjs';
 import { DataMediationService } from './shared/services/data-mediation.service';
 import { environment } from '../environments/environment';
+import { Message } from 'lick-data';
 
 export const apps = environment.apps;
 
@@ -61,6 +62,7 @@ export class AppComponent extends LickAppPageComponent implements OnInit {
     this.initMenu();
   }
 
+    
 
 
   initMenu(): void {
@@ -77,6 +79,10 @@ export class AppComponent extends LickAppPageComponent implements OnInit {
       }
 
     )
+  }
+
+  setMessages() : void {
+    this.dm.db.getDataCollection
   }
 
   onProfile() : void {

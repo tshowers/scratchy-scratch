@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Message, User } from 'lick-data';
+import { MESSAGES, FirebaseDataService } from 'licky-services';
 
 @Component({
   selector: 'licky-lick-app-widget-chat',
@@ -9,6 +10,7 @@ import { Message, User } from 'lick-data';
 export class LickAppWidgetChatComponent implements OnInit {
 
   @Input() headingText = "Chat";
+  @Input() isDummyData = false;
   @Input() messages: Message[] = [{
     "id": Math.floor(Math.random() * 1000).toString(),
     "text": "Modi ratione aliquid non. Et porro deserunt illum sed velit necessitatibus. ",
@@ -95,11 +97,59 @@ export class LickAppWidgetChatComponent implements OnInit {
 
   @Input() activeUsers;
 
-  @Input() defaultImage: string = "https://via.placeholder.com/64x64.png"
+  @Input() defaultImage: string = "https://via.placeholder.com/64x64.png";
+
+  @Input() db: FirebaseDataService;
+
+  @Output() pageEvent = new EventEmitter();
+
+  message: Message = new Message();
 
   constructor() { }
 
   ngOnInit() {
+    if (!this.isDummyData)
+      this.doMessages();
   }
+
+  onSubmit(): void {
+    this.saveMessage();
+  }
+
+  public doMessages() : void {
+    this.db.getDataCollection(MESSAGES)
+    .subscribe((messageData: Message[]) => {
+      if (messageData) {
+        this.messages = this.getMessageListToArray(messageData);
+      } else {
+        this.messages = [];
+      }
+    })
+  }
+
+  public saveMessage() : void {
+    this.db.writeData(MESSAGES, this.message).subscribe((key) => {
+      this.message.id = key;
+      this.messages.push(this.message);
+      this.message = new Message();
+    });
+  }
+
+  public getMessageListToArray(data: any): any[] {
+    let list: any[] = [];
+    for (let item in data) {
+      this.doMessageFixUp(data, item);
+      list.push(data[item]);
+    }
+    return list;
+  }
+
+  private doMessageFixUp(data, item): void {
+    data[item].id = item;
+    if (!data[item].url)
+      data[item].url = this.defaultImage;
+  }
+
+
 
 }

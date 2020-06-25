@@ -16,9 +16,389 @@ import { CatalogListComponent } from 'projects/scratch-commerce/src/app/applicat
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
+  // Stats6
+  stat6label1 = "Catalogs";
+  stats6count1 = 0;
+  iconClass1 = "fa fa-book";
+  stat6label2 = "Products";
+  stats6count2 = 0;
+  iconClass2 = "fa fa-product-hunt";
+  stat6label3 = "Offers";
+  stats6count3 = 0;
+  iconClass3 = "fa fa-bell-o";
+  stat6label4 = "Product Bundles";
+  stats6count4 = 0;
+  iconClass4 = "fa fa-object-group";
+
+
+  // Stats9 
+  userData1: any[] = [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ];
+  userData2: any[] = [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ];
+  userData3: any[] = [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ];
+
   // Stats14
   stats14chartLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  stats14Data: LickAppWidgetStats14PeriodData;
+  stats14Data: LickAppWidgetStats14PeriodData = {
+    "period1": {
+      "total": 0,
+      "subHeading": "Orders",
+      "chartData": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "box": [
+        {
+          "boxHeading": "Order",
+          "boxIcon": "fa fa-shopping-cart",
+          "label1": "Order Date",
+          "count1": 0,
+          "label2": "Order Number",
+          "count2": 0,
+          "label3": "Status",
+          "count3": 0,
+          "label4": "Tax",
+          "count4": 0,
+          "label5": "Amount",
+          "count5": 0,
+          "moreInfoLink": null
+        },
+        {
+          "boxHeading": "Order",
+          "boxIcon": "fa fa-shopping-cart",
+          "label1": "Order Date",
+          "count1": 0,
+          "label2": "Order Number",
+          "count2": 0,
+          "label3": "Status",
+          "count3": 0,
+          "label4": "Tax",
+          "count4": 0,
+          "label5": "Amount",
+          "count5": 0,
+          "moreInfoLink": null
+        },
+        {
+          "boxHeading": "Order",
+          "boxIcon": "fa fa-shopping-cart",
+          "label1": "Order Date",
+          "count1": 0,
+          "label2": "Order Number",
+          "count2": 0,
+          "label3": "Status",
+          "count3": 0,
+          "label4": "Tax",
+          "count4": 0,
+          "label5": "Amount",
+          "count5": 0,
+          "moreInfoLink": null
+        },
+        {
+          "boxHeading": "Order",
+          "boxIcon": "fa fa-shopping-cart",
+          "label1": "Order Date",
+          "count1": 0,
+          "label2": "Order Number",
+          "count2": 0,
+          "label3": "Status",
+          "count3": 0,
+          "label4": "Tax",
+          "count4": 0,
+          "label5": "Amount",
+          "count5": 0,
+          "moreInfoLink": null
+        }
+      ]
+    },
+    "period2": {
+      "total": 0,
+      "subHeading": "Title 2",
+      "chartData": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "box": [
+        {
+          "boxHeading": "Order",
+          "boxIcon": "fa fa-shopping-cart",
+          "label1": "Order Date",
+          "count1": 0,
+          "label2": "Order Number",
+          "count2": 0,
+          "label3": "Status",
+          "count3": 0,
+          "label4": "Tax",
+          "count4": 0,
+          "label5": "Amount",
+          "count5": 0,
+          "moreInfoLink": null
+        },
+        {
+          "boxHeading": "Order",
+          "boxIcon": "fa fa-shopping-cart",
+          "label1": "Order Date",
+          "count1": 0,
+          "label2": "Order Number",
+          "count2": 0,
+          "label3": "Status",
+          "count3": 0,
+          "label4": "Tax",
+          "count4": 0,
+          "label5": "Amount",
+          "count5": 0,
+          "moreInfoLink": null
+        },
+        {
+          "boxHeading": "Order",
+          "boxIcon": "fa fa-shopping-cart",
+          "label1": "Order Date",
+          "count1": 0,
+          "label2": "Order Number",
+          "count2": 0,
+          "label3": "Status",
+          "count3": 0,
+          "label4": "Tax",
+          "count4": 0,
+          "label5": "Amount",
+          "count5": 0,
+          "moreInfoLink": null
+        },
+        {
+          "boxHeading": "Order",
+          "boxIcon": "fa fa-shopping-cart",
+          "label1": "Order Date",
+          "count1": 0,
+          "label2": "Order Number",
+          "count2": 0,
+          "label3": "Status",
+          "count3": 0,
+          "label4": "Tax",
+          "count4": 0,
+          "label5": "Amount",
+          "count5": 0,
+          "moreInfoLink": null
+        }
+      ]
+    },
+    "period3": {
+      "total": 0,
+      "subHeading": "Title 3",
+      "chartData": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "box": [
+        {
+          "boxHeading": "Order",
+          "boxIcon": "fa fa-shopping-cart",
+          "label1": "Order Date",
+          "count1": 0,
+          "label2": "Order Number",
+          "count2": 0,
+          "label3": "Status",
+          "count3": 0,
+          "label4": "Tax",
+          "count4": 0,
+          "label5": "Amount",
+          "count5": 0,
+          "moreInfoLink": null
+        },
+        {
+          "boxHeading": "Order",
+          "boxIcon": "fa fa-shopping-cart",
+          "label1": "Order Date",
+          "count1": 0,
+          "label2": "Order Number",
+          "count2": 0,
+          "label3": "Status",
+          "count3": 0,
+          "label4": "Tax",
+          "count4": 0,
+          "label5": "Amount",
+          "count5": 0,
+          "moreInfoLink": null
+        },
+        {
+          "boxHeading": "Order",
+          "boxIcon": "fa fa-shopping-cart",
+          "label1": "Order Date",
+          "count1": 0,
+          "label2": "Order Number",
+          "count2": 0,
+          "label3": "Status",
+          "count3": 0,
+          "label4": "Tax",
+          "count4": 0,
+          "label5": "Amount",
+          "count5": 0,
+          "moreInfoLink": null
+        },
+        {
+          "boxHeading": "Order",
+          "boxIcon": "fa fa-shopping-cart",
+          "label1": "Order Date",
+          "count1": 0,
+          "label2": "Order Number",
+          "count2": 0,
+          "label3": "Status",
+          "count3": 0,
+          "label4": "Tax",
+          "count4": 0,
+          "label5": "Amount",
+          "count5": 0,
+          "moreInfoLink": null
+        },
+      ]
+    },
+    "period4": {
+      "total": 0,
+      "subHeading": "Title 4",
+      "chartData": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "box": [
+        {
+          "boxHeading": "Order",
+          "boxIcon": "fa fa-shopping-cart",
+          "label1": "Order Date",
+          "count1": 0,
+          "label2": "Order Number",
+          "count2": 0,
+          "label3": "Status",
+          "count3": 0,
+          "label4": "Tax",
+          "count4": 0,
+          "label5": "Amount",
+          "count5": 0,
+          "moreInfoLink": null
+        },
+        {
+          "boxHeading": "Order",
+          "boxIcon": "fa fa-shopping-cart",
+          "label1": "Order Date",
+          "count1": 0,
+          "label2": "Order Number",
+          "count2": 0,
+          "label3": "Status",
+          "count3": 0,
+          "label4": "Tax",
+          "count4": 0,
+          "label5": "Amount",
+          "count5": 0,
+          "moreInfoLink": null
+        },
+        {
+          "boxHeading": "Order",
+          "boxIcon": "fa fa-shopping-cart",
+          "label1": "Order Date",
+          "count1": 0,
+          "label2": "Order Number",
+          "count2": 0,
+          "label3": "Status",
+          "count3": 0,
+          "label4": "Tax",
+          "count4": 0,
+          "label5": "Amount",
+          "count5": 0,
+          "moreInfoLink": null
+        },
+        {
+          "boxHeading": "Order",
+          "boxIcon": "fa fa-shopping-cart",
+          "label1": "Order Date",
+          "count1": 0,
+          "label2": "Order Number",
+          "count2": 0,
+          "label3": "Status",
+          "count3": 0,
+          "label4": "Tax",
+          "count4": 0,
+          "label5": "Amount",
+          "count5": 0,
+          "moreInfoLink": null
+        },
+      ]
+    },
+  };
   stats14headingText = "Gross Sales";
   stats14OrderCount: number = 0;
   stats14LastOrder1: Order;
@@ -59,9 +439,9 @@ export class DashboardComponent extends LickAppPageComponent implements OnInit, 
   ];
 
   catalogDayBucket = [
-    0,0,0,0,0,0,0,0,0,0,
-    0,0,0,0,0,0,0,0,0,0,
-    0,0,0,0,0,0,0,0,0,0,0
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
   ]
 
 
@@ -245,9 +625,9 @@ export class DashboardComponent extends LickAppPageComponent implements OnInit, 
       for (let index = 0; index < 31; index++) {
         this.dayCheck(catalog, index, this.catalogDayBucket);
       }
-      
-      LickyLoggerService.info(null, "Catalog Bucket" + JSON.stringify(this.catalogBucket))
-      LickyLoggerService.info(null, "Catalog Day Bucket" + JSON.stringify(this.catalogDayBucket))
+
+      // LickyLoggerService.info(null, "Catalog Bucket" + JSON.stringify(this.catalogBucket))
+      // LickyLoggerService.info(null, "Catalog Day Bucket" + JSON.stringify(this.catalogDayBucket))
     }
   }
 
@@ -264,7 +644,7 @@ export class DashboardComponent extends LickAppPageComponent implements OnInit, 
     let m = this._dateUtilService.subtractDay(today, backNumber);
     let dataDay = new Date(data.timeStamp).getDate();
 
-    LickyLoggerService.info(null, "Back Day:" + m.getDate() + " Data Data:" + dataDay);
+    // LickyLoggerService.info(null, "Back Day:" + m.getDate() + " Data Data:" + dataDay);
     if (m.getDate() === dataDay) {
       if (isAddAmount)
         dayArray[backNumber] += data.amount;
@@ -280,7 +660,7 @@ export class DashboardComponent extends LickAppPageComponent implements OnInit, 
     let m = this._dateUtilService.subtractMonth(today, backNumber);
     let dataMonth = new Date(data.timeStamp).getMonth();
 
-    LickyLoggerService.info(null, "Back Month:" + m.getMonth() + " Data Month:" + dataMonth);
+    // LickyLoggerService.info(null, "Back Month:" + m.getMonth() + " Data Month:" + dataMonth);
     if (m.getMonth() === dataMonth) {
       if (isAddAmount)
         monthArray[backNumber] += data.amount;
@@ -297,7 +677,7 @@ export class DashboardComponent extends LickAppPageComponent implements OnInit, 
     let today = new Date();
     if (order.timeStamp) {
       let lastYear = this._dateUtilService.subtractMonth(today, 12);
-      LickyLoggerService.info("lastYear" , JSON.stringify(lastYear))
+      LickyLoggerService.info("lastYear", JSON.stringify(lastYear))
       // this.setOrdersByMonth(new Date(order.timeStamp).getMonth(), order.amount)
     }
   }
@@ -398,7 +778,7 @@ export class DashboardComponent extends LickAppPageComponent implements OnInit, 
         "count4": this.stats14LastOrder1.tax,
         "label5": "Amount",
         "count5": this.stats14LastOrder1.amount,
-        "moreInfoLink": "/stores/orders/" + this.stats14LastOrder1.id
+        "moreInfoLink": null
       },
       {
         "boxHeading": "Order",
@@ -413,7 +793,7 @@ export class DashboardComponent extends LickAppPageComponent implements OnInit, 
         "count4": this.stats14LastOrder2.tax,
         "label5": "Amount",
         "count5": this.stats14LastOrder2.amount,
-        "moreInfoLink": "/stores/orders/" + this.stats14LastOrder2.id
+        "moreInfoLink": null
       },
       {
         "boxHeading": "Order",
@@ -428,7 +808,7 @@ export class DashboardComponent extends LickAppPageComponent implements OnInit, 
         "count4": this.stats14LastOrder3.tax,
         "label5": "Amount",
         "count5": this.stats14LastOrder3.amount,
-        "moreInfoLink": "/stores/orders/" + this.stats14LastOrder3.id
+        "moreInfoLink": null
       },
       {
         "boxHeading": "Order",
@@ -443,9 +823,11 @@ export class DashboardComponent extends LickAppPageComponent implements OnInit, 
         "count4": this.stats14LastOrder4.tax,
         "label5": "Amount",
         "count5": this.stats14LastOrder4.amount,
-        "moreInfoLink": "/stores/orders/" + this.stats14LastOrder4.id
+        "moreInfoLink": null
       }
     ]
+
+
   }
 
 

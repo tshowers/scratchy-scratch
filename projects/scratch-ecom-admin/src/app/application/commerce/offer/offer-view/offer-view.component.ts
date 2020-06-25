@@ -6,7 +6,7 @@ import { OFFERS } from 'licky-services';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
 import { Subscription } from 'rxjs';
 import { BreadCrumbService, OFFER } from '../../../../shared/services/bread-crumb.service';
-import {LickyLoggerService } from 'licky-services';
+import { LickyLoggerService } from 'licky-services';
 
 @Component({
   selector: 'app-offer-view',
@@ -37,7 +37,7 @@ export class OfferViewComponent extends LickAppPageComponent implements OnInit, 
 
   constructor(public dm: DataMediationService, protected renderer2: Renderer2,
     public router: Router,
-    public breadCrumbService: BreadCrumbService, 
+    public breadCrumbService: BreadCrumbService,
     private _route: ActivatedRoute) {
     super(router, renderer2);
   }
@@ -89,7 +89,10 @@ export class OfferViewComponent extends LickAppPageComponent implements OnInit, 
   private setCatalog(): void {
     this.dm.doCatalog(this.store_id, this.catalog_id);
     this.dm.catalog.subscribe((catalog) => {
-      this.catalog = catalog;
+      if (catalog)
+        this.catalog = catalog;
+      else
+        this.catalog = null;
       this.setBreadCrumb();
     })
   }
@@ -101,17 +104,17 @@ export class OfferViewComponent extends LickAppPageComponent implements OnInit, 
   }
 
   onEdit() {
-    this.router.navigate([ 'stores', this.store_id, 'catalogs', this.catalog_id, 'offers', this.offer.id, 'edit'], { queryParams: { allowEdit: '1' }, fragment: 'top' });
+    this.router.navigate(['stores', this.store_id, 'catalogs', this.catalog_id, 'offers', this.offer.id, 'edit'], { queryParams: { allowEdit: '1' }, fragment: 'top' });
   }
 
   onDelete() {
     this.dm.db.setDeleted(OFFERS + "/" + this.store_id, this.offer.id, this.offer);
-    this.router.navigate([ 'stores', this.store_id, 'offers']);
+    this.router.navigate(['stores', this.store_id, 'offers']);
   }
 
   onSearch(value): void {
     LickyLoggerService.log("ONSEARCH", value);
-    this.router.navigate([ 'stores', this.store_id, 'catalogs', this.catalog_id, 'offers'], { queryParams: { searchArgument: value } })
+    this.router.navigate(['stores', this.store_id, 'catalogs', this.catalog_id, 'offers'], { queryParams: { searchArgument: value } })
   }
 
   get diagnostic() {

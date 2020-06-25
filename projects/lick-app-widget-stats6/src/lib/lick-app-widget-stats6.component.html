@@ -17,7 +17,7 @@
   <footer class="widget-footer bg-primary"
           *ngIf="showMoreLink">
     <small class="pull-right">
-      <a routerLink="{{showMoreLink}}">Show More</a>
+      <a *ngIf="showMoreLink" routerLink="{{showMoreLink}}">Show More</a>
     </small>
     <i class="fa fa-bar-chart text-white"
        aria-hidden="true"></i>

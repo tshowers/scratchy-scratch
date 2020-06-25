@@ -14,7 +14,7 @@ export const environment = {
   corporateKey: 'wegonnadothis@16ahead.com',
   package: 'deluxe',
   FROALA: false,
-  debug: false,
+  debug: true,
   ALERTS_ICON: 'https://firebasestorage.googleapis.com/v0/b/addieprod.appspot.com/o/app-images%2Falerts.png?alt=media&token=4b275c9c-f1ae-42b0-95d1-bdf8e613dafd',
   BLOG_ICON: 'https://firebasestorage.googleapis.com/v0/b/addieprod.appspot.com/o/app-images%2Fblog.png?alt=media&token=d83b5882-db06-4a78-9f66-d959596c1b3b',
   CALLS_ICON: 'https://firebasestorage.googleapis.com/v0/b/addieprod.appspot.com/o/app-images%2Fcalls.png?alt=media&token=fe15e84e-6601-481c-a853-28c5378fb86e',
