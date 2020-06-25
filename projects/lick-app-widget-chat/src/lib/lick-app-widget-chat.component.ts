@@ -1,13 +1,14 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Message, User } from 'lick-data';
-import { MESSAGES, FirebaseDataService } from 'licky-services';
+import { MESSAGES, FirebaseDataService, LickyLoggerService } from 'licky-services';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'licky-lick-app-widget-chat',
   templateUrl: './lick-app-widget-chat.component.html',
   styles: []
 })
-export class LickAppWidgetChatComponent implements OnInit {
+export class LickAppWidgetChatComponent implements OnInit, OnDestroy {
 
   @Input() headingText = "Chat";
   @Input() isDummyData = false;
@@ -101,9 +102,10 @@ export class LickAppWidgetChatComponent implements OnInit {
 
   @Input() db: FirebaseDataService;
 
-  @Output() pageEvent = new EventEmitter();
 
   message: Message = new Message();
+
+  private _messageSubscription : Subscription;
 
   constructor() { }
 
@@ -112,13 +114,19 @@ export class LickAppWidgetChatComponent implements OnInit {
       this.doMessages();
   }
 
+  ngOnDestroy() {
+    if (this._messageSubscription)
+      this._messageSubscription.unsubscribe();
+  }
+
   onSubmit(): void {
     this.saveMessage();
   }
 
   public doMessages() : void {
-    this.db.getDataCollection(MESSAGES)
+     this._messageSubscription = this.db.getDataCollection(MESSAGES)
     .subscribe((messageData: Message[]) => {
+      LickyLoggerService.info("MESSAGES CHANGED", JSON.stringify(messageData))
       if (messageData) {
         this.messages = this.getMessageListToArray(messageData);
       } else {
@@ -128,9 +136,9 @@ export class LickAppWidgetChatComponent implements OnInit {
   }
 
   public saveMessage() : void {
+    LickyLoggerService.info("MESSAGE", JSON.stringify(this.message))
     this.db.writeData(MESSAGES, this.message).subscribe((key) => {
       this.message.id = key;
-      this.messages.push(this.message);
       this.message = new Message();
     });
   }
@@ -146,8 +154,8 @@ export class LickAppWidgetChatComponent implements OnInit {
 
   private doMessageFixUp(data, item): void {
     data[item].id = item;
-    if (!data[item].url)
-      data[item].url = this.defaultImage;
+    if (!data[item].icon)
+      data[item].icon = this.defaultImage;
   }
 
 

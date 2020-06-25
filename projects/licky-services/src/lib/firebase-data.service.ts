@@ -226,11 +226,11 @@ export class FirebaseDataService {
     path = this.getAugmentedPath(path);
     LickyLoggerService.log("Getting data for path", path);
     return Observable.create((observer) => {
-
-      this._db.ref(path).on('value', (snapshot) => {
-        // LickyLoggerService.log("Snapshot", JSON.stringify( snapshot.val()));
+      const collectionRef = this._db.ref(path);
+      collectionRef.on('value', (snapshot) => {
+        LickyLoggerService.info("DATA RETRIEVE", JSON.stringify( snapshot.val()));
         observer.next((snapshot) ? snapshot.val() : null);
-        observer.complete();
+        // observer.complete();
       },
         (error) => {
           if (error)

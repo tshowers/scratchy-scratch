@@ -7,22 +7,22 @@
             </div>
         </div>
 
-        <div class="chat">
+        <div class="chat" *ngIf="currentUser">
             <ul id="chatList">
-                <li *ngFor="let message of messages" [ngClass]="{'other' : (currentUser.id != message.user_id), 'you' : (currentUser.id == message.user_id)}">
-                    <a class="user" routerLink="/users/{{message?.user_id}}">
-                        <img *ngIf="message.icon" alt="{{message?.name}}" src="{{message?.icon}}" />
-                        <img *ngIf="!message.icon" alt="{{message?.name}}" src="defaultImage" />
+                <li *ngFor="let m of messages" [ngClass]="{'other' : (currentUser.id != message.user_id), 'you' : (currentUser.id == message.user_id)}">
+                    <a class="user" routerLink="/users/{{m?.user_id}}">
+                        <img *ngIf="m.icon" alt="{{m?.name}}" src="{{m?.icon}}" />
+                        <img *ngIf="!m.icon" alt="{{m?.name}}" src="{{defaultImage}}" />
                     </a>
                     <div class="date">
-                        {{message?.timeStamp | date : 'medium'}}
+                        {{m?.timeStamp | date : 'medium'}}
                     </div>
                     <div class="message">
                         <div class="hider">
                             <span>Click to read</span>
                         </div>
                         <p class="text-white">
-                            {{message?.text}}
+                            {{m?.text}}
                         </p>
                     </div>
                 </li>
@@ -35,7 +35,9 @@
     <div class="card-footer">
         <form #dataForm="ngForm" class="form-row">
             <div class="col-md-10 mb-3">
-                <input type="message.text" class="form-control" id="validationServer01" placeholder="Type Here" required>
+                <input [(ngModel)]="message.text" #messageText="ngModel"
+            id="messageText" name="messageText" placeholder="Type something" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
+            class="form-control form-control-lg ta-input-element" required>
             </div>
             <div class="col-md-2 mb-3">
                 <button  class="btn btn-theme" [disabled]="!dataForm.form.valid" (click)="onSubmit()">
