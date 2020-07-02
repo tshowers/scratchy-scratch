@@ -1,15 +1,14 @@
 <br>
-<label for="selectedFiles"><span *ngIf="data?.id">Replace </span> Image</label>
+<label *ngIf="!isSmall" for="selectedFiles"><span *ngIf="data?.id">Replace </span> Image</label>
 <div class="container" appDragDrop (fileDropped)="onDetectFiles($event)">
-  <input type="file" #fileDropRef id="selectedFiles" name="selectedFiles" (change)="onDetectFiles($event)" accept=".jpg, .jpeg, .png, .gif" />
-  <i class="fa fa-cloud-upload fa-5x" aria-hidden="true"></i>
-  <h3>Drag and drop file here</h3>
-  <h3>or</h3>
-  <label for="selectedFiles">Browse For File</label>
+  <input type="file" title="Drag and drop file here or Browse for File" #fileDropRef id="selectedFiles" name="selectedFiles" (change)="onDetectFiles($event)" accept=".jpg, .jpeg, .png, .gif" />
+  <i class="fa fa-cloud-upload fa-3x" aria-hidden="true"></i>
+  <!-- <h3 *ngIf="!isSmall">Drag and drop file here</h3>
+  <h3 *ngIf="!isSmall">or</h3>
+  <label for="selectedFiles">Browse For File</label> -->
 </div>
 
 <br>
-
 <ul class="list-group">
   <a class="list-group-item d-flex justify-content-between align-items-center" (click)="onDelete()" *ngFor="let file of selectedFiles;let i= index">
     {{ file.name }}

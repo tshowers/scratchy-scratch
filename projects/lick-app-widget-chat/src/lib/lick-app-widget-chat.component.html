@@ -17,7 +17,15 @@
                     <div class="date">
                         {{m?.timeStamp | date : 'medium'}}
                     </div>
-                    <div class="message">
+                    <div *ngIf="m.url">
+                        <img class="rounded py-md-1" src="{{m?.url}}"/>
+                    </div>
+                    <div *ngIf="m.title">
+                        <span *ngIf="m.link"><a href="{{m?.link}}" target="_blank"><strong>{{m?.title}}</strong></a> </span>
+                        <span *ngIf="!m.link"><strong>{{m?.title}}</strong></span>
+                        
+                    </div>
+                <div class="message">
                         <div class="hider">
                             <span>Click to read</span>
                         </div>
@@ -39,11 +47,14 @@
             id="messageText" name="messageText" placeholder="Type something" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
             class="form-control form-control-lg ta-input-element" required>
             </div>
+  
             <div class="col-md-2 mb-3">
                 <button  class="btn btn-theme" [disabled]="!dataForm.form.valid" (click)="onSubmit()">
                     <i class="fa fa-paper-plane"></i>
                 </button>
             </div>
+            <licky-lick-app-widget-drop-box [selectedFiles]="selectedFiles" [data]="message" [isSmall]="isSmall"
+            (detectFileEvent)="detectFiles($event)" (deleteEvent)="deleteAttachment()"></licky-lick-app-widget-drop-box>
         </form>
 
     </div>

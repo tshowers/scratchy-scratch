@@ -228,7 +228,7 @@ export class FirebaseDataService {
     return Observable.create((observer) => {
       const collectionRef = this._db.ref(path);
       collectionRef.on('value', (snapshot) => {
-        LickyLoggerService.info("DATA RETRIEVE", JSON.stringify( snapshot.val()));
+        // LickyLoggerService.info("DATA RETRIEVE", JSON.stringify( snapshot.val()));
         observer.next((snapshot) ? snapshot.val() : null);
         // observer.complete();
       },

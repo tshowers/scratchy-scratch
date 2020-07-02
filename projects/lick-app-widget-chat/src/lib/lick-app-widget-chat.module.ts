@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { LickDataModule } from 'lick-data';
 import { CountToModule } from 'angular-count-to';
 import { LickyServicesModule } from 'licky-services';
+import { LickAppWidgetDropBoxModule } from 'lick-app-widget-drop-box';
 import { LickAppWidgetChatComponent } from './lick-app-widget-chat.component';
 
 @NgModule({
@@ -15,7 +16,8 @@ import { LickAppWidgetChatComponent } from './lick-app-widget-chat.component';
     FormsModule,
     LickDataModule,
     CountToModule,
-    LickyServicesModule
+    LickyServicesModule,
+    LickAppWidgetDropBoxModule
   ],
   exports: [LickAppWidgetChatComponent]
 })

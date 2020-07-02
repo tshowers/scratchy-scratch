@@ -12,6 +12,7 @@ export class LickAppWidgetChatPopupComponent implements OnInit {
   @Input() headingText = "Chat";
   @Input() db: FirebaseDataService;
   @Input() isDummyData = false;
+  @Input() isSmall : boolean = false;
 
   @Input() messages: Message[] = [{
     "id": Math.floor(Math.random() * 1000).toString(),

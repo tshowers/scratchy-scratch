@@ -8,7 +8,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 export class LickAppWidgetDropBoxComponent implements OnInit {
 
   @Input() data;
-  
+  @Input() isSmall : boolean = false;
   @Output() deleteEvent = new EventEmitter();
   @Output() detectFileEvent = new EventEmitter();
 
