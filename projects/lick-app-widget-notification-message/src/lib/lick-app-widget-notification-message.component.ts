@@ -1,19 +1,18 @@
-import { Component, OnInit, OnDestroy, Input, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
 import { Message, User, Contact } from 'lick-data';
-import { SortHelperService, LickyLoginService, FirebaseDataService, MESSAGES } from 'licky-services';
+import { LickyLoggerService, SortHelperService, LickyLoginService, FirebaseDataService, MESSAGES } from 'licky-services';
 import { map } from 'rxjs/operators';
-
 
 @Component({
   selector: 'licky-lick-app-widget-notification-message',
   templateUrl: './lick-app-widget-notification-message.component.html',
   styles: []
 })
-export class LickAppWidgetNotificationMessageComponent implements OnInit, AfterViewInit, OnDestroy {
+export class LickAppWidgetNotificationMessageComponent implements OnInit, OnDestroy {
 
-  messages$: Observable<Message[]>;
+  messages: Message[];
   private _userContact: Contact;
   private _user: User;
   maxArticleLength = 30;
@@ -25,11 +24,11 @@ export class LickAppWidgetNotificationMessageComponent implements OnInit, AfterV
   @Input() loginService: LickyLoginService;
   @Input() db: FirebaseDataService;
   @Input() messageLink;
-  notificationSubscription: Subscription;
 
-  constructor(private _sortHelperService: SortHelperService, private _cd: ChangeDetectorRef) { }
+  constructor(private _sortHelperService: SortHelperService) { }
 
   ngOnInit() {
+    LickyLoggerService.info("DB=" + this.db, "LoginService=" + this.loginService)
     if (this.db && this.loginService)
       this.setNotifications();
     else
@@ -38,24 +37,24 @@ export class LickAppWidgetNotificationMessageComponent implements OnInit, AfterV
 
   private setNotifications(): void {
     this._user = this.loginService.getUser();
-    this.messages$ = this.db.getDataCollection(MESSAGES)
-      .pipe(map((messages: Message[]) => {
-        if (messages && messages.length)
-          this.setUpIndicator(messages);
-        else
-          this.messagesChecked = true;
-        return messages;
-      }))
+    // LickyLoggerService.info(null,"setNotifications()")
+    this.messageSubscription = this.db.getDataCollection(MESSAGES)
+    .subscribe((messageData: Message[]) => {
+      // LickyLoggerService.info("AFTER SUBSCRIBE", JSON.stringify(this.messages))
+      if (messageData) {
+        this.messages = this.db.getListToArray(messageData);
+        this._sortHelperService.sortByLastUpdated(this.messages);
+        // LickyLoggerService.info("MESSAGE NOTIFICATION", JSON.stringify(this.messages))
+        this.setUpIndicator();
+      } else {
+        this.messages = [];
+      }
+    })
+
   }
 
-  ngAfterViewInit() {
-    // it must be last line
-    this._cd.detectChanges();
-  }
 
   ngOnDestroy() {
-    if (this.notificationSubscription)
-      this.notificationSubscription.unsubscribe();
     if (this.messageSubscription)
       this.messageSubscription.unsubscribe();
 
@@ -69,17 +68,15 @@ export class LickAppWidgetNotificationMessageComponent implements OnInit, AfterV
   }
 
   private toggleIndicator() {
-    this.notificationSubscription = this.messages$.subscribe((messages) => {
-      this.setUpIndicator(messages)
-    })
+      this.setUpIndicator();
   }
 
-  private setUpIndicator(messages): void {
+  private setUpIndicator(): void {
     this.messagesChecked = true;
     const lastChecked = this._user.messagesLastCheckedDate;
-    if (messages)
-      for (let i = 0; i < messages.length; i++) {
-        if (this.isIndicatorNeeded(messages[i].lastUpdated, lastChecked)) {
+    if (this.messages)
+      for (let i = 0; i < this.messages.length; i++) {
+        if (this.isIndicatorNeeded(this.messages[i].lastUpdated, lastChecked)) {
           this.messagesChecked = false;
           break;
         }

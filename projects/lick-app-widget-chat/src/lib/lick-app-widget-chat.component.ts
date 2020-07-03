@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Message, User, Upload } from 'lick-data';
-import { MESSAGES, FirebaseDataService, LickyLoggerService, UploadService } from 'licky-services';
+import { MESSAGES, FirebaseDataService, LickyLoggerService, UploadService, SortHelperService } from 'licky-services';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -113,7 +113,7 @@ export class LickAppWidgetChatComponent implements OnInit, OnDestroy {
   currentUpload: Upload;
 
 
-  constructor(private _uploadService: UploadService) { }
+  constructor(private _uploadService: UploadService, private _sortHelperService: SortHelperService) { }
 
   ngOnInit() {
     if (!this.isDummyData)
@@ -134,7 +134,8 @@ export class LickAppWidgetChatComponent implements OnInit, OnDestroy {
     .subscribe((messageData: Message[]) => {
       // LickyLoggerService.info("MESSAGES CHANGED", JSON.stringify(messageData))
       if (messageData) {
-        this.messages = this.getMessageListToArray(messageData);
+        this.messages = this.db.getListToArray(messageData);
+        this._sortHelperService.sortByLastUpdated(this.messages);
       } else {
         this.messages = [];
       }
@@ -153,20 +154,6 @@ export class LickAppWidgetChatComponent implements OnInit, OnDestroy {
     });
   }
 
-  public getMessageListToArray(data: any): any[] {
-    let list: any[] = [];
-    for (let item in data) {
-      this.doMessageFixUp(data, item);
-      list.push(data[item]);
-    }
-    return list;
-  }
-
-  private doMessageFixUp(data, item): void {
-    data[item].id = item;
-    if (!data[item].icon)
-      data[item].icon = this.defaultImage;
-  }
 
   deleteAttachment() {
     this.selectedFiles = null;

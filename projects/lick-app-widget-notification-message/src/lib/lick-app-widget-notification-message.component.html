@@ -3,9 +3,9 @@
         <span *ngIf="!messagesChecked" class="notification hertbit"></span>
     </a>
   <div class="dropdown-menu dropdown-menu-right message-list animated flipInY nicescroll-box" style="max-width: 25rem">
-    <div class="dropdown-header"> <strong>Messages</strong> <span class="badge badge-pill badge-theme pull-right" *ngIf="(messages$ | async)"> latest ({{(messages$ | async)?.length}})</span> </div>
+    <div class="dropdown-header"> <strong>Messages</strong> <span class="badge badge-pill badge-theme pull-right" *ngIf="messages"> latest ({{(messages)?.length}})</span> </div>
     <div class="wrap">
-      <div class="dropdown-item" *ngFor="let m of messages$ | async; let i = index">
+      <div class="dropdown-item" *ngFor="let m of messages; let i = index">
         <div *ngIf="m.dataModel_id" class="message-box">
           <div class="u-img"> <img *ngIf="m.photoURL" src="{{m.photoURL}}" alt="{{m.creatorName}}" /> <i *ngIf="!m.photoURL" class="fa fa-user-circle fa-3x"></i> <span class="notification" [ngClass]="m?.status"></span> </div>
           <div class="u-text">
@@ -31,7 +31,7 @@
            </div>
         </div>
       </div>
-      <div *ngIf="(messages$ | async)?.length == 0">
+      <div *ngIf="(messages && (messages.length == 0))">
         <p align="center" class="alert alert-warning" role="alert"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> No messages</p>
       </div>
     </div>

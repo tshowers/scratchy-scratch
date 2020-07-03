@@ -1,8 +1,9 @@
 <div *ngIf="!isHome; else home">
   <licky-lick-app-widget-menu [menuIcons]="homeMenu" [logo]="'assets/images/logo.png'" [photoURL]="dm.photoURL"
-    [displayName]="dm.displayName" [isTaskNotification]="false" [isCart]="false" [emailAddress]="dm.emailAddress" [router]="router"
-    [loggedIn]="dm.loggedIn" [userName]="dm.userName" [emailVerified]="dm.emailVerified" (settingsEvent)="onSettings()" (profileEvent)="onProfile()"
-    [logoutPage]="'/logout'" [loginService]="dm.loginService" [companyName]="'AHEAD'"></licky-lick-app-widget-menu>
+    [displayName]="dm.displayName" [isTaskNotification]="false" [isCart]="false" [emailAddress]="dm.emailAddress"
+    [router]="router" [loggedIn]="dm.loggedIn" [userName]="dm.userName" [emailVerified]="dm.emailVerified"
+    (settingsEvent)="onSettings()" (profileEvent)="onProfile()" [logoutPage]="'/logout'"
+    [loginService]="dm.loginService" [db]="dm.db" [companyName]="'AHEAD'"></licky-lick-app-widget-menu>
   <div class="app-body">
     <licky-lick-app-widget-left-side-menu [newsService]="newsService"></licky-lick-app-widget-left-side-menu>
     <main class="main">
@@ -11,7 +12,8 @@
         <h1>{{pageTitle}}</h1>
         <router-outlet></router-outlet>
       </div>
-      <licky-lick-app-widget-chat-popup [db]="dm.db" [currentUser]="dm.user" [isSmall]="true" [isDummyData]="false"></licky-lick-app-widget-chat-popup>
+      <licky-lick-app-widget-chat-popup [db]="dm.db" [currentUser]="dm.user" [isSmall]="true" [isDummyData]="false">
+      </licky-lick-app-widget-chat-popup>
     </main>
     <licky-lick-app-widget-right-side-menu [apps]="apps"></licky-lick-app-widget-right-side-menu>
   </div>
