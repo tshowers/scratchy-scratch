@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Message, User, Upload } from 'lick-data';
 import { MESSAGES, FirebaseDataService, LickyLoggerService, UploadService, SortHelperService } from 'licky-services';
-import {Subscription} from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'licky-lick-app-widget-chat',
@@ -106,7 +106,7 @@ export class LickAppWidgetChatComponent implements OnInit, OnDestroy {
 
   message: Message = new Message();
 
-  private _messageSubscription : Subscription;
+  private _messageSubscription: Subscription;
 
   selectedFiles: FileList;
 
@@ -126,24 +126,28 @@ export class LickAppWidgetChatComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    this.saveMessage();
+    if (this.selectedFiles || (this.message.text != '')) {
+      if (this.currentUser && this.currentUser.userImage)
+        this.message.icon = this.currentUser.userImage;
+      this.saveMessage();
+    }
   }
 
-  public doMessages() : void {
-     this._messageSubscription = this.db.getDataCollection(MESSAGES)
-    .subscribe((messageData: Message[]) => {
-      // LickyLoggerService.info("MESSAGES CHANGED", JSON.stringify(messageData))
-      if (messageData) {
-        this.messages = this.db.getListToArray(messageData);
-        this._sortHelperService.sortByLastUpdated(this.messages);
-      } else {
-        this.messages = [];
-      }
-    })
+  public doMessages(): void {
+    this._messageSubscription = this.db.getDataCollection(MESSAGES)
+      .subscribe((messageData: Message[]) => {
+        // LickyLoggerService.info("MESSAGES CHANGED", JSON.stringify(messageData))
+        if (messageData) {
+          this.messages = this.db.getListToArray(messageData);
+          this._sortHelperService.sortByLastUpdated(this.messages);
+        } else {
+          this.messages = [];
+        }
+      })
   }
 
-  public saveMessage() : void {
-    // LickyLoggerService.info("MESSAGE", JSON.stringify(this.message))
+  public saveMessage(): void {
+    LickyLoggerService.info("SAVING MESSAGE", JSON.stringify(this.message))
     this.db.writeData(MESSAGES, this.message).subscribe((key) => {
       this.message.id = key;
       this.uploadSingle();

@@ -64,13 +64,14 @@ export class UploadService {
         storageRef.child(storeLocation).getDownloadURL().then((url) => {
           upload.url = url;
 
-          LickyLoggerService.info(null, "Calling saveFilePointer");
           this.saveFilePointer(true, upload, fn, db);
           data.url = upload.url;
           db.updateData(dataPath, data.id, data);
 
-          if (isUpdateFirebase && loginService && displayName)
+          if (isUpdateFirebase && loginService && displayName) {
+            LickyLoggerService.info("Calling updateDisplayName", displayName + " - " + url);
             loginService.updateDisplayName(displayName, url);
+          }
         }).catch((error) => LickyLoggerService.error(null, error));
       }
     );

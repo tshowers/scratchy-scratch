@@ -75,7 +75,7 @@ export class AvatarComponent extends LickAppPageComponent implements OnInit, OnD
     this.uploadSingle();
     setTimeout(() => { 
       window.location.reload();
-    }, 2000);
+    }, 10000);
 
 
   }
@@ -86,7 +86,7 @@ export class AvatarComponent extends LickAppPageComponent implements OnInit, OnD
       if (file) {
         this.currentUpload = new Upload(file);
         this.currentUpload.user_id = this.user.id;
-        this._uploadService.pushFileToStorage(this.currentUpload, USERS + '/' + this.user.id, '/users/' + this.user.id, this.user, this.dm.db, true, this.dm.loginService, this.displayName);
+        this._uploadService.pushFileToStorage(this.currentUpload, USERS, '/users/' + this.user.id, this.user, this.dm.db, true, this.dm.loginService, this.displayName);
       }
     }
   }

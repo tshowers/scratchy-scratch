@@ -9,10 +9,10 @@
 
         <div class="chat" *ngIf="currentUser">
             <ul id="chatList">
-                <li *ngFor="let m of messages" [ngClass]="{'other' : (currentUser.id != message.user_id), 'you' : (currentUser.id == message.user_id)}">
+                <li *ngFor="let m of messages" [ngClass]="{'other' : (currentUser.id != m.user_id), 'you' : (currentUser.id == m.user_id)}">
                     <a class="user" routerLink="/users/{{m?.user_id}}">
-                        <img *ngIf="m.icon" alt="{{m?.icon}}" src="{{m?.icon}}" />
-                        <i *ngIf="!m.icon" title="Default Image" class="fa fa-user-circle fa-2x text-theme"></i>
+                        <img *ngIf="m.icon" alt="{{m?.userName}}" src="{{m?.icon}}" />
+                        <i *ngIf="!m.icon" title="{{m?.userName}}" class="fa fa-user-circle fa-2x text-theme"></i>
                     </a>
                     <div class="date">
                         {{m?.timeStamp | date : 'medium'}}
@@ -25,11 +25,11 @@
                         <span *ngIf="!m.link"><strong>{{m?.title}}</strong></span>
                         
                     </div>
-                <div class="message">
+                <div class="message" *ngIf="m.text && (m.text != '')" [ngClass]="{'ta-message' : (currentUser.id != m.user_id)}">
                         <div class="hider">
                             <span>Click to read</span>
                         </div>
-                        <p class="text-white">
+                        <p [ngClass]="{'text-dark' : (currentUser.id != m.user_id), 'text-white' : (currentUser.id == m.user_id) }">
                             {{m?.text}}
                         </p>
                     </div>
@@ -45,11 +45,11 @@
             <div class="col-md-10 mb-3">
                 <input [(ngModel)]="message.text" #messageText="ngModel"
             id="messageText" name="messageText" placeholder="Type something" type="text" autocorrect="off" autocapitalize="off" spellcheck="off"  autocomplete="off"
-            class="form-control form-control-lg ta-input-element" required>
+            class="form-control form-control-lg ta-input-element">
             </div>
   
             <div class="col-md-2 mb-3">
-                <button  class="btn btn-theme" [disabled]="!dataForm.form.valid" (click)="onSubmit()">
+                <button  class="btn btn-theme" (click)="onSubmit()">
                     <i class="fa fa-paper-plane"></i>
                 </button>
             </div>

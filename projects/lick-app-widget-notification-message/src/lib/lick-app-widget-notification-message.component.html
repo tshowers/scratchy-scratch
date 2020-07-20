@@ -7,24 +7,26 @@
     <div class="wrap">
       <div class="dropdown-item" *ngFor="let m of messages; let i = index">
         <div *ngIf="m.dataModel_id" class="message-box">
-          <div class="u-img"> <img *ngIf="m.photoURL" src="{{m.photoURL}}" alt="{{m.creatorName}}" /> <i *ngIf="!m.photoURL" class="fa fa-user-circle fa-3x"></i> <span class="notification" [ngClass]="m?.status"></span> </div>
+          <div class="u-img"> <img *ngIf="m.photoURL" src="{{m.photoURL}}" alt="{{m.userName}}" /> <i *ngIf="!m.photoURL" class="fa fa-user-circle fa-3x"></i> <span class="notification" [ngClass]="m?.status"></span> </div>
           <div class="u-text">
-            <div class="u-name"> <strong>{{m?.creatorName}}</strong> </div>
+            <div class="u-name"> <strong>{{m?.userName}}</strong> </div>
             <p class="text-muted">
               <i *ngIf="!m?.iconClass" class="fa fa-info-circle" aria-hidden="true"></i>
               <i *ngIf="m?.iconClass" ngClass="[m.iconClass]" aria-hidden="true"></i>
               <a routerLink="{{m?.linkUrl}}">{{m?.name}}</a></p> <small><i class="fa fa-clock-o fa-fw"></i> {{m?.lastUpdated | date:'short'}}</small> </div>
         </div>
         <div *ngIf="!m.article && !m.dataModel_id" class="message-box">
-          <div class="u-img"> <img *ngIf="m.photoURL" src="{{m.photoURL}}" alt="{{m.creatorName}}" /> <i *ngIf="!m.photoURL" class="fa fa-user-circle fa-3x"></i> <span class="notification" [ngClass]="m?.status"></span> </div>
+          <div class="u-img"> <img *ngIf="m.photoURL" src="{{m.photoURL}}" alt="{{m.userName}}" /> <i *ngIf="!m.photoURL" class="fa fa-user-circle fa-3x"></i> <span class="notification" [ngClass]="m?.status"></span> </div>
           <div class="u-text">
-            <div class="u-name"> <strong>{{m?.creatorName}}</strong> </div>
-            <p class="text-muted">{{m?.text}}</p> <small><i class="fa fa-clock-o fa-fw"></i> {{m?.lastUpdated | date:'short'}}</small> </div>
+            <div class="u-name"> <strong>{{m?.userName}}</strong> </div>
+            <p *ngIf="m.text" class="text-muted">{{m?.text}}</p> 
+            <p *ngIf="m.url" class="text-muted"><i class="fa fa-picture-o" aria-hidden="true"></i></p> 
+            <small><i class="fa fa-clock-o fa-fw"></i> {{m?.lastUpdated | date:'short'}}</small> </div>
         </div>
         <div *ngIf="m.article" class="message-box">
-          <div class="u-img"> <img *ngIf="m.photoURL" src="{{m.photoURL}}" alt="{{m.creatorName}}" /> <i *ngIf="!m.photoURL" class="fa fa-user-circle fa-3x"></i> <span class="notification" [ngClass]="m?.status"></span> </div>
+          <div class="u-img"> <img *ngIf="m.photoURL" src="{{m.photoURL}}" alt="{{m.userName}}" /> <i *ngIf="!m.photoURL" class="fa fa-user-circle fa-3x"></i> <span class="notification" [ngClass]="m?.status"></span> </div>
           <div class="u-text">
-            <div class="u-name"> <strong>{{m?.creatorName}}</strong> </div>
+            <div class="u-name"> <strong>{{m?.userName}}</strong> </div>
 
             <p class="text-muted"><i class="fa fa-newspaper-o danger" aria-hidden="true"></i><a href="{{m?.article.url}}" target="_blank">{{m?.article.title}}</a> </p>
              <small><i class="fa fa-clock-o fa-fw"></i> {{m?.lastUpdated | date:'short'}}</small>

@@ -39,17 +39,18 @@ export class LickAppWidgetNotificationMessageComponent implements OnInit, OnDest
     this._user = this.loginService.getUser();
     // LickyLoggerService.info(null,"setNotifications()")
     this.messageSubscription = this.db.getDataCollection(MESSAGES)
-    .subscribe((messageData: Message[]) => {
-      // LickyLoggerService.info("AFTER SUBSCRIBE", JSON.stringify(this.messages))
-      if (messageData) {
-        this.messages = this.db.getListToArray(messageData);
-        this._sortHelperService.sortByLastUpdated(this.messages);
-        // LickyLoggerService.info("MESSAGE NOTIFICATION", JSON.stringify(this.messages))
-        this.setUpIndicator();
-      } else {
-        this.messages = [];
-      }
-    })
+      .subscribe((messageData: Message[]) => {
+        LickyLoggerService.info(null, "setNotifications() AFTER SUBSCRIBE")
+        if (messageData) {
+          this.messages = this.db.getListToArray(messageData);
+          this._sortHelperService.sortByLastUpdated(this.messages);
+          this.messages = this.messages.splice(0, 5);
+          // LickyLoggerService.info("MESSAGE NOTIFICATION", JSON.stringify(this.messages))
+          this.setUpIndicator();
+        } else {
+          this.messages = [];
+        }
+      })
 
   }
 
@@ -68,7 +69,7 @@ export class LickAppWidgetNotificationMessageComponent implements OnInit, OnDest
   }
 
   private toggleIndicator() {
-      this.setUpIndicator();
+    this.setUpIndicator();
   }
 
   private setUpIndicator(): void {
@@ -76,10 +77,11 @@ export class LickAppWidgetNotificationMessageComponent implements OnInit, OnDest
     const lastChecked = this._user.messagesLastCheckedDate;
     if (this.messages)
       for (let i = 0; i < this.messages.length; i++) {
-        if (this.isIndicatorNeeded(this.messages[i].lastUpdated, lastChecked)) {
-          this.messagesChecked = false;
-          break;
-        }
+        if (this.messages[i].user_id != this._user.user_id)
+          if (this.isIndicatorNeeded(this.messages[i].lastUpdated, lastChecked)) {
+            this.messagesChecked = false;
+            break;
+          }
       }
   }
 
@@ -87,6 +89,7 @@ export class LickAppWidgetNotificationMessageComponent implements OnInit, OnDest
     if (!value || !compareDate) return false;
     const lastChecked = new Date(compareDate);
     const messageDate = new Date(value);
+    LickyLoggerService.info("Comparing", "lastChecked:" + lastChecked + " - to - messageDate:" + messageDate);
     return (messageDate.getTime() > lastChecked.getTime());
   }
 
