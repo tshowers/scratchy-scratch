@@ -1,0 +1,33 @@
+<licky-lick-app-widget-generic-nav [links]="crumbs"></licky-lick-app-widget-generic-nav>
+<div class="card"  *ngIf="!clicked; else loading">
+    <div class="card-body">
+        <form #dataForm="ngForm" class="form-group">
+            <licky-lick-app-widget-drop-box [selectedFiles]="selectedFiles" [data]="user"
+            (detectFileEvent)="detectFiles($event)" (deleteEvent)="deleteAttachment()" required></licky-lick-app-widget-drop-box>
+              <div class="row">
+                <div class="col">
+                    <button class="btn btn-primary btn-lg btn-round" (click)="onSubmit()" type="submit"
+                        [disabled]="!dataForm.form.valid" title="Submit to database">Save
+                        <i class="fa fa-cloud" aria-hidden="true"></i>
+                    </button>
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<ng-template #loading>
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="thecube">
+                <div class="cube c1"></div>
+                <div class="cube c2"></div>
+                <div class="cube c4"></div>
+                <div class="cube c3"></div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>

@@ -1,0 +1,98 @@
+<licky-lick-app-widget-generic-nav [links]="crumbs"></licky-lick-app-widget-generic-nav>
+<ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <span><i class="fa fa-user" aria-hidden="true"></i> Display Name</span>
+
+      <span><a routerLink="/stores/settings-display-name"><i class="fa fa-chevron-right"
+            aria-hidden="true"></i></a></span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <span><i class="fa fa-envelope-o" aria-hidden="true"></i> Email Address</span>
+
+      <span><a routerLink="/stores/settings-email-address"><i class="fa fa-chevron-right"
+            aria-hidden="true"></i></a></span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <span><i class="fa fa-picture-o" aria-hidden="true"></i> Avatar</span>
+
+      <span><a routerLink="/stores/settings-avatar"><i class="fa fa-chevron-right" aria-hidden="true"></i></a> </span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <span><i class="fa fa-check-square-o" aria-hidden="true"></i> Verified</span>
+
+      <span><a routerLink="/stores/settings-verify"><i class="fa fa-chevron-right" aria-hidden="true"></i></a> </span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <span><i class="fa fa-history" aria-hidden="true"></i> Role</span>
+
+      <span>{{user.role}}</span>
+    </li>
+  </ul>
+
+  <br>
+  <form #dataForm="ngForm" class="form-group">
+
+  <ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <span><i class="fa fa-history" aria-hidden="true"></i> Track History</span>
+
+      <span>
+        <ui-switch [(ngModel)]="user.trackHistory"  id="userHistory" name="userHistory"></ui-switch>
+      </span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <span><i class="fa fa-comments-o" aria-hidden="true"></i> Conversational Feedback and Guidance</span>
+
+      <span>
+        <ui-switch [(ngModel)]="user.feedback"  id="userFeedback" name="userFeedback"></ui-switch>
+      </span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <span><i class="fa fa-info" aria-hidden="true"></i> Guided Help Popups</span>
+
+      <span>
+        <ui-switch [(ngModel)]="user.helpNeeded"  id="userHelp" name="userHelp"></ui-switch>
+      </span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <span><i class="fa fa-tachometer" aria-hidden="true"></i> On Login go to Dashboard</span>
+
+      <span>
+        <ui-switch [(ngModel)]="user.dashboard"  id="userDashboard" name="userDashboard"></ui-switch>
+      </span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <span><i class="fa fa-columns" aria-hidden="true"></i> Display in columns instead of table list</span>
+
+      <span>
+        <ui-switch [(ngModel)]="user.columnView"  id="userColumnView" name="userColumnView"></ui-switch>
+      </span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <span><i class="fa fa-columns" aria-hidden="true"></i> US or Metric measurement (off is US on is Metric)</span>
+
+      <span>
+        <ui-switch [(ngModel)]="user.metric"  id="userMetric" name="userMetric"></ui-switch>
+      </span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <span><i class="fa fa-newspaper-o" aria-hidden="true"></i> News Personalization</span>
+
+      <span>
+        <ui-switch [(ngModel)]="user.useNewsPersonalization"  id="userNews" name="userNews"></ui-switch>
+      </span>
+    </li>
+  </ul>
+  <div class="row">
+    <div class="col text-center">
+      <button class="btn btn-primary btn-lg btn-round" (click)="onSubmit()" type="submit"
+      [disabled]="!dataForm.form.valid" title="Submit to database">Save
+      <i class="fa fa-cloud" aria-hidden="true"></i>
+    </button>
+
+    </div>
+  </div>
+  </form>
+  <br>
+
+<licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>

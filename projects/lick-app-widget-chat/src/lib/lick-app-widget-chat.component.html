@@ -11,11 +11,11 @@
             <ul id="chatList">
                 <li *ngFor="let m of messages" [ngClass]="{'other' : (currentUser.id != m.user_id), 'you' : (currentUser.id == m.user_id)}">
                     <a class="user" routerLink="/users/{{m?.user_id}}">
-                        <img *ngIf="m.icon" alt="{{m?.userName}}" src="{{m?.icon}}" />
+                        <img *ngIf="m.icon" title="{{m?.userName}}"  alt="{{m?.userName}}" src="{{m?.icon}}" />
                         <i *ngIf="!m.icon" title="{{m?.userName}}" class="fa fa-user-circle fa-2x text-theme"></i>
                     </a>
                     <div class="date">
-                        {{m?.timeStamp | date : 'medium'}}
+                         {{m?.timeStamp | date : 'medium'}}
                     </div>
                     <div *ngIf="m.url">
                         <img class="rounded py-md-1" src="{{m?.url}}"/>

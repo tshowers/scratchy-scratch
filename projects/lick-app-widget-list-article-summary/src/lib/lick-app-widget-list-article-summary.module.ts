@@ -7,6 +7,7 @@ import { CountToModule } from 'angular-count-to';
 import { LickDataModule } from 'lick-data';
 import { LickAppWidgetListArticleSummaryComponent } from './lick-app-widget-list-article-summary.component';
 import { ImageCheckPipe } from './pipes/image-check.pipe';
+import { LickAppWidgetNoDataModule } from 'lick-app-widget-no-data';
 
 @NgModule({
   declarations: [LickAppWidgetListArticleSummaryComponent, ImageCheckPipe],
@@ -16,7 +17,8 @@ import { ImageCheckPipe } from './pipes/image-check.pipe';
     FormsModule,
     CountToModule,
     NgbModule,
-    LickDataModule
+    LickDataModule,
+    LickAppWidgetNoDataModule
   ],
   exports: [LickAppWidgetListArticleSummaryComponent]
 })

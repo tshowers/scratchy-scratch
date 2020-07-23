@@ -13,6 +13,8 @@
                             [loggedIn]="dm.loggedIn"
                             [userName]="dm.userName"
                             [emailVerified]="dm.emailVerified"
+                            [companyName]="'AHEAD'"
+                            [logo]="'assets/images/logo.png'"
                             (settingsEvent)="onSettings()"
                             [placeholder]="'Find a Topic . . .'"
                             (profileEvent)="onViewProfile()"
@@ -120,7 +122,7 @@
       </div>
     </div>
     <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
-    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+    <licky-lick-app-widget-chat-popup [db]="dm.db" [currentUser]="dm.user" [isSmall]="true" [isDummyData]="false"></licky-lick-app-widget-chat-popup>
   </main>
   <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
                                          [helpHeaderText]="'Topic Dashboard'"

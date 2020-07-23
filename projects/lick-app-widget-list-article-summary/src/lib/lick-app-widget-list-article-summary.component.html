@@ -1,4 +1,4 @@
-<div class="card-body">
+<div class="card-body" *ngIf="data && (data.length > 0); else noData">
   <div class="clearfix">
     <h5 class="text-theme float-left wow fadeIn">{{headingText}}</h5>
     <div class="h2">
@@ -109,8 +109,12 @@
       </div>
     </div>
   </ul>
+  <ngb-pagination [(page)]="currentPage"
+  (pageChange)="onPageChange($event)"
+  [pageSize]="pageSize"
+  [collectionSize]="totalRecords"></ngb-pagination>
 </div>
-<ngb-pagination [(page)]="currentPage"
-                (pageChange)="onPageChange($event)"
-                [pageSize]="pageSize"
-                [collectionSize]="totalRecords"></ngb-pagination>
+<ng-template #noData>
+  <licky-lick-app-widget-no-data [newButton]="false" (newItemEvent)="onButtonClick()" [isLoading]="loading">Articles</licky-lick-app-widget-no-data>
+</ng-template>
+

@@ -63,6 +63,16 @@ export class DataMediationService implements OnDestroy {
     this.waitForUserSet();
   }
 
+  public setNewUser(user: User): void {
+    this.user = user;
+    this.updateUser();
+  }
+
+  public updateUser(): void {
+    this.loginService.updateUser(this.user);
+  }
+
+
   private waitForUserSet(): void {
     this.setupTimer = setInterval(() => this.setDataSet(), 250);
   }

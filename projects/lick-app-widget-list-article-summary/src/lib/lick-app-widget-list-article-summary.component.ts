@@ -18,14 +18,21 @@ export class LickAppWidgetListArticleSummaryComponent implements OnInit {
 
   @Output() pageEvent = new EventEmitter();
   @Output() currentPageEvent = new EventEmitter();
+  @Output() buttonClickEvent = new EventEmitter();
+  loading: boolean = true;
 
   constructor() { }
 
   ngOnInit() {
+    setTimeout(() => {this.loading = false}, 750);
   }
 
   onPageEvent(item) : void {
     this.pageEvent.emit(item);
+  }
+
+  onButtonClick() : void {
+    this.buttonClickEvent.emit();
   }
 
   public onPageChange(value): void {

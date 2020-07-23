@@ -11,6 +11,8 @@
                             [isTaskNotification]="false"
                             [emailAddress]="dm.emailAddress"
                             [loggedIn]="dm.loggedIn"
+                            [companyName]="'AHEAD'"
+                            [logo]="'assets/images/logo.png'"
                             [userName]="dm.userName"
                             [emailVerified]="dm.emailVerified"
                             (settingsEvent)="onSettings()"
@@ -144,7 +146,7 @@
       </div>
     </div>
     <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
-    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+    <licky-lick-app-widget-chat-popup [db]="dm.db" [currentUser]="dm.user" [isSmall]="true" [isDummyData]="false"></licky-lick-app-widget-chat-popup>
   </main>
   <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
                                          [helpHeaderText]="'Topic Edit'"

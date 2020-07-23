@@ -9,6 +9,8 @@
                             [isAlertNotification]="true"
                             [isMessageNotification]="false"
                             [isTaskNotification]="false"
+                            [companyName]="'AHEAD'"
+                            [logo]="'assets/images/logo.png'"
                             [emailAddress]="dm.emailAddress"
                             [loggedIn]="dm.loggedIn"
                             [userName]="dm.userName"
@@ -30,6 +32,7 @@
                                                     [defaultImage]="'/assets/images/default-user.png'"
                                                     [headingText]="'Topics'"
                                                     [iconClass]="'fa fa-th-list'"
+                                                    (buttonClickEvent)="onNewItem()"
                                                     [pageSize]="pageSize"
                                                     [totalRecords]="totalRecords"
                                                     (currentPageEvent)="newPage($event)"
@@ -38,7 +41,7 @@
       </div>
     </div>
     <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
-    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+    <licky-lick-app-widget-chat-popup [db]="dm.db" [currentUser]="dm.user" [isSmall]="true" [isDummyData]="false"></licky-lick-app-widget-chat-popup>
   </main>
   <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
                                          [helpHeaderText]="'Topic List'"
